@@ -1,33 +1,48 @@
 # xpvuemap
 
+Work in progress
+
 ## Project setup
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+## Run server
+
+The server receives (UDP), evaluates and forwards (socket.io) the information sent by X-Plane.
+
 ```
-yarn run serve
+yarn run server
 ```
 
-### Compiles and minifies for production
+## Run client
+
+At the moment, the client is a Vue.js development server that receives the X-Plane information (socket.io) and displays the map.
+
+
+### Compiles and hot-reloads for development
+```
+yarn run client
+```
+
+#### Compiles and minifies for production
 ```
 yarn run build
 ```
 
-### Run your tests
+#### Run your tests
 ```
 yarn run test
 ```
 
 ### Lints and fixes files
 ```
-yarn run lint
+yarn# run lint
 ```
 
 ### Run your unit tests
 ```
-yarn run test:unit
+yarn# run test:unit
 ```
 
 ### Customize configuration
