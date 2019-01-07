@@ -1,13 +1,12 @@
-// vue.config.js
 // module.exports = {
-//   configureWebpack: {
-//     resolve: {
-//       alias: {
-//           'socket.io-client': path.join( nodeRoot, 'socket.io-client', 'socket.io.js' )
+//   css: {
+//     loaderOptions: {
+//       // 给 sass-loader 传递选项
+//       sass: {
+//         // @/ 是 src/ 的别名
+//         // 所以这里假设你有 `src/variables.scss` 这个文件
+//         data: `@import "@/assets/sass/variables.scss";`
 //       }
-//     },
-//     module: {
-//         noParse: [ /socket.io-client/ ]
 //     }
-//   },
+//   }
 // }

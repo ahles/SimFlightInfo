@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import L from 'leaflet';
+import Vuetify from 'vuetify';
+import colors from 'vuetify/es5/util/colors';
+import 'vuetify/dist/vuetify.min.css';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -17,6 +20,15 @@ L.Icon.Default.mergeOptions({
 });
 
 Vue.config.productionTip = false;
+
+Vue.use(Vuetify, {
+  theme: {
+    primary: colors.teal.base,
+    secondary: colors.red.lighten4,
+    accent: colors.indigo.base,
+    error: colors.red.darken4,
+  },
+});
 
 new Vue({
   router,

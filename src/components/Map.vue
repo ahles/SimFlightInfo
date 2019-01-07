@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 
 table {
   margin: 0 auto;
@@ -67,16 +67,15 @@ table {
     padding: 10px;
   }
 }
-.map__wrapper {
-  position: relative;
-}
 #map {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100vw;
-  height: 100vh;
-  z-index:10;
+  height: calc(100vh - 48px);
+  z-index: 0;
 }
 .altitude {
   position: absolute;
