@@ -14,9 +14,3 @@ export default {
   },
 };
 </script>
-
-<style>
-/* .home {
-  position: relative;
-} */
-</style>

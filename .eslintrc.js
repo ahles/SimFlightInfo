@@ -17,6 +17,7 @@ module.exports = {
     // 'import/no-unresolved': 0,
     // 'import/extensions': 0,
     'import/no-extraneous-dependencies': 0,
+    'object-shorthand': 0,
   },
   parserOptions: {
     parser: 'babel-eslint',

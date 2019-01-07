@@ -33,6 +33,8 @@ export default {
     return {
       map: null,
       marker: null,
+      previousLatitude: 0,
+      previousLongitude: 0,
     };
   },
   computed: {
@@ -59,11 +61,37 @@ export default {
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(this.map);
-      this.marker = L.marker([51.5, -0.09]).addTo(this.map);
+      this.marker = L.marker(
+        [51.5, -0.09],
+        {
+          rotationAngle: 45,
+        },
+      ).addTo(this.map);
     },
     positionMarkerAndSetMapView() {
       this.map.setView([this.latitude, this.longitude]);
+
       this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
+      this.marker.setRotationAngle(this.calculateAngle());
+
+      this.previousLatitude = this.latitude;
+      this.previousLongitude = this.longitude;
+    },
+    calculateAngle() {
+      // https://stackoverflow.com/questions/3932502/calculate-angle-between-two-latitude-longitude-points
+      const distanceLongitude = (this.longitude - this.previousLongitude);
+
+      const y = Math.sin(distanceLongitude) * Math.cos(this.latitude);
+      const x = Math.cos(this.previousLatitude) * Math.sin(this.latitude) - Math.sin(this.previousLatitude) * Math.cos(this.latitude) * Math.cos(distanceLongitude);
+
+      let brng = Math.atan2(y, x);
+
+      brng = brng * (180 / Math.PI); /* eslint-disable-line */
+      brng = (brng + 360) % 360;
+      brng = brng + 10; /* eslint-disable-line */
+
+      console.log('brng', brng);
+      return brng;
     },
   },
 };

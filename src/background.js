@@ -21,8 +21,8 @@ function readMessage(msg) {
   // const data = msg.slice(0, 4).toString();
   // console.log('data', data);
 
-  // const index = msg.readInt8(5);
-  // console.log('index', index);
+  const index = msg.readInt8(5);
+  console.log('index', index);
 
   // const values = msg.slice(9);
   // console.log('values', values);
@@ -73,6 +73,7 @@ function initUDPSocketServer() {
   io.on('connection', (socket) => {
     console.log('connection established');
     udpClient.on('message', (msg) => {
+      // console.log('msg', msg);
       const position = readMessage(msg);
       io.emit('position', position);
     });
