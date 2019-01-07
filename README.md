@@ -17,8 +17,26 @@ yarn electron:serve
 yarn electron:build
 ```
 
+### Run your tests
+```
+yarn run test
+```
 
-## Notes
+### Lints and fixes files
+```
+yarn run lint
+```
+
+### Run your unit tests
+```
+yarn run test:unit
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+# Notes
 
 - how handle uws deprecated?
 https://www.npmjs.com/package/uws

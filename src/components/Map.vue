@@ -24,29 +24,34 @@
 </template>
 
 <script>
-import io from 'socket.io-client';
 import L from 'leaflet';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Map',
   data: function () { /* eslint-disable-line */
     return {
-      altitude: null,
-      latitude: null,
-      longitude: null,
       map: null,
       marker: null,
-      socket: null,
     };
   },
   computed: {
-    altitudeM() {
-      return this.altitude * 0.3048;
+    ...mapGetters({
+      latitude: 'getLatitude',
+      longitude: 'getLongitude',
+      altitude: 'getAltitude',
+    }),
+  },
+  watch: {
+    latitude() {
+      this.positionMarkerAndSetMapView();
     },
+  },
+  beforeCreate() {
+    this.$store.dispatch('receiveData');
   },
   mounted() {
     this.initializeMap();
-    this.listenToSocketandGetPosition();
   },
   methods: {
     initializeMap() {
@@ -55,15 +60,6 @@ export default {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(this.map);
       this.marker = L.marker([51.5, -0.09]).addTo(this.map);
-    },
-    listenToSocketandGetPosition() {
-      this.socket = io('http://localhost:3000');
-      this.socket.on('position', (position) => {
-        this.altitude = position.altitude;
-        this.latitude = position.latitude;
-        this.longitude = position.longitude;
-        this.positionMarkerAndSetMapView();
-      });
     },
     positionMarkerAndSetMapView() {
       this.map.setView([this.latitude, this.longitude]);
