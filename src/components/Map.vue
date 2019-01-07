@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="map__wrapper">
     <!--
     <table>
       <thead>
@@ -31,22 +31,24 @@ export default {
   name: 'Map',
   data: function () { /* eslint-disable-line */
     return {
-      position: [],
+      position: {},
+      map: null,
+      marker: null,
+      socket: null,
     };
   },
   mounted() {
-    const map = L.map('map').setView([51.505, -0.09], 13);
+    this.map = L.map('map').setView([51.505, -0.09], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    }).addTo(map);
-    const marker = L.marker([51.5, -0.09]).addTo(map);
+    }).addTo(this.map);
+    this.marker = L.marker([51.5, -0.09]).addTo(this.map);
 
-    const socket = io('http://localhost:3000');
-    socket.on('position', (position) => {
+    this.socket = io('http://localhost:3000');
+    this.socket.on('position', (position) => {
       this.position = position;
-      // console.log('this.position', this.position);
-      map.setView([this.position.latitude, this.position.longitude]);
-      marker.setLatLng(L.latLng(this.position.latitude, this.position.longitude));
+      this.map.setView([this.position.latitude, this.position.longitude]);
+      this.marker.setLatLng(L.latLng(this.position.latitude, this.position.longitude));
     });
   },
 };
@@ -64,6 +66,9 @@ table {
     border: 1px solid black;
     padding: 10px;
   }
+}
+.map__wrapper {
+  position: relative;
 }
 #map {
   position: absolute;

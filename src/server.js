@@ -90,7 +90,7 @@ function readMessage(msg) {
   const value8 = msg.slice(33, 37).readFloatLE();
   console.log('value8', value8); */
 
-  console.log(latitude + ' | ' + longitude + ' | ' + altitude);
+  // console.log(latitude + ' | ' + longitude + ' | ' + altitude);
 
   const result = {
     latitude,
