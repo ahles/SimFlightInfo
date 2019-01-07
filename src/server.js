@@ -1,4 +1,4 @@
-var dgram = require('dgram');
+const dgram = require('dgram');
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
@@ -7,7 +7,7 @@ const io = require('socket.io')(server);
 const updHost = '127.0.0.1';
 const udpPort = 49000;
 
-var udpClient = dgram.createSocket('udp4');
+const udpClient = dgram.createSocket('udp4');
 
 io.on('connection', (socket) => {
   console.log('connection established');
