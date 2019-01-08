@@ -90,7 +90,7 @@ export default {
       angle = (angle + 360) % 360;
       angle = 360 - angle;
 
-      console.log('angle', angle);
+      // console.log('angle', angle);
       return angle;
     },
   },

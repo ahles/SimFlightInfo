@@ -1,11 +1,4 @@
 const dgram = require('dgram');
-const expressApp = require('express')();
-const server = require('http').createServer(expressApp);
-// https://github.com/socketio/socket.io/issues/2109
-const io = require('socket.io')(server, {
-  serveClient: false, // do not serve the client file, in that case the brfs loader is not needed
-});
-
 
 function readMessage(msg) { /* eslint-disable-line */
   let result = {
@@ -62,33 +55,35 @@ function readMessage(msg) { /* eslint-disable-line */
   return result;
 }
 
-
 module.exports = {
-  startReceiveAndsendBySocket() {
-    const updHost = '127.0.0.1';
-    const udpPort = 49000;
-
-    const udpClient = dgram.createSocket('udp4');
-
-    io.on('connection', (socket) => {
-      console.log('connection established');
-      udpClient.on('message', (msg) => {
-        // console.log('msg', msg);
+  initialized: false,
+  position: {
+    latitude: 0,
+    longitude: 0,
+    altitude: 0,
+  },
+  udpHost: '127.0.0.1',
+  udpPort: 49000,
+  udpClient: null,
+  init(win, isDevelopment) {
+    console.log('📡 UDP Lstener onlinee');
+    if (!this.initilized) {
+      this.udpClient = dgram.createSocket('udp4');
+      this.udpClient.on('message', (msg) => {
         const position = readMessage(msg);
-        io.emit('position', position);
+        this.position = position;
+        win.webContents.send('position', this.position);
+        if (isDevelopment) {
+          console.log('🧭 Position data received: Lat ' + position.latitude + ' | Lon ' + position.longitude + ' | Alt ' + position.altitude);
+        }
       });
 
-      socket.on('disconnect', () => {
-        console.log('disconnected');
-        io.emit('user disconnected');
-      });
-    });
-
-    udpClient.bind(udpPort, updHost);
-
-    const socketPort = process.env.PORT || 3000;
-
-    server.listen(socketPort);
+      this.udpClient.bind(this.udpPort, this.updHost);
+      this.initialized = true;
+    }
+  },
+  close() {
+    this.udpClient.close();
   },
 
 };

@@ -6,10 +6,7 @@ import {
 } from 'vue-cli-plugin-electron-builder/lib';
 import udplistener from './udplistener';
 
-console.log('udplistener', udplistener);
-
 const isDevelopment = process.env.NODE_ENV !== 'production';
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
@@ -24,11 +21,14 @@ function createWindow() {
     frame: false,
   };
   if (isDevelopment) {
+    // require('devtron').install(); /* eslint-disable-line */
     windowOptions.width = 1680;
     windowOptions.height = 1050;
   }
 
   win = new BrowserWindow(windowOptions);
+
+  udplistener.init(win, isDevelopment);
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
@@ -47,6 +47,7 @@ function createWindow() {
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
+  udplistener.close();
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
@@ -70,8 +71,6 @@ app.on('ready', async () => {
     // Install Vue Devtools
     await installVueDevtools();
   }
-  // initUDPSocketServer();
-  udplistener.startReceiveAndsendBySocket();
   createWindow();
 });
 
@@ -80,11 +79,13 @@ if (isDevelopment) {
   if (process.platform === 'win32') {
     process.on('message', (data) => {
       if (data === 'graceful-exit') {
+        udplistener.close();
         app.quit();
       }
     });
   } else {
     process.on('SIGTERM', () => {
+      udplistener.close();
       app.quit();
     });
   }

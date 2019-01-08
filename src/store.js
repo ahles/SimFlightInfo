@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import io from 'socket.io-client';
+
+const { ipcRenderer } = require('electron');
 
 Vue.use(Vuex);
 
@@ -28,8 +29,7 @@ export default new Vuex.Store({
   },
   actions: {
     receiveData: (context) => {
-      const socket = io('http://localhost:3000');
-      socket.on('position', (position) => {
+      ipcRenderer.on('position', (event, position) => {
         context.commit('UPDATE_LATITUDE', position.latitude);
         context.commit('UPDATE_LONGITUDE', position.longitude);
         context.commit('UPDATE_ALTITUDE', position.altitude);
