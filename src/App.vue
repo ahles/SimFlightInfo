@@ -6,25 +6,30 @@
           <v-icon large>flight</v-icon>
           <span class="section-header">Position</span>
         </v-list-tile>
+        <v-divider></v-divider>
         <v-list-tile avatar>
           <v-list-tile-content>
             <v-list-tile-title>Latitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ latitude }}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ latitude.toFixed(6) }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile avatar>
           <v-list-tile-content>
             <v-list-tile-title>Longitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ longitude }}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ longitude.toFixed(6) }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile avatar>
           <v-list-tile-content>
             <v-list-tile-title>Altitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ Math.floor(altitude) }} ft / {{ Math.floor(altitudeM) }} m</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ Math.floor(altitude) }} ft<br />{{ Math.floor(altitudeM) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
+      <v-spacer />
+      <v-btn absolute bottom right small ripple @click.stop="reload" class="window-button reload">
+        <v-icon dark>cached</v-icon>
+      </v-btn>
     </v-navigation-drawer>
     <v-toolbar dark dense app>
       <v-toolbar-title>xpvuemap</v-toolbar-title>
@@ -42,11 +47,8 @@
     <v-content v-bind:class="{ overlay__blur: !receivingData }">
       <Map />
     </v-content>
-    <v-btn dark small absolute bottom left fab ripple @click.stop="reload" class="reload">
-      <v-icon dark>cached</v-icon>
-    </v-btn>
-    <v-btn dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="flight-info">
-      <v-icon dark>flight</v-icon>
+    <v-btn v-if="!drawer" dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="menu">
+      <v-icon dark>menu</v-icon>
     </v-btn>
     <div class="overlay" v-if="!receivingData">
       <div class="overlay__content">
@@ -125,10 +127,19 @@ html {
 .section-header {
   padding-left: 18px;
 }
-.v-btn--bottom.v-btn--absolute.v-btn--small.flight-info {
-  bottom: 20px;
+.v-list__tile__title,
+.v-list__tile__sub-title {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
+.v-btn--bottom.v-btn--absolute.v-btn--small.menu {
+  bottom: 30px;
   right: 20px;
   z-index: 100;
+  .v-icon {
+    width: 18px;
+  }
 }
 .v-btn--bottom.v-btn--absolute.v-btn--small.reload {
   bottom: 20px;

@@ -18,7 +18,6 @@
       </tbody>
     </table>
     -->
-    <div v-if="altitude" class="altitude">Altitude: {{ Math.floor(altitude) }} ft</div>
     <div id="map"></div>
   </div>
 </template>
@@ -49,9 +48,6 @@ export default {
       this.positionMarkerAndSetMapView();
     },
   },
-  // beforeCreate() {
-  //   this.$store.dispatch('receiveData');
-  // },
   mounted() {
     this.initializeMap();
   },
