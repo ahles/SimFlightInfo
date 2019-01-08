@@ -1,10 +1,10 @@
 import { shallowMount } from '@vue/test-utils';
-import Home from '@/views/Home.vue';
+import App from '@/App.vue';
 
-describe('Home.vue', () => {
+describe('App.vue', () => {
   it('renders props.msg when passed', () => {
     const msg = 'new message';
-    const wrapper = shallowMount(Home, {
+    const wrapper = shallowMount(App, {
       propsData: { msg },
     });
     expect(wrapper.text()).toMatch(msg);
