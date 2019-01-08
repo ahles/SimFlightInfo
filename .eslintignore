@@ -1,6 +1,3 @@
-/node_modules
-build
-config
-dist
-test/unit/coverage/
+/node_module
+/dist_electron
 /src/lib/
