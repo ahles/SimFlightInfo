@@ -20,7 +20,7 @@ function readMessage(msg) { /* eslint-disable-line */
   // console.log('data', data);
 
   const index = msg.readInt8(5);
-  console.log('index', index);
+  // console.log('index', index);
 
   // const values = msg.slice(9);
   // console.log('values', values);
