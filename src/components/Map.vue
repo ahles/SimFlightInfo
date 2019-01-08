@@ -64,7 +64,7 @@ export default {
       this.marker = L.marker(
         [51.5, -0.09],
         {
-          rotationAngle: 45,
+          // rotationAngle: 45,
         },
       ).addTo(this.map);
     },
@@ -72,7 +72,7 @@ export default {
       this.map.setView([this.latitude, this.longitude]);
 
       this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
-      this.marker.setRotationAngle(this.calculateAngle());
+      // this.marker.setRotationAngle(this.calculateAngle());
 
       this.previousLatitude = this.latitude;
       this.previousLongitude = this.longitude;
@@ -84,14 +84,14 @@ export default {
       const y = Math.sin(distanceLongitude) * Math.cos(this.latitude);
       const x = Math.cos(this.previousLatitude) * Math.sin(this.latitude) - Math.sin(this.previousLatitude) * Math.cos(this.latitude) * Math.cos(distanceLongitude);
 
-      let brng = Math.atan2(y, x);
+      let angle = Math.atan2(y, x);
 
-      brng = brng * (180 / Math.PI); /* eslint-disable-line */
-      brng = (brng + 360) % 360;
-      brng = brng + 10; /* eslint-disable-line */
+      angle = angle * (180 / Math.PI); /* eslint-disable-line */
+      angle = (angle + 360) % 360;
+      angle = 360 - angle;
 
-      console.log('brng', brng);
-      return brng;
+      console.log('angle', angle);
+      return angle;
     },
   },
 };
