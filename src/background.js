@@ -27,7 +27,6 @@ function createWindow() {
   }
 
   win = new BrowserWindow(windowOptions);
-
   udplistener.init(win, isDevelopment);
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {

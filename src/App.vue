@@ -39,8 +39,8 @@
         <v-icon dark>close</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-content>
-      <router-view/>
+    <v-content v-bind:class="{ overlay__blur: !receivingData }">
+      <Map />
     </v-content>
     <v-btn dark small absolute bottom left fab ripple @click.stop="reload" class="reload">
       <v-icon dark>cached</v-icon>
@@ -48,22 +48,40 @@
     <v-btn dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="flight-info">
       <v-icon dark>flight</v-icon>
     </v-btn>
+    <div class="overlay" v-if="!receivingData">
+      <div class="overlay__content">
+        <v-icon class="overlay__icon">airplanemode_inactive</v-icon>
+        <h1 class="display-2">Not receiving data</h1>
+      </div>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="overlay__blur-svg">
+        <defs>
+          <filter id="blur-filter">
+            <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+          </filter>
+        </defs>
+      </svg>
+    </div>
   </v-app>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import Map from '@/components/Map.vue';
 
 const remote = require("electron").remote; /* eslint-disable-line */
 
 export default {
   name: 'App',
+  components: {
+    Map,
+  },
   data: () => ({
     drawer: false,
     window: null,
   }),
   computed: {
     ...mapGetters({
+      receivingData: 'getReceivingData',
       latitude: 'getLatitude',
       longitude: 'getLongitude',
       altitude: 'getAltitude',
@@ -110,10 +128,12 @@ html {
 .v-btn--bottom.v-btn--absolute.v-btn--small.flight-info {
   bottom: 20px;
   right: 20px;
+  z-index: 100;
 }
 .v-btn--bottom.v-btn--absolute.v-btn--small.reload {
   bottom: 20px;
   left: 20px;
+  z-index: 100;
 }
 .v-toolbar {
   -webkit-app-region: drag;
@@ -121,5 +141,43 @@ html {
 .window-button {
   -webkit-app-region: no-drag;
   min-width: 0;
+}
+.overlay {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100vh - 48px);
+  z-index: 5;
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+  }
+
+  &__icon {
+    font-size: 200px;
+    color: grey;
+  }
+
+  &__blur {
+    width: 100%;
+    height: 100%;
+    filter: blur(3px);
+  }
+
+  &__blur-svg {
+      display: none;
+  }
+
 }
 </style>

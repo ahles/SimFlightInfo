@@ -49,20 +49,20 @@ export default {
       this.positionMarkerAndSetMapView();
     },
   },
-  beforeCreate() {
-    this.$store.dispatch('receiveData');
-  },
+  // beforeCreate() {
+  //   this.$store.dispatch('receiveData');
+  // },
   mounted() {
     this.initializeMap();
   },
   methods: {
     initializeMap() {
-      this.map = L.map('map').setView([51.505, -0.09], 10);
+      this.map = L.map('map').setView([this.latitude, this.longitude], 10);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(this.map);
       this.marker = L.marker(
-        [51.5, -0.09],
+        [this.latitude, this.longitude],
         {
           // rotationAngle: 45,
         },

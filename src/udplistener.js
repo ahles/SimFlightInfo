@@ -57,6 +57,7 @@ function readMessage(msg) { /* eslint-disable-line */
 
 module.exports = {
   initialized: false,
+  debug: false,
   position: {
     latitude: 0,
     longitude: 0,
@@ -66,15 +67,17 @@ module.exports = {
   udpPort: 49000,
   udpClient: null,
   init(win, isDevelopment) {
-    console.log('📡 UDP Lstener onlinee');
+    if (isDevelopment) {
+      console.log('📡 UDP Listener online');
+    }
     if (!this.initilized) {
       this.udpClient = dgram.createSocket('udp4');
       this.udpClient.on('message', (msg) => {
         const position = readMessage(msg);
         this.position = position;
         win.webContents.send('position', this.position);
-        if (isDevelopment) {
-          console.log('🧭 Position data received: Lat ' + position.latitude + ' | Lon ' + position.longitude + ' | Alt ' + position.altitude);
+        if (isDevelopment && this.debug) {
+          console.log(`🧭 Position data received: Lat ${position.latitude} | Lon ${position.longitude} | Alt ${position.altitude}`);
         }
       });
 

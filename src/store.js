@@ -7,11 +7,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    latitude: 0,
-    longitude: 0,
+    receivingData: false,
+    latitude: 47.368650,
+    longitude: 8.539183,
     altitude: 0,
   },
   getters: {
+    getReceivingData: state => state.receivingData,
     getLatitude: state => state.latitude,
     getLongitude: state => state.longitude,
     getAltitude: state => state.altitude,
@@ -26,13 +28,19 @@ export default new Vuex.Store({
     UPDATE_ALTITUDE: (state, altitude) => {
       state.altitude = altitude; /* eslint-disable-line */
     },
+    UPDATE_RECEIVING_DATA: (state, receivingData) => {
+      state.receivingData = receivingData; /* eslint-disable-line */
+    },
   },
   actions: {
-    receiveData: (context) => {
+    receiveData: ({ commit, state }) => {
       ipcRenderer.on('position', (event, position) => {
-        context.commit('UPDATE_LATITUDE', position.latitude);
-        context.commit('UPDATE_LONGITUDE', position.longitude);
-        context.commit('UPDATE_ALTITUDE', position.altitude);
+        if (!state.receivingData) {
+          commit('UPDATE_RECEIVING_DATA', true);
+        }
+        commit('UPDATE_LATITUDE', position.latitude);
+        commit('UPDATE_LONGITUDE', position.longitude);
+        commit('UPDATE_ALTITUDE', position.altitude);
       });
     },
   },

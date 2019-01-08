@@ -4,7 +4,6 @@ import Vuetify from 'vuetify';
 import colors from 'vuetify/es5/util/colors';
 import 'vuetify/dist/vuetify.min.css';
 import App from './App.vue';
-import router from './router';
 import store from './store';
 
 /* eslint-disable */
@@ -32,11 +31,6 @@ Vue.use(Vuetify, {
 });
 
 new Vue({
-  router,
   store,
   render: h => h(App),
-  mounted() {
-    // Prevent blank screen in Electron builds
-    this.$router.push('/')
-  }
 }).$mount('#app');
