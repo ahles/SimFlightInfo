@@ -13,6 +13,7 @@ export default new Vuex.Store({
     altitudeSea: 0,
     altitudeGround: 0,
     onRunway: false,
+    mapLockedToPosition: true,
   },
   getters: {
     getReceivingData: state => state.receivingData,
@@ -21,8 +22,12 @@ export default new Vuex.Store({
     getAltitudeSea: state => state.altitudeSea,
     getAltitudeGround: state => state.altitudeGround,
     getOnRunway: state => state.onRunway,
+    getMapLockedToPosition: state => state.mapLockedToPosition,
   },
   mutations: {
+    UPDATE_RECEIVING_DATA: (state, receivingData) => {
+      state.receivingData = receivingData; /* eslint-disable-line */
+    },
     UPDATE_LATITUDE: (state, latitude) => {
       state.latitude = latitude; /* eslint-disable-line */
     },
@@ -38,8 +43,8 @@ export default new Vuex.Store({
     UPDATE_ON_RUNWAY: (state, onRunway) => {
       state.onRunway = onRunway; /* eslint-disable-line */
     },
-    UPDATE_RECEIVING_DATA: (state, receivingData) => {
-      state.receivingData = receivingData; /* eslint-disable-line */
+    UPDATE_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
+      state.mapLockedToPosition = mapLockedToPosition; /* eslint-disable-line */
     },
   },
   actions: {

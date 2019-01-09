@@ -22,20 +22,35 @@
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Altitude above Sea</v-list-tile-title>
-            <v-list-tile-sub-title>{{ Math.floor(altitudeSea) }} ft<br />{{ Math.floor(altitudeSea) }} m</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ roundAltitude(altitudeSea) }} ft<br />{{ roundAltitude(altitudeSea) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Altitude above Ground</v-list-tile-title>
-            <v-list-tile-sub-title>{{ Math.floor(altitudeGround) }} ft<br />{{ Math.floor(altitudeGround) }} m</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ roundAltitude(altitudeGround) }} ft<br />{{ roundAltitude(altitudeGround) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile v-if="onRunway">
           <v-icon dark>flight_land</v-icon>&nbsp;On runway
         </v-list-tile>
       </v-list>
-      <v-spacer />
+      <v-list three-line>
+        <v-list-tile>
+          <v-icon large>flight</v-icon>
+          <span class="section-header">Settings</span>
+        </v-list-tile>
+        <v-divider></v-divider>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-switch
+              :label="'Map locked on position: ' + switchLabelOnOff"
+              :input-value="mapLockedToPosition"
+              @change="updateMapLockedToPosition"
+            ></v-switch>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
       <v-btn absolute bottom right small ripple @click.stop="reload" class="window-button reload">
         <v-icon dark>cached</v-icon>
       </v-btn>
@@ -54,7 +69,7 @@
       </v-btn>
     </v-toolbar>
     <v-content v-bind:class="{ overlay__blur: !receivingData }">
-      <Map />
+      <Map :latitude="latitude" :longitude="longitude" />
     </v-content>
     <v-btn v-if="!drawer" dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="menu">
       <v-icon dark>menu</v-icon>
@@ -76,7 +91,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 import Map from '@/components/Map.vue';
 
 const remote = require("electron").remote; /* eslint-disable-line */
@@ -99,8 +114,17 @@ export default {
       altitudeGround: 'getAltitudeGround',
       onRunway: 'getOnRunway',
     }),
+    ...mapState({
+      mapLockedToPosition: state => state.mapLockedToPosition,
+    }),
     altitudeM() {
       return this.altitude * 0.3048;
+    },
+    switchLabelOnOff() {
+      if (this.mapLockedToPosition) {
+        return 'on';
+      }
+      return 'off';
     },
   },
   beforeCreate() {
@@ -110,6 +134,9 @@ export default {
     this.window = remote.getCurrentWindow();
   },
   methods: {
+    updateMapLockedToPosition(event) {
+      this.$store.commit('UPDATE_MAP_LOCKED_TO_POSITION', event);
+    },
     closeWindow() {
       this.window.close();
     },
@@ -126,6 +153,9 @@ export default {
     reload() {
       window.location.reload();
     },
+    roundAltitude(altitude) {
+      return Math.floor(altitude);
+    },
   },
 };
 </script>
@@ -138,9 +168,6 @@ html {
 .section-header {
   padding-left: 18px;
 }
-// .v-list--two-line .v-list__tile {
-//   height: auto;
-// }
 .v-list__tile__title,
 .v-list__tile__sub-title {
   display: flex;
@@ -205,4 +232,14 @@ html {
   }
 
 }
+
+.theme--dark.v-input--switch__thumb {
+  color: #bdbdbd;
+}
+.v-input--switch__track.theme--dark.accent--text,
+.v-input--switch__thumb.theme--dark.accent--text {
+    color: #ffffff !important;
+    caret-color: #ffffff !important;
+  }
+
 </style>

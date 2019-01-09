@@ -1,33 +1,27 @@
 <template>
   <div class="map__wrapper">
-    <!--
-    <table>
-      <thead>
-        <tr>
-          <th>Latitude</th>
-          <th>Longitude</th>
-          <th>Altitude</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ position.latitude }}</td>
-          <td>{{ position.longitude }}</td>
-          <td>{{ position.altitude }}</td>
-        </tr>
-      </tbody>
-    </table>
-    -->
     <div id="map"></div>
   </div>
 </template>
 
 <script>
-import L from 'leaflet';
 import { mapGetters } from 'vuex';
+import L from 'leaflet';
 
 export default {
   name: 'Map',
+  props: {
+    latitude: {
+      required: true,
+      type: Number,
+      default: 0,
+    },
+    longitude: {
+      required: true,
+      type: Number,
+      default: 0,
+    },
+  },
   data: function () { /* eslint-disable-line */
     return {
       map: null,
@@ -38,9 +32,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      latitude: 'getLatitude',
-      longitude: 'getLongitude',
-      altitude: 'getAltitude',
+      mapLockedToPosition: 'getMapLockedToPosition',
     }),
   },
   watch: {
@@ -65,7 +57,9 @@ export default {
       ).addTo(this.map);
     },
     positionMarkerAndSetMapView() {
-      this.map.setView([this.latitude, this.longitude]);
+      if (this.mapLockedToPosition) {
+        this.map.setView([this.latitude, this.longitude]);
+      }
 
       this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
       // this.marker.setRotationAngle(this.calculateAngle());
@@ -74,6 +68,7 @@ export default {
       this.previousLongitude = this.longitude;
     },
     calculateAngle() {
+      // not exact, needs improvement. something wrong?
       // https://stackoverflow.com/questions/3932502/calculate-angle-between-two-latitude-longitude-points
       const distanceLongitude = (this.longitude - this.previousLongitude);
 
