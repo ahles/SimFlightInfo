@@ -10,13 +10,17 @@ export default new Vuex.Store({
     receivingData: false,
     latitude: 47.368650,
     longitude: 8.539183,
-    altitude: 0,
+    altitudeSea: 0,
+    altitudeGround: 0,
+    onRunway: false,
   },
   getters: {
     getReceivingData: state => state.receivingData,
     getLatitude: state => state.latitude,
     getLongitude: state => state.longitude,
-    getAltitude: state => state.altitude,
+    getAltitudeSea: state => state.altitudeSea,
+    getAltitudeGround: state => state.altitudeGround,
+    getOnRunway: state => state.onRunway,
   },
   mutations: {
     UPDATE_LATITUDE: (state, latitude) => {
@@ -25,8 +29,14 @@ export default new Vuex.Store({
     UPDATE_LONGITUDE: (state, longitude) => {
       state.longitude = longitude; /* eslint-disable-line */
     },
-    UPDATE_ALTITUDE: (state, altitude) => {
-      state.altitude = altitude; /* eslint-disable-line */
+    UPDATE_ALTITUDE_SEA: (state, altitudeSea) => {
+      state.altitudeSea = altitudeSea; /* eslint-disable-line */
+    },
+    UPDATE_ALTITUDE_GROUND: (state, altitudeGround) => {
+      state.altitudeGround = altitudeGround; /* eslint-disable-line */
+    },
+    UPDATE_ON_RUNWAY: (state, onRunway) => {
+      state.onRunway = onRunway; /* eslint-disable-line */
     },
     UPDATE_RECEIVING_DATA: (state, receivingData) => {
       state.receivingData = receivingData; /* eslint-disable-line */
@@ -38,9 +48,17 @@ export default new Vuex.Store({
         if (!state.receivingData) {
           commit('UPDATE_RECEIVING_DATA', true);
         }
-        commit('UPDATE_LATITUDE', position.latitude);
-        commit('UPDATE_LONGITUDE', position.longitude);
-        commit('UPDATE_ALTITUDE', position.altitude);
+        if (position.latitude !== state.latitude) { commit('UPDATE_LATITUDE', position.latitude); }
+        if (position.longitude !== state.longitude) { commit('UPDATE_LONGITUDE', position.longitude); }
+        if (position.altitudeSea !== state.altitudeSea) { commit('UPDATE_ALTITUDE_SEA', position.altitudeSea); }
+        if (position.altitudeGround !== state.altitudeGround) {
+          if (position.altitudeGround > 0) {
+            commit('UPDATE_ALTITUDE_GROUND', position.altitudeGround);
+          } else {
+            commit('UPDATE_ALTITUDE_GROUND', 0);
+          }
+        }
+        if (position.onRunway !== state.onRunway) { commit('UPDATE_ON_RUNWAY', position.onRunway); }
       });
     },
   },

@@ -1,29 +1,38 @@
 <template>
   <v-app>
     <v-navigation-drawer v-model="drawer" right app dark>
-      <v-list two-line>
-        <v-list-tile avatar>
+      <v-list three-line>
+        <v-list-tile>
           <v-icon large>flight</v-icon>
           <span class="section-header">Position</span>
         </v-list-tile>
         <v-divider></v-divider>
-        <v-list-tile avatar>
+        <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Latitude</v-list-tile-title>
             <v-list-tile-sub-title>{{ latitude.toFixed(6) }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile avatar>
+        <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Longitude</v-list-tile-title>
             <v-list-tile-sub-title>{{ longitude.toFixed(6) }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile avatar>
+        <v-list-tile>
           <v-list-tile-content>
-            <v-list-tile-title>Altitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ Math.floor(altitude) }} ft<br />{{ Math.floor(altitudeM) }} m</v-list-tile-sub-title>
+            <v-list-tile-title>Altitude above Sea</v-list-tile-title>
+            <v-list-tile-sub-title>{{ Math.floor(altitudeSea) }} ft<br />{{ Math.floor(altitudeSea) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-title>Altitude above Ground</v-list-tile-title>
+            <v-list-tile-sub-title>{{ Math.floor(altitudeGround) }} ft<br />{{ Math.floor(altitudeGround) }} m</v-list-tile-sub-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile v-if="onRunway">
+          <v-icon dark>flight_land</v-icon>&nbsp;On runway
         </v-list-tile>
       </v-list>
       <v-spacer />
@@ -86,7 +95,9 @@ export default {
       receivingData: 'getReceivingData',
       latitude: 'getLatitude',
       longitude: 'getLongitude',
-      altitude: 'getAltitude',
+      altitudeSea: 'getAltitudeSea',
+      altitudeGround: 'getAltitudeGround',
+      onRunway: 'getOnRunway',
     }),
     altitudeM() {
       return this.altitude * 0.3048;
@@ -127,6 +138,9 @@ html {
 .section-header {
   padding-left: 18px;
 }
+// .v-list--two-line .v-list__tile {
+//   height: auto;
+// }
 .v-list__tile__title,
 .v-list__tile__sub-title {
   display: flex;

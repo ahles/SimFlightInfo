@@ -7,51 +7,23 @@ function readMessage(msg) { /* eslint-disable-line */
     altitude: 0,
   };
 
-  // console.log('msg', msg);
-
-  // const data = msg.slice(0, 4).toString();
-  // console.log('data', data);
-
   const index = msg.readInt8(5);
-  // console.log('index', index);
-
-  // const values = msg.slice(9);
-  // console.log('values', values);
-
   const latitude = msg.slice(9, 13).readFloatLE();
-  // console.log('latitude', latitude);
-
   const longitude = msg.slice(13, 17).readFloatLE();
-  // console.log('longitude', longitude);
-
-  const altitude = msg.slice(17, 21).readFloatLE();
-  // console.log('altitude', altitude);
-
-  /*   const value4 = msg.slice(21, 25).readFloatLE();
-  console.log('value4', value4);
-
-  const value5 = msg.slice(21, 25).readFloatLE();
-  console.log('value5', value5);
-
-  const value6 = msg.slice(25, 29).readFloatLE();
-  console.log('value6', value6);
-
-  const value7 = msg.slice(29, 33).readFloatLE();
-  console.log('value7', value7);
-
-  const value8 = msg.slice(33, 37).readFloatLE();
-  console.log('value8', value8); */
+  const altitudeSea = msg.slice(17, 21).readFloatLE();
+  const altitudeGround = msg.slice(21, 25).readFloatLE();
+  const onRunway = msg.slice(25, 29).readFloatLE();
 
   if (index === 20) {
-    // console.log(latitude + ' | ' + longitude + ' | ' + altitude);
     result = {
       latitude,
       longitude,
-      altitude,
+      altitudeSea,
+      altitudeGround,
+      onRunway,
     };
   }
 
-  // console.log('result', result);
   return result;
 }
 
@@ -87,6 +59,7 @@ module.exports = {
   },
   close() {
     this.udpClient.close();
+    console.log('cklosing UPD listener');
   },
 
 };
