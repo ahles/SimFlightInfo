@@ -21,7 +21,6 @@ function createWindow() {
     frame: false,
   };
   if (isDevelopment) {
-    // require('devtron').install(); /* eslint-disable-line */
     windowOptions.width = 1680;
     windowOptions.height = 1050;
   }
