@@ -38,8 +38,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # Notes
 
-- How handle uws deprecated? https://www.npmjs.com/package/uws
-
-- (node:5704) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+- How handle uws dead? https://www.npmjs.com/package/uws
 
 - Electron fixed to 3.0.14
