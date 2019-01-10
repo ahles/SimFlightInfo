@@ -231,7 +231,6 @@ html {
   &__blur-svg {
       display: none;
   }
-
 }
 
 .theme--dark.v-input--switch__thumb {
