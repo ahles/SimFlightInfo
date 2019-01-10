@@ -94,7 +94,7 @@
 import { mapGetters, mapState } from 'vuex';
 import Map from '@/components/Map.vue';
 
-const remote = require("electron").remote; /* eslint-disable-line */
+const { remote } = require('electron');
 
 export default {
   name: 'App',
@@ -118,6 +118,7 @@ export default {
       mapLockedToPosition: state => state.mapLockedToPosition,
     }),
     altitudeM() {
+      // converts feet to meter
       return this.altitude * 0.3048;
     },
     switchLabelOnOff() {

@@ -1,6 +1,6 @@
 const dgram = require('dgram');
 
-function readMessage(msg) { /* eslint-disable-line */
+function readMessage(msg) {
   let result = {
     latitude: 0,
     longitude: 0,
@@ -52,7 +52,6 @@ module.exports = {
           console.log(`🧭 Position data received: Lat ${position.latitude} | Lon ${position.longitude} | Alt ${position.altitude}`);
         }
       });
-
       this.udpClient.bind(this.udpPort, this.updHost);
       this.initialized = true;
     }
@@ -61,5 +60,4 @@ module.exports = {
     this.udpClient.close();
     console.log('cklosing UPD listener');
   },
-
 };

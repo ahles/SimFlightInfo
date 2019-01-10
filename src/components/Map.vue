@@ -22,7 +22,7 @@ export default {
       default: 0,
     },
   },
-  data: function () { /* eslint-disable-line */
+  data() {
     return {
       map: null,
       marker: null,
@@ -77,11 +77,10 @@ export default {
 
       let angle = Math.atan2(y, x);
 
-      angle = angle * (180 / Math.PI); /* eslint-disable-line */
+      angle *= (180 / Math.PI);
       angle = (angle + 360) % 360;
       angle = 360 - angle;
 
-      // console.log('angle', angle);
       return angle;
     },
   },

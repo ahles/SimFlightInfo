@@ -25,27 +25,29 @@ export default new Vuex.Store({
     getMapLockedToPosition: state => state.mapLockedToPosition,
   },
   mutations: {
+    /* eslint-disable no-param-reassign */
     UPDATE_RECEIVING_DATA: (state, receivingData) => {
-      state.receivingData = receivingData; /* eslint-disable-line */
+      state.receivingData = receivingData;
     },
     UPDATE_LATITUDE: (state, latitude) => {
-      state.latitude = latitude; /* eslint-disable-line */
+      state.latitude = latitude;
     },
     UPDATE_LONGITUDE: (state, longitude) => {
-      state.longitude = longitude; /* eslint-disable-line */
+      state.longitude = longitude;
     },
     UPDATE_ALTITUDE_SEA: (state, altitudeSea) => {
-      state.altitudeSea = altitudeSea; /* eslint-disable-line */
+      state.altitudeSea = altitudeSea;
     },
     UPDATE_ALTITUDE_GROUND: (state, altitudeGround) => {
-      state.altitudeGround = altitudeGround; /* eslint-disable-line */
+      state.altitudeGround = altitudeGround;
     },
     UPDATE_ON_RUNWAY: (state, onRunway) => {
-      state.onRunway = onRunway; /* eslint-disable-line */
+      state.onRunway = onRunway;
     },
     UPDATE_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
-      state.mapLockedToPosition = mapLockedToPosition; /* eslint-disable-line */
+      state.mapLockedToPosition = mapLockedToPosition;
     },
+    /* eslint-enable no-param-reassign */
   },
   actions: {
     receiveData: ({ commit, state }) => {
