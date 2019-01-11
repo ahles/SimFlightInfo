@@ -66,10 +66,19 @@
             ></v-slider>
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile class="view">
+          <v-list-tile-content>
+            <v-select
+              :items="viewOptions"
+              label="View"
+              :value="data.view"
+              @change="updateView"
+              outline
+              color="rgba(255, 255, 255, 0.75)"
+          ></v-select>
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list>
-      <v-btn absolute bottom right small ripple @click.stop="reload" class="window-button reload">
-        <v-icon dark>cached</v-icon>
-      </v-btn>
     </v-navigation-drawer>
     <v-toolbar dark dense app>
       <v-toolbar-title>xpvuemap</v-toolbar-title>
@@ -85,7 +94,7 @@
       </v-btn>
     </v-toolbar>
     <v-content v-bind:class="{ overlay__blur: !data.receivingData }">
-      <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" />
+      <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" :view="data.view" />
     </v-content>
     <v-btn v-if="!drawer" dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="menu">
       <v-icon dark>menu</v-icon>
@@ -120,6 +129,10 @@ export default {
   data: () => ({
     drawer: false,
     window: null,
+    viewOptions: [
+      'Map',
+      'Satellite',
+    ],
   }),
   computed: {
     ...mapState({
@@ -149,6 +162,9 @@ export default {
     updateZoomLevel(event) {
       this.$store.commit('UPDATE_ZOOM_LEVEL', event);
     },
+    updateView(event) {
+      this.$store.commit('UPDATE_VIEW', event);
+    },
     closeWindow() {
       this.window.close();
     },
@@ -161,9 +177,6 @@ export default {
       } else {
         this.window.unmaximize();
       }
-    },
-    reload() {
-      window.location.reload();
     },
     roundAltitude(altitude) {
       return Math.floor(altitude);
@@ -187,14 +200,16 @@ html {
 
   .v-list__tile .v-list__tile__content {
     flex-direction: row;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
   .v-list__tile__title,
   .v-list__tile__sub-title {
+    width: 70%;
     display: flex;
     justify-content: flex-start;
   }
   .v-list__tile__sub-title {
+    width: 30%;
     display: flex;
     justify-content: flex-end;
     text-align: right;
@@ -215,7 +230,12 @@ html {
 }
 .v-toolbar {
   -webkit-app-region: drag;
+  z-index: 7;
 }
+.v-navigation-drawer {
+  padding-top: 40px;
+}
+
 .window-button {
   -webkit-app-region: no-drag;
   min-width: 0;
@@ -273,4 +293,12 @@ html {
     width: 100%;
   }
 }
+
+.view {
+  .theme--dark.v-text-field--outline>.v-input__control>.v-input__slot,
+  .theme--dark.v-text-field--outline:not(.v-input--is-focused):not(.v-input--has-state)>.v-input__control>.v-input__slot:hover {
+    border: 1px solid;
+  }
+}
+
 </style>

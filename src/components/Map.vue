@@ -30,6 +30,11 @@ export default {
       type: Boolean,
       default: true,
     },
+    view: {
+      required: true,
+      type: String,
+      default: 'map',
+    },
   },
   data() {
     return {
@@ -37,6 +42,17 @@ export default {
       marker: null,
       previousLatitude: 0,
       previousLongitude: 0,
+      tileLayer: null,
+      mapLayers: {
+        Map: {
+          layerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          layerOptions: { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' },
+        },
+        Satellite: {
+          layerUrl: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+          layerOptions: { attribution: 'Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' },
+        },
+      },
     };
   },
   watch: {
@@ -45,6 +61,13 @@ export default {
     },
     zoomLevel() {
       this.map._zoom = this.zoomLevel; // eslint-disable-line no-underscore-dangle
+    },
+    view() {
+      this.map.removeLayer(this.tileLayer);
+      this.tileLayer = L.tileLayer(
+        this.mapLayers[this.view].layerUrl,
+        this.mapLayers[this.view].layerOptions,
+      ).addTo(this.map);
     },
   },
   mounted() {
@@ -59,11 +82,14 @@ export default {
         center: [this.latitude, this.longitude],
         zoom: this.zoomLevel,
         zoomControl: false,
+        // renderer: L.canvas(),
       });
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(this.map);
-      // https://stackoverflow.com/questions/16370790/how-to-set-different-zoom-levels-in-layers-in-a-map-using-leaflet
+
+      this.tileLayer = L.tileLayer(
+        this.mapLayers[this.view].layerUrl,
+        this.mapLayers[this.view].layerOptions,
+      ).addTo(this.map);
+
       this.marker = L.marker(
         [this.latitude, this.longitude],
         {

@@ -16,13 +16,13 @@ protocol.registerStandardSchemes(['app'], { secure: true });
 function createWindow() {
   // Create the browser window.
   const windowOptions = {
-    width: 800,
-    height: 800,
+    width: 1000,
+    height: 1000,
     frame: false,
   };
   if (isDevelopment) {
-    windowOptions.width = 1680;
-    windowOptions.height = 1050;
+    windowOptions.width = 2000;
+    windowOptions.height = 1000;
   }
 
   win = new BrowserWindow(windowOptions);
