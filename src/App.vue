@@ -94,6 +94,7 @@
       </v-btn>
     </v-toolbar>
     <v-content v-bind:class="{ overlay__blur: !data.receivingData }">
+      <div class="position-marker" v-if="data.mapLockedToPosition"></div>
       <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" :view="data.view" />
     </v-content>
     <v-btn v-if="!drawer" dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="menu">
@@ -240,6 +241,7 @@ html {
   -webkit-app-region: no-drag;
   min-width: 0;
 }
+
 .overlay {
   position: absolute;
   top: 48px;
@@ -301,4 +303,15 @@ html {
   }
 }
 
+.position-marker {
+  width: 25px;
+  height: 41px;
+  position: absolute;
+  background-image: url('/img/marker-icon.png');
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, calc(-50% - 20px), 0);
+  z-index: 4;
+}
 </style>
