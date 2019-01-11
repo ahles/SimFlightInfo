@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import L from 'leaflet';
 
 export default {
@@ -21,6 +20,16 @@ export default {
       type: Number,
       default: 0,
     },
+    zoomLevel: {
+      required: true,
+      type: Number,
+      default: 10,
+    },
+    mapLockedToPosition: {
+      required: true,
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
@@ -30,25 +39,31 @@ export default {
       previousLongitude: 0,
     };
   },
-  computed: {
-    ...mapGetters({
-      mapLockedToPosition: 'getMapLockedToPosition',
-    }),
-  },
   watch: {
     latitude() {
       this.positionMarkerAndSetMapView();
     },
+    zoomLevel() {
+      this.map._zoom = this.zoomLevel; // eslint-disable-line no-underscore-dangle
+    },
   },
   mounted() {
     this.initializeMap();
+    this.map.on('zoomend', () => {
+      this.$store.commit('UPDATE_ZOOM_LEVEL', this.map._zoom); // eslint-disable-line no-underscore-dangle
+    });
   },
   methods: {
     initializeMap() {
-      this.map = L.map('map').setView([this.latitude, this.longitude], 10);
+      this.map = L.map('map', {
+        center: [this.latitude, this.longitude],
+        zoom: this.zoomLevel,
+        zoomControl: false,
+      });
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(this.map);
+      // https://stackoverflow.com/questions/16370790/how-to-set-different-zoom-levels-in-layers-in-a-map-using-leaflet
       this.marker = L.marker(
         [this.latitude, this.longitude],
         {

@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer v-model="drawer" right app dark>
-      <v-list three-line>
+      <v-list three-line class="flight">
         <v-list-tile>
           <v-icon large>flight</v-icon>
           <span class="section-header">Position</span>
@@ -10,34 +10,34 @@
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Latitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ latitude.toFixed(6) }}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ data.latitude.toFixed(6) }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Longitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ longitude.toFixed(6) }}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ data.longitude.toFixed(6) }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Altitude above Sea</v-list-tile-title>
-            <v-list-tile-sub-title>{{ roundAltitude(altitudeSea) }} ft<br />{{ roundAltitude(altitudeSea) }} m</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(data.altitudeSea) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Altitude above Ground</v-list-tile-title>
-            <v-list-tile-sub-title>{{ roundAltitude(altitudeGround) }} ft<br />{{ roundAltitude(altitudeGround) }} m</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ roundAltitude(data.altitudeGround) }} ft<br />{{ roundAltitude(data.altitudeGround) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile v-if="onRunway">
+        <v-list-tile v-if="data.onRunway">
           <v-icon dark>flight_land</v-icon>&nbsp;On runway
         </v-list-tile>
       </v-list>
       <v-list three-line>
         <v-list-tile>
-          <v-icon large>flight</v-icon>
+          <v-icon large>map</v-icon>
           <span class="section-header">Settings</span>
         </v-list-tile>
         <v-divider></v-divider>
@@ -45,9 +45,25 @@
           <v-list-tile-content>
             <v-switch
               :label="'Map locked on position: ' + switchLabelOnOff"
-              :input-value="mapLockedToPosition"
+              :input-value="data.mapLockedToPosition"
               @change="updateMapLockedToPosition"
+              color="rgba(255, 255, 255, 0.75)"
             ></v-switch>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile class="zoom-level">
+          <v-list-tile-title>Zoom level {{ data.zoomLevel }}</v-list-tile-title>
+          <v-list-tile-content>
+            <v-slider
+              :value="data.zoomLevel"
+              min="0"
+              max="18"
+              step="1"
+              ticks="always"
+              @change="updateZoomLevel"
+              light
+              color="rgba(255, 255, 255, 0.75)"
+            ></v-slider>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -68,13 +84,13 @@
         <v-icon dark>close</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-content v-bind:class="{ overlay__blur: !receivingData }">
-      <Map :latitude="latitude" :longitude="longitude" />
+    <v-content v-bind:class="{ overlay__blur: !data.receivingData }">
+      <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" />
     </v-content>
     <v-btn v-if="!drawer" dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="menu">
       <v-icon dark>menu</v-icon>
     </v-btn>
-    <div class="overlay" v-if="!receivingData">
+    <div class="overlay" v-if="!data.receivingData">
       <div class="overlay__content">
         <v-icon class="overlay__icon">airplanemode_inactive</v-icon>
         <h1 class="display-2">Not receiving data</h1>
@@ -91,7 +107,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex';
+import { mapState } from 'vuex';
 import Map from '@/components/Map.vue';
 
 const { remote } = require('electron');
@@ -106,23 +122,15 @@ export default {
     window: null,
   }),
   computed: {
-    ...mapGetters({
-      receivingData: 'getReceivingData',
-      latitude: 'getLatitude',
-      longitude: 'getLongitude',
-      altitudeSea: 'getAltitudeSea',
-      altitudeGround: 'getAltitudeGround',
-      onRunway: 'getOnRunway',
-    }),
     ...mapState({
-      mapLockedToPosition: state => state.mapLockedToPosition,
+      data: state => state.data,
     }),
     altitudeM() {
       // converts feet to meter
-      return this.altitude * 0.3048;
+      return this.data.altitude * 0.3048;
     },
     switchLabelOnOff() {
-      if (this.mapLockedToPosition) {
+      if (this.data.mapLockedToPosition) {
         return 'on';
       }
       return 'off';
@@ -137,6 +145,9 @@ export default {
   methods: {
     updateMapLockedToPosition(event) {
       this.$store.commit('UPDATE_MAP_LOCKED_TO_POSITION', event);
+    },
+    updateZoomLevel(event) {
+      this.$store.commit('UPDATE_ZOOM_LEVEL', event);
     },
     closeWindow() {
       this.window.close();
@@ -169,11 +180,25 @@ html {
 .section-header {
   padding-left: 18px;
 }
-.v-list__tile__title,
-.v-list__tile__sub-title {
-  display: flex;
-  justify-content: flex-end;
-  text-align: right;
+.v-list.flight {
+  .v-divider {
+    margin-bottom: 20px;
+  }
+
+  .v-list__tile .v-list__tile__content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .v-list__tile__title,
+  .v-list__tile__sub-title {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .v-list__tile__sub-title {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+  }
 }
 .v-btn--bottom.v-btn--absolute.v-btn--small.menu {
   bottom: 30px;
@@ -233,13 +258,19 @@ html {
   }
 }
 
-.theme--dark.v-input--switch__thumb {
-  color: #bdbdbd;
-}
-.v-input--switch__track.theme--dark.accent--text,
-.v-input--switch__thumb.theme--dark.accent--text {
-    color: #ffffff !important;
-    caret-color: #ffffff !important;
+.zoom-level {
+  .v-list__tile {
+    flex-direction: column;
   }
-
+  .v-list__tile__content {
+    width: 100%;
+  }
+  .v-list__tile__title {
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .v-input--slider {
+    width: 100%;
+  }
+}
 </style>
