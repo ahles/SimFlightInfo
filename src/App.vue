@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-navigation-drawer v-model="drawer" right app dark>
-      <v-list three-line class="flight">
+      <v-list class="flight">
         <v-list-tile>
           <v-icon large>flight</v-icon>
           <span class="section-header">Position</span>
@@ -22,13 +22,13 @@
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Altitude above Sea</v-list-tile-title>
-            <v-list-tile-sub-title>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(data.altitudeSea) }} m</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeSea)) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Altitude above Ground</v-list-tile-title>
-            <v-list-tile-sub-title>{{ roundAltitude(data.altitudeGround) }} ft<br />{{ roundAltitude(data.altitudeGround) }} m</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ roundAltitude(data.altitudeGround) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeGround)) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile v-if="data.onRunway">
@@ -139,10 +139,6 @@ export default {
     ...mapState({
       data: state => state.data,
     }),
-    altitudeM() {
-      // converts feet to meter
-      return this.data.altitude * 0.3048;
-    },
     switchLabelOnOff() {
       if (this.data.mapLockedToPosition) {
         return 'on';
@@ -157,6 +153,9 @@ export default {
     this.window = remote.getCurrentWindow();
   },
   methods: {
+    convertFeetToMeter(ft) {
+      return ft * 0.3048;
+    },
     updateMapLockedToPosition(event) {
       this.$store.commit('UPDATE_MAP_LOCKED_TO_POSITION', event);
     },
@@ -194,7 +193,15 @@ html {
 .section-header {
   padding-left: 18px;
 }
+
 .v-list.flight {
+  padding-top: 40px;
+
+  .v-list__tile {
+    height: auto;
+    margin-bottom: 30px;
+  }
+
   .v-divider {
     margin-bottom: 20px;
   }
