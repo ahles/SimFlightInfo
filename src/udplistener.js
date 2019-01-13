@@ -29,7 +29,7 @@ function readMessage(msg) {
 
 module.exports = {
   initialized: false,
-  debug: true,
+  debug: false,
   position: {
     latitude: 0,
     longitude: 0,
@@ -41,26 +41,19 @@ module.exports = {
   init(win, isDevelopment) {
     if (!this.initilized) {
       this.udpClient = dgram.createSocket('udp4');
-      console.log('this.udpClient', this.udpClient);
 
       this.udpClient.on('error', (err) => {
-        console.log(`server error:\n${err.stack}`);
+        console.log(`dgram error:\n${err.stack}`);
         this.udpClient.close();
       });
 
-      this.udpClient.on('message', (msg, rinfo) => {
-        console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
-      });
-
-      this.udpClient.on('listeining', (event) => {
-        console.log('event', event);
+      this.udpClient.on('listening', (event) => {
         if (isDevelopment) {
           console.log('📡 UDP Listener online');
         }
       });
 
       this.udpClient.on('message', (msg) => {
-        console.log('msg', msg);
         const position = readMessage(msg);
         this.position = position;
         win.webContents.send('position', this.position);
