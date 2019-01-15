@@ -68,6 +68,6 @@ module.exports = {
   },
   close() {
     this.udpClient.close();
-    console.log('cklosing UPD listener');
+    console.log('closing UPD listener');
   },
 };
