@@ -41,10 +41,22 @@
           <span class="section-header">Settings</span>
         </v-list-tile>
         <v-divider></v-divider>
+        <v-list-tile class="view">
+          <v-list-tile-content>
+            <v-select
+              :items="viewOptions"
+              label="View"
+              :value="data.view"
+              @change="updateView"
+              outline
+              color="rgba(255, 255, 255, 0.75)"
+          ></v-select>
+          </v-list-tile-content>
+        </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
             <v-switch
-              :label="'Map locked on position: ' + switchLabelOnOff"
+              label="Map locked on position"
               :input-value="data.mapLockedToPosition"
               @change="updateMapLockedToPosition"
               color="rgba(255, 255, 255, 0.75)"
@@ -66,21 +78,9 @@
             ></v-slider>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile class="view">
-          <v-list-tile-content>
-            <v-select
-              :items="viewOptions"
-              label="View"
-              :value="data.view"
-              @change="updateView"
-              outline
-              color="rgba(255, 255, 255, 0.75)"
-          ></v-select>
-          </v-list-tile-content>
-        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark dense app>
+    <v-toolbar dark dense app clipped-right>
       <v-toolbar-title>xpvuemap</v-toolbar-title>
       <v-spacer/>
       <v-btn ripple small @click.stop="minimizeWindow" class="window-button">
@@ -98,7 +98,10 @@
       <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" :view="data.view" />
     </v-content>
     <v-btn v-if="!drawer" dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="menu">
-      <v-icon dark>menu</v-icon>
+      <v-icon dark>flight</v-icon>
+    </v-btn>
+    <v-btn v-else dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="close">
+      <v-icon dark>arrow_forward_ios</v-icon>
     </v-btn>
     <div class="overlay" v-if="!data.receivingData">
       <div class="overlay__content">
@@ -133,18 +136,13 @@ export default {
     viewOptions: [
       'Map',
       'Satellite',
+      'Topo',
     ],
   }),
   computed: {
     ...mapState({
       data: state => state.data,
     }),
-    switchLabelOnOff() {
-      if (this.data.mapLockedToPosition) {
-        return 'on';
-      }
-      return 'off';
-    },
   },
   beforeCreate() {
     this.$store.dispatch('receiveData');
@@ -223,7 +221,8 @@ html {
     text-align: right;
   }
 }
-.v-btn--bottom.v-btn--absolute.v-btn--small.menu {
+.v-btn--bottom.v-btn--absolute.v-btn--small.menu,
+.v-btn--bottom.v-btn--absolute.v-btn--small.close {
   bottom: 30px;
   right: 20px;
   z-index: 100;
@@ -304,6 +303,7 @@ html {
 }
 
 .view {
+  margin-top: 30px;
   .theme--dark.v-text-field--outline>.v-input__control>.v-input__slot,
   .theme--dark.v-text-field--outline:not(.v-input--is-focused):not(.v-input--has-state)>.v-input__control>.v-input__slot:hover {
     border: 1px solid;
