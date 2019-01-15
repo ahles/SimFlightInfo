@@ -56,7 +56,7 @@
         <v-list-tile>
           <v-list-tile-content>
             <v-switch
-              label="Map locked on position"
+              label="Move map"
               :input-value="data.mapLockedToPosition"
               @change="updateMapLockedToPosition"
               color="rgba(255, 255, 255, 0.75)"

@@ -30,16 +30,11 @@ function readMessage(msg) {
 module.exports = {
   initialized: false,
   debug: false,
-  position: {
-    latitude: 0,
-    longitude: 0,
-    altitude: 0,
-  },
   udpHost: '127.0.0.1',
   udpPort: 49000,
   udpClient: null,
   init(win, isDevelopment) {
-    if (!this.initilized) {
+    if (!this.initialized) {
       this.udpClient = dgram.createSocket('udp4');
 
       this.udpClient.on('error', (err) => {
@@ -49,16 +44,15 @@ module.exports = {
 
       this.udpClient.on('listening', (event) => {
         if (isDevelopment) {
-          console.log('📡 UDP Listener online');
+          console.log('📡  UDP Listener online');
         }
       });
 
       this.udpClient.on('message', (msg) => {
         const position = readMessage(msg);
-        this.position = position;
-        win.webContents.send('position', this.position);
+        win.webContents.send('position', position);
         if (isDevelopment && this.debug) {
-          console.log(`🧭 Position data received: Lat ${position.latitude} | Lon ${position.longitude} | Alt ${position.altitude}`);
+          console.log(`🧭  Position data received: Lat ${position.latitude} | Lon ${position.longitude} | Alt ${position.altitude}`);
         }
       });
 
@@ -68,6 +62,5 @@ module.exports = {
   },
   close() {
     this.udpClient.close();
-    console.log('closing UPD listener');
   },
 };
