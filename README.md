@@ -40,4 +40,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - How handle uws dead? https://www.npmjs.com/package/uws
 
-- Electron fixed to 3.0.14
+- Electron fixed to 3.1.1
