@@ -81,7 +81,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar dark dense app clipped-right>
-      <v-toolbar-title>xpvuemap</v-toolbar-title>
+      <v-toolbar-title><v-icon dark class="app-icon">flight</v-icon> xpvuemap</v-toolbar-title>
       <v-spacer/>
       <v-btn ripple small @click.stop="minimizeWindow" class="window-button">
         <v-icon dark>minimize</v-icon>
@@ -320,5 +320,9 @@ html {
   left: 50%;
   transform: translate3d(-50%, calc(-50% - 20px), 0);
   z-index: 4;
+}
+
+.app-icon {
+  margin-right: 10px;
 }
 </style>
