@@ -42,7 +42,7 @@ module.exports = {
         this.udpClient.close();
       });
 
-      this.udpClient.on('listening', (event) => {
+      this.udpClient.on('listening', () => {
         if (isDevelopment) {
           console.log('📡  UDP Listener online');
         }
