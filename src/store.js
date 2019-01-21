@@ -51,6 +51,54 @@ export default new Vuex.Store({
     /* eslint-enable no-param-reassign */
   },
   actions: {
+    simulateData: ({ commit, state }) => {
+      const positions = require('./log.json'); // eslint-disable-line
+      if (!state.data.receivingData) {
+        commit('UPDATE_RECEIVING_DATA', true);
+      }
+      for (var i = 0; i <= positions.length; i++) {
+        (() => {
+          console.log('positions[i]', positions[i]);
+          setTimeout((positions) => {
+            if (typeof positions[i] !== 'undefined') {
+              commit('UPDATE_LATITUDE', positions[i].latitude);
+              commit('UPDATE_LONGITUDE', positions[i].longitude);
+              commit('UPDATE_ALTITUDE_SEA', positions[i].altitudeSea);
+              if (positions[i].altitudeGround > 0) {
+                commit('UPDATE_ALTITUDE_GROUND', positions[i].altitudeGround);
+              } else {
+                commit('UPDATE_ALTITUDE_GROUND', 0);
+              }
+              if (positions[i].onRunway === 1 && state.data.altitudeGround < 1) {
+                commit('UPDATE_ON_RUNWAY', 1);
+              } else {
+                commit('UPDATE_ON_RUNWAY', 0);
+              }
+            }
+          }, i * 1000);
+        })(i);
+      }
+
+      // positions.forEach((position) => {
+      //   delay(10000).then(() => {
+      //     commit('UPDATE_LATITUDE', position.latitude);
+      //     commit('UPDATE_LONGITUDE', position.longitude);
+      //     commit('UPDATE_ALTITUDE_SEA', position.altitudeSea);
+      //     if (position.altitudeGround > 0) {
+      //       commit('UPDATE_ALTITUDE_GROUND', position.altitudeGround);
+      //     } else {
+      //       commit('UPDATE_ALTITUDE_GROUND', 0);
+      //     }
+      //     if (position.onRunway === 1 && state.data.altitudeGround < 1) {
+      //       commit('UPDATE_ON_RUNWAY', 1);
+      //     } else {
+      //       commit('UPDATE_ON_RUNWAY', 0);
+      //     }
+      //   }).then(() => {
+      //       console.log('Done');
+      //   });
+      // });
+    },
     receiveData: ({ commit, state }) => {
       ipcRenderer.on('position', (event, position) => {
         if (!state.data.receivingData) {
@@ -77,3 +125,7 @@ export default new Vuex.Store({
     },
   },
 });
+
+function delay(ms) {
+  return new Promise(function (resolve) { return setTimeout(resolve, ms); });
+};

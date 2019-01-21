@@ -107,6 +107,9 @@
       <div class="overlay__content">
         <v-icon class="overlay__icon">airplanemode_inactive</v-icon>
         <h1 class="display-2">Not receiving data</h1>
+        <v-btn dark ripple @click.stop="simulate" class="simulate">
+          <v-icon dark>flight</v-icon> Simulate
+        </v-btn>
       </div>
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="overlay__blur-svg">
         <defs>
@@ -151,6 +154,9 @@ export default {
     this.window = remote.getCurrentWindow();
   },
   methods: {
+    simulate() {
+      this.$store.dispatch('simulateData');
+    },
     convertFeetToMeter(ft) {
       return ft * 0.3048;
     },
@@ -308,6 +314,10 @@ html {
   .theme--dark.v-text-field--outline:not(.v-input--is-focused):not(.v-input--has-state)>.v-input__control>.v-input__slot:hover {
     border: 1px solid;
   }
+}
+
+.simulate {
+  margin-top: 30px;
 }
 
 .position-marker {
