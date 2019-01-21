@@ -1,0 +1,4417 @@
+[{
+  "latitude": 47.446044921875,
+  "longitude": 8.556353569030762,
+  "altitudeSea": 1389.92626953125,
+  "altitudeGround": -0.6528302431106567,
+  "onRunway": 1
+}, {
+  "latitude": 47.44620132446289,
+  "longitude": 8.556244850158691,
+  "altitudeSea": 1389.669189453125,
+  "altitudeGround": -0.6619933247566223,
+  "onRunway": 1
+}, {
+  "latitude": 47.44638442993164,
+  "longitude": 8.55611801147461,
+  "altitudeSea": 1389.4990234375,
+  "altitudeGround": -0.6019910573959351,
+  "onRunway": 1
+}, {
+  "latitude": 47.44658660888672,
+  "longitude": 8.555976867675781,
+  "altitudeSea": 1389.24609375,
+  "altitudeGround": -0.6204371452331543,
+  "onRunway": 1
+}, {
+  "latitude": 47.446815490722656,
+  "longitude": 8.55582046508789,
+  "altitudeSea": 1388.935791015625,
+  "altitudeGround": -0.6451634168624878,
+  "onRunway": 1
+}, {
+  "latitude": 47.44706726074219,
+  "longitude": 8.555644035339355,
+  "altitudeSea": 1388.59228515625,
+  "altitudeGround": -0.6385802030563354,
+  "onRunway": 1
+}, {
+  "latitude": 47.44734573364258,
+  "longitude": 8.555451393127441,
+  "altitudeSea": 1388.242919921875,
+  "altitudeGround": -0.564521312713623,
+  "onRunway": 1
+}, {
+  "latitude": 47.4476432800293,
+  "longitude": 8.555244445800781,
+  "altitudeSea": 1387.884521484375,
+  "altitudeGround": -0.5548958778381348,
+  "onRunway": 1
+}, {
+  "latitude": 47.44797134399414,
+  "longitude": 8.555015563964844,
+  "altitudeSea": 1387.4566650390625,
+  "altitudeGround": -0.5283520221710205,
+  "onRunway": 1
+}, {
+  "latitude": 47.44832229614258,
+  "longitude": 8.554773330688477,
+  "altitudeSea": 1387.4197998046875,
+  "altitudeGround": -0.5101255774497986,
+  "onRunway": 1
+}, {
+  "latitude": 47.448699951171875,
+  "longitude": 8.554512023925781,
+  "altitudeSea": 1387.43896484375,
+  "altitudeGround": -0.45901650190353394,
+  "onRunway": 1
+}, {
+  "latitude": 47.449100494384766,
+  "longitude": 8.554235458374023,
+  "altitudeSea": 1387.525146484375,
+  "altitudeGround": -0.4092041850090027,
+  "onRunway": 1
+}, {
+  "latitude": 47.44951629638672,
+  "longitude": 8.553945541381836,
+  "altitudeSea": 1387.758056640625,
+  "altitudeGround": -0.47292986512184143,
+  "onRunway": 1
+}, {
+  "latitude": 47.44994354248047,
+  "longitude": 8.553648948669434,
+  "altitudeSea": 1388.034423828125,
+  "altitudeGround": -0.4190066158771515,
+  "onRunway": 1
+}, {
+  "latitude": 47.450408935546875,
+  "longitude": 8.553323745727539,
+  "altitudeSea": 1388.315185546875,
+  "altitudeGround": -0.3528960645198822,
+  "onRunway": 1
+}, {
+  "latitude": 47.450904846191406,
+  "longitude": 8.552977561950684,
+  "altitudeSea": 1388.640380859375,
+  "altitudeGround": -0.3792162239551544,
+  "onRunway": 1
+}, {
+  "latitude": 47.45140075683594,
+  "longitude": 8.552626609802246,
+  "altitudeSea": 1388.9642333984375,
+  "altitudeGround": -0.3614128530025482,
+  "onRunway": 1
+}, {
+  "latitude": 47.451934814453125,
+  "longitude": 8.552247047424316,
+  "altitudeSea": 1388.7647705078125,
+  "altitudeGround": -0.29708412289619446,
+  "onRunway": 1
+}, {
+  "latitude": 47.452484130859375,
+  "longitude": 8.551856994628906,
+  "altitudeSea": 1387.9866943359375,
+  "altitudeGround": -0.32703155279159546,
+  "onRunway": 1
+}, {
+  "latitude": 47.453060150146484,
+  "longitude": 8.551444053649902,
+  "altitudeSea": 1387.6436767578125,
+  "altitudeGround": -0.2955946922302246,
+  "onRunway": 1
+}, {
+  "latitude": 47.45364761352539,
+  "longitude": 8.551020622253418,
+  "altitudeSea": 1387.631591796875,
+  "altitudeGround": -0.284040242433548,
+  "onRunway": 1
+}, {
+  "latitude": 47.45425796508789,
+  "longitude": 8.550582885742188,
+  "altitudeSea": 1387.66796875,
+  "altitudeGround": -0.22831974923610687,
+  "onRunway": 1
+}, {
+  "latitude": 47.45486831665039,
+  "longitude": 8.550142288208008,
+  "altitudeSea": 1387.6953125,
+  "altitudeGround": -0.20019373297691345,
+  "onRunway": 1
+}, {
+  "latitude": 47.45550537109375,
+  "longitude": 8.549683570861816,
+  "altitudeSea": 1386.712646484375,
+  "altitudeGround": -0.23365330696105957,
+  "onRunway": 1
+}, {
+  "latitude": 47.45616912841797,
+  "longitude": 8.549202919006348,
+  "altitudeSea": 1385.4439697265625,
+  "altitudeGround": -0.1680373251438141,
+  "onRunway": 1
+}, {
+  "latitude": 47.45684051513672,
+  "longitude": 8.548717498779297,
+  "altitudeSea": 1384.3660888671875,
+  "altitudeGround": -0.26580628752708435,
+  "onRunway": 1
+}, {
+  "latitude": 47.457542419433594,
+  "longitude": 8.548208236694336,
+  "altitudeSea": 1384.4749755859375,
+  "altitudeGround": -0.14696744084358215,
+  "onRunway": 1
+}, {
+  "latitude": 47.458255767822266,
+  "longitude": 8.547690391540527,
+  "altitudeSea": 1384.5528564453125,
+  "altitudeGround": -0.10770849883556366,
+  "onRunway": 1
+}, {
+  "latitude": 47.4589958190918,
+  "longitude": 8.547154426574707,
+  "altitudeSea": 1390.0032958984375,
+  "altitudeGround": 5.335032939910889,
+  "onRunway": 1
+}, {
+  "latitude": 47.45974349975586,
+  "longitude": 8.546610832214355,
+  "altitudeSea": 1412.97802734375,
+  "altitudeGround": 28.376001358032227,
+  "onRunway": 1
+}, {
+  "latitude": 47.46049499511719,
+  "longitude": 8.546065330505371,
+  "altitudeSea": 1442.5662841796875,
+  "altitudeGround": 58.897369384765625,
+  "onRunway": 1
+}, {
+  "latitude": 47.46124267578125,
+  "longitude": 8.545528411865234,
+  "altitudeSea": 1482.3648681640625,
+  "altitudeGround": 100.1717300415039,
+  "onRunway": 1
+}, {
+  "latitude": 47.46200180053711,
+  "longitude": 8.544991493225098,
+  "altitudeSea": 1533.7347412109375,
+  "altitudeGround": 152.33853149414062,
+  "onRunway": 1
+}, {
+  "latitude": 47.46274185180664,
+  "longitude": 8.54447078704834,
+  "altitudeSea": 1590.78125,
+  "altitudeGround": 208.3676300048828,
+  "onRunway": 1
+}, {
+  "latitude": 47.463497161865234,
+  "longitude": 8.543936729431152,
+  "altitudeSea": 1654.03857421875,
+  "altitudeGround": 270.96026611328125,
+  "onRunway": 1
+}, {
+  "latitude": 47.4642448425293,
+  "longitude": 8.543411254882812,
+  "altitudeSea": 1719.2603759765625,
+  "altitudeGround": 336.5202941894531,
+  "onRunway": 1
+}, {
+  "latitude": 47.46498489379883,
+  "longitude": 8.542890548706055,
+  "altitudeSea": 1785.5709228515625,
+  "altitudeGround": 403.2575378417969,
+  "onRunway": 1
+}, {
+  "latitude": 47.46573257446289,
+  "longitude": 8.542367935180664,
+  "altitudeSea": 1854.643798828125,
+  "altitudeGround": 472.8105163574219,
+  "onRunway": 0
+}, {
+  "latitude": 47.46647262573242,
+  "longitude": 8.541854858398438,
+  "altitudeSea": 1925.42724609375,
+  "altitudeGround": 544.0364379882812,
+  "onRunway": 0
+}, {
+  "latitude": 47.46720504760742,
+  "longitude": 8.541353225708008,
+  "altitudeSea": 1997.15380859375,
+  "altitudeGround": 615.8009033203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.46791076660156,
+  "longitude": 8.54086971282959,
+  "altitudeSea": 2067.311279296875,
+  "altitudeGround": 685.9595947265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.46864700317383,
+  "longitude": 8.540366172790527,
+  "altitudeSea": 2139.990966796875,
+  "altitudeGround": 758.6396484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.46936798095703,
+  "longitude": 8.539870262145996,
+  "altitudeSea": 2209.58349609375,
+  "altitudeGround": 828.232666015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.470088958740234,
+  "longitude": 8.539375305175781,
+  "altitudeSea": 2276.337890625,
+  "altitudeGround": 894.9837646484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.47080993652344,
+  "longitude": 8.538880348205566,
+  "altitudeSea": 2339.52978515625,
+  "altitudeGround": 958.1751708984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.471500396728516,
+  "longitude": 8.53840446472168,
+  "altitudeSea": 2397.008056640625,
+  "altitudeGround": 1015.6493530273438,
+  "onRunway": 0
+}, {
+  "latitude": 47.47220230102539,
+  "longitude": 8.537920951843262,
+  "altitudeSea": 2452.614501953125,
+  "altitudeGround": 1070.20556640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.472900390625,
+  "longitude": 8.537440299987793,
+  "altitudeSea": 2505.532958984375,
+  "altitudeGround": 1121.754638671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.47358322143555,
+  "longitude": 8.536971092224121,
+  "altitudeSea": 2555.4140625,
+  "altitudeGround": 1170.296630859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.47429656982422,
+  "longitude": 8.536478996276855,
+  "altitudeSea": 2605.8955078125,
+  "altitudeGround": 1218.955322265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.47500991821289,
+  "longitude": 8.53598403930664,
+  "altitudeSea": 2654.7734375,
+  "altitudeGround": 1265.4517822265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.475704193115234,
+  "longitude": 8.535503387451172,
+  "altitudeSea": 2700.707275390625,
+  "altitudeGround": 1309.0748291015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.47640609741211,
+  "longitude": 8.535018920898438,
+  "altitudeSea": 2745.717041015625,
+  "altitudeGround": 1351.7515869140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.47709274291992,
+  "longitude": 8.53454303741455,
+  "altitudeSea": 2788.765869140625,
+  "altitudeGround": 1392.510986328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.477783203125,
+  "longitude": 8.534063339233398,
+  "altitudeSea": 2831.060546875,
+  "altitudeGround": 1432.7939453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.478477478027344,
+  "longitude": 8.533578872680664,
+  "altitudeSea": 2872.8740234375,
+  "altitudeGround": 1472.6937255859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.47917175292969,
+  "longitude": 8.533095359802246,
+  "altitudeSea": 2913.767333984375,
+  "altitudeGround": 1512.2103271484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.479881286621094,
+  "longitude": 8.532602310180664,
+  "altitudeSea": 2955.0087890625,
+  "altitudeGround": 1552.4735107421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.4806022644043,
+  "longitude": 8.532099723815918,
+  "altitudeSea": 2997.067626953125,
+  "altitudeGround": 1592.36181640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.48129653930664,
+  "longitude": 8.53161334991455,
+  "altitudeSea": 3038.22998046875,
+  "altitudeGround": 1631.1962890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.481990814208984,
+  "longitude": 8.5311279296875,
+  "altitudeSea": 3079.672119140625,
+  "altitudeGround": 1670.9603271484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.48270034790039,
+  "longitude": 8.530631065368652,
+  "altitudeSea": 3122.1298828125,
+  "altitudeGround": 1712.43798828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.483402252197266,
+  "longitude": 8.530139923095703,
+  "altitudeSea": 3163.418212890625,
+  "altitudeGround": 1752.7552490234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.48410415649414,
+  "longitude": 8.529648780822754,
+  "altitudeSea": 3203.5703125,
+  "altitudeGround": 1792.7078857421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.48481750488281,
+  "longitude": 8.529147148132324,
+  "altitudeSea": 3243.1416015625,
+  "altitudeGround": 1831.143798828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.48554611206055,
+  "longitude": 8.528636932373047,
+  "altitudeSea": 3281.778076171875,
+  "altitudeGround": 1867.975341796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.48626708984375,
+  "longitude": 8.528129577636719,
+  "altitudeSea": 3318.440673828125,
+  "altitudeGround": 1899.9281005859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.48698425292969,
+  "longitude": 8.527626037597656,
+  "altitudeSea": 3353.103271484375,
+  "altitudeGround": 1931.1451416015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.48771667480469,
+  "longitude": 8.52711009979248,
+  "altitudeSea": 3387.206787109375,
+  "altitudeGround": 1968.900390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.48843765258789,
+  "longitude": 8.526602745056152,
+  "altitudeSea": 3419.083740234375,
+  "altitudeGround": 1997.9600830078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.48918151855469,
+  "longitude": 8.526078224182129,
+  "altitudeSea": 3450.0654296875,
+  "altitudeGround": 2027.0548095703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.48991394042969,
+  "longitude": 8.525561332702637,
+  "altitudeSea": 3479.019775390625,
+  "altitudeGround": 2045.8914794921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.49066162109375,
+  "longitude": 8.525033950805664,
+  "altitudeSea": 3507.334228515625,
+  "altitudeGround": 2071.7802734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.491146087646484,
+  "longitude": 8.524693489074707,
+  "altitudeSea": 3525.1142578125,
+  "altitudeGround": 2086.65380859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.49198913574219,
+  "longitude": 8.524099349975586,
+  "altitudeSea": 3556.022216796875,
+  "altitudeGround": 2115.7509765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.49287796020508,
+  "longitude": 8.523472785949707,
+  "altitudeSea": 3589.81640625,
+  "altitudeGround": 2153.49365234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.493743896484375,
+  "longitude": 8.52286148071289,
+  "altitudeSea": 3624.285400390625,
+  "altitudeGround": 2190.01513671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.49451446533203,
+  "longitude": 8.522315979003906,
+  "altitudeSea": 3655.857666015625,
+  "altitudeGround": 2219.579833984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.495304107666016,
+  "longitude": 8.521756172180176,
+  "altitudeSea": 3689.0087890625,
+  "altitudeGround": 2250.353759765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.49609375,
+  "longitude": 8.521200180053711,
+  "altitudeSea": 3722.6630859375,
+  "altitudeGround": 2282.586669921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.49689865112305,
+  "longitude": 8.520628929138184,
+  "altitudeSea": 3757.982421875,
+  "altitudeGround": 2322.06689453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.49769592285156,
+  "longitude": 8.520066261291504,
+  "altitudeSea": 3793.435791015625,
+  "altitudeGround": 2378.919677734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.49851608276367,
+  "longitude": 8.519485473632812,
+  "altitudeSea": 3830.560546875,
+  "altitudeGround": 2432.47998046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.49931335449219,
+  "longitude": 8.518919944763184,
+  "altitudeSea": 3867.357666015625,
+  "altitudeGround": 2472.699951171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.5001335144043,
+  "longitude": 8.518340110778809,
+  "altitudeSea": 3905.658447265625,
+  "altitudeGround": 2497.608154296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.50096893310547,
+  "longitude": 8.517748832702637,
+  "altitudeSea": 3945.326171875,
+  "altitudeGround": 2543.010986328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.50177764892578,
+  "longitude": 8.517176628112793,
+  "altitudeSea": 3984.1689453125,
+  "altitudeGround": 2574.84619140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.50261306762695,
+  "longitude": 8.516583442687988,
+  "altitudeSea": 4024.841552734375,
+  "altitudeGround": 2609.670166015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.50345230102539,
+  "longitude": 8.515989303588867,
+  "altitudeSea": 4064.73193359375,
+  "altitudeGround": 2662.95556640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.5042610168457,
+  "longitude": 8.515417098999023,
+  "altitudeSea": 4102.130859375,
+  "altitudeGround": 2711.783935546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.50511169433594,
+  "longitude": 8.514813423156738,
+  "altitudeSea": 4140.6904296875,
+  "altitudeGround": 2759.429931640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.50594711303711,
+  "longitude": 8.5142183303833,
+  "altitudeSea": 4178.03369140625,
+  "altitudeGround": 2794.05322265625,
+  "onRunway": 1
+}, {
+  "latitude": 47.50679397583008,
+  "longitude": 8.513619422912598,
+  "altitudeSea": 4215.16650390625,
+  "altitudeGround": 2834.9697265625,
+  "onRunway": 1
+}, {
+  "latitude": 47.50764465332031,
+  "longitude": 8.51301383972168,
+  "altitudeSea": 4252.35400390625,
+  "altitudeGround": 2873.82958984375,
+  "onRunway": 1
+}, {
+  "latitude": 47.50850296020508,
+  "longitude": 8.512405395507812,
+  "altitudeSea": 4289.4970703125,
+  "altitudeGround": 2909.49072265625,
+  "onRunway": 1
+}, {
+  "latitude": 47.50935363769531,
+  "longitude": 8.511799812316895,
+  "altitudeSea": 4326.21728515625,
+  "altitudeGround": 2947.259033203125,
+  "onRunway": 1
+}, {
+  "latitude": 47.510223388671875,
+  "longitude": 8.511181831359863,
+  "altitudeSea": 4363.4716796875,
+  "altitudeGround": 3003.447021484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.51108932495117,
+  "longitude": 8.510566711425781,
+  "altitudeSea": 4400.44482421875,
+  "altitudeGround": 3061.97265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.51197814941406,
+  "longitude": 8.509937286376953,
+  "altitudeSea": 4438.41015625,
+  "altitudeGround": 3107.4853515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.51286697387695,
+  "longitude": 8.50930404663086,
+  "altitudeSea": 4476.951171875,
+  "altitudeGround": 3146.888671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.51374816894531,
+  "longitude": 8.50868034362793,
+  "altitudeSea": 4515.60107421875,
+  "altitudeGround": 3186.3740234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.5146484375,
+  "longitude": 8.508039474487305,
+  "altitudeSea": 4555.99560546875,
+  "altitudeGround": 3221.155029296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.515567779541016,
+  "longitude": 8.507384300231934,
+  "altitudeSea": 4598.4287109375,
+  "altitudeGround": 3252.015869140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.516483306884766,
+  "longitude": 8.506734848022461,
+  "altitudeSea": 4641.64892578125,
+  "altitudeGround": 3291.485595703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.51737594604492,
+  "longitude": 8.506095886230469,
+  "altitudeSea": 4685.0341796875,
+  "altitudeGround": 3335.878173828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.518280029296875,
+  "longitude": 8.5054349899292,
+  "altitudeSea": 4730.3662109375,
+  "altitudeGround": 3373.975341796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.519187927246094,
+  "longitude": 8.504753112792969,
+  "altitudeSea": 4777.0712890625,
+  "altitudeGround": 3408.697021484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.52007293701172,
+  "longitude": 8.50406265258789,
+  "altitudeSea": 4823.7685546875,
+  "altitudeGround": 3432.02880859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.52096176147461,
+  "longitude": 8.503332138061523,
+  "altitudeSea": 4872.0009765625,
+  "altitudeGround": 3478.051513671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.52183151245117,
+  "longitude": 8.502571105957031,
+  "altitudeSea": 4920.67138671875,
+  "altitudeGround": 3520.7080078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.522705078125,
+  "longitude": 8.50175666809082,
+  "altitudeSea": 4970.92578125,
+  "altitudeGround": 3550.61083984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.52354431152344,
+  "longitude": 8.500919342041016,
+  "altitudeSea": 5021.0380859375,
+  "altitudeGround": 3573.02099609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.524375915527344,
+  "longitude": 8.500035285949707,
+  "altitudeSea": 5072.74365234375,
+  "altitudeGround": 3594.14892578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.525184631347656,
+  "longitude": 8.499116897583008,
+  "altitudeSea": 5125.6171875,
+  "altitudeGround": 3627.839599609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.52596664428711,
+  "longitude": 8.4981689453125,
+  "altitudeSea": 5179.8310546875,
+  "altitudeGround": 3649.716064453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.5267448425293,
+  "longitude": 8.49716854095459,
+  "altitudeSea": 5237.08154296875,
+  "altitudeGround": 3678.685791015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.527488708496094,
+  "longitude": 8.49614429473877,
+  "altitudeSea": 5296.025390625,
+  "altitudeGround": 3708.31640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.52822494506836,
+  "longitude": 8.495068550109863,
+  "altitudeSea": 5358.7294921875,
+  "altitudeGround": 3746.45166015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.528934478759766,
+  "longitude": 8.493962287902832,
+  "altitudeSea": 5424.04150390625,
+  "altitudeGround": 3807.86083984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.52962875366211,
+  "longitude": 8.492809295654297,
+  "altitudeSea": 5493.1650390625,
+  "altitudeGround": 3911.689208984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.530277252197266,
+  "longitude": 8.49166488647461,
+  "altitudeSea": 5562.7568359375,
+  "altitudeGround": 4028.735595703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.530906677246094,
+  "longitude": 8.490477561950684,
+  "altitudeSea": 5635.85302734375,
+  "altitudeGround": 4140.2275390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53151321411133,
+  "longitude": 8.48926830291748,
+  "altitudeSea": 5710.7392578125,
+  "altitudeGround": 4175.6142578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.5320930480957,
+  "longitude": 8.488037109375,
+  "altitudeSea": 5787.013671875,
+  "altitudeGround": 4235.2998046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.53264236450195,
+  "longitude": 8.486791610717773,
+  "altitudeSea": 5863.81103515625,
+  "altitudeGround": 4347.25634765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53316879272461,
+  "longitude": 8.485526084899902,
+  "altitudeSea": 5941.3486328125,
+  "altitudeGround": 4516.55908203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.533668518066406,
+  "longitude": 8.484234809875488,
+  "altitudeSea": 6019.6435546875,
+  "altitudeGround": 4630.20361328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.534141540527344,
+  "longitude": 8.48293399810791,
+  "altitudeSea": 6097.47900390625,
+  "altitudeGround": 4713.93798828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.534576416015625,
+  "longitude": 8.481657981872559,
+  "altitudeSea": 6172.869140625,
+  "altitudeGround": 4800.396484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.534996032714844,
+  "longitude": 8.480345726013184,
+  "altitudeSea": 6249.05078125,
+  "altitudeGround": 4888.13037109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.53539276123047,
+  "longitude": 8.479005813598633,
+  "altitudeSea": 6325.1748046875,
+  "altitudeGround": 4968.43115234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.53575897216797,
+  "longitude": 8.47766399383545,
+  "altitudeSea": 6399.56005859375,
+  "altitudeGround": 5030.955078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.536102294921875,
+  "longitude": 8.476306915283203,
+  "altitudeSea": 6472.69287109375,
+  "altitudeGround": 5102.080078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.53642272949219,
+  "longitude": 8.474935531616211,
+  "altitudeSea": 6544.376953125,
+  "altitudeGround": 5172.38623046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.536720275878906,
+  "longitude": 8.473526000976562,
+  "altitudeSea": 6615.74853515625,
+  "altitudeGround": 5246.3671875,
+  "onRunway": 1
+}, {
+  "latitude": 47.536983489990234,
+  "longitude": 8.47217082977295,
+  "altitudeSea": 6682.35009765625,
+  "altitudeGround": 5308.18701171875,
+  "onRunway": 1
+}, {
+  "latitude": 47.53721618652344,
+  "longitude": 8.47081470489502,
+  "altitudeSea": 6747.07421875,
+  "altitudeGround": 5371.50927734375,
+  "onRunway": 1
+}, {
+  "latitude": 47.53743362426758,
+  "longitude": 8.469412803649902,
+  "altitudeSea": 6812.0576171875,
+  "altitudeGround": 5434.51513671875,
+  "onRunway": 1
+}, {
+  "latitude": 47.537620544433594,
+  "longitude": 8.468037605285645,
+  "altitudeSea": 6874.09033203125,
+  "altitudeGround": 5487.99853515625,
+  "onRunway": 1
+}, {
+  "latitude": 47.537784576416016,
+  "longitude": 8.466629981994629,
+  "altitudeSea": 6935.91162109375,
+  "altitudeGround": 5521.4130859375,
+  "onRunway": 1
+}, {
+  "latitude": 47.53791809082031,
+  "longitude": 8.465249061584473,
+  "altitudeSea": 6995.11572265625,
+  "altitudeGround": 5523.97900390625,
+  "onRunway": 1
+}, {
+  "latitude": 47.538028717041016,
+  "longitude": 8.463834762573242,
+  "altitudeSea": 7054.34912109375,
+  "altitudeGround": 5513.61328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.53811264038086,
+  "longitude": 8.462440490722656,
+  "altitudeSea": 7111.44287109375,
+  "altitudeGround": 5437.25634765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53817367553711,
+  "longitude": 8.46103286743164,
+  "altitudeSea": 7167.984375,
+  "altitudeGround": 5408.9609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.5382080078125,
+  "longitude": 8.459586143493652,
+  "altitudeSea": 7224.95361328125,
+  "altitudeGround": 5354.12841796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.53821563720703,
+  "longitude": 8.458191871643066,
+  "altitudeSea": 7278.9677734375,
+  "altitudeGround": 5236.5859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.5381965637207,
+  "longitude": 8.456777572631836,
+  "altitudeSea": 7333.01806640625,
+  "altitudeGround": 5232.24951171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.538150787353516,
+  "longitude": 8.455364227294922,
+  "altitudeSea": 7386.3056640625,
+  "altitudeGround": 5266.54736328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.538082122802734,
+  "longitude": 8.453971862792969,
+  "altitudeSea": 7438.33349609375,
+  "altitudeGround": 5307.08837890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.537986755371094,
+  "longitude": 8.452569007873535,
+  "altitudeSea": 7490.41552734375,
+  "altitudeGround": 5334.96875,
+  "onRunway": 0
+}, {
+  "latitude": 47.537864685058594,
+  "longitude": 8.451162338256836,
+  "altitudeSea": 7542.35888671875,
+  "altitudeGround": 5382.66162109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.5377197265625,
+  "longitude": 8.449783325195312,
+  "altitudeSea": 7592.9345703125,
+  "altitudeGround": 5446.4384765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53754806518555,
+  "longitude": 8.448418617248535,
+  "altitudeSea": 7642.86474609375,
+  "altitudeGround": 5527.556640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.537349700927734,
+  "longitude": 8.447025299072266,
+  "altitudeSea": 7693.78466796875,
+  "altitudeGround": 5597.80810546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.53712844848633,
+  "longitude": 8.44567584991455,
+  "altitudeSea": 7743.080078125,
+  "altitudeGround": 5636.21826171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.53688049316406,
+  "longitude": 8.444307327270508,
+  "altitudeSea": 7793.0205078125,
+  "altitudeGround": 5682.724609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.53660202026367,
+  "longitude": 8.442937850952148,
+  "altitudeSea": 7842.98974609375,
+  "altitudeGround": 5748.22998046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.53630447387695,
+  "longitude": 8.441597938537598,
+  "altitudeSea": 7892.00634765625,
+  "altitudeGround": 5825.103515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53597640991211,
+  "longitude": 8.440252304077148,
+  "altitudeSea": 7941.45947265625,
+  "altitudeGround": 5912.69189453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.53563690185547,
+  "longitude": 8.438956260681152,
+  "altitudeSea": 7989.36669921875,
+  "altitudeGround": 6003.765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53525924682617,
+  "longitude": 8.437630653381348,
+  "altitudeSea": 8038.796875,
+  "altitudeGround": 6086.90673828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.53486633300781,
+  "longitude": 8.436324119567871,
+  "altitudeSea": 8087.84326171875,
+  "altitudeGround": 6172.349609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.534461975097656,
+  "longitude": 8.435032844543457,
+  "altitudeSea": 8136.00244140625,
+  "altitudeGround": 6257.00927734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.534034729003906,
+  "longitude": 8.433720588684082,
+  "altitudeSea": 8183.81005859375,
+  "altitudeGround": 6352.2353515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53361129760742,
+  "longitude": 8.432427406311035,
+  "altitudeSea": 8229.046875,
+  "altitudeGround": 6463.07666015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53317642211914,
+  "longitude": 8.43112850189209,
+  "altitudeSea": 8272.1875,
+  "altitudeGround": 6585.57421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.532737731933594,
+  "longitude": 8.429834365844727,
+  "altitudeSea": 8312.69921875,
+  "altitudeGround": 6737.056640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53230285644531,
+  "longitude": 8.428567886352539,
+  "altitudeSea": 8349.8330078125,
+  "altitudeGround": 6866.83544921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.53185272216797,
+  "longitude": 8.427260398864746,
+  "altitudeSea": 8385.7802734375,
+  "altitudeGround": 6937.64501953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.53140640258789,
+  "longitude": 8.425970077514648,
+  "altitudeSea": 8419.2001953125,
+  "altitudeGround": 6939.61474609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.53096389770508,
+  "longitude": 8.424688339233398,
+  "altitudeSea": 8450.8701171875,
+  "altitudeGround": 6924.49365234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.53050231933594,
+  "longitude": 8.42335319519043,
+  "altitudeSea": 8482.689453125,
+  "altitudeGround": 6917.5390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.53004837036133,
+  "longitude": 8.422052383422852,
+  "altitudeSea": 8512.85546875,
+  "altitudeGround": 6894.64404296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.52958297729492,
+  "longitude": 8.4207181930542,
+  "altitudeSea": 8543.181640625,
+  "altitudeGround": 6848.98095703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.52912902832031,
+  "longitude": 8.419405937194824,
+  "altitudeSea": 8572.6083984375,
+  "altitudeGround": 6727.298828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.52865219116211,
+  "longitude": 8.418035507202148,
+  "altitudeSea": 8603.009765625,
+  "altitudeGround": 6621.95068359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.5281867980957,
+  "longitude": 8.416693687438965,
+  "altitudeSea": 8632.482421875,
+  "altitudeGround": 6537.13427734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.5277099609375,
+  "longitude": 8.41532039642334,
+  "altitudeSea": 8662.384765625,
+  "altitudeGround": 6545.81982421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.527244567871094,
+  "longitude": 8.413975715637207,
+  "altitudeSea": 8691.48828125,
+  "altitudeGround": 6570.16943359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.52677536010742,
+  "longitude": 8.412619590759277,
+  "altitudeSea": 8720.6298828125,
+  "altitudeGround": 6605.01904296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.52630615234375,
+  "longitude": 8.411261558532715,
+  "altitudeSea": 8749.580078125,
+  "altitudeGround": 6650.37646484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.52582550048828,
+  "longitude": 8.409870147705078,
+  "altitudeSea": 8779.0712890625,
+  "altitudeGround": 6717.75439453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.52534866333008,
+  "longitude": 8.40848445892334,
+  "altitudeSea": 8808.33203125,
+  "altitudeGround": 6836.0673828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.52486038208008,
+  "longitude": 8.40706729888916,
+  "altitudeSea": 8838.193359375,
+  "altitudeGround": 6991.291015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.52437973022461,
+  "longitude": 8.405691146850586,
+  "altitudeSea": 8867.0673828125,
+  "altitudeGround": 7053.921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.52386474609375,
+  "longitude": 8.404252052307129,
+  "altitudeSea": 8897.1064453125,
+  "altitudeGround": 6996.263671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.52334976196289,
+  "longitude": 8.402853012084961,
+  "altitudeSea": 8926.1005859375,
+  "altitudeGround": 6962.9541015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.522804260253906,
+  "longitude": 8.40143871307373,
+  "altitudeSea": 8955.189453125,
+  "altitudeGround": 6948.21728515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.522247314453125,
+  "longitude": 8.400059700012207,
+  "altitudeSea": 8983.3837890625,
+  "altitudeGround": 6982.9267578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.521663665771484,
+  "longitude": 8.39870548248291,
+  "altitudeSea": 9010.890625,
+  "altitudeGround": 7067.4794921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.52103805541992,
+  "longitude": 8.397336959838867,
+  "altitudeSea": 9038.5380859375,
+  "altitudeGround": 7078.70458984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.5203857421875,
+  "longitude": 8.396018028259277,
+  "altitudeSea": 9065.2470703125,
+  "altitudeGround": 7045.845703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.51968002319336,
+  "longitude": 8.394684791564941,
+  "altitudeSea": 9092.728515625,
+  "altitudeGround": 7063.986328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.51894760131836,
+  "longitude": 8.393410682678223,
+  "altitudeSea": 9119.5908203125,
+  "altitudeGround": 7128.1220703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.51817321777344,
+  "longitude": 8.392152786254883,
+  "altitudeSea": 9146.9697265625,
+  "altitudeGround": 7188.333984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.51737976074219,
+  "longitude": 8.39095687866211,
+  "altitudeSea": 9173.96484375,
+  "altitudeGround": 7157.07763671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.51654815673828,
+  "longitude": 8.38979434967041,
+  "altitudeSea": 9201.1328125,
+  "altitudeGround": 7184.763671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.51567840576172,
+  "longitude": 8.388670921325684,
+  "altitudeSea": 9228.3154296875,
+  "altitudeGround": 7136.4755859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.5147819519043,
+  "longitude": 8.387594223022461,
+  "altitudeSea": 9255.4609375,
+  "altitudeGround": 7136.10302734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.513858795166016,
+  "longitude": 8.386569023132324,
+  "altitudeSea": 9282.4453125,
+  "altitudeGround": 7163.16845703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.512901306152344,
+  "longitude": 8.385588645935059,
+  "altitudeSea": 9309.5146484375,
+  "altitudeGround": 7239.455078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.51191711425781,
+  "longitude": 8.384655952453613,
+  "altitudeSea": 9336.5205078125,
+  "altitudeGround": 7383.04248046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.51090621948242,
+  "longitude": 8.383777618408203,
+  "altitudeSea": 9363.3671875,
+  "altitudeGround": 7525.0947265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.50989532470703,
+  "longitude": 8.382970809936523,
+  "altitudeSea": 9389.525390625,
+  "altitudeGround": 7691.65673828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.50882339477539,
+  "longitude": 8.382190704345703,
+  "altitudeSea": 9416.5537109375,
+  "altitudeGround": 7853.29248046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.50773620605469,
+  "longitude": 8.381471633911133,
+  "altitudeSea": 9443.408203125,
+  "altitudeGround": 7943.96044921875,
+  "onRunway": 1
+}, {
+  "latitude": 47.50659942626953,
+  "longitude": 8.38079833984375,
+  "altitudeSea": 9470.71484375,
+  "altitudeGround": 7980.2216796875,
+  "onRunway": 1
+}, {
+  "latitude": 47.50545120239258,
+  "longitude": 8.380188941955566,
+  "altitudeSea": 9498.1982421875,
+  "altitudeGround": 7995.77294921875,
+  "onRunway": 1
+}, {
+  "latitude": 47.50429916381836,
+  "longitude": 8.37963581085205,
+  "altitudeSea": 9526.150390625,
+  "altitudeGround": 8008.48876953125,
+  "onRunway": 1
+}, {
+  "latitude": 47.503135681152344,
+  "longitude": 8.379129409790039,
+  "altitudeSea": 9554.64453125,
+  "altitudeGround": 8013.6669921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.50193786621094,
+  "longitude": 8.378647804260254,
+  "altitudeSea": 9584.3876953125,
+  "altitudeGround": 7996.42822265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.50072479248047,
+  "longitude": 8.37819766998291,
+  "altitudeSea": 9614.5537109375,
+  "altitudeGround": 8000.86376953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.49953079223633,
+  "longitude": 8.377779960632324,
+  "altitudeSea": 9644.1982421875,
+  "altitudeGround": 8007.4423828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.498329162597656,
+  "longitude": 8.377378463745117,
+  "altitudeSea": 9673.9013671875,
+  "altitudeGround": 7948.22705078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.49711227416992,
+  "longitude": 8.37698745727539,
+  "altitudeSea": 9703.68359375,
+  "altitudeGround": 7968.50341796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.49587631225586,
+  "longitude": 8.376605987548828,
+  "altitudeSea": 9733.484375,
+  "altitudeGround": 7961.8623046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.494659423828125,
+  "longitude": 8.376239776611328,
+  "altitudeSea": 9762.52734375,
+  "altitudeGround": 7918.6259765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.4933967590332,
+  "longitude": 8.375870704650879,
+  "altitudeSea": 9792.29296875,
+  "altitudeGround": 7885.16796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.49212646484375,
+  "longitude": 8.375507354736328,
+  "altitudeSea": 9821.951171875,
+  "altitudeGround": 7857.7294921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.4908447265625,
+  "longitude": 8.375146865844727,
+  "altitudeSea": 9852.0439453125,
+  "altitudeGround": 7841.05859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.48956298828125,
+  "longitude": 8.374791145324707,
+  "altitudeSea": 9882.6044921875,
+  "altitudeGround": 7797.6689453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.48830032348633,
+  "longitude": 8.374444961547852,
+  "altitudeSea": 9913.4150390625,
+  "altitudeGround": 7735.69287109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.4870491027832,
+  "longitude": 8.374105453491211,
+  "altitudeSea": 9944.91015625,
+  "altitudeGround": 7693.18212890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.485755920410156,
+  "longitude": 8.373757362365723,
+  "altitudeSea": 9978.66796875,
+  "altitudeGround": 7688.42626953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.484474182128906,
+  "longitude": 8.3734130859375,
+  "altitudeSea": 10013.470703125,
+  "altitudeGround": 7594.67578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.48318099975586,
+  "longitude": 8.373067855834961,
+  "altitudeSea": 10049.9599609375,
+  "altitudeGround": 7499.27099609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.48189926147461,
+  "longitude": 8.372725486755371,
+  "altitudeSea": 10087.64453125,
+  "altitudeGround": 7364.79931640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.480587005615234,
+  "longitude": 8.372374534606934,
+  "altitudeSea": 10127.5654296875,
+  "altitudeGround": 7472.91943359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.479270935058594,
+  "longitude": 8.37202262878418,
+  "altitudeSea": 10168.6142578125,
+  "altitudeGround": 7796.2841796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.477962493896484,
+  "longitude": 8.371673583984375,
+  "altitudeSea": 10209.53515625,
+  "altitudeGround": 8022.3408203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.47664260864258,
+  "longitude": 8.371320724487305,
+  "altitudeSea": 10250.3916015625,
+  "altitudeGround": 8266.6484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.475337982177734,
+  "longitude": 8.3709716796875,
+  "altitudeSea": 10289.474609375,
+  "altitudeGround": 8391.16015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.47401809692383,
+  "longitude": 8.370616912841797,
+  "altitudeSea": 10327.3076171875,
+  "altitudeGround": 8504.619140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.47269058227539,
+  "longitude": 8.370259284973145,
+  "altitudeSea": 10363.1240234375,
+  "altitudeGround": 8618.169921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.47135543823242,
+  "longitude": 8.369898796081543,
+  "altitudeSea": 10396.763671875,
+  "altitudeGround": 8631.923828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.47004318237305,
+  "longitude": 8.369543075561523,
+  "altitudeSea": 10427.876953125,
+  "altitudeGround": 8628.6025390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.46867370605469,
+  "longitude": 8.369171142578125,
+  "altitudeSea": 10458.486328125,
+  "altitudeGround": 8670.96875,
+  "onRunway": 0
+}, {
+  "latitude": 47.46737289428711,
+  "longitude": 8.368816375732422,
+  "altitudeSea": 10486.390625,
+  "altitudeGround": 8712.8154296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.46599578857422,
+  "longitude": 8.368438720703125,
+  "altitudeSea": 10515.005859375,
+  "altitudeGround": 8785.140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.464622497558594,
+  "longitude": 8.368061065673828,
+  "altitudeSea": 10542.6923828125,
+  "altitudeGround": 8872.2744140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.463279724121094,
+  "longitude": 8.367691040039062,
+  "altitudeSea": 10569.3251953125,
+  "altitudeGround": 8947.4130859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.46192169189453,
+  "longitude": 8.367314338684082,
+  "altitudeSea": 10595.908203125,
+  "altitudeGround": 9039.3212890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.46055603027344,
+  "longitude": 8.366934776306152,
+  "altitudeSea": 10622.443359375,
+  "altitudeGround": 9139.0859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.45918273925781,
+  "longitude": 8.36655044555664,
+  "altitudeSea": 10648.8984375,
+  "altitudeGround": 9182.2734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.45780944824219,
+  "longitude": 8.366166114807129,
+  "altitudeSea": 10675.1611328125,
+  "altitudeGround": 9078.5458984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.45640563964844,
+  "longitude": 8.365771293640137,
+  "altitudeSea": 10701.7890625,
+  "altitudeGround": 9027.7451171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.45500564575195,
+  "longitude": 8.365375518798828,
+  "altitudeSea": 10728.2578125,
+  "altitudeGround": 9042.837890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.45363235473633,
+  "longitude": 8.36498737335205,
+  "altitudeSea": 10753.935546875,
+  "altitudeGround": 9134.36328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.452247619628906,
+  "longitude": 8.364592552185059,
+  "altitudeSea": 10779.76953125,
+  "altitudeGround": 9084.6171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.4508056640625,
+  "longitude": 8.364181518554688,
+  "altitudeSea": 10806.3310546875,
+  "altitudeGround": 9064.1865234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.449398040771484,
+  "longitude": 8.363778114318848,
+  "altitudeSea": 10832.0849609375,
+  "altitudeGround": 9180.49609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.44796371459961,
+  "longitude": 8.36336612701416,
+  "altitudeSea": 10858.123046875,
+  "altitudeGround": 9380.005859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.44651794433594,
+  "longitude": 8.36294937133789,
+  "altitudeSea": 10884.2626953125,
+  "altitudeGround": 9492.51953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.44507598876953,
+  "longitude": 8.362532615661621,
+  "altitudeSea": 10910.2373046875,
+  "altitudeGround": 9542.6220703125,
+  "onRunway": 1
+}, {
+  "latitude": 47.44364929199219,
+  "longitude": 8.362120628356934,
+  "altitudeSea": 10935.7265625,
+  "altitudeGround": 9572.5830078125,
+  "onRunway": 1
+}, {
+  "latitude": 47.44221496582031,
+  "longitude": 8.361703872680664,
+  "altitudeSea": 10961.1640625,
+  "altitudeGround": 9605.8642578125,
+  "onRunway": 1
+}, {
+  "latitude": 47.44074249267578,
+  "longitude": 8.361275672912598,
+  "altitudeSea": 10986.99609375,
+  "altitudeGround": 9636.1484375,
+  "onRunway": 1
+}, {
+  "latitude": 47.439300537109375,
+  "longitude": 8.360855102539062,
+  "altitudeSea": 11012.0380859375,
+  "altitudeGround": 9666.8046875,
+  "onRunway": 1
+}, {
+  "latitude": 47.437843322753906,
+  "longitude": 8.360428810119629,
+  "altitudeSea": 11037.10546875,
+  "altitudeGround": 9672.6630859375,
+  "onRunway": 1
+}, {
+  "latitude": 47.43638229370117,
+  "longitude": 8.360000610351562,
+  "altitudeSea": 11061.9248046875,
+  "altitudeGround": 9688.0771484375,
+  "onRunway": 1
+}, {
+  "latitude": 47.43490982055664,
+  "longitude": 8.35956859588623,
+  "altitudeSea": 11086.72265625,
+  "altitudeGround": 9802.1240234375,
+  "onRunway": 1
+}, {
+  "latitude": 47.43344497680664,
+  "longitude": 8.359138488769531,
+  "altitudeSea": 11111.1650390625,
+  "altitudeGround": 9851.48046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.43191909790039,
+  "longitude": 8.358689308166504,
+  "altitudeSea": 11136.4619140625,
+  "altitudeGround": 9842.66015625,
+  "onRunway": 1
+}, {
+  "latitude": 47.43043899536133,
+  "longitude": 8.35825252532959,
+  "altitudeSea": 11160.9140625,
+  "altitudeGround": 9853.0361328125,
+  "onRunway": 1
+}, {
+  "latitude": 47.428916931152344,
+  "longitude": 8.357802391052246,
+  "altitudeSea": 11185.8759765625,
+  "altitudeGround": 9845.4375,
+  "onRunway": 1
+}, {
+  "latitude": 47.427406311035156,
+  "longitude": 8.357356071472168,
+  "altitudeSea": 11210.28125,
+  "altitudeGround": 9839.498046875,
+  "onRunway": 1
+}, {
+  "latitude": 47.425907135009766,
+  "longitude": 8.356910705566406,
+  "altitudeSea": 11234.330078125,
+  "altitudeGround": 9775.01953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.42443084716797,
+  "longitude": 8.356472969055176,
+  "altitudeSea": 11257.68359375,
+  "altitudeGround": 9707.29296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.42291259765625,
+  "longitude": 8.3560209274292,
+  "altitudeSea": 11281.408203125,
+  "altitudeGround": 9556.2861328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.421356201171875,
+  "longitude": 8.355548858642578,
+  "altitudeSea": 11305.3740234375,
+  "altitudeGround": 9412.654296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.41986083984375,
+  "longitude": 8.355080604553223,
+  "altitudeSea": 11328.1435546875,
+  "altitudeGround": 9412.78125,
+  "onRunway": 0
+}, {
+  "latitude": 47.41832733154297,
+  "longitude": 8.35457992553711,
+  "altitudeSea": 11351.0830078125,
+  "altitudeGround": 9491.1123046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.416770935058594,
+  "longitude": 8.354042053222656,
+  "altitudeSea": 11373.935546875,
+  "altitudeGround": 9512.52734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.41523361206055,
+  "longitude": 8.353475570678711,
+  "altitudeSea": 11395.9677734375,
+  "altitudeGround": 9544.58203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.4137077331543,
+  "longitude": 8.352871894836426,
+  "altitudeSea": 11417.25,
+  "altitudeGround": 9542.4970703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.41218948364258,
+  "longitude": 8.35222053527832,
+  "altitudeSea": 11437.82421875,
+  "altitudeGround": 9459.921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.40773391723633,
+  "longitude": 8.349957466125488,
+  "altitudeSea": 11495.20703125,
+  "altitudeGround": 9270.0302734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.40622329711914,
+  "longitude": 8.349058151245117,
+  "altitudeSea": 11514.712890625,
+  "altitudeGround": 9238.81640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.405094146728516,
+  "longitude": 8.348342895507812,
+  "altitudeSea": 11529.3095703125,
+  "altitudeGround": 9236.0166015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.4036750793457,
+  "longitude": 8.347386360168457,
+  "altitudeSea": 11547.759765625,
+  "altitudeGround": 9241.171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.40204620361328,
+  "longitude": 8.346211433410645,
+  "altitudeSea": 11569.09765625,
+  "altitudeGround": 9315.2080078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.40036392211914,
+  "longitude": 8.344902992248535,
+  "altitudeSea": 11591.318359375,
+  "altitudeGround": 9390.5283203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.39881134033203,
+  "longitude": 8.343612670898438,
+  "altitudeSea": 11611.955078125,
+  "altitudeGround": 9503.79296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.397403717041016,
+  "longitude": 8.342369079589844,
+  "altitudeSea": 11630.7509765625,
+  "altitudeGround": 9601.5205078125,
+  "onRunway": 1
+}, {
+  "latitude": 47.39598083496094,
+  "longitude": 8.341034889221191,
+  "altitudeSea": 11649.908203125,
+  "altitudeGround": 9707.5546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.39459991455078,
+  "longitude": 8.33966064453125,
+  "altitudeSea": 11668.521484375,
+  "altitudeGround": 9786.525390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.39320373535156,
+  "longitude": 8.338190078735352,
+  "altitudeSea": 11687.4140625,
+  "altitudeGround": 9846.8681640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.39183807373047,
+  "longitude": 8.336668968200684,
+  "altitudeSea": 11706.11328125,
+  "altitudeGround": 9989.69140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.390525817871094,
+  "longitude": 8.335124969482422,
+  "altitudeSea": 11724.333984375,
+  "altitudeGround": 10157.20703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.38923645019531,
+  "longitude": 8.333520889282227,
+  "altitudeSea": 11742.7021484375,
+  "altitudeGround": 10253.388671875,
+  "onRunway": 1
+}, {
+  "latitude": 47.3879280090332,
+  "longitude": 8.331805229187012,
+  "altitudeSea": 11761.673828125,
+  "altitudeGround": 10299.330078125,
+  "onRunway": 1
+}, {
+  "latitude": 47.38666534423828,
+  "longitude": 8.33005428314209,
+  "altitudeSea": 11780.240234375,
+  "altitudeGround": 10398.810546875,
+  "onRunway": 1
+}, {
+  "latitude": 47.385459899902344,
+  "longitude": 8.328296661376953,
+  "altitudeSea": 11798.0673828125,
+  "altitudeGround": 10460.0966796875,
+  "onRunway": 1
+}, {
+  "latitude": 47.38426208496094,
+  "longitude": 8.326447486877441,
+  "altitudeSea": 11816.0537109375,
+  "altitudeGround": 10533.9912109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.38311004638672,
+  "longitude": 8.324578285217285,
+  "altitudeSea": 11833.48828125,
+  "altitudeGround": 10605.95703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.38198471069336,
+  "longitude": 8.322647094726562,
+  "altitudeSea": 11850.8173828125,
+  "altitudeGround": 10644.021484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.38078689575195,
+  "longitude": 8.320472717285156,
+  "altitudeSea": 11869.5078125,
+  "altitudeGround": 10677.533203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.379695892333984,
+  "longitude": 8.318377494812012,
+  "altitudeSea": 11886.8369140625,
+  "altitudeGround": 10694.689453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.37867736816406,
+  "longitude": 8.316302299499512,
+  "altitudeSea": 11903.3310546875,
+  "altitudeGround": 10721.98046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.3776969909668,
+  "longitude": 8.314186096191406,
+  "altitudeSea": 11919.962890625,
+  "altitudeGround": 10746.927734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.37674331665039,
+  "longitude": 8.312021255493164,
+  "altitudeSea": 11937.9189453125,
+  "altitudeGround": 10768.5712890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.37581253051758,
+  "longitude": 8.309794425964355,
+  "altitudeSea": 11957.9306640625,
+  "altitudeGround": 10780.365234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.374900817871094,
+  "longitude": 8.307524681091309,
+  "altitudeSea": 11980.17578125,
+  "altitudeGround": 10793.0908203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.3740119934082,
+  "longitude": 8.305225372314453,
+  "altitudeSea": 12004.7509765625,
+  "altitudeGround": 10771.68359375,
+  "onRunway": 1
+}, {
+  "latitude": 47.373146057128906,
+  "longitude": 8.302911758422852,
+  "altitudeSea": 12031.52734375,
+  "altitudeGround": 10744.365234375,
+  "onRunway": 1
+}, {
+  "latitude": 47.372310638427734,
+  "longitude": 8.300618171691895,
+  "altitudeSea": 12060.0810546875,
+  "altitudeGround": 10745.767578125,
+  "onRunway": 1
+}, {
+  "latitude": 47.3714599609375,
+  "longitude": 8.298251152038574,
+  "altitudeSea": 12091.7001953125,
+  "altitudeGround": 10692.59765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.37062072753906,
+  "longitude": 8.295875549316406,
+  "altitudeSea": 12125.4951171875,
+  "altitudeGround": 10716.76953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.369789123535156,
+  "longitude": 8.293509483337402,
+  "altitudeSea": 12160.8857421875,
+  "altitudeGround": 10723.2548828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.36895751953125,
+  "longitude": 8.29113483428955,
+  "altitudeSea": 12197.7841796875,
+  "altitudeGround": 10743.3056640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.368133544921875,
+  "longitude": 8.288761138916016,
+  "altitudeSea": 12235.8056640625,
+  "altitudeGround": 10730.8525390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.36730194091797,
+  "longitude": 8.286356925964355,
+  "altitudeSea": 12275.2314453125,
+  "altitudeGround": 10708.298828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.36647033691406,
+  "longitude": 8.28394603729248,
+  "altitudeSea": 12315.513671875,
+  "altitudeGround": 10728.2197265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.36565399169922,
+  "longitude": 8.281567573547363,
+  "altitudeSea": 12355.9013671875,
+  "altitudeGround": 10745.064453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.3647346496582,
+  "longitude": 8.278888702392578,
+  "altitudeSea": 12402.1123046875,
+  "altitudeGround": 10767.720703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.36397933959961,
+  "longitude": 8.276678085327148,
+  "altitudeSea": 12440.7236328125,
+  "altitudeGround": 10871.9501953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.36307907104492,
+  "longitude": 8.274030685424805,
+  "altitudeSea": 12487.494140625,
+  "altitudeGround": 10998.4140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.362274169921875,
+  "longitude": 8.271666526794434,
+  "altitudeSea": 12529.6943359375,
+  "altitudeGround": 11106.357421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.36145782470703,
+  "longitude": 8.269262313842773,
+  "altitudeSea": 12573.1689453125,
+  "altitudeGround": 11195.2412109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.36063003540039,
+  "longitude": 8.266823768615723,
+  "altitudeSea": 12617.83984375,
+  "altitudeGround": 11262.05859375,
+  "onRunway": 1
+}, {
+  "latitude": 47.359806060791016,
+  "longitude": 8.264403343200684,
+  "altitudeSea": 12662.65625,
+  "altitudeGround": 11310.853515625,
+  "onRunway": 1
+}, {
+  "latitude": 47.3589973449707,
+  "longitude": 8.26202392578125,
+  "altitudeSea": 12707.037109375,
+  "altitudeGround": 11364.271484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.358184814453125,
+  "longitude": 8.259625434875488,
+  "altitudeSea": 12752.0732421875,
+  "altitudeGround": 11408.6162109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.35735321044922,
+  "longitude": 8.257173538208008,
+  "altitudeSea": 12798.3720703125,
+  "altitudeGround": 11443.546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.356529235839844,
+  "longitude": 8.254752159118652,
+  "altitudeSea": 12844.2998046875,
+  "altitudeGround": 11480.26953125,
+  "onRunway": 1
+}, {
+  "latitude": 47.35569381713867,
+  "longitude": 8.25229263305664,
+  "altitudeSea": 12891.1259765625,
+  "altitudeGround": 11528.8896484375,
+  "onRunway": 1
+}, {
+  "latitude": 47.3548698425293,
+  "longitude": 8.249869346618652,
+  "altitudeSea": 12937.400390625,
+  "altitudeGround": 11564.875,
+  "onRunway": 1
+}, {
+  "latitude": 47.35403060913086,
+  "longitude": 8.247406959533691,
+  "altitudeSea": 12984.5498046875,
+  "altitudeGround": 11593.6220703125,
+  "onRunway": 1
+}, {
+  "latitude": 47.35319900512695,
+  "longitude": 8.244967460632324,
+  "altitudeSea": 13031.396484375,
+  "altitudeGround": 11652.947265625,
+  "onRunway": 1
+}, {
+  "latitude": 47.35235595703125,
+  "longitude": 8.242494583129883,
+  "altitudeSea": 13078.990234375,
+  "altitudeGround": 11689.306640625,
+  "onRunway": 1
+}, {
+  "latitude": 47.35151290893555,
+  "longitude": 8.240028381347656,
+  "altitudeSea": 13126.51953125,
+  "altitudeGround": 11715.958984375,
+  "onRunway": 1
+}, {
+  "latitude": 47.35065460205078,
+  "longitude": 8.237510681152344,
+  "altitudeSea": 13175.11328125,
+  "altitudeGround": 11688.404296875,
+  "onRunway": 1
+}, {
+  "latitude": 47.34981155395508,
+  "longitude": 8.235053062438965,
+  "altitudeSea": 13222.533203125,
+  "altitudeGround": 11509.2978515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.348968505859375,
+  "longitude": 8.232583045959473,
+  "altitudeSea": 13270.1796875,
+  "altitudeGround": 11433.060546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.34813690185547,
+  "longitude": 8.230165481567383,
+  "altitudeSea": 13316.798828125,
+  "altitudeGround": 11395.4140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.3473014831543,
+  "longitude": 8.227737426757812,
+  "altitudeSea": 13363.5859375,
+  "altitudeGround": 11339.404296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.346458435058594,
+  "longitude": 8.2252836227417,
+  "altitudeSea": 13410.8154296875,
+  "altitudeGround": 11308.7099609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.34562683105469,
+  "longitude": 8.222864151000977,
+  "altitudeSea": 13457.3349609375,
+  "altitudeGround": 11297.392578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.34477615356445,
+  "longitude": 8.220401763916016,
+  "altitudeSea": 13504.607421875,
+  "altitudeGround": 11264.4697265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.343910217285156,
+  "longitude": 8.21789264678955,
+  "altitudeSea": 13552.6962890625,
+  "altitudeGround": 11246.759765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.34305953979492,
+  "longitude": 8.215433120727539,
+  "altitudeSea": 13599.732421875,
+  "altitudeGround": 11259.1357421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.342201232910156,
+  "longitude": 8.212960243225098,
+  "altitudeSea": 13646.9384765625,
+  "altitudeGround": 11299.8037109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.34135055541992,
+  "longitude": 8.210502624511719,
+  "altitudeSea": 13693.759765625,
+  "altitudeGround": 11408.341796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.340492248535156,
+  "longitude": 8.208038330078125,
+  "altitudeSea": 13740.56640625,
+  "altitudeGround": 11578.4697265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.33964538574219,
+  "longitude": 8.205597877502441,
+  "altitudeSea": 13786.7744140625,
+  "altitudeGround": 11816.5126953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.33879470825195,
+  "longitude": 8.20315933227539,
+  "altitudeSea": 13832.8369140625,
+  "altitudeGround": 11899.6796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.33793640136719,
+  "longitude": 8.200695037841797,
+  "altitudeSea": 13879.2333984375,
+  "altitudeGround": 12106.2333984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.33708572387695,
+  "longitude": 8.19825267791748,
+  "altitudeSea": 13925.095703125,
+  "altitudeGround": 12289.2529296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.336212158203125,
+  "longitude": 8.19575309753418,
+  "altitudeSea": 13971.931640625,
+  "altitudeGround": 12446.6708984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.335350036621094,
+  "longitude": 8.193288803100586,
+  "altitudeSea": 14017.9560546875,
+  "altitudeGround": 12523.4345703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.33447265625,
+  "longitude": 8.190791130065918,
+  "altitudeSea": 14064.4677734375,
+  "altitudeGround": 12577.4541015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.3336181640625,
+  "longitude": 8.18835163116455,
+  "altitudeSea": 14109.73046875,
+  "altitudeGround": 12620.5849609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.33274841308594,
+  "longitude": 8.185877799987793,
+  "altitudeSea": 14155.486328125,
+  "altitudeGround": 12669.23046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.33188247680664,
+  "longitude": 8.183416366577148,
+  "altitudeSea": 14200.9052734375,
+  "altitudeGround": 12714.6455078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.33100509643555,
+  "longitude": 8.180916786193848,
+  "altitudeSea": 14246.8662109375,
+  "altitudeGround": 12760.5986328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.330142974853516,
+  "longitude": 8.178473472595215,
+  "altitudeSea": 14291.6318359375,
+  "altitudeGround": 12781.0771484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.32927703857422,
+  "longitude": 8.176016807556152,
+  "altitudeSea": 14336.4921875,
+  "altitudeGround": 12787.6953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.32841873168945,
+  "longitude": 8.173576354980469,
+  "altitudeSea": 14380.9248046875,
+  "altitudeGround": 12796.166015625,
+  "onRunway": 1
+}, {
+  "latitude": 47.327552795410156,
+  "longitude": 8.171123504638672,
+  "altitudeSea": 14425.4208984375,
+  "altitudeGround": 12760.177734375,
+  "onRunway": 1
+}, {
+  "latitude": 47.32668685913086,
+  "longitude": 8.168678283691406,
+  "altitudeSea": 14469.3935546875,
+  "altitudeGround": 12687.0185546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.32582092285156,
+  "longitude": 8.166230201721191,
+  "altitudeSea": 14512.412109375,
+  "altitudeGround": 12703.3662109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.324951171875,
+  "longitude": 8.163769721984863,
+  "altitudeSea": 14554.265625,
+  "altitudeGround": 12748.650390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.324073791503906,
+  "longitude": 8.161285400390625,
+  "altitudeSea": 14594.9482421875,
+  "altitudeGround": 12781.19921875,
+  "onRunway": 1
+}, {
+  "latitude": 47.32320022583008,
+  "longitude": 8.158815383911133,
+  "altitudeSea": 14633.767578125,
+  "altitudeGround": 12790.7353515625,
+  "onRunway": 1
+}, {
+  "latitude": 47.32231140136719,
+  "longitude": 8.156312942504883,
+  "altitudeSea": 14671.328125,
+  "altitudeGround": 12812.1767578125,
+  "onRunway": 1
+}, {
+  "latitude": 47.321441650390625,
+  "longitude": 8.153863906860352,
+  "altitudeSea": 14706.203125,
+  "altitudeGround": 12864.75,
+  "onRunway": 1
+}, {
+  "latitude": 47.320556640625,
+  "longitude": 8.15137004852295,
+  "altitudeSea": 14739.6767578125,
+  "altitudeGround": 12974.912109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.31965637207031,
+  "longitude": 8.148832321166992,
+  "altitudeSea": 14771.5244140625,
+  "altitudeGround": 12994.5791015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.31875991821289,
+  "longitude": 8.14630126953125,
+  "altitudeSea": 14801.05078125,
+  "altitudeGround": 12971.7451171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.31787872314453,
+  "longitude": 8.14382553100586,
+  "altitudeSea": 14827.7353515625,
+  "altitudeGround": 13024.7802734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.31700134277344,
+  "longitude": 8.141352653503418,
+  "altitudeSea": 14852.240234375,
+  "altitudeGround": 13038.6015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.31611251831055,
+  "longitude": 8.138850212097168,
+  "altitudeSea": 14874.9013671875,
+  "altitudeGround": 12960.3369140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.31521987915039,
+  "longitude": 8.136332511901855,
+  "altitudeSea": 14895.611328125,
+  "altitudeGround": 12873.2119140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.3143424987793,
+  "longitude": 8.133867263793945,
+  "altitudeSea": 14913.876953125,
+  "altitudeGround": 12881.232421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.31344985961914,
+  "longitude": 8.131352424621582,
+  "altitudeSea": 14930.5595703125,
+  "altitudeGround": 12944.09765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.31256866455078,
+  "longitude": 8.128876686096191,
+  "altitudeSea": 14945.1474609375,
+  "altitudeGround": 13048.2294921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.31169891357422,
+  "longitude": 8.126419067382812,
+  "altitudeSea": 14957.892578125,
+  "altitudeGround": 13154.4306640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.310821533203125,
+  "longitude": 8.123957633972168,
+  "altitudeSea": 14969.0029296875,
+  "altitudeGround": 13253.806640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.30996322631836,
+  "longitude": 8.12154483795166,
+  "altitudeSea": 14978.3564453125,
+  "altitudeGround": 13297.861328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.30906295776367,
+  "longitude": 8.119004249572754,
+  "altitudeSea": 14986.6201171875,
+  "altitudeGround": 13368.341796875,
+  "onRunway": 1
+}, {
+  "latitude": 47.30817794799805,
+  "longitude": 8.1165132522583,
+  "altitudeSea": 14993.1962890625,
+  "altitudeGround": 13419.751953125,
+  "onRunway": 1
+}, {
+  "latitude": 47.30730438232422,
+  "longitude": 8.114063262939453,
+  "altitudeSea": 14997.3125,
+  "altitudeGround": 13428.9453125,
+  "onRunway": 1
+}, {
+  "latitude": 47.306434631347656,
+  "longitude": 8.111608505249023,
+  "altitudeSea": 14997.794921875,
+  "altitudeGround": 13422.970703125,
+  "onRunway": 1
+}, {
+  "latitude": 47.30554962158203,
+  "longitude": 8.109127044677734,
+  "altitudeSea": 14996.4443359375,
+  "altitudeGround": 13378.4326171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.304656982421875,
+  "longitude": 8.106616020202637,
+  "altitudeSea": 14994.279296875,
+  "altitudeGround": 13209.146484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.30375671386719,
+  "longitude": 8.104086875915527,
+  "altitudeSea": 14992.015625,
+  "altitudeGround": 13150.603515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.302879333496094,
+  "longitude": 8.101611137390137,
+  "altitudeSea": 14990.2236328125,
+  "altitudeGround": 13135.55078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.30198287963867,
+  "longitude": 8.09909725189209,
+  "altitudeSea": 14989.1259765625,
+  "altitudeGround": 13086.4130859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.301090240478516,
+  "longitude": 8.09658145904541,
+  "altitudeSea": 14988.9072265625,
+  "altitudeGround": 12981.939453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.30021667480469,
+  "longitude": 8.094134330749512,
+  "altitudeSea": 14989.4931640625,
+  "altitudeGround": 12954.0849609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.29932403564453,
+  "longitude": 8.091623306274414,
+  "altitudeSea": 14990.7373046875,
+  "altitudeGround": 12968.26171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.298431396484375,
+  "longitude": 8.089118003845215,
+  "altitudeSea": 14992.38671875,
+  "altitudeGround": 13034.630859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.29755783081055,
+  "longitude": 8.08665657043457,
+  "altitudeSea": 14994.1572265625,
+  "altitudeGround": 13154.8720703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.29666519165039,
+  "longitude": 8.084147453308105,
+  "altitudeSea": 14995.87109375,
+  "altitudeGround": 13175.41796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.2957649230957,
+  "longitude": 8.081625938415527,
+  "altitudeSea": 14997.3330078125,
+  "altitudeGround": 13173.2529296875,
+  "onRunway": 1
+}, {
+  "latitude": 47.29487609863281,
+  "longitude": 8.079123497009277,
+  "altitudeSea": 14998.443359375,
+  "altitudeGround": 13340.2998046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.29397964477539,
+  "longitude": 8.076607704162598,
+  "altitudeSea": 14999.2353515625,
+  "altitudeGround": 13404.982421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.2930793762207,
+  "longitude": 8.074075698852539,
+  "altitudeSea": 14999.7412109375,
+  "altitudeGround": 13346.3837890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.292205810546875,
+  "longitude": 8.07162094116211,
+  "altitudeSea": 15000.015625,
+  "altitudeGround": 13272.796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.29132843017578,
+  "longitude": 8.069164276123047,
+  "altitudeSea": 15000.1865234375,
+  "altitudeGround": 13183.681640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.29045486450195,
+  "longitude": 8.066703796386719,
+  "altitudeSea": 15000.32421875,
+  "altitudeGround": 13058.5634765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.28956985473633,
+  "longitude": 8.06422233581543,
+  "altitudeSea": 15000.49609375,
+  "altitudeGround": 13087.2431640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.288700103759766,
+  "longitude": 8.061784744262695,
+  "altitudeSea": 15000.716796875,
+  "altitudeGround": 13171.935546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.28782272338867,
+  "longitude": 8.05931568145752,
+  "altitudeSea": 15001.0107421875,
+  "altitudeGround": 13264.923828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.286922454833984,
+  "longitude": 8.056791305541992,
+  "altitudeSea": 15001.3759765625,
+  "altitudeGround": 13371.65625,
+  "onRunway": 0
+}, {
+  "latitude": 47.2860221862793,
+  "longitude": 8.054262161254883,
+  "altitudeSea": 15001.8056640625,
+  "altitudeGround": 13420.5302734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.28512191772461,
+  "longitude": 8.051738739013672,
+  "altitudeSea": 15002.2431640625,
+  "altitudeGround": 13423.0107421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.28422546386719,
+  "longitude": 8.049217224121094,
+  "altitudeSea": 15002.642578125,
+  "altitudeGround": 13424.59765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.2833366394043,
+  "longitude": 8.046728134155273,
+  "altitudeSea": 15002.9970703125,
+  "altitudeGround": 13421.8095703125,
+  "onRunway": 1
+}, {
+  "latitude": 47.28244400024414,
+  "longitude": 8.044227600097656,
+  "altitudeSea": 15003.2900390625,
+  "altitudeGround": 13417.9482421875,
+  "onRunway": 1
+}, {
+  "latitude": 47.28155517578125,
+  "longitude": 8.04172420501709,
+  "altitudeSea": 15003.5419921875,
+  "altitudeGround": 13348.7353515625,
+  "onRunway": 1
+}, {
+  "latitude": 47.28068923950195,
+  "longitude": 8.03929615020752,
+  "altitudeSea": 15003.75,
+  "altitudeGround": 13242.7294921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.2797966003418,
+  "longitude": 8.036788940429688,
+  "altitudeSea": 15003.921875,
+  "altitudeGround": 13184.0908203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.27891540527344,
+  "longitude": 8.034320831298828,
+  "altitudeSea": 15004.021484375,
+  "altitudeGround": 13064.109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.27803039550781,
+  "longitude": 8.031807899475098,
+  "altitudeSea": 15004.0712890625,
+  "altitudeGround": 12909.0693359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.277156829833984,
+  "longitude": 8.029305458068848,
+  "altitudeSea": 15004.0791015625,
+  "altitudeGround": 12882.7685546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.27629470825195,
+  "longitude": 8.026823043823242,
+  "altitudeSea": 15004.0927734375,
+  "altitudeGround": 12897.7451171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.27543640136719,
+  "longitude": 8.024314880371094,
+  "altitudeSea": 15004.1396484375,
+  "altitudeGround": 12892.306640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.27459716796875,
+  "longitude": 8.021844863891602,
+  "altitudeSea": 15004.2431640625,
+  "altitudeGround": 12957.4189453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.273738861083984,
+  "longitude": 8.019305229187012,
+  "altitudeSea": 15004.3994140625,
+  "altitudeGround": 13098.70703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.272884368896484,
+  "longitude": 8.016743659973145,
+  "altitudeSea": 15004.5654296875,
+  "altitudeGround": 13060.15625,
+  "onRunway": 0
+}, {
+  "latitude": 47.272064208984375,
+  "longitude": 8.014260292053223,
+  "altitudeSea": 15004.7109375,
+  "altitudeGround": 12954.0595703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.2712516784668,
+  "longitude": 8.0117769241333,
+  "altitudeSea": 15004.8359375,
+  "altitudeGround": 12984.392578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.270408630371094,
+  "longitude": 8.00916862487793,
+  "altitudeSea": 15004.9375,
+  "altitudeGround": 13100.3681640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.269596099853516,
+  "longitude": 8.006635665893555,
+  "altitudeSea": 15005.0068359375,
+  "altitudeGround": 13316.5244140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.268802642822266,
+  "longitude": 8.00413703918457,
+  "altitudeSea": 15005.0458984375,
+  "altitudeGround": 13325.7548828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.26798629760742,
+  "longitude": 8.00154972076416,
+  "altitudeSea": 15005.0673828125,
+  "altitudeGround": 13230.1064453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.26718521118164,
+  "longitude": 7.998968124389648,
+  "altitudeSea": 15005.08203125,
+  "altitudeGround": 13034.2763671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.26639938354492,
+  "longitude": 7.996418476104736,
+  "altitudeSea": 15005.1103515625,
+  "altitudeGround": 12943.2333984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.265602111816406,
+  "longitude": 7.993790626525879,
+  "altitudeSea": 15005.1611328125,
+  "altitudeGround": 12939.078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.26482391357422,
+  "longitude": 7.991216659545898,
+  "altitudeSea": 15005.2265625,
+  "altitudeGround": 12901.083984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.26405334472656,
+  "longitude": 7.988621711730957,
+  "altitudeSea": 15005.3046875,
+  "altitudeGround": 12887.0537109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.263282775878906,
+  "longitude": 7.986016273498535,
+  "altitudeSea": 15005.3583984375,
+  "altitudeGround": 13068.7060546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.26252746582031,
+  "longitude": 7.9834160804748535,
+  "altitudeSea": 15005.375,
+  "altitudeGround": 13176.1640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.26177978515625,
+  "longitude": 7.980825424194336,
+  "altitudeSea": 15005.388671875,
+  "altitudeGround": 13264.353515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.26103210449219,
+  "longitude": 7.978200912475586,
+  "altitudeSea": 15005.4130859375,
+  "altitudeGround": 13315.455078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.26029586791992,
+  "longitude": 7.975583076477051,
+  "altitudeSea": 15005.4501953125,
+  "altitudeGround": 13331.66015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.25957107543945,
+  "longitude": 7.972973823547363,
+  "altitudeSea": 15005.4482421875,
+  "altitudeGround": 13392.3046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.25885009765625,
+  "longitude": 7.970363140106201,
+  "altitudeSea": 15005.490234375,
+  "altitudeGround": 13472.9052734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.25812911987305,
+  "longitude": 7.967752933502197,
+  "altitudeSea": 15005.65625,
+  "altitudeGround": 13517.93359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.25741958618164,
+  "longitude": 7.965181827545166,
+  "altitudeSea": 15005.8720703125,
+  "altitudeGround": 13522.5791015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.25673294067383,
+  "longitude": 7.962707042694092,
+  "altitudeSea": 15006.115234375,
+  "altitudeGround": 13525.6787109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.2559814453125,
+  "longitude": 7.959996700286865,
+  "altitudeSea": 15006.3671875,
+  "altitudeGround": 13529.7548828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.255271911621094,
+  "longitude": 7.957443714141846,
+  "altitudeSea": 15006.544921875,
+  "altitudeGround": 13531.1318359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.254547119140625,
+  "longitude": 7.954836368560791,
+  "altitudeSea": 15006.66015625,
+  "altitudeGround": 13530.068359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.25382614135742,
+  "longitude": 7.952241897583008,
+  "altitudeSea": 15006.7001953125,
+  "altitudeGround": 13513.146484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.253116607666016,
+  "longitude": 7.949693202972412,
+  "altitudeSea": 15006.6767578125,
+  "altitudeGround": 13317.4541015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.25238800048828,
+  "longitude": 7.947083473205566,
+  "altitudeSea": 15006.59765625,
+  "altitudeGround": 13376.029296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.25165939331055,
+  "longitude": 7.944461345672607,
+  "altitudeSea": 15006.509765625,
+  "altitudeGround": 13366.5908203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.25092697143555,
+  "longitude": 7.941837787628174,
+  "altitudeSea": 15006.4326171875,
+  "altitudeGround": 13335.44140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.25021743774414,
+  "longitude": 7.939304828643799,
+  "altitudeSea": 15006.3857421875,
+  "altitudeGround": 13314.1552734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.24948501586914,
+  "longitude": 7.936670303344727,
+  "altitudeSea": 15006.3662109375,
+  "altitudeGround": 13309.6806640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.248756408691406,
+  "longitude": 7.934075355529785,
+  "altitudeSea": 15006.375,
+  "altitudeGround": 13308.1904296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.24802780151367,
+  "longitude": 7.931459903717041,
+  "altitudeSea": 15006.3974609375,
+  "altitudeGround": 13326.5166015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.24729537963867,
+  "longitude": 7.928843975067139,
+  "altitudeSea": 15006.4169921875,
+  "altitudeGround": 13375.3408203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.24656677246094,
+  "longitude": 7.926235675811768,
+  "altitudeSea": 15006.4306640625,
+  "altitudeGround": 13354.154296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.2458381652832,
+  "longitude": 7.923637866973877,
+  "altitudeSea": 15006.435546875,
+  "altitudeGround": 13366.36328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.245113372802734,
+  "longitude": 7.92104434967041,
+  "altitudeSea": 15006.439453125,
+  "altitudeGround": 13336.91796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.24439239501953,
+  "longitude": 7.918478488922119,
+  "altitudeSea": 15006.4599609375,
+  "altitudeGround": 13310.6533203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.243675231933594,
+  "longitude": 7.9159135818481445,
+  "altitudeSea": 15006.478515625,
+  "altitudeGround": 13278.94140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.24295425415039,
+  "longitude": 7.913337707519531,
+  "altitudeSea": 15006.48828125,
+  "altitudeGround": 13274.8466796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.24224090576172,
+  "longitude": 7.910796642303467,
+  "altitudeSea": 15006.4951171875,
+  "altitudeGround": 13239.8154296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.24149703979492,
+  "longitude": 7.908152103424072,
+  "altitudeSea": 15006.4951171875,
+  "altitudeGround": 13237.0419921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.240806579589844,
+  "longitude": 7.905688285827637,
+  "altitudeSea": 15006.4912109375,
+  "altitudeGround": 13243.759765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.24003601074219,
+  "longitude": 7.902945041656494,
+  "altitudeSea": 15006.498046875,
+  "altitudeGround": 13232.826171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.239315032958984,
+  "longitude": 7.900376319885254,
+  "altitudeSea": 15006.5029296875,
+  "altitudeGround": 13236.353515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.238582611083984,
+  "longitude": 7.897764205932617,
+  "altitudeSea": 15006.5068359375,
+  "altitudeGround": 13235.4814453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.23784637451172,
+  "longitude": 7.895143508911133,
+  "altitudeSea": 15006.5009765625,
+  "altitudeGround": 13403.6806640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.23711013793945,
+  "longitude": 7.8925299644470215,
+  "altitudeSea": 15006.4814453125,
+  "altitudeGround": 13389.2119140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.23637771606445,
+  "longitude": 7.889922142028809,
+  "altitudeSea": 15006.48046875,
+  "altitudeGround": 13331.2548828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.23563766479492,
+  "longitude": 7.887299060821533,
+  "altitudeSea": 15006.4736328125,
+  "altitudeGround": 13254.970703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.23490905761719,
+  "longitude": 7.88470458984375,
+  "altitudeSea": 15006.4697265625,
+  "altitudeGround": 13178.986328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.23418045043945,
+  "longitude": 7.882112503051758,
+  "altitudeSea": 15006.46484375,
+  "altitudeGround": 13143.455078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.233455657958984,
+  "longitude": 7.879538536071777,
+  "altitudeSea": 15006.455078125,
+  "altitudeGround": 13130.2822265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.23272705078125,
+  "longitude": 7.876952171325684,
+  "altitudeSea": 15006.4638671875,
+  "altitudeGround": 13158.44921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.23198318481445,
+  "longitude": 7.874303817749023,
+  "altitudeSea": 15006.486328125,
+  "altitudeGround": 13135.4501953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.23124694824219,
+  "longitude": 7.871696472167969,
+  "altitudeSea": 15006.5107421875,
+  "altitudeGround": 13187.044921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.23051834106445,
+  "longitude": 7.869111061096191,
+  "altitudeSea": 15006.5478515625,
+  "altitudeGround": 13302.521484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.22978210449219,
+  "longitude": 7.866491317749023,
+  "altitudeSea": 15006.56640625,
+  "altitudeGround": 13239.47265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.22905349731445,
+  "longitude": 7.863903045654297,
+  "altitudeSea": 15006.5830078125,
+  "altitudeGround": 13270.7802734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.22831344604492,
+  "longitude": 7.861282825469971,
+  "altitudeSea": 15006.5927734375,
+  "altitudeGround": 13336.8388671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.22758102416992,
+  "longitude": 7.858677387237549,
+  "altitudeSea": 15006.5830078125,
+  "altitudeGround": 13315.03515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.22685241699219,
+  "longitude": 7.8561015129089355,
+  "altitudeSea": 15006.5673828125,
+  "altitudeGround": 13305.013671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.22612380981445,
+  "longitude": 7.85351037979126,
+  "altitudeSea": 15006.5400390625,
+  "altitudeGround": 13360.904296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.225406646728516,
+  "longitude": 7.8509674072265625,
+  "altitudeSea": 15006.5166015625,
+  "altitudeGround": 13406.552734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.22467041015625,
+  "longitude": 7.8483500480651855,
+  "altitudeSea": 15006.4990234375,
+  "altitudeGround": 13443.6328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.22393035888672,
+  "longitude": 7.845722675323486,
+  "altitudeSea": 15006.498046875,
+  "altitudeGround": 13463.998046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.22319030761719,
+  "longitude": 7.843098163604736,
+  "altitudeSea": 15006.5126953125,
+  "altitudeGround": 13469.4833984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.22244644165039,
+  "longitude": 7.84046745300293,
+  "altitudeSea": 15006.546875,
+  "altitudeGround": 13495.962890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.22172927856445,
+  "longitude": 7.837924957275391,
+  "altitudeSea": 15006.568359375,
+  "altitudeGround": 13487.9462890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.220985412597656,
+  "longitude": 7.835280418395996,
+  "altitudeSea": 15006.58203125,
+  "altitudeGround": 13292.7099609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.220245361328125,
+  "longitude": 7.8326640129089355,
+  "altitudeSea": 15006.5927734375,
+  "altitudeGround": 13287.794921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.219512939453125,
+  "longitude": 7.8300580978393555,
+  "altitudeSea": 15006.5859375,
+  "altitudeGround": 13322.873046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.21876907348633,
+  "longitude": 7.8274245262146,
+  "altitudeSea": 15006.5595703125,
+  "altitudeGround": 13347.890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.21804428100586,
+  "longitude": 7.824860095977783,
+  "altitudeSea": 15006.5380859375,
+  "altitudeGround": 13337.80859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.217308044433594,
+  "longitude": 7.822238445281982,
+  "altitudeSea": 15006.501953125,
+  "altitudeGround": 13310.4072265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.216583251953125,
+  "longitude": 7.819667339324951,
+  "altitudeSea": 15006.4755859375,
+  "altitudeGround": 13302.0712890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.21586608886719,
+  "longitude": 7.817124843597412,
+  "altitudeSea": 15006.47265625,
+  "altitudeGround": 13313.8427734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.21513366699219,
+  "longitude": 7.8145294189453125,
+  "altitudeSea": 15006.4853515625,
+  "altitudeGround": 13330.7978515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.214393615722656,
+  "longitude": 7.811912536621094,
+  "altitudeSea": 15006.4970703125,
+  "altitudeGround": 13351.0078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.213653564453125,
+  "longitude": 7.809288024902344,
+  "altitudeSea": 15006.505859375,
+  "altitudeGround": 13366.4814453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.212928771972656,
+  "longitude": 7.8067097663879395,
+  "altitudeSea": 15006.521484375,
+  "altitudeGround": 13356.2041015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.212181091308594,
+  "longitude": 7.804070949554443,
+  "altitudeSea": 15006.544921875,
+  "altitudeGround": 13348.318359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.211456298828125,
+  "longitude": 7.801492214202881,
+  "altitudeSea": 15006.560546875,
+  "altitudeGround": 13337.1328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.210731506347656,
+  "longitude": 7.7989301681518555,
+  "altitudeSea": 15006.5478515625,
+  "altitudeGround": 13333.33203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.21000289916992,
+  "longitude": 7.796342372894287,
+  "altitudeSea": 15006.51953125,
+  "altitudeGround": 13350.078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.20926284790039,
+  "longitude": 7.793721675872803,
+  "altitudeSea": 15006.5009765625,
+  "altitudeGround": 13414.861328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.208526611328125,
+  "longitude": 7.791104316711426,
+  "altitudeSea": 15006.4921875,
+  "altitudeGround": 13421.1494140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.207786560058594,
+  "longitude": 7.78848123550415,
+  "altitudeSea": 15006.490234375,
+  "altitudeGround": 13420.8447265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.20705032348633,
+  "longitude": 7.785865306854248,
+  "altitudeSea": 15006.484375,
+  "altitudeGround": 13417.251953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.206298828125,
+  "longitude": 7.7832112312316895,
+  "altitudeSea": 15006.4912109375,
+  "altitudeGround": 13414.5166015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.205570220947266,
+  "longitude": 7.780618667602539,
+  "altitudeSea": 15006.435546875,
+  "altitudeGround": 13412.158203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.204830169677734,
+  "longitude": 7.778022289276123,
+  "altitudeSea": 15006.3857421875,
+  "altitudeGround": 13395.234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.20410919189453,
+  "longitude": 7.775502681732178,
+  "altitudeSea": 15006.310546875,
+  "altitudeGround": 13349.982421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.20334243774414,
+  "longitude": 7.772883892059326,
+  "altitudeSea": 15006.08984375,
+  "altitudeGround": 13345.3349609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.202571868896484,
+  "longitude": 7.77028751373291,
+  "altitudeSea": 15005.8642578125,
+  "altitudeGround": 13323.8134765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.201805114746094,
+  "longitude": 7.767756938934326,
+  "altitudeSea": 15005.681640625,
+  "altitudeGround": 13319.3017578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.20103073120117,
+  "longitude": 7.765233516693115,
+  "altitudeSea": 15005.5927734375,
+  "altitudeGround": 13332.5185546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.20024108886719,
+  "longitude": 7.762700080871582,
+  "altitudeSea": 15005.60546875,
+  "altitudeGround": 13362.0361328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.19942092895508,
+  "longitude": 7.760122299194336,
+  "altitudeSea": 15005.705078125,
+  "altitudeGround": 13366.25,
+  "onRunway": 0
+}, {
+  "latitude": 47.1986083984375,
+  "longitude": 7.757601737976074,
+  "altitudeSea": 15005.8603515625,
+  "altitudeGround": 13338.1025390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.19778823852539,
+  "longitude": 7.755103588104248,
+  "altitudeSea": 15006.056640625,
+  "altitudeGround": 13317.033203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.196929931640625,
+  "longitude": 7.752531051635742,
+  "altitudeSea": 15006.26171875,
+  "altitudeGround": 13291.5595703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.19608688354492,
+  "longitude": 7.750040531158447,
+  "altitudeSea": 15006.44921875,
+  "altitudeGround": 13275.958984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.19524383544922,
+  "longitude": 7.747592449188232,
+  "altitudeSea": 15006.6015625,
+  "altitudeGround": 13253.6708984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.19436264038086,
+  "longitude": 7.745076656341553,
+  "altitudeSea": 15006.7373046875,
+  "altitudeGround": 13240.5556640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.1934928894043,
+  "longitude": 7.742623805999756,
+  "altitudeSea": 15006.83203125,
+  "altitudeGround": 13261.5654296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.192604064941406,
+  "longitude": 7.7401628494262695,
+  "altitudeSea": 15006.87890625,
+  "altitudeGround": 13279.58203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.19170379638672,
+  "longitude": 7.737712383270264,
+  "altitudeSea": 15006.8779296875,
+  "altitudeGround": 13290.3857421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.190799713134766,
+  "longitude": 7.735283374786377,
+  "altitudeSea": 15006.8779296875,
+  "altitudeGround": 13308.2373046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.18989181518555,
+  "longitude": 7.732882976531982,
+  "altitudeSea": 15006.875,
+  "altitudeGround": 13311.322265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.18897247314453,
+  "longitude": 7.730496406555176,
+  "altitudeSea": 15006.8896484375,
+  "altitudeGround": 13299.4609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.18800354003906,
+  "longitude": 7.728005886077881,
+  "altitudeSea": 15006.9267578125,
+  "altitudeGround": 13308.1953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.18703079223633,
+  "longitude": 7.725555419921875,
+  "altitudeSea": 15006.986328125,
+  "altitudeGround": 13322.30859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.186038970947266,
+  "longitude": 7.723099231719971,
+  "altitudeSea": 15007.037109375,
+  "altitudeGround": 13335.7041015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.185062408447266,
+  "longitude": 7.720704555511475,
+  "altitudeSea": 15007.0888671875,
+  "altitudeGround": 13308.1318359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.184051513671875,
+  "longitude": 7.718277454376221,
+  "altitudeSea": 15007.13671875,
+  "altitudeGround": 13330.1435546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.18305587768555,
+  "longitude": 7.715914249420166,
+  "altitudeSea": 15007.19140625,
+  "altitudeGround": 13371.0888671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.18202209472656,
+  "longitude": 7.713498115539551,
+  "altitudeSea": 15007.2392578125,
+  "altitudeGround": 13386.1201171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.18098449707031,
+  "longitude": 7.711111545562744,
+  "altitudeSea": 15007.26953125,
+  "altitudeGround": 13388.609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.17995071411133,
+  "longitude": 7.708767890930176,
+  "altitudeSea": 15007.2822265625,
+  "altitudeGround": 13379.9033203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.178871154785156,
+  "longitude": 7.70635461807251,
+  "altitudeSea": 15007.294921875,
+  "altitudeGround": 13390.1015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.17782211303711,
+  "longitude": 7.704045295715332,
+  "altitudeSea": 15007.3046875,
+  "altitudeGround": 13421.6484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.17674255371094,
+  "longitude": 7.701710224151611,
+  "altitudeSea": 15007.3154296875,
+  "altitudeGround": 13453.6787109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.17566680908203,
+  "longitude": 7.69940710067749,
+  "altitudeSea": 15007.33984375,
+  "altitudeGround": 13453.7119140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.174583435058594,
+  "longitude": 7.697127819061279,
+  "altitudeSea": 15007.3740234375,
+  "altitudeGround": 13460.5908203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.17350387573242,
+  "longitude": 7.694884777069092,
+  "altitudeSea": 15007.4052734375,
+  "altitudeGround": 13467.4140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.1723518371582,
+  "longitude": 7.692534446716309,
+  "altitudeSea": 15007.41796875,
+  "altitudeGround": 13440.38671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.17122268676758,
+  "longitude": 7.690252304077148,
+  "altitudeSea": 15007.4365234375,
+  "altitudeGround": 13405.373046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.170074462890625,
+  "longitude": 7.687969207763672,
+  "altitudeSea": 15007.453125,
+  "altitudeGround": 13356.3310546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.16889953613281,
+  "longitude": 7.685671329498291,
+  "altitudeSea": 15007.4794921875,
+  "altitudeGround": 13370.4755859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.167720794677734,
+  "longitude": 7.683398723602295,
+  "altitudeSea": 15007.5029296875,
+  "altitudeGround": 13376.9267578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.166568756103516,
+  "longitude": 7.681202411651611,
+  "altitudeSea": 15007.4990234375,
+  "altitudeGround": 13383.4345703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.165401458740234,
+  "longitude": 7.679013729095459,
+  "altitudeSea": 15007.44921875,
+  "altitudeGround": 13367.69140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.164207458496094,
+  "longitude": 7.676792144775391,
+  "altitudeSea": 15007.517578125,
+  "altitudeGround": 13317.3837890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.16300582885742,
+  "longitude": 7.674572944641113,
+  "altitudeSea": 15007.83203125,
+  "altitudeGround": 13274.1689453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.16183090209961,
+  "longitude": 7.672413349151611,
+  "altitudeSea": 15008.267578125,
+  "altitudeGround": 13262.4326171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.16063690185547,
+  "longitude": 7.670211315155029,
+  "altitudeSea": 15008.708984375,
+  "altitudeGround": 13284.4111328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.15941619873047,
+  "longitude": 7.667956352233887,
+  "altitudeSea": 15009.0625,
+  "altitudeGround": 13294.8125,
+  "onRunway": 0
+}, {
+  "latitude": 47.158226013183594,
+  "longitude": 7.665760517120361,
+  "altitudeSea": 15009.2060546875,
+  "altitudeGround": 13369.439453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.15703201293945,
+  "longitude": 7.663562774658203,
+  "altitudeSea": 15009.1181640625,
+  "altitudeGround": 13413.1474609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.155860900878906,
+  "longitude": 7.661401271820068,
+  "altitudeSea": 15008.84375,
+  "altitudeGround": 13422.5966796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.154685974121094,
+  "longitude": 7.659242153167725,
+  "altitudeSea": 15008.4658203125,
+  "altitudeGround": 13445.8095703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.15349197387695,
+  "longitude": 7.657039642333984,
+  "altitudeSea": 15008.056640625,
+  "altitudeGround": 13453.6396484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.15232849121094,
+  "longitude": 7.654896259307861,
+  "altitudeSea": 15007.7158203125,
+  "altitudeGround": 13453.44140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.15115737915039,
+  "longitude": 7.652740955352783,
+  "altitudeSea": 15007.4853515625,
+  "altitudeGround": 13445.474609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.14997482299805,
+  "longitude": 7.650563716888428,
+  "altitudeSea": 15007.35546875,
+  "altitudeGround": 13439.25390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.148765563964844,
+  "longitude": 7.648338794708252,
+  "altitudeSea": 15007.2802734375,
+  "altitudeGround": 13439.0712890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.14759826660156,
+  "longitude": 7.6461873054504395,
+  "altitudeSea": 15007.263671875,
+  "altitudeGround": 13449.1572265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.14641189575195,
+  "longitude": 7.6440043449401855,
+  "altitudeSea": 15007.263671875,
+  "altitudeGround": 13460.49609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.14521789550781,
+  "longitude": 7.641810894012451,
+  "altitudeSea": 15007.251953125,
+  "altitudeGround": 13469.576171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.144039154052734,
+  "longitude": 7.639638423919678,
+  "altitudeSea": 15007.2333984375,
+  "altitudeGround": 13445.2822265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.14285659790039,
+  "longitude": 7.637466907501221,
+  "altitudeSea": 15007.2119140625,
+  "altitudeGround": 13405.82421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.14167785644531,
+  "longitude": 7.63529634475708,
+  "altitudeSea": 15007.1904296875,
+  "altitudeGround": 13376.5341796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.14048767089844,
+  "longitude": 7.63310432434082,
+  "altitudeSea": 15007.1513671875,
+  "altitudeGround": 13372.640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.13928985595703,
+  "longitude": 7.630900859832764,
+  "altitudeSea": 15007.1044921875,
+  "altitudeGround": 13396.3388671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.138084411621094,
+  "longitude": 7.628686428070068,
+  "altitudeSea": 15007.0478515625,
+  "altitudeGround": 13405.595703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.136905670166016,
+  "longitude": 7.626516342163086,
+  "altitudeSea": 15007.0146484375,
+  "altitudeGround": 13393.7470703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.135704040527344,
+  "longitude": 7.624305725097656,
+  "altitudeSea": 15006.990234375,
+  "altitudeGround": 13384.130859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.13454055786133,
+  "longitude": 7.622161865234375,
+  "altitudeSea": 15006.9775390625,
+  "altitudeGround": 13379.125,
+  "onRunway": 0
+}, {
+  "latitude": 47.133338928222656,
+  "longitude": 7.6199517250061035,
+  "altitudeSea": 15006.9814453125,
+  "altitudeGround": 13375.216796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.13215255737305,
+  "longitude": 7.617768287658691,
+  "altitudeSea": 15006.9775390625,
+  "altitudeGround": 13378.974609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.1309928894043,
+  "longitude": 7.615638732910156,
+  "altitudeSea": 15006.95703125,
+  "altitudeGround": 13404.5361328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.12981414794922,
+  "longitude": 7.613469123840332,
+  "altitudeSea": 15006.9345703125,
+  "altitudeGround": 13414.0576171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.128639221191406,
+  "longitude": 7.611306190490723,
+  "altitudeSea": 15006.91015625,
+  "altitudeGround": 13422.248046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.1274528503418,
+  "longitude": 7.609118461608887,
+  "altitudeSea": 15006.890625,
+  "altitudeGround": 13427.1708984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.12627410888672,
+  "longitude": 7.606948375701904,
+  "altitudeSea": 15006.8701171875,
+  "altitudeGround": 13425.3056640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.12508010864258,
+  "longitude": 7.604754447937012,
+  "altitudeSea": 15006.853515625,
+  "altitudeGround": 13421.0595703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.1238899230957,
+  "longitude": 7.602559566497803,
+  "altitudeSea": 15006.8310546875,
+  "altitudeGround": 13417.615234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.12269592285156,
+  "longitude": 7.600359916687012,
+  "altitudeSea": 15006.810546875,
+  "altitudeGround": 13405.3779296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.121498107910156,
+  "longitude": 7.598155975341797,
+  "altitudeSea": 15006.80078125,
+  "altitudeGround": 13396.306640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.12032699584961,
+  "longitude": 7.596003532409668,
+  "altitudeSea": 15006.7841796875,
+  "altitudeGround": 13400.837890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.119163513183594,
+  "longitude": 7.593858242034912,
+  "altitudeSea": 15006.765625,
+  "altitudeGround": 13405.8701171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.117977142333984,
+  "longitude": 7.591670036315918,
+  "altitudeSea": 15006.744140625,
+  "altitudeGround": 13403.173828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.116783142089844,
+  "longitude": 7.589470386505127,
+  "altitudeSea": 15006.7060546875,
+  "altitudeGround": 13402.1328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.11558532714844,
+  "longitude": 7.587266445159912,
+  "altitudeSea": 15006.65234375,
+  "altitudeGround": 13399.97265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.114418029785156,
+  "longitude": 7.5851149559021,
+  "altitudeSea": 15006.6162109375,
+  "altitudeGround": 13397.888671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.11323165893555,
+  "longitude": 7.582930564880371,
+  "altitudeSea": 15006.5849609375,
+  "altitudeGround": 13395.7919921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.11203384399414,
+  "longitude": 7.580725193023682,
+  "altitudeSea": 15006.5732421875,
+  "altitudeGround": 13393.53515625,
+  "onRunway": 0
+}, {
+  "latitude": 47.11084747314453,
+  "longitude": 7.578537940979004,
+  "altitudeSea": 15006.568359375,
+  "altitudeGround": 13387.16015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.10966491699219,
+  "longitude": 7.5763630867004395,
+  "altitudeSea": 15006.5732421875,
+  "altitudeGround": 13383.7470703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.10845947265625,
+  "longitude": 7.574141502380371,
+  "altitudeSea": 15006.580078125,
+  "altitudeGround": 13383.4892578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.10728073120117,
+  "longitude": 7.571966648101807,
+  "altitudeSea": 15006.576171875,
+  "altitudeGround": 13383.4794921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.10609436035156,
+  "longitude": 7.569782257080078,
+  "altitudeSea": 15006.5703125,
+  "altitudeGround": 13382.7685546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.10487747192383,
+  "longitude": 7.567535400390625,
+  "altitudeSea": 15006.5634765625,
+  "altitudeGround": 13380.6640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.10369110107422,
+  "longitude": 7.5653557777404785,
+  "altitudeSea": 15006.544921875,
+  "altitudeGround": 13378.5869140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.10249328613281,
+  "longitude": 7.563142776489258,
+  "altitudeSea": 15006.5185546875,
+  "altitudeGround": 13376.5908203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.10133361816406,
+  "longitude": 7.561010837554932,
+  "altitudeSea": 15006.4970703125,
+  "altitudeGround": 13374.66796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.100128173828125,
+  "longitude": 7.558785438537598,
+  "altitudeSea": 15006.4912109375,
+  "altitudeGround": 13372.6923828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.09893035888672,
+  "longitude": 7.556576251983643,
+  "altitudeSea": 15006.5078125,
+  "altitudeGround": 13370.017578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.097740173339844,
+  "longitude": 7.554387092590332,
+  "altitudeSea": 15006.53125,
+  "altitudeGround": 13373.9560546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.0965576171875,
+  "longitude": 7.5522027015686035,
+  "altitudeSea": 15006.5498046875,
+  "altitudeGround": 13376.0927734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.095375061035156,
+  "longitude": 7.5500264167785645,
+  "altitudeSea": 15006.5771484375,
+  "altitudeGround": 13379.1748046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.09415817260742,
+  "longitude": 7.547786712646484,
+  "altitudeSea": 15006.6083984375,
+  "altitudeGround": 13380.74609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.09298324584961,
+  "longitude": 7.5456156730651855,
+  "altitudeSea": 15006.61328125,
+  "altitudeGround": 13381.8203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.091766357421875,
+  "longitude": 7.543375492095947,
+  "altitudeSea": 15006.59765625,
+  "altitudeGround": 13383.7919921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.09059524536133,
+  "longitude": 7.5412187576293945,
+  "altitudeSea": 15006.5849609375,
+  "altitudeGround": 13385.703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.08941650390625,
+  "longitude": 7.53904390335083,
+  "altitudeSea": 15006.5732421875,
+  "altitudeGround": 13388.2080078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.088218688964844,
+  "longitude": 7.536840915679932,
+  "altitudeSea": 15006.5458984375,
+  "altitudeGround": 13390.791015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.0870361328125,
+  "longitude": 7.534656047821045,
+  "altitudeSea": 15006.533203125,
+  "altitudeGround": 13389.7216796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.08583068847656,
+  "longitude": 7.532441139221191,
+  "altitudeSea": 15006.5224609375,
+  "altitudeGround": 13382.826171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.08466339111328,
+  "longitude": 7.53028678894043,
+  "altitudeSea": 15006.5146484375,
+  "altitudeGround": 13374.8544921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.083473205566406,
+  "longitude": 7.528092861175537,
+  "altitudeSea": 15006.501953125,
+  "altitudeGround": 13363.3203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.08229064941406,
+  "longitude": 7.525912284851074,
+  "altitudeSea": 15006.5009765625,
+  "altitudeGround": 13345.921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.081092834472656,
+  "longitude": 7.52370548248291,
+  "altitudeSea": 15006.5087890625,
+  "altitudeGround": 13308.703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.079891204833984,
+  "longitude": 7.521496295928955,
+  "altitudeSea": 15006.5166015625,
+  "altitudeGround": 13287.142578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.07869338989258,
+  "longitude": 7.519285202026367,
+  "altitudeSea": 15006.5068359375,
+  "altitudeGround": 13276.5615234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.07749557495117,
+  "longitude": 7.517082214355469,
+  "altitudeSea": 15006.4873046875,
+  "altitudeGround": 13265.0419921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.0762939453125,
+  "longitude": 7.514864921569824,
+  "altitudeSea": 15006.4619140625,
+  "altitudeGround": 13244.212890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.075077056884766,
+  "longitude": 7.512626647949219,
+  "altitudeSea": 15006.44140625,
+  "altitudeGround": 13245.1484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.073890686035156,
+  "longitude": 7.510438442230225,
+  "altitudeSea": 15006.439453125,
+  "altitudeGround": 13239.173828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.072689056396484,
+  "longitude": 7.508225440979004,
+  "altitudeSea": 15006.44921875,
+  "altitudeGround": 13247.0087890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.07150650024414,
+  "longitude": 7.50604772567749,
+  "altitudeSea": 15006.4619140625,
+  "altitudeGround": 13248.2734375,
+  "onRunway": 0
+}, {
+  "latitude": 47.07030487060547,
+  "longitude": 7.503834247589111,
+  "altitudeSea": 15006.4853515625,
+  "altitudeGround": 13239.8857421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.06913375854492,
+  "longitude": 7.501681327819824,
+  "altitudeSea": 15006.498046875,
+  "altitudeGround": 13231.0009765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.06794357299805,
+  "longitude": 7.499484539031982,
+  "altitudeSea": 15006.5029296875,
+  "altitudeGround": 13224.0888671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.066776275634766,
+  "longitude": 7.497337818145752,
+  "altitudeSea": 15006.515625,
+  "altitudeGround": 13223.4169921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.06560516357422,
+  "longitude": 7.495181083679199,
+  "altitudeSea": 15006.525390625,
+  "altitudeGround": 13217.05859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.064388275146484,
+  "longitude": 7.492936611175537,
+  "altitudeSea": 15006.49609375,
+  "altitudeGround": 13209.24609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.06317901611328,
+  "longitude": 7.4907121658325195,
+  "altitudeSea": 15006.4833984375,
+  "altitudeGround": 13192.5205078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.06201171875,
+  "longitude": 7.488567352294922,
+  "altitudeSea": 15006.482421875,
+  "altitudeGround": 13182.0859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.06084060668945,
+  "longitude": 7.4864091873168945,
+  "altitudeSea": 15006.4892578125,
+  "altitudeGround": 13177.16796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.05967330932617,
+  "longitude": 7.484256744384766,
+  "altitudeSea": 15006.4921875,
+  "altitudeGround": 13174.4951171875,
+  "onRunway": 0
+}, {
+  "latitude": 47.05849075317383,
+  "longitude": 7.482079029083252,
+  "altitudeSea": 15006.4814453125,
+  "altitudeGround": 13168.79296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.05728530883789,
+  "longitude": 7.479859352111816,
+  "altitudeSea": 15006.4765625,
+  "altitudeGround": 13132.259765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.05610275268555,
+  "longitude": 7.477682113647461,
+  "altitudeSea": 15006.4755859375,
+  "altitudeGround": 13117.63671875,
+  "onRunway": 0
+}, {
+  "latitude": 47.0549430847168,
+  "longitude": 7.4755473136901855,
+  "altitudeSea": 15006.486328125,
+  "altitudeGround": 13109.7021484375,
+  "onRunway": 0
+}, {
+  "latitude": 47.05375671386719,
+  "longitude": 7.47337007522583,
+  "altitudeSea": 15006.498046875,
+  "altitudeGround": 13106.333984375,
+  "onRunway": 0
+}, {
+  "latitude": 47.05257797241211,
+  "longitude": 7.471195220947266,
+  "altitudeSea": 15006.486328125,
+  "altitudeGround": 13116.16796875,
+  "onRunway": 0
+}, {
+  "latitude": 47.05137634277344,
+  "longitude": 7.468985557556152,
+  "altitudeSea": 15006.4697265625,
+  "altitudeGround": 13120.8759765625,
+  "onRunway": 0
+}, {
+  "latitude": 47.0501823425293,
+  "longitude": 7.466784954071045,
+  "altitudeSea": 15006.46875,
+  "altitudeGround": 13132.1982421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.048973083496094,
+  "longitude": 7.464565277099609,
+  "altitudeSea": 15006.4619140625,
+  "altitudeGround": 13146.1953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.04779815673828,
+  "longitude": 7.462400913238525,
+  "altitudeSea": 15006.458984375,
+  "altitudeGround": 13166.7255859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.04658889770508,
+  "longitude": 7.460172176361084,
+  "altitudeSea": 15006.4599609375,
+  "altitudeGround": 13171.5849609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.0453987121582,
+  "longitude": 7.4579877853393555,
+  "altitudeSea": 15006.4677734375,
+  "altitudeGround": 13181.3642578125,
+  "onRunway": 0
+}, {
+  "latitude": 47.044212341308594,
+  "longitude": 7.455801963806152,
+  "altitudeSea": 15006.4755859375,
+  "altitudeGround": 13188.0068359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.04304504394531,
+  "longitude": 7.453653335571289,
+  "altitudeSea": 15006.4794921875,
+  "altitudeGround": 13207.9033203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.0418701171875,
+  "longitude": 7.451490879058838,
+  "altitudeSea": 15006.4765625,
+  "altitudeGround": 13183.359375,
+  "onRunway": 0
+}, {
+  "latitude": 47.040687561035156,
+  "longitude": 7.449314594268799,
+  "altitudeSea": 15006.4697265625,
+  "altitudeGround": 13125.9912109375,
+  "onRunway": 0
+}, {
+  "latitude": 47.03947830200195,
+  "longitude": 7.447090148925781,
+  "altitudeSea": 15006.4658203125,
+  "altitudeGround": 13094.525390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.03829574584961,
+  "longitude": 7.444912433624268,
+  "altitudeSea": 15006.46875,
+  "altitudeGround": 13122.0947265625,
+  "onRunway": 0
+}, {
+  "latitude": 47.0371208190918,
+  "longitude": 7.442753314971924,
+  "altitudeSea": 15006.4658203125,
+  "altitudeGround": 13195.048828125,
+  "onRunway": 0
+}, {
+  "latitude": 47.03592300415039,
+  "longitude": 7.440549850463867,
+  "altitudeSea": 15006.4638671875,
+  "altitudeGround": 13245.8681640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.03475570678711,
+  "longitude": 7.438404560089111,
+  "altitudeSea": 15006.4658203125,
+  "altitudeGround": 13270.564453125,
+  "onRunway": 0
+}, {
+  "latitude": 47.03356170654297,
+  "longitude": 7.436207294464111,
+  "altitudeSea": 15006.4736328125,
+  "altitudeGround": 13274.5078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.03239059448242,
+  "longitude": 7.434047698974609,
+  "altitudeSea": 15006.486328125,
+  "altitudeGround": 13271.0244140625,
+  "onRunway": 0
+}, {
+  "latitude": 47.03122329711914,
+  "longitude": 7.431905746459961,
+  "altitudeSea": 15006.5078125,
+  "altitudeGround": 13245.7724609375,
+  "onRunway": 0
+}, {
+  "latitude": 47.030033111572266,
+  "longitude": 7.429713726043701,
+  "altitudeSea": 15006.5263671875,
+  "altitudeGround": 13165.7001953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.02885055541992,
+  "longitude": 7.427541732788086,
+  "altitudeSea": 15006.5185546875,
+  "altitudeGround": 13032.5185546875,
+  "onRunway": 0
+}, {
+  "latitude": 47.027679443359375,
+  "longitude": 7.425387859344482,
+  "altitudeSea": 15006.5263671875,
+  "altitudeGround": 13003.236328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.0264778137207,
+  "longitude": 7.423178195953369,
+  "altitudeSea": 15006.5361328125,
+  "altitudeGround": 12982.5,
+  "onRunway": 0
+}, {
+  "latitude": 47.025306701660156,
+  "longitude": 7.421021461486816,
+  "altitudeSea": 15006.5400390625,
+  "altitudeGround": 12975.376953125,
+  "onRunway": 0
+}, {
+  "latitude": 47.02409744262695,
+  "longitude": 7.418802738189697,
+  "altitudeSea": 15006.5390625,
+  "altitudeGround": 12942.0712890625,
+  "onRunway": 0
+}, {
+  "latitude": 47.022911071777344,
+  "longitude": 7.416629314422607,
+  "altitudeSea": 15006.533203125,
+  "altitudeGround": 12897.630859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.021728515625,
+  "longitude": 7.414458751678467,
+  "altitudeSea": 15006.529296875,
+  "altitudeGround": 12902.181640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.02054977416992,
+  "longitude": 7.412291526794434,
+  "altitudeSea": 15006.529296875,
+  "altitudeGround": 12895.720703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.01935958862305,
+  "longitude": 7.410112380981445,
+  "altitudeSea": 15006.5302734375,
+  "altitudeGround": 12883.3330078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.01816940307617,
+  "longitude": 7.407932281494141,
+  "altitudeSea": 15006.5341796875,
+  "altitudeGround": 12850.9365234375,
+  "onRunway": 0
+}, {
+  "latitude": 47.01698684692383,
+  "longitude": 7.405763149261475,
+  "altitudeSea": 15006.5322265625,
+  "altitudeGround": 12837.3544921875,
+  "onRunway": 0
+}, {
+  "latitude": 47.01582336425781,
+  "longitude": 7.403634548187256,
+  "altitudeSea": 15006.53125,
+  "altitudeGround": 12800.248046875,
+  "onRunway": 0
+}, {
+  "latitude": 47.014644622802734,
+  "longitude": 7.4014787673950195,
+  "altitudeSea": 15006.5048828125,
+  "altitudeGround": 12775.3330078125,
+  "onRunway": 0
+}, {
+  "latitude": 47.0134391784668,
+  "longitude": 7.3992695808410645,
+  "altitudeSea": 15006.4658203125,
+  "altitudeGround": 12779.57421875,
+  "onRunway": 0
+}, {
+  "latitude": 47.01224136352539,
+  "longitude": 7.397079944610596,
+  "altitudeSea": 15006.439453125,
+  "altitudeGround": 12793.3203125,
+  "onRunway": 0
+}, {
+  "latitude": 47.01104736328125,
+  "longitude": 7.394889831542969,
+  "altitudeSea": 15006.427734375,
+  "altitudeGround": 12807.1015625,
+  "onRunway": 0
+}, {
+  "latitude": 47.00983810424805,
+  "longitude": 7.392683982849121,
+  "altitudeSea": 15006.423828125,
+  "altitudeGround": 12812.8681640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.00864791870117,
+  "longitude": 7.390507221221924,
+  "altitudeSea": 15006.427734375,
+  "altitudeGround": 12823.9775390625,
+  "onRunway": 0
+}, {
+  "latitude": 47.00747299194336,
+  "longitude": 7.388356685638428,
+  "altitudeSea": 15006.458984375,
+  "altitudeGround": 12859.595703125,
+  "onRunway": 0
+}, {
+  "latitude": 47.006282806396484,
+  "longitude": 7.386180877685547,
+  "altitudeSea": 15006.505859375,
+  "altitudeGround": 12883.55859375,
+  "onRunway": 0
+}, {
+  "latitude": 47.00507736206055,
+  "longitude": 7.383978366851807,
+  "altitudeSea": 15006.5458984375,
+  "altitudeGround": 12882.328125,
+  "onRunway": 0
+}, {
+  "latitude": 47.0038948059082,
+  "longitude": 7.3818230628967285,
+  "altitudeSea": 15006.5751953125,
+  "altitudeGround": 12944.779296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.0026969909668,
+  "longitude": 7.379630088806152,
+  "altitudeSea": 15006.5732421875,
+  "altitudeGround": 12965.0029296875,
+  "onRunway": 0
+}, {
+  "latitude": 47.001495361328125,
+  "longitude": 7.377440452575684,
+  "altitudeSea": 15006.560546875,
+  "altitudeGround": 12977.56640625,
+  "onRunway": 0
+}, {
+  "latitude": 47.00028991699219,
+  "longitude": 7.375239849090576,
+  "altitudeSea": 15006.5458984375,
+  "altitudeGround": 12963.19140625,
+  "onRunway": 0
+}, {
+  "latitude": 46.999107360839844,
+  "longitude": 7.373082637786865,
+  "altitudeSea": 15006.52734375,
+  "altitudeGround": 12955.3828125,
+  "onRunway": 0
+}, {
+  "latitude": 46.997928619384766,
+  "longitude": 7.370926856994629,
+  "altitudeSea": 15006.5048828125,
+  "altitudeGround": 12941.470703125,
+  "onRunway": 0
+}, {
+  "latitude": 46.996742248535156,
+  "longitude": 7.36876106262207,
+  "altitudeSea": 15006.48828125,
+  "altitudeGround": 12926.8076171875,
+  "onRunway": 0
+}, {
+  "latitude": 46.99553298950195,
+  "longitude": 7.3665595054626465,
+  "altitudeSea": 15006.4794921875,
+  "altitudeGround": 12920.15234375,
+  "onRunway": 0
+}, {
+  "latitude": 46.994319915771484,
+  "longitude": 7.364346027374268,
+  "altitudeSea": 15006.4873046875,
+  "altitudeGround": 12914.146484375,
+  "onRunway": 0
+}, {
+  "latitude": 46.993106842041016,
+  "longitude": 7.362132549285889,
+  "altitudeSea": 15006.505859375,
+  "altitudeGround": 12903.7783203125,
+  "onRunway": 0
+}, {
+  "latitude": 46.99193572998047,
+  "longitude": 7.359997272491455,
+  "altitudeSea": 15006.515625,
+  "altitudeGround": 12875.529296875,
+  "onRunway": 0
+}, {
+  "latitude": 46.9907341003418,
+  "longitude": 7.3578057289123535,
+  "altitudeSea": 15006.5146484375,
+  "altitudeGround": 12844.4130859375,
+  "onRunway": 0
+}, {
+  "latitude": 46.98952102661133,
+  "longitude": 7.355591297149658,
+  "altitudeSea": 15006.5185546875,
+  "altitudeGround": 12855.080078125,
+  "onRunway": 0
+}, {
+  "latitude": 46.98833084106445,
+  "longitude": 7.353422164916992,
+  "altitudeSea": 15006.5166015625,
+  "altitudeGround": 12864.974609375,
+  "onRunway": 0
+}, {
+  "latitude": 46.98713302612305,
+  "longitude": 7.351236343383789,
+  "altitudeSea": 15006.5185546875,
+  "altitudeGround": 12888.6279296875,
+  "onRunway": 0
+}, {
+  "latitude": 46.98633575439453,
+  "longitude": 7.3497843742370605,
+  "altitudeSea": 15006.5078125,
+  "altitudeGround": 12900.05078125,
+  "onRunway": 0
+}, {
+  "latitude": 46.98537826538086,
+  "longitude": 7.3480401039123535,
+  "altitudeSea": 15006.435546875,
+  "altitudeGround": 13014.4052734375,
+  "onRunway": 0
+}, {
+  "latitude": 46.9842414855957,
+  "longitude": 7.345968246459961,
+  "altitudeSea": 15006.1708984375,
+  "altitudeGround": 13113.07421875,
+  "onRunway": 0
+}, {
+  "latitude": 46.98280715942383,
+  "longitude": 7.343350887298584,
+  "altitudeSea": 15005.533203125,
+  "altitudeGround": 13031.3837890625,
+  "onRunway": 0
+}, {
+  "latitude": 46.9814338684082,
+  "longitude": 7.340841770172119,
+  "altitudeSea": 15004.6748046875,
+  "altitudeGround": 13053.6630859375,
+  "onRunway": 0
+}, {
+  "latitude": 46.98008346557617,
+  "longitude": 7.338376045227051,
+  "altitudeSea": 15003.7392578125,
+  "altitudeGround": 13084.94921875,
+  "onRunway": 0
+}, {
+  "latitude": 46.978858947753906,
+  "longitude": 7.336143493652344,
+  "altitudeSea": 15002.955078125,
+  "altitudeGround": 13039.125,
+  "onRunway": 0
+}, {
+  "latitude": 46.9776725769043,
+  "longitude": 7.333972930908203,
+  "altitudeSea": 15002.330078125,
+  "altitudeGround": 13020.8642578125,
+  "onRunway": 0
+}, {
+  "latitude": 46.97649383544922,
+  "longitude": 7.3318190574646,
+  "altitudeSea": 15001.8876953125,
+  "altitudeGround": 13038.8916015625,
+  "onRunway": 0
+}, {
+  "latitude": 46.97528839111328,
+  "longitude": 7.329613208770752,
+  "altitudeSea": 15001.6337890625,
+  "altitudeGround": 13071.72265625,
+  "onRunway": 0
+}, {
+  "latitude": 46.97408676147461,
+  "longitude": 7.327419757843018,
+  "altitudeSea": 15001.576171875,
+  "altitudeGround": 13112.3857421875,
+  "onRunway": 0
+}, {
+  "latitude": 46.9728889465332,
+  "longitude": 7.325230598449707,
+  "altitudeSea": 15001.69140625,
+  "altitudeGround": 13174.90234375,
+  "onRunway": 0
+}, {
+  "latitude": 46.9716911315918,
+  "longitude": 7.323036193847656,
+  "altitudeSea": 15001.9423828125,
+  "altitudeGround": 13200.4482421875,
+  "onRunway": 0
+}, {
+  "latitude": 46.97048568725586,
+  "longitude": 7.320833683013916,
+  "altitudeSea": 15002.263671875,
+  "altitudeGround": 13241.1337890625,
+  "onRunway": 0
+}, {
+  "latitude": 46.96931076049805,
+  "longitude": 7.318688869476318,
+  "altitudeSea": 15002.5947265625,
+  "altitudeGround": 13316.359375,
+  "onRunway": 0
+}, {
+  "latitude": 46.9681396484375,
+  "longitude": 7.316542148590088,
+  "altitudeSea": 15002.9287109375,
+  "altitudeGround": 13393.8134765625,
+  "onRunway": 0
+}, {
+  "latitude": 46.96695327758789,
+  "longitude": 7.314373970031738,
+  "altitudeSea": 15003.236328125,
+  "altitudeGround": 13396.62109375,
+  "onRunway": 0
+}, {
+  "latitude": 46.96575927734375,
+  "longitude": 7.31219482421875,
+  "altitudeSea": 15003.4970703125,
+  "altitudeGround": 13397.359375,
+  "onRunway": 0
+}, {
+  "latitude": 46.964569091796875,
+  "longitude": 7.310015678405762,
+  "altitudeSea": 15003.7041015625,
+  "altitudeGround": 13398.0107421875,
+  "onRunway": 0
+}, {
+  "latitude": 46.96339797973633,
+  "longitude": 7.307876110076904,
+  "altitudeSea": 15003.865234375,
+  "altitudeGround": 13398.9091796875,
+  "onRunway": 0
+}, {
+  "latitude": 46.962188720703125,
+  "longitude": 7.305665493011475,
+  "altitudeSea": 15003.98828125,
+  "altitudeGround": 13353.298828125,
+  "onRunway": 0
+}, {
+  "latitude": 46.96100616455078,
+  "longitude": 7.303503513336182,
+  "altitudeSea": 15004.0888671875,
+  "altitudeGround": 13233.4609375,
+  "onRunway": 0
+}, {
+  "latitude": 46.9598274230957,
+  "longitude": 7.301353454589844,
+  "altitudeSea": 15004.1904296875,
+  "altitudeGround": 13158.009765625,
+  "onRunway": 0
+}, {
+  "latitude": 46.958778381347656,
+  "longitude": 7.299429893493652,
+  "altitudeSea": 15004.2939453125,
+  "altitudeGround": 13093.17578125,
+  "onRunway": 0
+}, {
+  "latitude": 46.95745849609375,
+  "longitude": 7.297021389007568,
+  "altitudeSea": 15004.41796875,
+  "altitudeGround": 12990.546875,
+  "onRunway": 0
+}, {
+  "latitude": 46.956268310546875,
+  "longitude": 7.2948455810546875,
+  "altitudeSea": 15004.556640625,
+  "altitudeGround": 12945.5205078125,
+  "onRunway": 0
+}, {
+  "latitude": 46.9550666809082,
+  "longitude": 7.292652606964111,
+  "altitudeSea": 15004.7060546875,
+  "altitudeGround": 12857.1162109375,
+  "onRunway": 0
+}, {
+  "latitude": 46.95387649536133,
+  "longitude": 7.290478706359863,
+  "altitudeSea": 15004.8544921875,
+  "altitudeGround": 12781.0654296875,
+  "onRunway": 0
+}, {
+  "latitude": 46.95269775390625,
+  "longitude": 7.288322925567627,
+  "altitudeSea": 15004.9912109375,
+  "altitudeGround": 12770.1826171875,
+  "onRunway": 0
+}, {
+  "latitude": 46.95149230957031,
+  "longitude": 7.2861127853393555,
+  "altitudeSea": 15005.130859375,
+  "altitudeGround": 12729.48046875,
+  "onRunway": 0
+}, {
+  "latitude": 46.950294494628906,
+  "longitude": 7.283924102783203,
+  "altitudeSea": 15005.2568359375,
+  "altitudeGround": 12732.181640625,
+  "onRunway": 0
+}, {
+  "latitude": 46.94908142089844,
+  "longitude": 7.28170108795166,
+  "altitudeSea": 15005.373046875,
+  "altitudeGround": 12760.8310546875,
+  "onRunway": 0
+}]

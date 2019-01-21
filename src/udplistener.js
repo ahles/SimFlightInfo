@@ -29,7 +29,8 @@ function readMessage(msg) {
 
 module.exports = {
   initialized: false,
-  debug: false,
+  log: false,
+  dump: false,
   udpHost: '127.0.0.1',
   udpPort: 49000,
   udpClient: null,
@@ -51,6 +52,9 @@ module.exports = {
       this.udpClient.on('message', (msg) => {
         const position = readMessage(msg);
         win.webContents.send('position', position);
+        if (isDevelopment && this.log) {
+          this.appendPositionToLog(position);
+        }
         if (isDevelopment && this.debug) {
           console.log(`🧭  Position data received: Lat ${position.latitude} | Lon ${position.longitude} | Alt ${position.altitude}`);
         }
@@ -63,4 +67,12 @@ module.exports = {
   close() {
     this.udpClient.close();
   },
+  appendPositionToLog(position){
+    var fs = require('fs');
+    var logFile = fs.readFileSync('./src/log.json');
+    var log = JSON.parse(logFile);
+    log.push(position);
+    var logJSON = JSON.stringify(log);
+    fs.writeFileSync('./src/log.json', logJSON);
+  }
 };
