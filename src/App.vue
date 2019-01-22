@@ -96,6 +96,19 @@
     <v-content v-bind:class="{ overlay__blur: !data.receivingData }">
       <div class="position-marker" v-if="data.mapLockedToPosition"></div>
       <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" :view="data.view" />
+      <div>
+        <v-alert
+          v-model="simulating"
+          type="info"
+          class="simulating"
+        >
+          <strong>Simulating</strong>
+          <v-spacer />
+          <v-btn color="info" ripple fab small @click.stop="stopSimulation" class="simulating__stop">
+            <v-icon dark>close</v-icon>
+          </v-btn>
+        </v-alert>
+      </div>
     </v-content>
     <v-btn v-if="!drawer" dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="menu">
       <v-icon dark>flight</v-icon>
@@ -136,6 +149,7 @@ export default {
   data: () => ({
     drawer: false,
     window: null,
+    simulating: false,
     viewOptions: [
       'Map',
       'Satellite',
@@ -155,7 +169,14 @@ export default {
   },
   methods: {
     simulate() {
+      this.$store.commit('UPDATE_SIMULATION_ACTIVE', true);
       this.$store.dispatch('simulateData');
+      this.simulating = true;
+    },
+    stopSimulation() {
+      this.$store.commit('UPDATE_SIMULATION_ACTIVE', false);
+      this.$store.commit('UPDATE_RECEIVING_DATA', false);
+      this.simulating = false;
     },
     convertFeetToMeter(ft) {
       return ft * 0.3048;
@@ -318,6 +339,17 @@ html {
 
 .simulate {
   margin-top: 30px;
+  .v-icon {
+    margin-right: 10px;
+  }
+}
+.simulating {
+  margin-top: 0;
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .position-marker {

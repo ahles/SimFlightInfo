@@ -5,8 +5,6 @@ const { ipcRenderer } = require('electron');
 
 Vue.use(Vuex);
 
-const globalPositions = [];
-
 export default new Vuex.Store({
   state: {
     data: {
@@ -20,6 +18,7 @@ export default new Vuex.Store({
       zoomLevel: 10,
       view: 'Map',
     },
+    simulationActive: false,
   },
   mutations: {
     /* eslint-disable no-param-reassign */
@@ -50,6 +49,9 @@ export default new Vuex.Store({
     UPDATE_VIEW: (state, view) => {
       state.data.view = view;
     },
+    UPDATE_SIMULATION_ACTIVE: (state, simulationActive) => {
+      state.simulationActive = simulationActive;
+    },
     /* eslint-enable no-param-reassign */
   },
   actions: {
@@ -58,11 +60,11 @@ export default new Vuex.Store({
       if (!state.data.receivingData) {
         commit('UPDATE_RECEIVING_DATA', true);
       }
-      for (var i = 0; i < positions.length; i++) {
+      for (let i = 0; i < positions.length; i++) {
         ((x, pos) => {
           if (typeof positions[i] !== 'undefined') {
             setTimeout(() => {
-              if (typeof pos[x] !== 'undefined') {
+              if (state.simulationActive && typeof pos[x] !== 'undefined') {
                 commit('UPDATE_LATITUDE', pos[x].latitude);
                 commit('UPDATE_LONGITUDE', pos[x].longitude);
                 commit('UPDATE_ALTITUDE_SEA', pos[x].altitudeSea);
@@ -108,7 +110,3 @@ export default new Vuex.Store({
     },
   },
 });
-
-function delay(ms) {
-  return new Promise(function (resolve) { return setTimeout(resolve, ms); });
-}
