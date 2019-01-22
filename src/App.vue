@@ -99,13 +99,14 @@
       <div>
         <v-alert
           v-model="simulating"
-          type="info"
+          type="warning"
           class="simulating"
+          icon="cast"
         >
           <strong>Simulating</strong>
           <v-spacer />
-          <v-btn color="info" ripple fab small @click.stop="stopSimulation" class="simulating__stop">
-            <v-icon dark>close</v-icon>
+          <v-btn title="stop" color="warning" ripple outline small @click.stop="stopSimulation" class="simulating__stop">
+            <v-icon dark>cancel</v-icon>
           </v-btn>
         </v-alert>
       </div>
@@ -174,9 +175,7 @@ export default {
       this.simulating = true;
     },
     stopSimulation() {
-      this.$store.commit('UPDATE_SIMULATION_ACTIVE', false);
-      this.$store.commit('UPDATE_RECEIVING_DATA', false);
-      this.simulating = false;
+      this.window.reload();
     },
     convertFeetToMeter(ft) {
       return ft * 0.3048;
@@ -345,10 +344,20 @@ html {
 }
 .simulating {
   margin-top: 0;
+  padding: 8px 16px;
   div {
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+  .v-icon {
+    color: white !important;
+  }
+  &__stop {
+    min-width: 40px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
   }
 }
 
