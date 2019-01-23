@@ -365,11 +365,11 @@ html {
   width: 25px;
   height: 41px;
   position: absolute;
-  background-image: url('/img/marker-icon.png');
+  background-image: url('./assets/images/marker.png');
   position: absolute;
-  top: 50%;
+  top: calc(50% + 5px);
   left: 50%;
-  transform: translate3d(-50%, calc(-50% - 20px), 0);
+  transform: translate3d(-50%, -50%, 0);
   z-index: 4;
 }
 

@@ -86,7 +86,7 @@ export default {
         center: [this.latitude, this.longitude],
         zoom: this.zoomLevel,
         zoomControl: false,
-        // renderer: L.canvas(),
+        renderer: L.canvas(),
       });
 
       this.tileLayer = L.tileLayer(
@@ -96,9 +96,6 @@ export default {
 
       this.marker = L.marker(
         [this.latitude, this.longitude],
-        {
-          // rotationAngle: 45,
-        },
       ).addTo(this.map);
     },
     positionMarkerAndSetMapView() {
@@ -112,34 +109,14 @@ export default {
         if (this.marker === null) { // eslint-disable-line no-lonely-if
           this.marker = L.marker(
             [this.latitude, this.longitude],
-            {
-              // rotationAngle: 45,
-            },
           ).addTo(this.map);
         } else {
           this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
         }
       }
-      // this.marker.setRotationAngle(this.calculateAngle());
 
       this.previousLatitude = this.latitude;
       this.previousLongitude = this.longitude;
-    },
-    calculateAngle() {
-      // not exact, needs improvement. something wrong? my translation?
-      // https://stackoverflow.com/questions/3932502/calculate-angle-between-two-latitude-longitude-points
-      const distanceLongitude = (this.longitude - this.previousLongitude);
-
-      const y = Math.sin(distanceLongitude) * Math.cos(this.latitude);
-      const x = Math.cos(this.previousLatitude) * Math.sin(this.latitude) - Math.sin(this.previousLatitude) * Math.cos(this.latitude) * Math.cos(distanceLongitude);
-
-      let angle = Math.atan2(y, x);
-
-      angle *= (180 / Math.PI);
-      angle = (angle + 360) % 360;
-      angle = 360 - angle;
-
-      return angle;
     },
   },
 };
