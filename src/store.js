@@ -56,10 +56,11 @@ export default new Vuex.Store({
   },
   actions: {
     simulateData: ({ commit, state }) => {
-      const positions = require('./log.json'); // eslint-disable-line
+      const positions = require('./example-flight.json'); // eslint-disable-line
       if (!state.data.receivingData) {
         commit('UPDATE_RECEIVING_DATA', true);
       }
+      commit('UPDATE_ZOOM_LEVEL', 14);
       for (let i = 0; i < positions.length; i++) {
         ((x, pos) => {
           if (typeof positions[i] !== 'undefined') {

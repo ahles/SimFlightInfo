@@ -367,10 +367,13 @@ html {
   position: absolute;
   background-image: url('./assets/images/marker.png');
   position: absolute;
-  top: calc(50% + 5px);
+  top: calc(50% + 9px);
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   z-index: 4;
+}
+.leaflet-container .leaflet-marker-pane img {
+  margin-top: -14px !important;
 }
 
 .app-icon {
