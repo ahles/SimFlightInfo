@@ -362,12 +362,12 @@ html {
 }
 
 .position-marker {
-  width: 25px;
-  height: 41px;
+  width: 40px;
+  height: 40px;
   position: absolute;
-  background-image: url('./assets/images/marker.png');
+  background-image: url('./assets/images/plane.svg');
   position: absolute;
-  top: calc(50% + 9px);
+  top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   z-index: 4;
