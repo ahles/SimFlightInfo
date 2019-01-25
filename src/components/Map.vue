@@ -129,7 +129,6 @@ export default {
       this.previousLongitude = this.longitude;
     },
     calculateAngle() {
-      // not exact, needs improvement. something wrong?
       // https://stackoverflow.com/questions/3932502/calculate-angle-between-two-latitude-longitude-points
       const distanceLongitude = (this.longitude - this.previousLongitude);
       const y = Math.sin(distanceLongitude) * Math.cos(this.latitude);
