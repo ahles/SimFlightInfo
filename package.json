@@ -15,7 +15,9 @@
   },
   "dependencies": {
     "bufferutil": "^4.0.1",
+    "esri-leaflet": "^2.2.3",
     "leaflet": "^1.4.0",
+    "leaflet-rotatedmarker": "^0.2.0",
     "utf-8-validate": "^5.0.2",
     "uws": "10.148.1",
     "vue": "^2.5.21",

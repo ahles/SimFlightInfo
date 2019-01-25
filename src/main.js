@@ -7,12 +7,16 @@ import App from './App.vue';
 import store from './store';
 
 require('../node_modules/leaflet/dist/leaflet.css');
+require('../node_modules/leaflet-rotatedmarker/leaflet.rotatedMarker.js');
 
 delete L.Icon.Default.prototype._getIconUrl; // eslint-disable-line no-underscore-dangle
 
 L.Icon.Default.mergeOptions({
-  iconSize: [25, 25],
+  // iconSize: [25, 25],
   /* eslint-disable global-require */
+  // iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  // iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  // shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
   iconUrl: require('./assets/images/marker.png'),
   /* eslint-enable global-require */
 });

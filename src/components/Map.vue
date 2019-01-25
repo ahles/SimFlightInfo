@@ -40,10 +40,10 @@ export default {
     return {
       map: null,
       marker: null,
+      angle: 0,
       previousLatitude: 0,
       previousLongitude: 0,
       tileLayer: null,
-      // https://developers.arcgis.com/documentation/core-concepts/security-and-authentication/accessing-arcgis-online-services/
       mapLayers: {
         Map: {
           layerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -97,27 +97,52 @@ export default {
 
       this.marker = L.marker(
         [this.latitude, this.longitude],
+        {
+          rotationAngle: this.angle,
+        },
       ).addTo(this.map);
     },
     positionMarkerAndSetMapView() {
+      this.calculateAngle();
       if (this.mapLockedToPosition) {
         if (this.marker !== null) {
           this.map.removeLayer(this.marker);
           this.marker = null;
         }
+        this.rotateCSSMarker();
         this.map.setView([this.latitude, this.longitude]);
       } else {
         if (this.marker === null) { // eslint-disable-line no-lonely-if
           this.marker = L.marker(
             [this.latitude, this.longitude],
+            {
+              rotationAngle: this.angle,
+            },
           ).addTo(this.map);
         } else {
           this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
+          this.marker.setRotationAngle(this.angle);
         }
       }
 
       this.previousLatitude = this.latitude;
       this.previousLongitude = this.longitude;
+    },
+    calculateAngle() {
+      // not exact, needs improvement. something wrong?
+      // https://stackoverflow.com/questions/3932502/calculate-angle-between-two-latitude-longitude-points
+      const distanceLongitude = (this.longitude - this.previousLongitude);
+      const y = Math.sin(distanceLongitude) * Math.cos(this.latitude);
+      const x = Math.cos(this.previousLatitude) * Math.sin(this.latitude) - Math.sin(this.previousLatitude) * Math.cos(this.latitude) * Math.cos(distanceLongitude);
+      let angle = Math.atan2(y, x);
+      angle *= (180 / Math.PI);
+      angle = (angle + 360) % 360;
+      angle = 360 - angle;
+      this.angle = angle;
+    },
+    rotateCSSMarker() {
+      const marker = document.getElementsByClassName('position-marker')[0];
+      marker.style.transform = `rotate(${this.angle}deg)`;
     },
   },
 };
