@@ -43,6 +43,7 @@ export default {
       previousLatitude: 0,
       previousLongitude: 0,
       tileLayer: null,
+      // https://developers.arcgis.com/documentation/core-concepts/security-and-authentication/accessing-arcgis-online-services/
       mapLayers: {
         Map: {
           layerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
