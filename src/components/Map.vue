@@ -51,11 +51,11 @@ export default {
         },
         Satellite: {
           layerUrl: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-          layerOptions: { attribution: 'Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' },
+          layerOptions: { attribution: 'Powered by <a href="https://www.esri.com">Esri</a>: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' },
         },
         Topo: {
           layerUrl: 'http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
-          layerOptions: { attribution: 'Tiles © Esri — Sources: Esri, HERE, Garmin, Intermap, INCREMENT P, GEBCO, USGS, FAO, NPS, NRCan, GeoBase, IGN, Kadaster NL, Ordnance Survey, Esri Japan, METI, mapwithme, NOSTRA, © OpenStreetMap contributors, and the GIS user community' },
+          layerOptions: { attribution: 'Powered by <a href="https://www.esri.com">Esri</a>: Esri, HERE, Garmin, Intermap, INCREMENT P, GEBCO, USGS, FAO, NPS, NRCan, GeoBase, IGN, Kadaster NL, Ordnance Survey, Esri Japan, METI, mapwithme, NOSTRA, © OpenStreetMap contributors, and the GIS user community' },
         },
       },
     };
