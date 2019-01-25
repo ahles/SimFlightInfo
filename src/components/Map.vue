@@ -109,7 +109,7 @@ export default {
           this.map.removeLayer(this.marker);
           this.marker = null;
         }
-        this.rotateCSSMarker();
+        this.rotateFixedMarker();
         this.map.setView([this.latitude, this.longitude]);
       } else {
         if (this.marker === null) { // eslint-disable-line no-lonely-if
@@ -139,7 +139,7 @@ export default {
       angle = 360 - angle;
       this.angle = angle;
     },
-    rotateCSSMarker() {
+    rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
       marker.style.transform = `rotate(${this.angle}deg)`;
     },
