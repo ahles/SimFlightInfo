@@ -1,4 +1,4 @@
-# xpvuemap
+# whereismyplane
 
 Electron-APP that listens to the position information sent by X-Plane 11 (over UDP) and displays the current location on a map.
 
@@ -26,18 +26,3 @@ yarn run test
 ```
 yarn run lint
 ```
-
-### Run your unit tests
-```
-yarn run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-
-# Notes
-
-- How handle uws dead? https://www.npmjs.com/package/uws
-
-- Electron fixed to 3.1.1
