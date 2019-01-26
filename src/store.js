@@ -56,7 +56,7 @@ export default new Vuex.Store({
   },
   actions: {
     simulateData: ({ commit, state }) => {
-      const positions = require('./example-flight.json'); // eslint-disable-line
+      const positions = require('./assets/example-flight.json'); // eslint-disable-line
       if (!state.data.receivingData) {
         commit('UPDATE_RECEIVING_DATA', true);
       }

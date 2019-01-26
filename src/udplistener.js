@@ -30,7 +30,7 @@ function readMessage(msg) {
 module.exports = {
   initialized: false,
   log: false,
-  dump: false,
+  logFile: './src/assets/log.json',
   udpHost: '127.0.0.1',
   udpPort: 49000,
   udpClient: null,
@@ -69,10 +69,10 @@ module.exports = {
   },
   appendPositionToLog(position){
     var fs = require('fs');
-    var logFile = fs.readFileSync('./src/log.json');
+    var logFile = fs.readFileSync(this.logFile);
     var log = JSON.parse(logFile);
     log.push(position);
     var logJSON = JSON.stringify(log);
-    fs.writeFileSync('./src/log.json', logJSON);
+    fs.writeFileSync(this.logFile, logJSON);
   }
 };

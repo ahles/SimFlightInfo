@@ -94,7 +94,11 @@
       </v-btn>
     </v-toolbar>
     <v-content v-bind:class="{ overlay__blur: !data.receivingData }">
-      <div class="position-marker" v-if="data.mapLockedToPosition"></div>
+      <div class="position-marker" :class="data.view.toLowerCase()" v-if="data.mapLockedToPosition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+          <path d="M38.186 27.21v-3.596L22.95 14.622v-9.89c0-1.493-1.276-2.698-2.857-2.698-1.58 0-2.857 1.205-2.857 2.697v9.891L2 23.614v3.596l15.236-4.496v9.891l-3.809 2.698V38l6.666-1.798L26.76 38v-2.697l-3.809-2.698v-9.89z" />
+        </svg>
+      </div>
       <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" :view="data.view" />
       <div>
         <v-alert
@@ -365,15 +369,26 @@ html {
   width: 40px;
   height: 40px;
   position: absolute;
-  background-image: url('./assets/images/plane.svg');
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+  transform-origin: center center;
   transform: translate3d(-50%, -50%, 0);
   z-index: 4;
+  filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
+
+  &.satellite {
+    svg {
+      fill: #fb8c00;
+    }
+  }
 }
 .leaflet-container .leaflet-marker-pane img {
-  margin-top: -14px !important;
+  margin-top: -30px !important;
+  margin-left: 10px !important;
+  filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
+    svg {
+      fill: #fb8c00;
+    }
 }
 
 .app-icon {
