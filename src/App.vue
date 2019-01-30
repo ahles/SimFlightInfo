@@ -81,7 +81,7 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar dark dense app clipped-right>
-      <v-toolbar-title><v-icon dark class="app-icon">flight</v-icon> xpvuemap</v-toolbar-title>
+      <v-toolbar-title><v-icon dark class="app-icon">flight</v-icon> Whereismyplane</v-toolbar-title>
       <v-spacer/>
       <v-btn ripple small @click.stop="minimizeWindow" class="window-button">
         <v-icon dark>minimize</v-icon>
