@@ -130,14 +130,15 @@ export default {
     },
     calculateAngle() {
       // https://stackoverflow.com/questions/3932502/calculate-angle-between-two-latitude-longitude-points
-      const distanceLongitude = (this.longitude - this.previousLongitude);
-      const y = Math.sin(distanceLongitude) * Math.cos(this.latitude);
-      const x = Math.cos(this.previousLatitude) * Math.sin(this.latitude) - Math.sin(this.previousLatitude) * Math.cos(this.latitude) * Math.cos(distanceLongitude);
-      let angle = Math.atan2(y, x);
-      angle *= (180 / Math.PI);
-      angle = (angle + 360) % 360;
-      angle = 360 - angle;
-      this.angle = angle;
+      const p1 = {
+        x: this.previousLatitude,
+        y: this.previousLongitude,
+      };
+      const p2 = {
+        x: this.latitude,
+        y: this.longitude,
+      };
+      this.angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
     },
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
