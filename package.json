@@ -1,9 +1,9 @@
 {
   "name": "whereismyplane",
-  "description": "Electron-APP that listens to the position information sent by X-Plane 11 (over UDP Port 49000) and displays the current location on a map.",
   "version": "1.0.0",
-  "license": "",
+  "description": "Electron-App that listens to the position information sent by X-Plane 11 (over UDP Port 49000) and displays the current location on a map.",
   "author": "Philippe Ahles <philippe@ahles.ch>",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -27,8 +27,10 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.2.0",
     "@vue/cli-plugin-eslint": "^3.2.0",
+    "@vue/cli-plugin-unit-jest": "^3.3.0",
     "@vue/cli-service": "^3.2.0",
     "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",

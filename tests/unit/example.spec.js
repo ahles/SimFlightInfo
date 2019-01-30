@@ -1,12 +1,18 @@
-import { shallowMount } from '@vue/test-utils';
-import App from '@/App.vue';
+// import { shallowMount } from '@vue/test-utils';
+// import Map from '@/components/Map.vue';
 
-describe('App.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message';
-    const wrapper = shallowMount(App, {
-      propsData: { msg },
-    });
-    expect(wrapper.text()).toMatch(msg);
-  });
-});
+// describe('Map.vue', () => {
+//   it('calculates correct angle', () => {
+//     const wrapper = shallowMount(Map, {
+//       propsData: {
+//         latitude: 0,
+//         longitude: 0,
+//         zoomLevel: 10,
+//         mapLockedToPosition: true,
+//         view: 'map'
+//       },
+//     });
+//     console.log('wrapper', wrapper);
+//     // expect(wrapper.text()).toMatch(msg);
+//   });
+// });
