@@ -41,18 +41,6 @@
           <span class="section-header">Settings</span>
         </v-list-tile>
         <v-divider></v-divider>
-        <v-list-tile class="view">
-          <v-list-tile-content>
-            <v-select
-              :items="viewOptions"
-              label="View"
-              :value="data.view"
-              @change="updateView"
-              outline
-              color="rgba(255, 255, 255, 0.75)"
-          ></v-select>
-          </v-list-tile-content>
-        </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
             <v-switch
@@ -94,12 +82,12 @@
       </v-btn>
     </v-toolbar>
     <v-content v-bind:class="{ overlay__blur: !data.receivingData }">
-      <div class="position-marker" :class="data.view.toLowerCase()" v-if="data.mapLockedToPosition">
+      <div class="position-marker" v-if="data.mapLockedToPosition">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
           <path d="M38.186 27.21v-3.596L22.95 14.622v-9.89c0-1.493-1.276-2.698-2.857-2.698-1.58 0-2.857 1.205-2.857 2.697v9.891L2 23.614v3.596l15.236-4.496v9.891l-3.809 2.698V38l6.666-1.798L26.76 38v-2.697l-3.809-2.698v-9.89z" />
         </svg>
       </div>
-      <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" :view="data.view" />
+      <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" />
       <div>
         <v-alert
           v-model="simulating"
@@ -155,11 +143,6 @@ export default {
     drawer: false,
     window: null,
     simulating: false,
-    viewOptions: [
-      'Map',
-      'Satellite',
-      'Topo',
-    ],
   }),
   computed: {
     ...mapState({
@@ -189,9 +172,6 @@ export default {
     },
     updateZoomLevel(event) {
       this.$store.commit('UPDATE_ZOOM_LEVEL', event);
-    },
-    updateView(event) {
-      this.$store.commit('UPDATE_VIEW', event);
     },
     closeWindow() {
       this.window.close();
@@ -329,14 +309,6 @@ html {
   }
   .v-input--slider {
     width: 100%;
-  }
-}
-
-.view {
-  margin-top: 30px;
-  .theme--dark.v-text-field--outline>.v-input__control>.v-input__slot,
-  .theme--dark.v-text-field--outline:not(.v-input--is-focused):not(.v-input--has-state)>.v-input__control>.v-input__slot:hover {
-    border: 1px solid;
   }
 }
 

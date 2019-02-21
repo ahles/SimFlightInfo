@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "bufferutil": "^4.0.1",
-    "esri-leaflet": "^2.2.3",
     "leaflet": "^1.4.0",
     "leaflet-rotatedmarker": "^0.2.0",
     "utf-8-validate": "^5.0.2",
@@ -34,7 +33,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
-    "electron": "3.1.1",
+    "electron": "3.1.4",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",

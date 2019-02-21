@@ -16,7 +16,6 @@ export default new Vuex.Store({
       onRunway: false,
       mapLockedToPosition: true,
       zoomLevel: 10,
-      view: 'Map',
     },
     simulationActive: false,
   },
@@ -45,9 +44,6 @@ export default new Vuex.Store({
     },
     UPDATE_ZOOM_LEVEL: (state, zoomLevel) => {
       state.data.zoomLevel = zoomLevel;
-    },
-    UPDATE_VIEW: (state, view) => {
-      state.data.view = view;
     },
     UPDATE_SIMULATION_ACTIVE: (state, simulationActive) => {
       state.simulationActive = simulationActive;
