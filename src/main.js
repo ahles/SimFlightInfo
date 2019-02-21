@@ -14,9 +14,13 @@ delete L.Icon.Default.prototype._getIconUrl; // eslint-disable-line no-underscor
 L.Icon.Default.mergeOptions({
   iconSize: [40, 40],
   /* eslint-disable global-require */
+
+  // default icons:
   // iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   // iconUrl: require('leaflet/dist/images/marker-icon.png'),
   // shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+
+  // whereismyplane icon
   iconUrl: require('./assets/images/plane.svg'),
   /* eslint-enable global-require */
 });

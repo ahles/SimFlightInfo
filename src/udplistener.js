@@ -67,12 +67,12 @@ module.exports = {
   close() {
     this.udpClient.close();
   },
-  appendPositionToLog(position){
-    var fs = require('fs');
-    var logFile = fs.readFileSync(this.logFile);
-    var log = JSON.parse(logFile);
+  appendPositionToLog(position) {
+    const fs = require('fs'); /* eslint-disable-line global-require */
+    const logFile = fs.readFileSync(this.logFile);
+    const log = JSON.parse(logFile);
     log.push(position);
-    var logJSON = JSON.stringify(log);
+    const logJSON = JSON.stringify(log);
     fs.writeFileSync(this.logFile, logJSON);
-  }
+  },
 };
