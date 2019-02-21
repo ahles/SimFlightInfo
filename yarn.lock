@@ -3886,7 +3886,7 @@ electron-to-chromium@^1.3.103:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.113.tgz#b1ccf619df7295aea17bc6951dc689632629e4a9"
   integrity sha512-De+lPAxEcpxvqPTyZAXELNpRZXABRxf+uL/rSykstQhzj/B0l1150G/ExIIxKc16lI89Hgz81J0BHAcbTqK49g==
 
-electron@^3.1.1:
+electron@3.1.4:
   version "3.1.4"
   resolved "https://registry.yarnpkg.com/electron/-/electron-3.1.4.tgz#5bc6e22887bff1b7fcdd1be2b09329b626738a03"
   integrity sha512-YJEvfq45K7MmhLXY4mpGLG/cH5BU/1NUOcNMRzLxs3wVS/fKY2ZkJrOTncxhi1VOC1EJOQslcSdupitrW/FSig==
@@ -10888,7 +10888,7 @@ vm-browserify@0.0.4:
   dependencies:
     indexof "0.0.1"
 
-vue-cli-plugin-electron-builder@^1.0.0-rc.10:
+vue-cli-plugin-electron-builder@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/vue-cli-plugin-electron-builder/-/vue-cli-plugin-electron-builder-1.0.2.tgz#e9593a0b1b8091833cd2c61ea7d2920af4228ccd"
   integrity sha512-UNJdU59KKu5l4Wbug61wY/4h5T6yGDuHY3Dxv9GEu7LXCAoz9oJK9pwIm/Xl3j/t27a6ZvAM111T6YO7GFhh9w==
