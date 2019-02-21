@@ -35,7 +35,7 @@
           <v-icon dark>flight_land</v-icon>&nbsp;On runway
         </v-list-tile>
       </v-list>
-      <v-list three-line>
+      <v-list three-line class="settings">
         <v-list-tile>
           <v-icon large>map</v-icon>
           <span class="section-header">Settings</span>
@@ -365,5 +365,9 @@ html {
 
 .app-icon {
   margin-right: 10px;
+}
+
+.settings {
+  padding-top: 100px;
 }
 </style>
