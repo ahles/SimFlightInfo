@@ -17,11 +17,6 @@ yarn electron:serve
 yarn electron:build
 ```
 
-### Run your tests
-```
-yarn run test
-```
-
 ### Lints and fixes files
 ```
 yarn run lint
