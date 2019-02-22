@@ -9,13 +9,16 @@ import store from './store';
 require('../node_modules/leaflet/dist/leaflet.css');
 require('../node_modules/leaflet-rotatedmarker/leaflet.rotatedMarker.js');
 
+/**
+ * leaflet configuration
+ * https://leafletjs.com/
+ */
 delete L.Icon.Default.prototype._getIconUrl; // eslint-disable-line no-underscore-dangle
-
 L.Icon.Default.mergeOptions({
   iconSize: [40, 40],
   /* eslint-disable global-require */
 
-  // default icons:
+  // default leaflet icons:
   // iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
   // iconUrl: require('leaflet/dist/images/marker-icon.png'),
   // shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
@@ -25,8 +28,10 @@ L.Icon.Default.mergeOptions({
   /* eslint-enable global-require */
 });
 
-Vue.config.productionTip = false;
-
+/**
+ * vuetify configuration
+ * https://leafletjs.com/
+ */
 Vue.use(Vuetify, {
   theme: {
     primary: colors.teal.base,
@@ -35,6 +40,8 @@ Vue.use(Vuetify, {
     error: colors.red.darken4,
   },
 });
+
+Vue.config.productionTip = false;
 
 new Vue({
   store,
