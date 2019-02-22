@@ -1,6 +1,8 @@
 # whereismyplane
 
-Electron-App that listens to the position information sent by X-Plane 11 on another computer (over UDP 49000) and displays the current location on a map.
+Electron-App that listens to the position information  sent by X-Plane and displays the current location on a map.
+
+Configure X-Plane to send the positional data (globalposition) over UDP 49000 to the IP of the computer in your local network where this app is installed.
 
 ## Project setup
 ```
