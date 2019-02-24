@@ -1,7 +1,7 @@
 {
   "name": "whereismyplane",
   "version": "1.0.0",
-  "description": "Electron-App that listens to the position information sent by X-Plane 11 (over UDP Port 49000) and displays the current location on a map.",
+  "description": "Map-App that displays the airplane position in X-Plane",
   "author": "Philippe Ahles <philippe@ahles.ch>",
   "license": "MIT",
   "scripts": {
