@@ -2,7 +2,7 @@
 
 Electron-App that listens to the position information sent by [X-Plane](https://www.x-plane.com/) and displays the current location on a openstreetmap.
 
-You can test this app in simulation mode without X-Plane running.
+You can test this app in simulation mode without X-Plane.
 
 ## Installation & usage
 
