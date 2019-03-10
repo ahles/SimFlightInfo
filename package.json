@@ -1,9 +1,21 @@
 {
   "name": "whereismyplane",
-  "version": "1.0.0",
-  "description": "Map-App that displays the airplane position in X-Plane",
+  "version": "1.0.1",
+  "description": "Displays the position of your airplane in X-Plane",
+  "keywords": [
+    "X-Plane",
+    "Map",
+    "Openstreetmap",
+    "Vue.js",
+    "Electron.js",
+    "Leaflet.js"
+  ],
   "author": "Philippe Ahles <philippe@ahles.ch>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahles/whereismyplane.git"
+  },
   "scripts": {
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -25,15 +37,12 @@
     "@vue/eslint-config-airbnb": "^4.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "bufferutil": "^4.0.1",
-    "electron": "^4.0.5",
+    "electron": "^4.0.8",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "leaflet-rotatedmarker": "^0.2.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "leaflet-rotatedmarker": "^0.2.0",
-    "utf-8-validate": "^5.0.2",
-    "uws": "10.148.1",
     "vue-cli-plugin-electron-builder": "^1.0.0",
     "vue-template-compiler": "^2.5.21"
   },
