@@ -1,6 +1,6 @@
 {
   "name": "whereismyplane",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Displays the position of your airplane in X-Plane",
   "keywords": [
     "X-Plane",
@@ -37,7 +37,7 @@
     "@vue/eslint-config-airbnb": "^4.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "electron": "^4.0.5",
+    "electron": "^4.0.8",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
     "leaflet-rotatedmarker": "^0.2.0",
