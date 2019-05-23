@@ -1,4 +1,3 @@
-
 import { app, protocol, BrowserWindow } from 'electron';
 import {
   createProtocol,
@@ -11,11 +10,15 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
 
-// Standard scheme must be registered before the app is ready
-protocol.registerStandardSchemes(['app'], { secure: true });
+// Scheme must be registered before the app is ready
+protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }]);
+
 function createWindow() {
   // Create the browser window.
   const windowOptions = {
+    webPreferences: {
+      nodeIntegration: true,
+    },
     width: 1000,
     height: 1000,
     frame: false,
