@@ -10,10 +10,12 @@ function readMessage(msg) {
     altitudeGround: 0,
     onRunway: 0,
     mag: 0,
+    magVar: 0,
   };
 
   const index = msg.readInt8(5);
-  const mag = Math.floor(msg.slice(9, 13).readFloatLE());
+  const mag = msg.slice(9, 13).readFloatLE();
+  const magVar = msg.slice(13, 17).readFloatLE();
 
   const positionOffset = 36;
   const latitude = msg.slice(9 + positionOffset, 13 + positionOffset).readFloatLE();
@@ -31,10 +33,13 @@ function readMessage(msg) {
       altitudeGround,
       onRunway,
       mag,
+      magVar,
     };
 
     messageIndex += 1;
   }
+
+  // console.log('result', result);
 
   return result;
 }

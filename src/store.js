@@ -16,6 +16,7 @@ export default new Vuex.Store({
       altitudeGround: 0,
       onRunway: false,
       mag: 0,
+      magVar: 0,
       mapLockedToPosition: true,
       zoomLevel: 10,
     },
@@ -46,6 +47,9 @@ export default new Vuex.Store({
     },
     UPDATE_MAG: (state, mag) => {
       state.data.mag = mag;
+    },
+    UPDATE_MAG_VAR: (state, magVar) => {
+      state.data.magVar = magVar;
     },
     UPDATE_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
       state.data.mapLockedToPosition = mapLockedToPosition;
@@ -113,6 +117,7 @@ export default new Vuex.Store({
           }
         }
         if (position.mag !== state.data.mag) { commit('UPDATE_MAG', position.mag); }
+        if (position.magVar !== state.data.magVar) { commit('UPDATE_MAG_VAR', position.magVar); }
       });
     },
   },

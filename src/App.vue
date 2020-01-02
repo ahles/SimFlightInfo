@@ -10,19 +10,19 @@
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Latitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ data.latitude.toFixed(6) }}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ data.latitude.toFixed(6) }}°</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
             <v-list-tile-title>Longitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ data.longitude.toFixed(6) }}</v-list-tile-sub-title>
+            <v-list-tile-sub-title>{{ data.longitude.toFixed(6) }}°</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
-            <v-list-tile-title>Magnetic Compass</v-list-tile-title>
-            <v-list-tile-sub-title>{{ data.mag }}°</v-list-tile-sub-title>
+            <v-list-tile-title>Bearing</v-list-tile-title>
+            <v-list-tile-sub-title>{{ bearing.toFixed(2) }}°</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
@@ -38,7 +38,7 @@
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile v-if="data.onRunway">
-          <v-icon dark>flight_land</v-icon>&nbsp;On runway
+          <v-icon dark>flight_land</v-icon>&nbsp;On ground
         </v-list-tile>
       </v-list>
       <v-list three-line class="settings">
@@ -99,7 +99,7 @@
         :longitude="data.longitude"
         :zoomLevel="data.zoomLevel"
         :mapLockedToPosition="data.mapLockedToPosition"
-        :mag="data.mag"
+        :bearing="bearing"
       />
       <div>
         <v-alert
@@ -161,6 +161,9 @@ export default {
     ...mapState({
       data: state => state.data,
     }),
+    bearing() {
+      return this.data.mag - this.data.magVar;
+    },
   },
   beforeCreate() {
     this.$store.dispatch('receiveData');

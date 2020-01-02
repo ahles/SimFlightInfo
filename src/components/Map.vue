@@ -35,7 +35,7 @@ export default {
       type: Boolean,
       default: true,
     },
-    mag: {
+    bearing: {
       required: true,
       type: Number,
       default: 0,
@@ -58,6 +58,7 @@ export default {
     },
     zoomLevel() {
       this.map._zoom = this.zoomLevel; // eslint-disable-line no-underscore-dangle
+      this.positionMarkerAndSetMapView();
     },
     view() {
       this.map.removeLayer(this.tileLayer);
@@ -90,7 +91,7 @@ export default {
       this.marker = L.marker(
         [this.latitude, this.longitude],
         {
-          rotationAngle: this.mag,
+          rotationAngle: this.bearing,
         },
       ).addTo(this.map);
     },
@@ -107,18 +108,18 @@ export default {
           this.marker = L.marker(
             [this.latitude, this.longitude],
             {
-              rotationAngle: this.mag,
+              rotationAngle: this.bearing,
             },
           ).addTo(this.map);
         } else {
           this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
-          this.marker.setRotationAngle(this.mag);
+          this.marker.setRotationAngle(this.bearing);
         }
       }
     },
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
-      marker.style.transform = `rotate(${this.mag}deg)`;
+      marker.style.transform = `rotate(${this.bearing}deg)`;
     },
   },
 };
