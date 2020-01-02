@@ -10,6 +10,11 @@ import L from 'leaflet';
 export default {
   name: 'Map',
   props: {
+    messageIndex: {
+      required: true,
+      type: Number,
+      default: 0,
+    },
     latitude: {
       required: true,
       type: Number,
@@ -30,14 +35,16 @@ export default {
       type: Boolean,
       default: true,
     },
+    mag: {
+      required: true,
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
       map: null,
       marker: null,
-      angle: 0,
-      previousLatitude: 0,
-      previousLongitude: 0,
       tileLayer: null,
       mapLayers: {
         layerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -46,7 +53,7 @@ export default {
     };
   },
   watch: {
-    latitude() {
+    messageIndex() {
       this.positionMarkerAndSetMapView();
     },
     zoomLevel() {
@@ -83,12 +90,11 @@ export default {
       this.marker = L.marker(
         [this.latitude, this.longitude],
         {
-          rotationAngle: this.angle,
+          rotationAngle: this.mag,
         },
       ).addTo(this.map);
     },
     positionMarkerAndSetMapView() {
-      this.calculateAngle();
       if (this.mapLockedToPosition) {
         if (this.marker !== null) {
           this.map.removeLayer(this.marker);
@@ -101,33 +107,18 @@ export default {
           this.marker = L.marker(
             [this.latitude, this.longitude],
             {
-              rotationAngle: this.angle,
+              rotationAngle: this.mag,
             },
           ).addTo(this.map);
         } else {
           this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
-          this.marker.setRotationAngle(this.angle);
+          this.marker.setRotationAngle(this.mag);
         }
       }
-
-      this.previousLatitude = this.latitude;
-      this.previousLongitude = this.longitude;
-    },
-    calculateAngle() {
-      // https://stackoverflow.com/questions/3932502/calculate-angle-between-two-latitude-longitude-points
-      const p1 = {
-        x: this.previousLatitude,
-        y: this.previousLongitude,
-      };
-      const p2 = {
-        x: this.latitude,
-        y: this.longitude,
-      };
-      this.angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
     },
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
-      marker.style.transform = `rotate(${this.angle}deg)`;
+      marker.style.transform = `rotate(${this.mag}deg)`;
     },
   },
 };

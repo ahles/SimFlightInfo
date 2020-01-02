@@ -21,13 +21,19 @@
         </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
-            <v-list-tile-title>Altitude above Sea</v-list-tile-title>
+            <v-list-tile-title>Magnetic Compass</v-list-tile-title>
+            <v-list-tile-sub-title>{{ data.mag }}°</v-list-tile-sub-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile>
+          <v-list-tile-content>
+            <v-list-tile-title>Altitude above sea</v-list-tile-title>
             <v-list-tile-sub-title>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeSea)) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile>
           <v-list-tile-content>
-            <v-list-tile-title>Altitude above Ground</v-list-tile-title>
+            <v-list-tile-title>Altitude above ground</v-list-tile-title>
             <v-list-tile-sub-title>{{ roundAltitude(data.altitudeGround) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeGround)) }} m</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
@@ -87,7 +93,14 @@
           <path d="M38.186 27.21v-3.596L22.95 14.622v-9.89c0-1.493-1.276-2.698-2.857-2.698-1.58 0-2.857 1.205-2.857 2.697v9.891L2 23.614v3.596l15.236-4.496v9.891l-3.809 2.698V38l6.666-1.798L26.76 38v-2.697l-3.809-2.698v-9.89z" />
         </svg>
       </div>
-      <Map :latitude="data.latitude" :longitude="data.longitude" :zoomLevel="data.zoomLevel" :mapLockedToPosition="data.mapLockedToPosition" />
+      <Map
+        :messageIndex="data.messageIndex"
+        :latitude="data.latitude"
+        :longitude="data.longitude"
+        :zoomLevel="data.zoomLevel"
+        :mapLockedToPosition="data.mapLockedToPosition"
+        :mag="data.mag"
+      />
       <div>
         <v-alert
           v-model="simulating"

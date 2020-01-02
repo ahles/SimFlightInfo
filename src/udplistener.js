@@ -1,27 +1,39 @@
 const dgram = require('dgram');
 
+let messageIndex = 0;
+
 function readMessage(msg) {
   let result = {
     latitude: 0,
     longitude: 0,
-    altitude: 0,
+    altitudeSea: 0,
+    altitudeGround: 0,
+    onRunway: 0,
+    mag: 0,
   };
 
   const index = msg.readInt8(5);
-  const latitude = msg.slice(9, 13).readFloatLE();
-  const longitude = msg.slice(13, 17).readFloatLE();
-  const altitudeSea = msg.slice(17, 21).readFloatLE();
-  const altitudeGround = msg.slice(21, 25).readFloatLE();
-  const onRunway = msg.slice(25, 29).readFloatLE();
+  const mag = Math.floor(msg.slice(9, 13).readFloatLE());
 
-  if (index === 20) {
+  const positionOffset = 36;
+  const latitude = msg.slice(9 + positionOffset, 13 + positionOffset).readFloatLE();
+  const longitude = msg.slice(13 + positionOffset, 17 + positionOffset).readFloatLE();
+  const altitudeSea = msg.slice(17 + positionOffset, 21 + positionOffset).readFloatLE();
+  const altitudeGround = msg.slice(21 + positionOffset, 25 + positionOffset).readFloatLE();
+  const onRunway = msg.slice(25 + positionOffset, 29 + positionOffset).readFloatLE();
+
+  if (index === 19) {
     result = {
+      messageIndex,
       latitude,
       longitude,
       altitudeSea,
       altitudeGround,
       onRunway,
+      mag,
     };
+
+    messageIndex += 1;
   }
 
   return result;
@@ -54,9 +66,6 @@ module.exports = {
         win.webContents.send('position', position);
         if (isDevelopment && this.log) {
           this.appendPositionToLog(position);
-        }
-        if (isDevelopment && this.debug) {
-          console.log(`🧭  Position data received: Lat ${position.latitude} | Lon ${position.longitude} | Alt ${position.altitude}`);
         }
       });
 

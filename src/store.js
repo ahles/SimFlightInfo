@@ -8,12 +8,14 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     data: {
+      messageIndex: 0,
       receivingData: false,
       latitude: 47.368650,
       longitude: 8.539183,
       altitudeSea: 0,
       altitudeGround: 0,
       onRunway: false,
+      mag: 0,
       mapLockedToPosition: true,
       zoomLevel: 10,
     },
@@ -23,6 +25,9 @@ export default new Vuex.Store({
     /* eslint-disable no-param-reassign */
     UPDATE_RECEIVING_DATA: (state, receivingData) => {
       state.data.receivingData = receivingData;
+    },
+    UPDATE_MESSAGE_INDEX: (state, messageIndex) => {
+      state.data.messageIndex = messageIndex;
     },
     UPDATE_LATITUDE: (state, latitude) => {
       state.data.latitude = latitude;
@@ -38,6 +43,9 @@ export default new Vuex.Store({
     },
     UPDATE_ON_RUNWAY: (state, onRunway) => {
       state.data.onRunway = onRunway;
+    },
+    UPDATE_MAG: (state, mag) => {
+      state.data.mag = mag;
     },
     UPDATE_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
       state.data.mapLockedToPosition = mapLockedToPosition;
@@ -86,6 +94,7 @@ export default new Vuex.Store({
         if (!state.data.receivingData) {
           commit('UPDATE_RECEIVING_DATA', true);
         }
+        if (position.messageIndex !== state.data.messageIndex) { commit('UPDATE_MESSAGE_INDEX', position.messageIndex); }
         if (position.latitude !== state.data.latitude) { commit('UPDATE_LATITUDE', position.latitude); }
         if (position.longitude !== state.data.longitude) { commit('UPDATE_LONGITUDE', position.longitude); }
         if (position.altitudeSea !== state.data.altitudeSea) { commit('UPDATE_ALTITUDE_SEA', position.altitudeSea); }
@@ -103,6 +112,7 @@ export default new Vuex.Store({
             commit('UPDATE_ON_RUNWAY', 0);
           }
         }
+        if (position.mag !== state.data.mag) { commit('UPDATE_MAG', position.mag); }
       });
     },
   },
