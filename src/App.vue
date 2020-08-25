@@ -1,6 +1,20 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" app right dark>
+    <v-app-bar dark dense app clipped-right>
+      <v-toolbar-title><v-icon dark class="app-icon">flight</v-icon> Whereismyplane</v-toolbar-title>
+      <v-spacer/>
+      <v-btn ripple small @click.stop="minimizeWindow" class="window-button">
+        <v-icon dark>minimize</v-icon>
+      </v-btn>
+      <v-btn ripple small @click.stop="maximizeWindow" class="window-button">
+        <v-icon dark>maximize</v-icon>
+      </v-btn>
+      <v-btn ripple small @click.stop="closeWindow" class="window-button">
+        <v-icon dark>close</v-icon>
+      </v-btn>
+    </v-app-bar>
+
+    <v-navigation-drawer v-model="drawer" app right dark clipped absolute>
       <v-list class="flight">
         <v-list-item>
           <v-icon large>flight</v-icon>
@@ -27,17 +41,20 @@
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>{{ $t('Altitude above sea') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeSea)) }} m</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
             <v-list-item-title>{{ $t('Altitude above ground') }}</v-list-item-title>
             <v-list-item-subtitle>{{ roundAltitude(data.altitudeGround) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeGround)) }} m</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item v-if="data.onRunway">
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>{{ $t('Altitude above sea') }}</v-list-item-title>
+            <v-list-item-subtitle>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeSea)) }} m</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item
+          v-if="data.onRunway"
+          class="onground"
+        >
           <v-icon dark>flight_land</v-icon>&nbsp;{{ $t('On ground') }}
         </v-list-item>
       </v-list>
@@ -89,19 +106,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar dark dense app clipped-right>
-      <v-toolbar-title><v-icon dark class="app-icon">flight</v-icon> Whereismyplane</v-toolbar-title>
-      <v-spacer/>
-      <v-btn ripple small @click.stop="minimizeWindow" class="window-button">
-        <v-icon dark>minimize</v-icon>
-      </v-btn>
-      <v-btn ripple small @click.stop="maximizeWindow" class="window-button">
-        <v-icon dark>maximize</v-icon>
-      </v-btn>
-      <v-btn ripple small @click.stop="closeWindow" class="window-button">
-        <v-icon dark>close</v-icon>
-      </v-btn>
-    </v-app-bar>
+
     <v-main v-bind:class="{ overlay__blur: !data.receivingData }">
       <div class="position-marker" v-if="data.mapLockedToPosition">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
@@ -264,21 +269,16 @@ html {
 
   .v-list-item .v-list-item__content {
     flex-direction: row;
-    // justify-content: space-between;
-  }
-  .v-list-item__title,
-  .v-list-item__subtitle {
-    width: 70%;
-    display: flex;
-    justify-content: flex-start;
-  }
-  .v-list-item__subtitle {
-    width: 30%;
-    display: flex;
-    justify-content: flex-end;
-    text-align: right;
   }
 }
+
+.v-navigation-drawer__content {
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .v-btn--fab.v-size--small.v-btn--absolute.v-btn--bottom.menu,
 .v-btn--fab.v-size--small.v-btn--absolute.v-btn--bottom.close {
   bottom: 30px;
@@ -326,8 +326,7 @@ html {
   }
 
   &__icon {
-    font-size: 200px;
-    color: grey;
+    font-size: 150px !important;
   }
 
   &__blur {
@@ -367,6 +366,7 @@ html {
 .language {
   &.v-list-item {
     flex-direction: column;
+    min-height: 0;
   }
   .v-list-item__title {
     justify-content: flex-start;
@@ -434,7 +434,9 @@ html {
   margin-right: 10px;
 }
 
-// .settings {
-//   padding-top: 100px;
-// }
+.onground {
+  i {
+    padding-right: 10px;
+  }
+}
 </style>
