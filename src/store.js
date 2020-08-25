@@ -87,6 +87,7 @@ export default new Vuex.Store({
                 } else {
                   commit('UPDATE_ON_RUNWAY', 0);
                 }
+                commit('UPDATE_MESSAGE_INDEX', i);
               }
             }, x * 1000, positions);
           }
