@@ -65,7 +65,7 @@
               min="0"
               max="18"
               step="1"
-              ticks="always"
+              ticks
               @change="updateZoomLevel"
               light
               color="rgba(255, 255, 255, 0.75)"
@@ -219,9 +219,8 @@ html {
 }
 
 .v-list.flight {
-  padding-top: 40px;
 
-  .v-list__tile {
+  .v-list-item {
     height: auto;
     margin-bottom: 30px;
   }
@@ -230,25 +229,25 @@ html {
     margin-bottom: 20px;
   }
 
-  .v-list__tile .v-list__tile__content {
+  .v-list-item .v-list-item__content {
     flex-direction: row;
     // justify-content: space-between;
   }
-  .v-list__tile__title,
-  .v-list__tile__subtitle {
+  .v-list-item__title,
+  .v-list-item__subtitle {
     width: 70%;
     display: flex;
     justify-content: flex-start;
   }
-  .v-list__tile__subtitle {
+  .v-list-item__subtitle {
     width: 30%;
     display: flex;
     justify-content: flex-end;
     text-align: right;
   }
 }
-.v-btn--bottom.v-btn--absolute.v-btn--small.menu,
-.v-btn--bottom.v-btn--absolute.v-btn--small.close {
+.v-btn--fab.v-size--small.v-btn--absolute.v-btn--bottom.menu,
+.v-btn--fab.v-size--small.v-btn--absolute.v-btn--bottom.close {
   bottom: 30px;
   right: 20px;
   z-index: 100;
@@ -264,9 +263,6 @@ html {
 .v-toolbar {
   -webkit-app-region: drag;
   z-index: 7;
-}
-.v-navigation-drawer {
-  padding-top: 40px;
 }
 
 .window-button {
@@ -313,15 +309,16 @@ html {
 }
 
 .zoom-level {
-  .v-list__tile {
+  &.v-list-item {
     flex-direction: column;
   }
-  .v-list__tile__content {
+  .v-list-item__content {
     width: 100%;
   }
-  .v-list__tile__title {
+  .v-list-item__title {
     justify-content: flex-start;
     text-align: left;
+    align-self: flex-start;
   }
   .v-input--slider {
     width: 100%;
@@ -383,7 +380,7 @@ html {
   margin-right: 10px;
 }
 
-.settings {
-  padding-top: 100px;
-}
+// .settings {
+//   padding-top: 100px;
+// }
 </style>
