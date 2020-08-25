@@ -4,53 +4,53 @@
       <v-list class="flight">
         <v-list-item>
           <v-icon large>flight</v-icon>
-          <span class="section-header">Position</span>
+          <span class="section-header">{{ $t('Position') }}</span>
         </v-list-item>
         <v-divider></v-divider>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>Latitude</v-list-item-title>
+            <v-list-item-title>{{ $t('Latitude') }}</v-list-item-title>
             <v-list-item-subtitle>{{ data.latitude.toFixed(6) }}°</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>Longitude</v-list-item-title>
+            <v-list-item-title>{{ $t('Longitude') }}</v-list-item-title>
             <v-list-item-subtitle>{{ data.longitude.toFixed(6) }}°</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>Bearing</v-list-item-title>
+            <v-list-item-title>{{ $t('Bearing') }}</v-list-item-title>
             <v-list-item-subtitle>{{ bearing.toFixed(2) }}°</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>Altitude above sea</v-list-item-title>
+            <v-list-item-title>{{ $t('Altitude above sea') }}</v-list-item-title>
             <v-list-item-subtitle>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeSea)) }} m</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>Altitude above ground</v-list-item-title>
+            <v-list-item-title>{{ $t('Altitude above ground') }}</v-list-item-title>
             <v-list-item-subtitle>{{ roundAltitude(data.altitudeGround) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeGround)) }} m</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item v-if="data.onRunway">
-          <v-icon dark>flight_land</v-icon>&nbsp;On ground
+          <v-icon dark>flight_land</v-icon>&nbsp;{{ $t('On ground') }}
         </v-list-item>
       </v-list>
       <v-list three-line class="settings">
         <v-list-item>
           <v-icon large>map</v-icon>
-          <span class="section-header">Settings</span>
+          <span class="section-header">{{ $t('Settings') }}</span>
         </v-list-item>
         <v-divider></v-divider>
         <v-list-item>
           <v-list-item-content>
             <v-switch
-              label="Move map"
+              :label="$t('Move map')"
               :input-value="data.mapLockedToPosition"
               @change="updateMapLockedToPosition"
               color="rgba(255, 255, 255, 0.75)"
@@ -58,7 +58,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item class="zoom-level">
-          <v-list-item-title>Zoom level</v-list-item-title>
+          <v-list-item-title>{{ $t('Zoom level') }}</v-list-item-title>
           <v-list-item-content>
             <v-slider
               :value="data.zoomLevel"
@@ -73,6 +73,18 @@
               thumb-label="always"
               :thumb-size="24"
             ></v-slider>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item class="language">
+          <v-list-item-title>{{ $t('Language') }}</v-list-item-title>
+          <v-list-item-content>
+            <v-select
+              v-model="$i18n.locale"
+              dense
+              outlined
+              :items="langs"
+              @change="changeLangInLocalstorage()"
+            />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -111,7 +123,7 @@
           class="simulating"
           icon="cast"
         >
-          <strong>Simulating</strong>
+          <strong>{{ $t('Simulating') }}</strong>
           <v-spacer />
           <v-btn title="stop" color="warning" ripple outlined small @click.stop="stopSimulation" class="simulating__stop">
             <v-icon dark>cancel</v-icon>
@@ -128,9 +140,9 @@
     <div class="overlay" v-if="!data.receivingData">
       <div class="overlay__content">
         <v-icon class="overlay__icon">airplanemode_inactive</v-icon>
-        <h1 class="display-2">Not receiving data</h1>
+        <h1 class="display-2">{{ $t('Not receiving data') }}</h1>
         <v-btn dark ripple @click.stop="simulate" class="simulate">
-          <v-icon dark>flight</v-icon> Simulate
+          <v-icon dark>flight</v-icon> {{ $t('Simulate') }}
         </v-btn>
       </div>
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="overlay__blur-svg">
@@ -159,10 +171,21 @@ export default {
     drawer: false,
     window: null,
     simulating: false,
+    langs: [
+      {
+        text: 'EN',
+        value: 'en',
+      },
+      {
+        text: 'DE',
+        value: 'de',
+      },
+    ],
   }),
   computed: {
     ...mapState({
       data: (state) => state.data,
+      locale: (state) => state.locale,
     }),
     bearing() {
       return this.data.mag - this.data.magVar;
@@ -173,6 +196,7 @@ export default {
   },
   created() {
     this.window = remote.getCurrentWindow();
+    this.$i18n.locale = this.locale;
   },
   methods: {
     simulate() {
@@ -207,6 +231,9 @@ export default {
     },
     roundAltitude(altitude) {
       return Math.floor(altitude);
+    },
+    changeLangInLocalstorage() {
+      this.$store.commit('SET_LOCALE', this.$i18n.locale);
     },
   },
 };
@@ -311,6 +338,8 @@ html {
 }
 
 .zoom-level {
+  min-height: 0 !important;
+
   &.v-list-item {
     flex-direction: column;
   }
@@ -328,6 +357,21 @@ html {
   }
   .v-slider__thumb-label {
     color: #000;
+  }
+}
+
+.language {
+  &.v-list-item {
+    flex-direction: column;
+  }
+  .v-list-item__title {
+    justify-content: flex-start;
+    text-align: left;
+    align-self: flex-start;
+  }
+
+  .v-list-item__content {
+    width: 80px;
   }
 }
 

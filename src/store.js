@@ -21,6 +21,7 @@ export default new Vuex.Store({
       zoomLevel: 10,
     },
     simulationActive: false,
+    locale: 'en',
   },
   mutations: {
     /* eslint-disable no-param-reassign */
@@ -59,6 +60,9 @@ export default new Vuex.Store({
     },
     UPDATE_SIMULATION_ACTIVE: (state, simulationActive) => {
       state.simulationActive = simulationActive;
+    },
+    SET_LOCALE: (state, locale) => {
+      state.locale = locale;
     },
     /* eslint-enable no-param-reassign */
   },
