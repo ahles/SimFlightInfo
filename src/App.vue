@@ -1,65 +1,65 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" right app dark>
+    <v-navigation-drawer v-model="drawer" app right dark>
       <v-list class="flight">
-        <v-list-tile>
+        <v-list-item>
           <v-icon large>flight</v-icon>
           <span class="section-header">Position</span>
-        </v-list-tile>
+        </v-list-item>
         <v-divider></v-divider>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title>Latitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ data.latitude.toFixed(6) }}°</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title>Longitude</v-list-tile-title>
-            <v-list-tile-sub-title>{{ data.longitude.toFixed(6) }}°</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title>Bearing</v-list-tile-title>
-            <v-list-tile-sub-title>{{ bearing.toFixed(2) }}°</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title>Altitude above sea</v-list-tile-title>
-            <v-list-tile-sub-title>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeSea)) }} m</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-content>
-            <v-list-tile-title>Altitude above ground</v-list-tile-title>
-            <v-list-tile-sub-title>{{ roundAltitude(data.altitudeGround) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeGround)) }} m</v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile v-if="data.onRunway">
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>Latitude</v-list-item-title>
+            <v-list-item-subtitle>{{ data.latitude.toFixed(6) }}°</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>Longitude</v-list-item-title>
+            <v-list-item-subtitle>{{ data.longitude.toFixed(6) }}°</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>Bearing</v-list-item-title>
+            <v-list-item-subtitle>{{ bearing.toFixed(2) }}°</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>Altitude above sea</v-list-item-title>
+            <v-list-item-subtitle>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeSea)) }} m</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>Altitude above ground</v-list-item-title>
+            <v-list-item-subtitle>{{ roundAltitude(data.altitudeGround) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeGround)) }} m</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item v-if="data.onRunway">
           <v-icon dark>flight_land</v-icon>&nbsp;On ground
-        </v-list-tile>
+        </v-list-item>
       </v-list>
       <v-list three-line class="settings">
-        <v-list-tile>
+        <v-list-item>
           <v-icon large>map</v-icon>
           <span class="section-header">Settings</span>
-        </v-list-tile>
+        </v-list-item>
         <v-divider></v-divider>
-        <v-list-tile>
-          <v-list-tile-content>
+        <v-list-item>
+          <v-list-item-content>
             <v-switch
               label="Move map"
               :input-value="data.mapLockedToPosition"
               @change="updateMapLockedToPosition"
               color="rgba(255, 255, 255, 0.75)"
             ></v-switch>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile class="zoom-level">
-          <v-list-tile-title>Zoom level {{ data.zoomLevel }}</v-list-tile-title>
-          <v-list-tile-content>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item class="zoom-level">
+          <v-list-item-title>Zoom level {{ data.zoomLevel }}</v-list-item-title>
+          <v-list-item-content>
             <v-slider
               :value="data.zoomLevel"
               min="0"
@@ -70,11 +70,11 @@
               light
               color="rgba(255, 255, 255, 0.75)"
             ></v-slider>
-          </v-list-tile-content>
-        </v-list-tile>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar dark dense app clipped-right>
+    <v-app-bar dark dense app clipped-right>
       <v-toolbar-title><v-icon dark class="app-icon">flight</v-icon> Whereismyplane</v-toolbar-title>
       <v-spacer/>
       <v-btn ripple small @click.stop="minimizeWindow" class="window-button">
@@ -86,8 +86,8 @@
       <v-btn ripple small @click.stop="closeWindow" class="window-button">
         <v-icon dark>close</v-icon>
       </v-btn>
-    </v-toolbar>
-    <v-content v-bind:class="{ overlay__blur: !data.receivingData }">
+    </v-app-bar>
+    <v-main v-bind:class="{ overlay__blur: !data.receivingData }">
       <div class="position-marker" v-if="data.mapLockedToPosition">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
           <path d="M38.186 27.21v-3.596L22.95 14.622v-9.89c0-1.493-1.276-2.698-2.857-2.698-1.58 0-2.857 1.205-2.857 2.697v9.891L2 23.614v3.596l15.236-4.496v9.891l-3.809 2.698V38l6.666-1.798L26.76 38v-2.697l-3.809-2.698v-9.89z" />
@@ -110,12 +110,12 @@
         >
           <strong>Simulating</strong>
           <v-spacer />
-          <v-btn title="stop" color="warning" ripple outline small @click.stop="stopSimulation" class="simulating__stop">
+          <v-btn title="stop" color="warning" ripple outlined small @click.stop="stopSimulation" class="simulating__stop">
             <v-icon dark>cancel</v-icon>
           </v-btn>
         </v-alert>
       </div>
-    </v-content>
+    </v-main>
     <v-btn v-if="!drawer" dark small absolute bottom right fab ripple @click.stop="drawer = !drawer" class="menu">
       <v-icon dark>flight</v-icon>
     </v-btn>
@@ -159,7 +159,7 @@ export default {
   }),
   computed: {
     ...mapState({
-      data: state => state.data,
+      data: (state) => state.data,
     }),
     bearing() {
       return this.data.mag - this.data.magVar;
@@ -235,12 +235,12 @@ html {
     // justify-content: space-between;
   }
   .v-list__tile__title,
-  .v-list__tile__sub-title {
+  .v-list__tile__subtitle {
     width: 70%;
     display: flex;
     justify-content: flex-start;
   }
-  .v-list__tile__sub-title {
+  .v-list__tile__subtitle {
     width: 30%;
     display: flex;
     justify-content: flex-end;

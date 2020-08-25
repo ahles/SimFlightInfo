@@ -3,20 +3,6 @@
   "version": "1.1.2",
   "description": "Displays the position of your airplane in X-Plane",
   "author": "Philippe Ahles <philippe@ahles.ch>",
-  "keywords": [
-    "X-Plane",
-    "Map",
-    "Openstreetmap",
-    "Vue.js",
-    "Electron.js",
-    "Leaflet.js"
-  ],
-  "license": "MIT",
-  "main": "background.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ahles/whereismyplane.git"
-  },
   "scripts": {
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -26,26 +12,49 @@
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps"
   },
+  "main": "background.js",
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@mdi/font": "^3.6.95",
+    "core-js": "^3.6.5",
+    "electron-devtools-installer": "^3.1.1",
     "leaflet": "^1.4.0",
+    "roboto-fontface": "*",
     "vue": "^2.5.21",
     "vuetify": "^2.3.9",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-plugin-eslint": "^3.2.0",
-    "@vue/cli-service": "^3.2.0",
-    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/cli-plugin-babel": "^4.5.4",
+    "@vue/cli-plugin-eslint": "^4.5.4",
+    "@vue/cli-service": "^4.5.4",
+    "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.1.0",
     "electron": "^5.0.2",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-vue": "^6.2.2",
     "leaflet-rotatedmarker": "^0.2.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "vue-cli-plugin-electron-builder": "^1.0.0",
-    "vue-template-compiler": "^2.5.21"
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "sass": "^1.26.10",
+    "vue-cli-plugin-electron-builder": "^1.4.0",
+    "vue-cli-plugin-vuetify": "~2.0.7",
+    "vue-template-compiler": "^2.5.21",
+    "vuetify-loader": "^1.6.0"
+  },
+  "keywords": [
+    "X-Plane",
+    "Map",
+    "Openstreetmap",
+    "Vue.js",
+    "Electron.js",
+    "Leaflet.js"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahles/whereismyplane.git"
   }
 }
