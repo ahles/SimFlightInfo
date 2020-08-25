@@ -180,6 +180,10 @@ export default {
         text: 'DE',
         value: 'de',
       },
+      {
+        text: 'ES',
+        value: 'es',
+      },
     ],
   }),
   computed: {

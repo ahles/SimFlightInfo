@@ -1,0 +1,16 @@
+{
+  "Position": "Posición",
+  "Latitude": "Latitud",
+  "Longitude": "Longitud",
+  "Language": "Idioma",
+  "Bearing": "Dirección",
+  "Altitude above sea": "Altitud sobre el mar",
+  "Altitude above ground": "Altitud sobre el suelo",
+  "On ground": "En el suelo",
+  "Settings": "Configuraciones",
+  "Move map": "Mover mapa",
+  "Zoom level": "Nivel del zoom",
+  "Simulating": "Simulando",
+  "Simulate": "Simular",
+  "Not receiving data": "No recibiendo data"
+}
