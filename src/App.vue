@@ -58,17 +58,20 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item class="zoom-level">
-          <v-list-item-title>Zoom level {{ data.zoomLevel }}</v-list-item-title>
+          <v-list-item-title>Zoom level</v-list-item-title>
           <v-list-item-content>
             <v-slider
               :value="data.zoomLevel"
               min="0"
               max="18"
               step="1"
-              ticks
+              ticks="always"
               @change="updateZoomLevel"
               light
               color="rgba(255, 255, 255, 0.75)"
+              track-color="rgba(255, 255, 255, 0.75)"
+              thumb-label="always"
+              :thumb-size="24"
             ></v-slider>
           </v-list-item-content>
         </v-list-item>
@@ -222,7 +225,6 @@ html {
 
   .v-list-item {
     height: auto;
-    margin-bottom: 30px;
   }
 
   .v-divider {
@@ -313,6 +315,7 @@ html {
     flex-direction: column;
   }
   .v-list-item__content {
+    padding-top: 40px;
     width: 100%;
   }
   .v-list-item__title {
@@ -322,6 +325,9 @@ html {
   }
   .v-input--slider {
     width: 100%;
+  }
+  .v-slider__thumb-label {
+    color: #000;
   }
 }
 
