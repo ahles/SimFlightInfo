@@ -35,20 +35,20 @@ You need to instruct X-Plane to send the positional data (globalposition) over U
 
 ### Project setup
 ```
-yarn install
+npm install
 ```
 
 ### DEV Mode
 ```
-yarn electron:serve
+npm run electron:serve
 ```
 
 ### BUILD App
 ```
-yarn electron:build
+npm run electron:build
 ```
 
 ### Lints and fixes files
 ```
-yarn run lint
+npm run lint
 ```
