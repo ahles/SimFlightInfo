@@ -35,11 +35,6 @@ export default {
       type: Boolean,
       default: true,
     },
-    bearing: {
-      required: true,
-      type: Number,
-      default: 0,
-    },
   },
   data() {
     return {

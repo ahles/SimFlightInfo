@@ -3,45 +3,26 @@ const dgram = require('dgram');
 let messageIndex = 0;
 
 function readMessage(msg) {
-  let result = {
-    latitude: 0,
-    longitude: 0,
-    altitudeSea: 0,
-    altitudeGround: 0,
-    onRunway: 0,
-    mag: 0,
-    magVar: 0,
-  };
+  const message = msg.toString();
+  const messageParts = message.split(',');
 
-  const index = msg.readInt8(5);
-  const mag = msg.slice(9, 13).readFloatLE();
-  const magVar = msg.slice(13, 17).readFloatLE();
-
-  const positionOffset = 36;
-  const latitude = msg.slice(9 + positionOffset, 13 + positionOffset).readFloatLE();
-  const longitude = msg.slice(13 + positionOffset, 17 + positionOffset).readFloatLE();
-  const altitudeSea = msg.slice(17 + positionOffset, 21 + positionOffset).readFloatLE();
-  const altitudeGround = msg.slice(21 + positionOffset, 25 + positionOffset).readFloatLE();
-  const onRunway = msg.slice(25 + positionOffset, 29 + positionOffset).readFloatLE();
-
-  if (index === 19) {
-    result = {
-      messageIndex,
-      latitude,
-      longitude,
-      altitudeSea,
-      altitudeGround,
-      onRunway,
-      mag,
-      magVar,
+  // https://github.com/ollyau/EFBConnect
+  // https://www.foreflight.com/support/network-gps/
+  if (messageParts[0] === 'XGPSMSFS') {
+    const result = {
+      messageIndex: messageIndex,
+      latitude: parseFloat(messageParts[2]),
+      longitude: parseFloat(messageParts[1]),
+      altitudeSea: parseFloat(messageParts[3]), // m
+      groundSpeed: parseFloat(messageParts[4]), // m/s
     };
 
     messageIndex += 1;
+
+    return result;
   }
 
-  // console.log('result', result);
-
-  return result;
+  return null;
 }
 
 module.exports = {
@@ -49,7 +30,7 @@ module.exports = {
   log: false,
   logFile: './src/assets/log.json',
   udpHost: '127.0.0.1',
-  udpPort: 49000,
+  udpPort: 49002,
   udpClient: null,
   init(win, isDevelopment) {
     if (!this.initialized) {
@@ -68,9 +49,12 @@ module.exports = {
 
       this.udpClient.on('message', (msg) => {
         const position = readMessage(msg);
-        win.webContents.send('position', position);
-        if (isDevelopment && this.log) {
-          this.appendPositionToLog(position);
+        if (position !== null) {
+          // console.log('position', position);
+          win.webContents.send('position', position);
+          if (isDevelopment && this.log) {
+            this.appendPositionToLog(position);
+          }
         }
       });
 

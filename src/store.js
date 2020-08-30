@@ -12,11 +12,8 @@ export default new Vuex.Store({
       receivingData: false,
       latitude: 47.368650,
       longitude: 8.539183,
-      altitudeSea: 0,
-      altitudeGround: 0,
-      onRunway: false,
-      mag: 0,
-      magVar: 0,
+      altitudeSea: 0, // m
+      groundSpeed: 0, // m/s
       mapLockedToPosition: true,
       zoomLevel: 10,
     },
@@ -40,17 +37,8 @@ export default new Vuex.Store({
     UPDATE_ALTITUDE_SEA: (state, altitudeSea) => {
       state.data.altitudeSea = altitudeSea;
     },
-    UPDATE_ALTITUDE_GROUND: (state, altitudeGround) => {
-      state.data.altitudeGround = altitudeGround;
-    },
-    UPDATE_ON_RUNWAY: (state, onRunway) => {
-      state.data.onRunway = onRunway;
-    },
-    UPDATE_MAG: (state, mag) => {
-      state.data.mag = mag;
-    },
-    UPDATE_MAG_VAR: (state, magVar) => {
-      state.data.magVar = magVar;
+    UPDATE_GROUND_SPEED: (state, groundSpeed) => {
+      state.data.groundSpeed = groundSpeed;
     },
     UPDATE_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
       state.data.mapLockedToPosition = mapLockedToPosition;
@@ -81,16 +69,7 @@ export default new Vuex.Store({
                 commit('UPDATE_LATITUDE', pos[x].latitude);
                 commit('UPDATE_LONGITUDE', pos[x].longitude);
                 commit('UPDATE_ALTITUDE_SEA', pos[x].altitudeSea);
-                if (pos[x].altitudeGround > 0) {
-                  commit('UPDATE_ALTITUDE_GROUND', pos[x].altitudeGround);
-                } else {
-                  commit('UPDATE_ALTITUDE_GROUND', 0);
-                }
-                if (pos[x].onRunway === 1 && state.data.altitudeGround < 1) {
-                  commit('UPDATE_ON_RUNWAY', 1);
-                } else {
-                  commit('UPDATE_ON_RUNWAY', 0);
-                }
+                commit('UPDATE_GROUND_SPEED', pos[x].groundSpeed);
                 commit('UPDATE_MESSAGE_INDEX', i);
               }
             }, x * 1000, positions);
@@ -107,22 +86,7 @@ export default new Vuex.Store({
         if (position.latitude !== state.data.latitude) { commit('UPDATE_LATITUDE', position.latitude); }
         if (position.longitude !== state.data.longitude) { commit('UPDATE_LONGITUDE', position.longitude); }
         if (position.altitudeSea !== state.data.altitudeSea) { commit('UPDATE_ALTITUDE_SEA', position.altitudeSea); }
-        if (position.altitudeGround !== state.data.altitudeGround) {
-          if (position.altitudeGround > 0) {
-            commit('UPDATE_ALTITUDE_GROUND', position.altitudeGround);
-          } else {
-            commit('UPDATE_ALTITUDE_GROUND', 0);
-          }
-        }
-        if (position.onRunway !== state.data.onRunway) {
-          if (position.onRunway === 1 && state.data.altitudeGround < 1) {
-            commit('UPDATE_ON_RUNWAY', 1);
-          } else {
-            commit('UPDATE_ON_RUNWAY', 0);
-          }
-        }
-        if (position.mag !== state.data.mag) { commit('UPDATE_MAG', position.mag); }
-        if (position.magVar !== state.data.magVar) { commit('UPDATE_MAG_VAR', position.magVar); }
+        if (position.groundSpeed !== state.data.groundSpeed) { commit('UPDATE_GROUND_SPEED', position.groundSpeed); }
       });
     },
   },

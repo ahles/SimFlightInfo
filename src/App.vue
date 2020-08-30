@@ -35,20 +35,14 @@
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>{{ $t('Bearing') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ bearing.toFixed(2) }}°</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>{{ $t('Altitude above ground') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ roundAltitude(data.altitudeGround) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeGround)) }} m</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
             <v-list-item-title>{{ $t('Altitude above sea') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ roundAltitude(data.altitudeSea) }} ft<br />{{ roundAltitude(convertFeetToMeter(data.altitudeSea)) }} m</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ roundAltitude(data.altitudeSea) }} m</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>{{ $t('Ground Speed') }}</v-list-item-title>
+            <v-list-item-subtitle>{{ data.groundSpeed }} m/s<br /></v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item
@@ -119,7 +113,6 @@
         :longitude="data.longitude"
         :zoomLevel="data.zoomLevel"
         :mapLockedToPosition="data.mapLockedToPosition"
-        :bearing="bearing"
       />
       <div>
         <v-alert
