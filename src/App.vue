@@ -274,6 +274,15 @@ html {
   .v-list-item .v-list-item__content {
     flex-direction: row;
   }
+
+  .v-list-item__title {
+    font-weight: 300;
+  }
+
+  .v-list-item__subtitle {
+    font-weight: 200;
+    font-size: 1.5rem;
+  }
 }
 
 .v-navigation-drawer__content {
