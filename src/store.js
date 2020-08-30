@@ -10,8 +10,8 @@ export default new Vuex.Store({
     data: {
       messageIndex: 0,
       receivingData: false,
-      latitude: 47.368650,
-      longitude: 8.539183,
+      latitude: 0,
+      longitude: 0,
       altitudeSea: 0, // m
       bearing: 0,
       groundSpeed: 0, // m/s
