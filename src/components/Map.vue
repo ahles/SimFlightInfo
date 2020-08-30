@@ -106,6 +106,7 @@ export default {
               rotationAngle: this.bearing,
             },
           ).addTo(this.map);
+          console.log('this.marker', this.marker);
         } else {
           this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
           this.marker.setRotationAngle(this.bearing);

@@ -16,6 +16,7 @@ require('../node_modules/leaflet-rotatedmarker/leaflet.rotatedMarker.js');
 delete L.Icon.Default.prototype._getIconUrl; // eslint-disable-line no-underscore-dangle
 L.Icon.Default.mergeOptions({
   iconSize: [40, 40],
+  // iconAnchor: [20, 20],
   /* eslint-disable global-require */
 
   // default leaflet icons:
