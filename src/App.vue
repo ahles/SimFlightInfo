@@ -24,13 +24,13 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>{{ $t('Latitude') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ data.latitude.toFixed(6) }}°</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ data.latitude.toFixed(5) }}°</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>{{ $t('Longitude') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ data.longitude.toFixed(6) }}°</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ data.longitude.toFixed(5) }}°</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
