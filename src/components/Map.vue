@@ -89,16 +89,8 @@ export default {
         this.mapLayers.layerUrl,
         this.mapLayers.layerOptions,
       ).addTo(this.map);
-
-      this.marker = L.marker(
-        [this.latitude, this.longitude],
-        {
-          rotationAngle: this.bearing,
-        },
-      ).addTo(this.map);
     },
     positionMarkerAndSetMapView() {
-      // console.log('this.mapLockedToPosition', this.mapLockedToPosition);
       if (this.mapLockedToPosition) {
         if (this.marker !== null) {
           this.map.removeLayer(this.marker);
@@ -107,7 +99,6 @@ export default {
         this.rotateFixedMarker();
         this.map.setView([this.latitude, this.longitude]);
       } else {
-        // console.log('this.marker', this.marker);
         if (this.marker === null) { // eslint-disable-line no-lonely-if
           this.marker = L.marker(
             [this.latitude, this.longitude],
@@ -123,7 +114,6 @@ export default {
     },
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
-      // console.log('marker', marker);
       marker.style.transform = `rotate(${this.bearing}deg)`;
     },
   },

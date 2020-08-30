@@ -14,7 +14,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" app right dark clipped absolute>
+    <v-navigation-drawer v-model="drawer" app right dark absolute>
       <v-list class="flight">
         <v-list-item>
           <v-icon large>flight</v-icon>
@@ -36,26 +36,20 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>{{ $t('Altitude above sea') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ roundAltitude(data.altitudeSea) }} m</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ convertMToFeet(roundAltitude(data.altitudeSea)).toFixed(0) }} feet<br />{{ roundAltitude(data.altitudeSea) }} m</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>{{ $t('Bearing') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ data.bearing }} °</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ data.bearing.toFixed(1) }}°</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>{{ $t('Ground Speed') }}</v-list-item-title>
-            <v-list-item-subtitle>{{ data.groundSpeed }} m/s<br /></v-list-item-subtitle>
+            <v-list-item-subtitle>{{ convertMSToKnots(data.groundSpeed).toFixed(0) }} kts<br />{{ convertMSToKmh(data.groundSpeed).toFixed(0) }} km/h</v-list-item-subtitle>
           </v-list-item-content>
-        </v-list-item>
-        <v-list-item
-          v-if="data.onRunway"
-          class="onground"
-        >
-          <v-icon dark>flight_land</v-icon>&nbsp;{{ $t('On ground') }}
         </v-list-item>
       </v-list>
       <v-list three-line class="settings">
@@ -216,8 +210,14 @@ export default {
     stopSimulation() {
       this.window.reload();
     },
-    convertFeetToMeter(ft) {
-      return ft * 0.3048;
+    convertMSToKnots(ms) {
+      return ms * 1.943844;
+    },
+    convertMSToKmh(ms) {
+      return ms * 3.6;
+    },
+    convertMToFeet(m) {
+      return m * 3.28084;
     },
     updateMapLockedToPosition(event) {
       this.$store.commit('UPDATE_MAP_LOCKED_TO_POSITION', event);

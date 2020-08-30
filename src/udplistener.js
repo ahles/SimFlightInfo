@@ -15,7 +15,7 @@ function readMessage(msg) {
       latitude: parseFloat(messageParts[2]),
       longitude: parseFloat(messageParts[1]),
       altitudeSea: parseFloat(messageParts[3]), // m
-      bearing: parseInt(messageParts[4], 10),
+      bearing: parseFloat(messageParts[4]),
       groundSpeed: parseFloat(messageParts[5]), // m/s
     };
 
