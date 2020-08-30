@@ -25,6 +25,11 @@ export default {
       type: Number,
       default: 0,
     },
+    bearing: {
+      required: true,
+      type: Number,
+      default: 0,
+    },
     zoomLevel: {
       required: true,
       type: Number,
@@ -43,7 +48,9 @@ export default {
       tileLayer: null,
       mapLayers: {
         layerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        layerOptions: { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' },
+        layerOptions: {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        },
       },
     };
   },
@@ -121,18 +128,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-table {
-  margin: 0 auto;
-  border-collapse: collapse;
-  border: 1px solid black;
-
-  td,
-  th {
-    border: 1px solid black;
-    padding: 10px;
-  }
-}
 #map {
   position: absolute;
   top: 0;
@@ -142,15 +137,5 @@ table {
   width: 100%;
   height: calc(100vh - 48px);
   z-index: 0;
-}
-.altitude {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 1;
-  background: rgba(255,255,255,0.75);
-  padding: 10px;
-  border-radius: 10px;
-  font-weight: bold;
 }
 </style>

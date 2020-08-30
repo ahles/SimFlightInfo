@@ -9,12 +9,14 @@ function readMessage(msg) {
   // https://github.com/ollyau/EFBConnect
   // https://www.foreflight.com/support/network-gps/
   if (messageParts[0] === 'XGPSMSFS') {
+    // console.log('messageParts', messageParts);
     const result = {
       messageIndex: messageIndex,
       latitude: parseFloat(messageParts[2]),
       longitude: parseFloat(messageParts[1]),
       altitudeSea: parseFloat(messageParts[3]), // m
-      groundSpeed: parseFloat(messageParts[4]), // m/s
+      bearing: parseInt(messageParts[4], 10),
+      groundSpeed: parseFloat(messageParts[5]), // m/s
     };
 
     messageIndex += 1;

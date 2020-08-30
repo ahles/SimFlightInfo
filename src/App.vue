@@ -41,6 +41,12 @@
         </v-list-item>
         <v-list-item>
           <v-list-item-content>
+            <v-list-item-title>{{ $t('Bearing') }}</v-list-item-title>
+            <v-list-item-subtitle>{{ data.bearing }} °</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
             <v-list-item-title>{{ $t('Ground Speed') }}</v-list-item-title>
             <v-list-item-subtitle>{{ data.groundSpeed }} m/s<br /></v-list-item-subtitle>
           </v-list-item-content>
@@ -111,6 +117,7 @@
         :messageIndex="data.messageIndex"
         :latitude="data.latitude"
         :longitude="data.longitude"
+        :bearing="data.bearing"
         :zoomLevel="data.zoomLevel"
         :mapLockedToPosition="data.mapLockedToPosition"
       />

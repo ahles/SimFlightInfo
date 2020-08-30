@@ -13,6 +13,7 @@ export default new Vuex.Store({
       latitude: 47.368650,
       longitude: 8.539183,
       altitudeSea: 0, // m
+      bearing: 0,
       groundSpeed: 0, // m/s
       mapLockedToPosition: true,
       zoomLevel: 10,
@@ -39,6 +40,9 @@ export default new Vuex.Store({
     },
     UPDATE_GROUND_SPEED: (state, groundSpeed) => {
       state.data.groundSpeed = groundSpeed;
+    },
+    UPDATE_BEARING: (state, bearing) => {
+      state.data.bearing = bearing;
     },
     UPDATE_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
       state.data.mapLockedToPosition = mapLockedToPosition;
@@ -70,6 +74,7 @@ export default new Vuex.Store({
                 commit('UPDATE_LONGITUDE', pos[x].longitude);
                 commit('UPDATE_ALTITUDE_SEA', pos[x].altitudeSea);
                 commit('UPDATE_GROUND_SPEED', pos[x].groundSpeed);
+                commit('UPDATE_BEARING', pos[x].bearing);
                 commit('UPDATE_MESSAGE_INDEX', i);
               }
             }, x * 1000, positions);
@@ -87,6 +92,7 @@ export default new Vuex.Store({
         if (position.longitude !== state.data.longitude) { commit('UPDATE_LONGITUDE', position.longitude); }
         if (position.altitudeSea !== state.data.altitudeSea) { commit('UPDATE_ALTITUDE_SEA', position.altitudeSea); }
         if (position.groundSpeed !== state.data.groundSpeed) { commit('UPDATE_GROUND_SPEED', position.groundSpeed); }
+        if (position.bearing !== state.data.bearing) { commit('UPDATE_BEARING', position.bearing); }
       });
     },
   },
