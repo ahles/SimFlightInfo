@@ -51,7 +51,7 @@ module.exports = {
 
       this.udpClient.on('message', (msg) => {
         const position = readMessage(msg);
-        if (position !== null) {
+        if (position) {
           // console.log('position', position);
           win.webContents.send('position', position);
           if (isDevelopment && this.log) {
