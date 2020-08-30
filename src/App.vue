@@ -102,7 +102,7 @@
     </v-navigation-drawer>
 
     <v-main v-bind:class="{ overlay__blur: !data.receivingData }">
-      <div class="position-marker" v-if="true || data.mapLockedToPosition">
+      <div class="position-marker" v-if="data.mapLockedToPosition">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
           <path d="M38.186 27.21v-3.596L22.95 14.622v-9.89c0-1.493-1.276-2.698-2.857-2.698-1.58 0-2.857 1.205-2.857 2.697v9.891L2 23.614v3.596l15.236-4.496v9.891l-3.809 2.698V38l6.666-1.798L26.76 38v-2.697l-3.809-2.698v-9.89z" />
         </svg>
