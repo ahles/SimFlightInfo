@@ -52,10 +52,3 @@ npm run electron:build
 ```
 npm run lint
 ```
-
-
-## todo / bugs:
-
-- in the process of changing the airplane angle
-    - now mag and magVar will be used to calculate bearing
-    - todo: export json-file for simulation, containing that data
