@@ -52,52 +52,55 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-      <v-list three-line class="settings">
+      <v-list class="settings">
         <v-list-item>
-          <v-icon large>map</v-icon>
+          <v-icon v-if="settings" @click="settings = false">mdi-arrow-down-drop-circle-outline</v-icon>
+          <v-icon v-else @click="settings = true">mdi-arrow-up-drop-circle-outline</v-icon>
           <span class="section-header">{{ $t('Settings') }}</span>
         </v-list-item>
-        <v-divider></v-divider>
-        <v-list-item>
-          <v-list-item-content>
-            <v-switch
-              :label="$t('Move map')"
-              :input-value="data.mapLockedToPosition"
-              @change="updateMapLockedToPosition"
-              color="rgba(255, 255, 255, 0.75)"
-            ></v-switch>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item class="zoom-level">
-          <v-list-item-title>{{ $t('Zoom level') }}</v-list-item-title>
-          <v-list-item-content>
-            <v-slider
-              :value="data.zoomLevel"
-              min="0"
-              max="18"
-              step="1"
-              ticks="always"
-              @change="updateZoomLevel"
-              light
-              color="rgba(255, 255, 255, 0.75)"
-              track-color="rgba(255, 255, 255, 0.75)"
-              thumb-label="always"
-              :thumb-size="24"
-            ></v-slider>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item class="language">
-          <v-list-item-title>{{ $t('Language') }}</v-list-item-title>
-          <v-list-item-content>
-            <v-select
-              v-model="$i18n.locale"
-              dense
-              outlined
-              :items="langs"
-              @change="changeLangInLocalstorage()"
-            />
-          </v-list-item-content>
-        </v-list-item>
+        <div v-if="settings">
+          <v-divider></v-divider>
+          <v-list-item>
+            <v-list-item-content>
+              <v-switch
+                :label="$t('Move map')"
+                :input-value="data.mapLockedToPosition"
+                @change="updateMapLockedToPosition"
+                ripple
+              ></v-switch>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item class="zoom-level">
+            <v-list-item-title>{{ $t('Zoom level') }}</v-list-item-title>
+            <v-list-item-content>
+              <v-slider
+                :value="data.zoomLevel"
+                min="0"
+                max="18"
+                step="1"
+                ticks="always"
+                @change="updateZoomLevel"
+                light
+                color="rgba(255, 255, 255, 0.75)"
+                track-color="rgba(255, 255, 255, 0.75)"
+                thumb-label="always"
+                :thumb-size="24"
+              ></v-slider>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item class="language">
+            <v-list-item-title>{{ $t('Language') }}</v-list-item-title>
+            <v-list-item-content>
+              <v-select
+                v-model="$i18n.locale"
+                dense
+                outlined
+                :items="langs"
+                @change="changeLangInLocalstorage()"
+              />
+            </v-list-item-content>
+          </v-list-item>
+        </div>
       </v-list>
     </v-navigation-drawer>
 
@@ -168,6 +171,7 @@ export default {
   },
   data: () => ({
     drawer: false,
+    settings: false,
     window: null,
     simulating: false,
     langs: [
@@ -376,6 +380,7 @@ html {
 
   .v-list-item__content {
     width: 80px;
+    align-self: flex-start;
   }
 }
 
