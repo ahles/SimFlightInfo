@@ -1,56 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      dark
-      dense
-      app
-      clipped-right
-    >
-      <v-toolbar-title>
-        <v-icon
-          dark
-          class="app-icon"
-        >
-          flight
-        </v-icon> Whereismyplane
-      </v-toolbar-title>
-      <v-spacer />
-      <v-btn
-        ripple
-        small
-        class="window-button"
-        @click.stop="minimizeWindow"
-      >
-        <v-icon
-          dark
-        >
-          minimize
-        </v-icon>
-      </v-btn>
-      <v-btn
-        ripple
-        small
-        class="window-button"
-        @click.stop="maximizeWindow"
-      >
-        <v-icon
-          dark
-        >
-          maximize
-        </v-icon>
-      </v-btn>
-      <v-btn
-        ripple
-        small
-        class="window-button"
-        @click.stop="closeWindow"
-      >
-        <v-icon dark>
-          close
-        </v-icon>
-      </v-btn>
-    </v-app-bar>
-
+    <Header />
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -157,82 +107,7 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-      <v-list
-        class="settings"
-      >
-        <v-list-item>
-          <v-icon
-            v-if="settings"
-            @click="settings = false"
-          >
-            mdi-arrow-down-drop-circle-outline
-          </v-icon>
-          <v-icon
-            v-else
-            @click="settings = true"
-          >
-            mdi-arrow-up-drop-circle-outline
-          </v-icon>
-          <span
-            class="section-header"
-          >
-            {{ $t('Settings') }}
-          </span>
-        </v-list-item>
-        <div
-          v-if="settings"
-        >
-          <v-divider />
-          <v-list-item>
-            <v-list-item-content>
-              <v-switch
-                :label="$t('Move map')"
-                :input-value="data.mapLockedToPosition"
-                ripple
-                @change="updateMapLockedToPosition"
-              />
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item
-            class="zoom-level"
-          >
-            <v-list-item-title>
-              {{ $t('Zoom level') }}
-            </v-list-item-title>
-            <v-list-item-content>
-              <v-slider
-                :value="data.zoomLevel"
-                min="0"
-                max="18"
-                step="1"
-                ticks="always"
-                light
-                color="rgba(255, 255, 255, 0.75)"
-                track-color="rgba(255, 255, 255, 0.75)"
-                thumb-label="always"
-                :thumb-size="24"
-                @change="updateZoomLevel"
-              />
-            </v-list-item-content>
-          </v-list-item>
-          <v-list-item
-            class="language"
-          >
-            <v-list-item-title>
-              {{ $t('Language') }}
-            </v-list-item-title>
-            <v-list-item-content>
-              <v-select
-                v-model="$i18n.locale"
-                dense
-                outlined
-                :items="langs"
-                @change="changeLangInLocalstorage()"
-              />
-            </v-list-item-content>
-          </v-list-item>
-        </div>
-      </v-list>
+      <Settings />
     </v-navigation-drawer>
 
     <v-main
@@ -256,30 +131,9 @@
         :zoom-level="data.zoomLevel"
         :map-locked-to-position="data.mapLockedToPosition"
       />
-      <div>
-        <v-alert
-          v-model="simulating"
-          type="warning"
-          class="simulating"
-          icon="cast"
-        >
-          {{ $t('Simulating') }}
-          <v-spacer />
-          <v-btn
-            title="stop"
-            color="warning"
-            ripple
-            outlined
-            small
-            class="simulating__stop"
-            @click.stop="stopSimulation"
-          >
-            <v-icon dark>
-              cancel
-            </v-icon>
-          </v-btn>
-        </v-alert>
-      </div>
+      <SimulationBar
+        :simulating="simulationActive"
+      />
     </v-main>
     <v-btn
       v-if="!drawer"
@@ -360,39 +214,28 @@
 
 <script>
 import { mapState } from 'vuex';
+import Header from '@/components/Header.vue';
 import Map from '@/components/Map.vue';
-
-const { remote } = require('electron');
+import Settings from '@/components/Settings.vue';
+import SimulationBar from '@/components/SimulationBar.vue';
 
 export default {
   name: 'App',
   components: {
+    Header,
     Map,
+    Settings,
+    SimulationBar,
   },
   data: () => ({
     drawer: false,
-    settings: false,
     window: null,
-    simulating: false,
-    langs: [
-      {
-        text: 'EN',
-        value: 'en',
-      },
-      {
-        text: 'DE',
-        value: 'de',
-      },
-      {
-        text: 'ES',
-        value: 'es',
-      },
-    ],
   }),
   computed: {
     ...mapState({
       data: (state) => state.data,
       locale: (state) => state.locale,
+      simulationActive: (state) => state.simulationActive,
     }),
     bearing() {
       return this.data.mag - this.data.magVar;
@@ -402,18 +245,9 @@ export default {
     this.$store.dispatch('receiveData');
   },
   created() {
-    this.window = remote.getCurrentWindow();
     this.$i18n.locale = this.locale;
   },
   methods: {
-    simulate() {
-      this.$store.commit('UPDATE_SIMULATION_ACTIVE', true);
-      this.$store.dispatch('simulateData');
-      this.simulating = true;
-    },
-    stopSimulation() {
-      this.window.reload();
-    },
     convertMSToKnots(ms) {
       return ms * 1.943844;
     },
@@ -423,30 +257,12 @@ export default {
     convertMToFeet(m) {
       return m * 3.28084;
     },
-    updateMapLockedToPosition(event) {
-      this.$store.commit('UPDATE_MAP_LOCKED_TO_POSITION', event);
-    },
-    updateZoomLevel(event) {
-      this.$store.commit('UPDATE_ZOOM_LEVEL', event);
-    },
-    closeWindow() {
-      this.window.close();
-    },
-    minimizeWindow() {
-      this.window.minimize();
-    },
-    maximizeWindow() {
-      if (!this.window.isMaximized()) {
-        this.window.maximize();
-      } else {
-        this.window.unmaximize();
-      }
-    },
     roundAltitude(altitude) {
       return Math.floor(altitude);
     },
-    changeLangInLocalstorage() {
-      this.$store.commit('SET_LOCALE', this.$i18n.locale);
+    simulate() {
+      this.$store.commit('UPDATE_SIMULATION_ACTIVE', true);
+      this.$store.dispatch('simulateData');
     },
   },
 };
@@ -558,52 +374,13 @@ html {
   }
 }
 
-.zoom-level {
-  min-height: 0 !important;
-
-  &.v-list-item {
-    flex-direction: column;
-  }
-  .v-list-item__content {
-    padding-top: 40px;
-    width: 100%;
-  }
-  .v-list-item__title {
-    justify-content: flex-start;
-    text-align: left;
-    align-self: flex-start;
-  }
-  .v-input--slider {
-    width: 100%;
-  }
-  .v-slider__thumb-label {
-    color: #000;
-  }
-}
-
-.language {
-  &.v-list-item {
-    flex-direction: column;
-    min-height: 0;
-  }
-  .v-list-item__title {
-    justify-content: flex-start;
-    text-align: left;
-    align-self: flex-start;
-  }
-
-  .v-list-item__content {
-    width: 80px;
-    align-self: flex-start;
-  }
-}
-
 .simulate {
   margin-top: 30px;
   .v-icon {
     margin-right: 10px;
   }
 }
+
 .simulating {
   margin-top: 0;
   padding: 8px 16px;
