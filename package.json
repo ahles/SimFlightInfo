@@ -18,10 +18,12 @@
     "@babel/polyfill": "^7.4.4",
     "@mdi/font": "^5.5.55",
     "core-js": "^3.6.5",
+    "electron": "^5.0.2",
     "leaflet": "^1.4.0",
     "vue": "^2.5.21",
     "vue-i18n": "^8.17.3",
     "vuetify": "^2.3.10",
+    "vue-cli-plugin-electron-builder": "^1.4.0",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -32,7 +34,6 @@
     "@vue/eslint-config-airbnb": "^5.0.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.1.0",
-    "electron": "^5.0.2",
     "electron-devtools-installer": "^3.1.1",
     "eslint": "^5.16.0",
     "eslint-plugin-import": "^2.20.2",
@@ -41,7 +42,6 @@
     "node-sass": "^4.14.1",
     "sass": "^1.26.10",
     "sass-loader": "^10.0.1",
-    "vue-cli-plugin-electron-builder": "^1.4.0",
     "vue-cli-plugin-i18n": "~1.0.1",
     "vue-cli-plugin-vuetify": "~2.0.7",
     "vue-template-compiler": "^2.5.21",

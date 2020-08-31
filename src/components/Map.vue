@@ -1,6 +1,8 @@
 <template>
-  <div class="map__wrapper">
-    <div id="map"></div>
+  <div
+    class="map__wrapper"
+  >
+    <div id="map" />
   </div>
 </template>
 

@@ -65,7 +65,7 @@ export default new Vuex.Store({
         commit('UPDATE_RECEIVING_DATA', true);
       }
       commit('UPDATE_ZOOM_LEVEL', 14);
-      for (let i = 0; i < positions.length; i++) {
+      for (let i = 0; i < positions.length; i += 1) {
         ((x, pos) => {
           if (typeof positions[i] !== 'undefined') {
             setTimeout(() => {
