@@ -46,3 +46,24 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.simulating {
+  margin-top: 0;
+  padding: 8px 16px;
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .v-icon {
+    color: white !important;
+  }
+  &__stop {
+    min-width: 40px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+}
+</style>

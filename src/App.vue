@@ -113,16 +113,10 @@
     <v-main
       :class="{ overlay__blur: !data.receivingData }"
     >
-      <div
+      <PositionMarker
         v-if="data.mapLockedToPosition"
-        class="position-marker"
-      >
-        <!-- eslint-disable -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
-          <path d="M38.186 27.21v-3.596L22.95 14.622v-9.89c0-1.493-1.276-2.698-2.857-2.698-1.58 0-2.857 1.205-2.857 2.697v9.891L2 23.614v3.596l15.236-4.496v9.891l-3.809 2.698V38l6.666-1.798L26.76 38v-2.697l-3.809-2.698v-9.89z" />
-        </svg>
-        <!-- eslint-enable -->
-      </div>
+      />
+
       <Map
         :message-index="data.messageIndex"
         :latitude="data.latitude"
@@ -169,46 +163,10 @@
         arrow_forward_ios
       </v-icon>
     </v-btn>
-    <div
+
+    <Overlay
       v-if="!data.receivingData"
-      class="overlay"
-    >
-      <div
-        class="overlay__content"
-      >
-        <v-icon
-          class="overlay__icon"
-        >
-          airplanemode_inactive
-        </v-icon>
-        <h1
-          class="display-2"
-        >
-          {{ $t('Not receiving data') }}
-        </h1>
-        <v-btn
-          dark
-          ripple
-          class="simulate"
-          @click.stop="simulate"
-        >
-          <v-icon
-            dark
-          >
-            flight
-          </v-icon> {{ $t('Simulate') }}
-        </v-btn>
-      </div>
-      <!--  eslint-disable -->
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="overlay__blur-svg">
-        <defs>
-          <filter id="blur-filter">
-            <feGaussianBlur stdDeviation="3"></feGaussianBlur>
-          </filter>
-        </defs>
-      </svg>
-      <!-- eslint-enable -->
-    </div>
+    />
   </v-app>
 </template>
 
@@ -218,6 +176,8 @@ import Header from '@/components/Header.vue';
 import Map from '@/components/Map.vue';
 import Settings from '@/components/Settings.vue';
 import SimulationBar from '@/components/SimulationBar.vue';
+import Overlay from '@/components/Overlay.vue';
+import PositionMarker from '@/components/PositionMarker.vue';
 
 export default {
   name: 'App',
@@ -226,6 +186,8 @@ export default {
     Map,
     Settings,
     SimulationBar,
+    Overlay,
+    PositionMarker,
   },
   data: () => ({
     drawer: false,
@@ -237,9 +199,6 @@ export default {
       locale: (state) => state.locale,
       simulationActive: (state) => state.simulationActive,
     }),
-    bearing() {
-      return this.data.mag - this.data.magVar;
-    },
   },
   beforeCreate() {
     this.$store.dispatch('receiveData');
@@ -259,10 +218,6 @@ export default {
     },
     roundAltitude(altitude) {
       return Math.floor(altitude);
-    },
-    simulate() {
-      this.$store.commit('UPDATE_SIMULATION_ACTIVE', true);
-      this.$store.dispatch('simulateData');
     },
   },
 };
@@ -318,118 +273,15 @@ html {
   bottom: 30px;
   right: 20px;
   z-index: 100;
+
   .v-icon {
     width: 18px;
   }
 }
-.v-btn--bottom.v-btn--absolute.v-btn--small.reload {
-  bottom: 20px;
-  left: 20px;
-  z-index: 100;
-}
+
 .v-toolbar {
   -webkit-app-region: drag;
   z-index: 7;
 }
 
-.window-button {
-  -webkit-app-region: no-drag;
-  min-width: 0;
-}
-
-.overlay {
-  position: absolute;
-  top: 48px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: calc(100vh - 48px);
-  z-index: 5;
-  background-color: rgba(255, 255, 255, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: grey;
-  }
-
-  &__icon {
-    font-size: 150px !important;
-  }
-
-  &__blur {
-    width: 100%;
-    height: 100%;
-    filter: blur(3px);
-  }
-
-  &__blur-svg {
-      display: none;
-  }
-}
-
-.simulate {
-  margin-top: 30px;
-  .v-icon {
-    margin-right: 10px;
-  }
-}
-
-.simulating {
-  margin-top: 0;
-  padding: 8px 16px;
-  div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .v-icon {
-    color: white !important;
-  }
-  &__stop {
-    min-width: 40px;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-  }
-}
-
-.position-marker {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: calc(50% - 20px);
-  left: calc(50% - 20px);
-  z-index: 4;
-  filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
-
-  &.satellite {
-    svg {
-      fill: #fb8c00;
-    }
-  }
-}
-
-.leaflet-container .leaflet-marker-pane img {
-  filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
-    svg {
-      fill: #fb8c00;
-    }
-}
-
-.app-icon {
-  margin-right: 10px;
-}
-
-.onground {
-  i {
-    padding-right: 10px;
-  }
-}
 </style>

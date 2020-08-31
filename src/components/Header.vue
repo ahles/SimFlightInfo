@@ -76,3 +76,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.window-button {
+  -webkit-app-region: no-drag;
+  min-width: 0;
+}
+.app-icon {
+  margin-right: 10px;
+}
+</style>
