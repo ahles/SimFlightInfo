@@ -4,6 +4,7 @@
     dense
     app
     clipped-right
+    class="app-bar"
   >
     <v-toolbar-title>
       <v-icon
@@ -84,5 +85,8 @@ export default {
 }
 .app-icon {
   margin-right: 10px;
+}
+.app-bar {
+  -webkit-app-region: drag;
 }
 </style>

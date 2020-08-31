@@ -278,10 +278,4 @@ html {
     width: 18px;
   }
 }
-
-.v-toolbar {
-  -webkit-app-region: drag;
-  z-index: 7;
-}
-
 </style>
