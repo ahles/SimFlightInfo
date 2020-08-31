@@ -118,11 +118,41 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
+              {{ $t('Heading') }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              {{ data.heading }}°
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>
               {{ $t('Ground Speed') }}
             </v-list-item-title>
             <v-list-item-subtitle>
               {{ convertMSToKnots(data.groundSpeed).toFixed(0) }} kts<br>
               {{ convertMSToKmh(data.groundSpeed).toFixed(0) }} km/h
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ $t('Pitch') }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              {{ data.pitch }}°
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ $t('Roll') }}
+            </v-list-item-title>
+            <v-list-item-subtitle>
+              {{ data.roll }}°
             </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
