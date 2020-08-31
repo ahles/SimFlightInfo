@@ -82,11 +82,13 @@ export default {
 .window-button {
   -webkit-app-region: no-drag;
   min-width: 0;
+  cursor: pointer;
 }
 .app-icon {
   margin-right: 10px;
 }
 .app-bar {
   -webkit-app-region: drag;
+  cursor: grab;
 }
 </style>
