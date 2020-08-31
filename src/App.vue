@@ -257,6 +257,7 @@ body,
 html {
   overflow: hidden;
 }
+
 .section-header {
   padding-left: 18px;
 }
