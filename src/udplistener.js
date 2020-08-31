@@ -1,26 +1,42 @@
+// https://github.com/ollyau/EFBConnect
+// https://www.foreflight.com/support/network-gps/
+
 const dgram = require('dgram');
 
 let messageIndex = 0;
+
+const xatt = {
+  heading: 0,
+  pitch: 0,
+  roll: 0,
+};
 
 function readMessage(msg) {
   const message = msg.toString();
   const messageParts = message.split(',');
 
-  // https://github.com/ollyau/EFBConnect
-  // https://www.foreflight.com/support/network-gps/
+  if (messageParts[0].stratsWith('XATT')) {
+    xatt.heading = parseFloat(messageParts[1]);
+    xatt.pitch = parseFloat(messageParts[2]);
+    xatt.roll = parseFloat(messageParts[2]);
+  }
+
   if (messageParts[0] === 'XGPSMSFS') {
-    // console.log('messageParts', messageParts);
     const result = {
-      messageIndex: messageIndex,
+      messageIndex,
       latitude: parseFloat(messageParts[2]),
       longitude: parseFloat(messageParts[1]),
       altitudeSea: parseFloat(messageParts[3]), // m
       bearing: parseFloat(messageParts[4]),
       groundSpeed: parseFloat(messageParts[5]), // m/s
+      heading: xatt.heading,
+      pitch: xatt.pitch,
+      roll: xatt.roll,
     };
 
     messageIndex += 1;
 
+    // console.log('result', result);
     return result;
   }
 
