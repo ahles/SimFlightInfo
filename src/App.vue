@@ -233,7 +233,7 @@
           class="simulating"
           icon="cast"
         >
-          <strong>{{ $t('Simulating') }}</strong>
+          {{ $t('Simulating') }}
           <v-spacer />
           <v-btn
             title="stop"
@@ -430,6 +430,8 @@ html {
 
 .section-header {
   padding-left: 18px;
+  font-size: 1.6rem;
+  font-weight: 300;
 }
 
 .v-list.flight {
@@ -448,11 +450,13 @@ html {
 
   .v-list-item__title {
     font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
   }
 
   .v-list-item__subtitle {
-    font-weight: 200;
+    font-weight: 300;
     font-size: 1.5rem;
+    color: #ffffff;
   }
 }
 
