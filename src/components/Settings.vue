@@ -53,6 +53,7 @@
             track-color="rgba(255, 255, 255, 0.75)"
             thumb-label="always"
             :thumb-size="24"
+            class="zoom-slider"
             @change="updateZoomLevel"
           />
         </v-list-item-content>
@@ -123,7 +124,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .zoom-level {
   min-height: 0 !important;
 
