@@ -113,18 +113,24 @@
     <v-main
       :class="{ overlay__blur: !data.receivingData }"
     >
-      <PositionMarker
-        v-if="data.mapLockedToPosition"
-      />
+      <transition name="fade">
+        <PositionMarker
+          v-if="data.mapLockedToPosition && data.messageIndex > 0"
+        />
+      </transition>
 
-      <Map
-        :message-index="data.messageIndex"
-        :latitude="data.latitude"
-        :longitude="data.longitude"
-        :bearing="data.bearing"
-        :zoom-level="data.zoomLevel"
-        :map-locked-to-position="data.mapLockedToPosition"
-      />
+      <transition name="fade">
+        <Map
+          v-if="data.messageIndex > 0"
+          :message-index="data.messageIndex"
+          :latitude="data.latitude"
+          :longitude="data.longitude"
+          :bearing="data.bearing"
+          :zoom-level="data.zoomLevel"
+          :map-locked-to-position="data.mapLockedToPosition"
+        />
+      </transition>
+
       <SimulationBar
         :simulating="simulationActive"
       />
@@ -277,5 +283,13 @@ html {
   .v-icon {
     width: 18px;
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .25s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
