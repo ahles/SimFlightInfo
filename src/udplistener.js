@@ -15,10 +15,10 @@ function readMessage(msg) {
   const message = msg.toString();
   const messageParts = message.split(',');
 
-  if (messageParts[0].stratsWith('XATT')) {
+  if (messageParts[0].startsWith('XATT')) {
     xatt.heading = parseFloat(messageParts[1]);
     xatt.pitch = parseFloat(messageParts[2]);
-    xatt.roll = parseFloat(messageParts[2]);
+    xatt.roll = parseFloat(messageParts[3]);
   }
 
   if (messageParts[0] === 'XGPSMSFS') {
