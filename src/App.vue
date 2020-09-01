@@ -6,7 +6,6 @@
       right
       dark
       absolute
-      clipped
       disable-resize-watcher
     >
       <Settings />

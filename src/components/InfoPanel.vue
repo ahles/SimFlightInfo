@@ -169,7 +169,8 @@ export default {
   min-width: 760px;
   max-width: 1024px;
   transform: translateX(-50%);
-  background-color: #363636;
+  // background-color: #363636;
+  background-color: rgba(54, 54, 54, 0.9);
   color: white;
   padding: 1rem;
   line-height: 1;

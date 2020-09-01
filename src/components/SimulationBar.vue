@@ -51,14 +51,17 @@ export default {
 .simulating {
   margin-top: 0;
   padding: 8px 16px;
+
   div {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
+
   .v-icon {
     color: white !important;
   }
+
   &__stop {
     min-width: 40px;
     overflow: hidden;
