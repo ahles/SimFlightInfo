@@ -5,45 +5,49 @@
     <div class="info-panel__col info-panel__col--wide">
       <p>
         <span class="info-panel__unit">{{ $t('Latitude') }}</span><br>
-        {{ latitude.toFixed(5) }}°
+        <span class="info-panel__value">{{ latitude.toFixed(5) }}°</span>
       </p>
     </div>
 
     <div class="info-panel__col info-panel__col--wide">
       <p>
         <span class="info-panel__unit">{{ $t('Longitude') }}</span><br>
-        {{ longitude.toFixed(5) }}°
+        <span class="info-panel__value">{{ longitude.toFixed(5) }}°</span>
       </p>
     </div>
 
-    <div class="info-panel__col info-panel__col--narrow">
+    <div class="info-panel__col info-panel__col--medium">
       <p>
         <span class="info-panel__unit">{{ $t('Heading') }}</span><br>
-        {{ heading }}°
+        <span class="info-panel__value">{{ heading }}°</span>
       </p>
     </div>
 
     <div class="info-panel__col">
       <p>
         <span class="info-panel__unit">{{ $t('Altitude above sea') }}</span><br>
-        {{ convertMToFeet(roundAltitude(altitudeSea)).toFixed(0) }}&nbsp;ft
+        <span class="info-panel__value">
+          {{ convertMToFeet(roundAltitude(altitudeSea)).toFixed(0) }}&nbsp;ft
+        </span>
       </p>
     </div>
 
-    <div class="info-panel__col info-panel__col--narrow">
+    <div class="info-panel__col info-panel__col--medium">
       <p>
         <span class="info-panel__unit">{{ $t('Ground Speed') }}</span><br>
-        {{ convertMSToKnots(groundSpeed).toFixed(0) }}&nbsp;kts
+        <span class="info-panel__value">
+          {{ convertMSToKnots(groundSpeed).toFixed(0) }}&nbsp;kts
+        </span>
       </p>
     </div>
 
-    <div class="info-panel__col info-panel__col--narrow">
+    <div class="info-panel__col info-panel__col--small">
       <Pitch
         :pitch="pitch"
       />
     </div>
 
-    <div class="info-panel__col info-panel__col--narrow">
+    <div class="info-panel__col info-panel__col--small">
       <Roll
         :roll="roll"
       />
@@ -126,39 +130,48 @@ export default {
   transform: translateX(-50%);
   background-color: #363636;
   color: white;
-  padding: 1rem;
+  padding: 1rem 0;
   line-height: 1;
   border-radius: 5px;
   box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.5);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 
   p {
     margin-bottom: 0;
-    font-size: 1.5rem;
-    font-weight: 300;
+    line-height: 1.1;
+    width: 100%;
   }
 
   &__col {
-    // border: 1px solid white;
-    padding: 5px 10px;
-    flex-basis: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+    width: 120px;
 
     &--wide {
-      flex-basis: 140px;
+      width: 140px;
     }
 
-    &--narrow {
-      flex-basis: 100px;
+    &--medium {
+      width: 100px;
+    }
+
+    &--small {
+      width: 60px;
     }
   }
 
   &__unit {
-    font-size: .8rem;
+    font-size: .9rem;
+    font-weight: 200;
+    white-space: nowrap;
+  }
+
+  &__value {
+    font-size: 1.6rem;
+    font-weight: 300;
+    white-space: nowrap;
   }
 }
 </style>

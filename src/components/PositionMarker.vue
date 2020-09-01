@@ -25,5 +25,6 @@ export default {
   left: calc(50% - 20px);
   z-index: 4;
   filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
+  pointer-events: none;
 }
 </style>

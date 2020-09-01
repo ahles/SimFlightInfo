@@ -1,21 +1,5 @@
 <template>
   <div class="pitch">
-    <svg
-      class="pitch__svg"
-      viewBox="0 0 50 50"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <ellipse
-        class="pitch__border"
-        cx="50%"
-        cy="50%"
-        rx="49%"
-        ry="49%"
-        fill="none"
-        stroke="white"
-      />
-    </svg>
-
     <span
       v-if="showValue"
       class="pitch__value"
@@ -25,6 +9,7 @@
 
     <svg
       class="pitch__airplane"
+      :style="`transform: translate(-50%, -60%) rotateZ(${pitchLocal}deg)`"
       width="1039"
       height="222.04"
       version="1.1"
@@ -67,8 +52,8 @@ export default {
 <style lang="scss" scoped>
 .pitch {
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 100%;
   box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
    -4px -4px 12px 0 rgba(255, 255, 255, 0.3);
@@ -82,11 +67,11 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -60%);
     width: 70%;
     height: auto;
     transform-origin: center center;
     fill: #ffffff;
+    transition: transform .3s linear;
   }
 
   &__value {
