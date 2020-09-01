@@ -3,109 +3,63 @@
     class="info-panel"
   >
     <div class="info-panel__col info-panel__col--wide">
-      <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
-          <p
-            v-bind="attrs"
-            v-on="on"
-          >
-            {{ latitude.toFixed(5) }}°
-          </p>
-        </template>
-        <span>{{ $t('Latitude') }}</span>
-      </v-tooltip>
+      <p>
+        <span class="info-panel__unit">{{ $t('Latitude') }}</span><br>
+        {{ latitude.toFixed(5) }}°
+      </p>
     </div>
 
     <div class="info-panel__col info-panel__col--wide">
-      <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
-          <p
-            v-bind="attrs"
-            v-on="on"
-          >
-            {{ longitude.toFixed(5) }}°
-          </p>
-        </template>
-        <span>{{ $t('Longitude') }}</span>
-      </v-tooltip>
+      <p>
+        <span class="info-panel__unit">{{ $t('Longitude') }}</span><br>
+        {{ longitude.toFixed(5) }}°
+      </p>
     </div>
 
     <div class="info-panel__col info-panel__col--narrow">
-      <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
-          <p
-            v-bind="attrs"
-            v-on="on"
-          >
-            {{ heading }}°
-          </p>
-        </template>
-        <span>{{ $t('Heading') }}</span>
-      </v-tooltip>
+      <p>
+        <span class="info-panel__unit">{{ $t('Heading') }}</span><br>
+        {{ heading }}°
+      </p>
     </div>
 
     <div class="info-panel__col">
-      <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
-          <p
-            v-bind="attrs"
-            v-on="on"
-          >
-            {{ convertMToFeet(roundAltitude(altitudeSea)).toFixed(0) }}&nbsp;ft
-          </p>
-        </template>
-        <span>{{ $t('Altitude above sea') }}</span>
-      </v-tooltip>
+      <p>
+        <span class="info-panel__unit">{{ $t('Altitude above sea') }}</span><br>
+        {{ convertMToFeet(roundAltitude(altitudeSea)).toFixed(0) }}&nbsp;ft
+      </p>
     </div>
 
     <div class="info-panel__col info-panel__col--narrow">
-      <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
-          <p
-            v-bind="attrs"
-            v-on="on"
-          >
-            {{ convertMSToKnots(groundSpeed).toFixed(0) }}&nbsp;kts
-          </p>
-        </template>
-        <span>{{ $t('Ground Speed') }}</span>
-      </v-tooltip>
+      <p>
+        <span class="info-panel__unit">{{ $t('Ground Speed') }}</span><br>
+        {{ convertMSToKnots(groundSpeed).toFixed(0) }}&nbsp;kts
+      </p>
     </div>
 
     <div class="info-panel__col info-panel__col--narrow">
-      <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
-          <p
-            v-bind="attrs"
-            v-on="on"
-          >
-            {{ pitch }}°
-          </p>
-        </template>
-        <span>{{ $t('Pitch') }}</span>
-      </v-tooltip>
+      <Pitch
+        :pitch="pitch"
+      />
     </div>
 
     <div class="info-panel__col info-panel__col--narrow">
-      <v-tooltip top>
-        <template v-slot:activator="{ on, attrs }">
-          <p
-            v-bind="attrs"
-            v-on="on"
-          >
-            {{ roll }}°
-          </p>
-        </template>
-        <span>{{ $t('Roll') }}</span>
-      </v-tooltip>
+      <p>
+        <span class="info-panel__unit">{{ $t('Roll') }}</span><br>
+        {{ roll }}°
+      </p>
     </div>
   </div>
 </template>
 
 <script>
+import Pitch from '@/components/Pitch.vue';
 
 export default {
   name: 'InfoPanel',
+  components: {
+    Pitch,
+  },
   props: {
     latitude: {
       required: true,
@@ -169,8 +123,7 @@ export default {
   min-width: 760px;
   max-width: 1024px;
   transform: translateX(-50%);
-  // background-color: #363636;
-  background-color: rgba(54, 54, 54, 0.9);
+  background-color: #363636;
   color: white;
   padding: 1rem;
   line-height: 1;
@@ -201,6 +154,10 @@ export default {
     &--narrow {
       flex-basis: 100px;
     }
+  }
+
+  &__unit {
+    font-size: .8rem;
   }
 }
 </style>
