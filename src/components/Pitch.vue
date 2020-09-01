@@ -5,24 +5,6 @@
       viewBox="0 0 50 50"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <line
-        class="pitch__horizon"
-        x1="0"
-        y1="50%"
-        x2="100%"
-        y2="50%"
-        stroke="white"
-      />
-      <rect
-        class="pitch__airplane"
-        x="10%"
-        y="48%"
-        width="80%"
-        height="4%"
-        fill="black"
-        stroke="none"
-        :style="`transform: rotateZ(${pitch}deg)`"
-      />
       <ellipse
         class="pitch__border"
         cx="50%"
@@ -33,11 +15,31 @@
         stroke="white"
       />
     </svg>
+
     <span
+      v-if="showValue"
       class="pitch__value"
     >
-      {{ pitch }}°
+      {{ pitchLocal }}°
     </span>
+
+    <svg
+      class="pitch__airplane"
+      width="1039"
+      height="222.04"
+      version="1.1"
+      viewBox="0 0 274.9 58.749"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g transform="translate(.1237 -.17183)">
+        <g transform="matrix(2.3988 0 0 2.3988 -69.318 -272.59)" fill="#ffffff"> <!-- eslint-disable-line -->
+          <path d="m42.361 124.55h100.53v13.096h-100.53z" fill-rule="evenodd" stroke-width=".29725"/> <!-- eslint-disable-line -->
+          <path d="m34.071 137.58a4.6752 4.6752 0 0 1-4.0494-2.3384 4.6752 4.6752 0 0 1 0.0014-4.6761 4.6752 4.6752 0 0 1 4.0508-2.336l-0.0029 4.6752z" stroke-width=".26458"/> <!-- eslint-disable-line -->
+          <path d="m32.308 128.63 10.077-4.0866v13.098l-8.3133-0.0605z" />
+          <path d="m142.89 124.55v-10.29h-3.6412l-12.428 10.424z" />
+        </g>
+      </g>
+    </svg>
   </div>
 </template>
 
@@ -51,22 +53,40 @@ export default {
       default: 0,
     },
   },
+  data: () => ({
+    showValue: false,
+  }),
+  computed: {
+    pitchLocal() {
+      return Number(this.pitch).toFixed(0);
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .pitch {
   position: relative;
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+   -4px -4px 12px 0 rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg, rgba(0,0,0,0.22), rgba(255,255,255,0.25));
 
   &__horizon {
-    stroke: grey;
+    stroke: #000000;
   }
 
   &__airplane {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 70%;
+    height: auto;
     transform-origin: center center;
-    fill: rgba(0, 0, 0, 0.9);
+    fill: #ffffff;
   }
 
   &__value {
