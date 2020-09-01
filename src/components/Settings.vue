@@ -103,6 +103,11 @@ export default {
 </script>
 
 <style lang="scss">
+.section-header {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
 .zoom-level {
   min-height: 0 !important;
 

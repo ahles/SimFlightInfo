@@ -166,6 +166,8 @@ export default {
   bottom: 20px;
   left: 50%;
   width: calc(100vw - 40px);
+  min-width: 760px;
+  max-width: 1024px;
   transform: translateX(-50%);
   background-color: #363636;
   color: white;
@@ -185,17 +187,18 @@ export default {
   &__col {
     // border: 1px solid white;
     padding: 5px 10px;
-    width: 100px;
+    flex-basis: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 
     &--wide {
-      width: 140px;
+      flex-basis: 140px;
     }
 
     &--narrow {
-      width: 100px;
+      flex-basis: 100px;
     }
   }
 }

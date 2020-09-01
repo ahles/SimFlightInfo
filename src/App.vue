@@ -3,10 +3,11 @@
     <Header />
     <v-navigation-drawer
       v-model="drawer"
-      app
       right
       dark
       absolute
+      clipped
+      disable-resize-watcher
     >
       <Settings />
     </v-navigation-drawer>
@@ -85,8 +86,15 @@ export default {
       data: (state) => state.data,
       locale: (state) => state.locale,
       simulationActive: (state) => state.simulationActive,
-      drawer: (state) => state.drawer,
     }),
+    drawer: {
+      get() {
+        return this.$store.state.drawer;
+      },
+      set(value) {
+        this.$store.commit('SET_DRAWER', value);
+      },
+    },
   },
   beforeCreate() {
     this.$store.dispatch('receiveData');
@@ -101,12 +109,6 @@ export default {
 body,
 html {
   overflow: hidden;
-}
-
-.section-header {
-  padding-left: 18px;
-  font-size: 1.6rem;
-  font-weight: 300;
 }
 
 .v-list.flight {

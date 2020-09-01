@@ -123,7 +123,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #map {
   position: absolute;
   top: 0;
@@ -133,5 +133,8 @@ export default {
   width: 100%;
   height: calc(100vh - 48px);
   z-index: 0;
+}
+.leaflet-marker-icon {
+  filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
 }
 </style>

@@ -12,7 +12,7 @@
         class="app-icon"
       >
         flight
-      </v-icon> Whereismyplane
+      </v-icon> <span class="app-title">Whereismyplane</span>
     </v-toolbar-title>
     <v-spacer />
     <v-btn
@@ -107,6 +107,9 @@ export default {
 .app-icon {
   margin-right: 10px;
 }
+// .app-title {
+//   font-weight: 400;
+// }
 .app-bar {
   -webkit-app-region: drag;
   cursor: grab;
