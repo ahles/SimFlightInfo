@@ -19,6 +19,16 @@
       ripple
       small
       class="window-button"
+      @click.stop="drawer = !drawer"
+    >
+      <v-icon dark>
+        mdi-cog
+      </v-icon>
+    </v-btn>
+    <v-btn
+      ripple
+      small
+      class="window-button"
       @click.stop="minimizeWindow"
     >
       <v-icon
@@ -57,6 +67,16 @@ const { remote } = require('electron');
 
 export default {
   name: 'Header',
+  computed: {
+    drawer: {
+      get() {
+        return this.$store.state.drawer;
+      },
+      set(value) {
+        this.$store.commit('SET_DRAWER', value);
+      },
+    },
+  },
   created() {
     this.window = remote.getCurrentWindow();
   },

@@ -20,6 +20,7 @@ export default new Vuex.Store({
       mapLockedToPosition: true,
       zoomLevel: 10,
     },
+    drawer: false,
     simulationActive: false,
     locale: 'en',
   },
@@ -63,6 +64,9 @@ export default new Vuex.Store({
     },
     SET_LOCALE: (state, locale) => {
       state.locale = locale;
+    },
+    SET_DRAWER: (state, drawer) => {
+      state.drawer = drawer;
     },
     /* eslint-enable no-param-reassign */
   },

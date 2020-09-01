@@ -8,95 +8,6 @@
       dark
       absolute
     >
-      <v-list
-        class="flight"
-      >
-        <v-list-item>
-          <v-icon
-            large
-          >
-            flight
-          </v-icon>
-          <span
-            class="section-header"
-          >
-            {{ $t('Position') }}
-          </span>
-        </v-list-item>
-        <v-divider />
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ $t('Latitude') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ data.latitude.toFixed(5) }}°
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ $t('Longitude') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ data.longitude.toFixed(5) }}°
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ $t('Altitude above sea') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ convertMToFeet(roundAltitude(data.altitudeSea)).toFixed(0) }} feet<br>
-              {{ roundAltitude(data.altitudeSea) }} m
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ $t('Heading') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ data.heading }}°
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ $t('Ground Speed') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ convertMSToKnots(data.groundSpeed).toFixed(0) }} kts<br>
-              {{ convertMSToKmh(data.groundSpeed).toFixed(0) }} km/h
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ $t('Pitch') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ data.pitch }}°
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ $t('Roll') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ data.roll }}°
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
       <Settings />
     </v-navigation-drawer>
 
@@ -121,44 +32,23 @@
         />
       </transition>
 
+      <transition name="fade">
+        <InfoPanel
+          v-if="data.messageIndex > 0"
+          :latitude="data.latitude"
+          :longitude="data.longitude"
+          :heading="data.heading"
+          :altitude-sea="data.altitudeSea"
+          :ground-speed="data.groundSpeed"
+          :pitch="data.pitch"
+          :roll="data.roll"
+        />
+      </transition>
+
       <SimulationBar
         :simulating="simulationActive"
       />
     </v-main>
-    <v-btn
-      v-if="!drawer"
-      dark
-      small
-      absolute
-      bottom
-      right
-      fab
-      ripple
-      class="menu"
-      @click.stop="drawer = !drawer"
-    >
-      <v-icon dark>
-        flight
-      </v-icon>
-    </v-btn>
-    <v-btn
-      v-else
-      dark
-      small
-      absolute
-      bottom
-      right
-      fab
-      ripple
-      class="close"
-      @click.stop="drawer = !drawer"
-    >
-      <v-icon
-        dark
-      >
-        arrow_forward_ios
-      </v-icon>
-    </v-btn>
 
     <Overlay
       v-if="!data.receivingData"
@@ -174,6 +64,7 @@ import Settings from '@/components/Settings.vue';
 import SimulationBar from '@/components/SimulationBar.vue';
 import Overlay from '@/components/Overlay.vue';
 import PositionMarker from '@/components/PositionMarker.vue';
+import InfoPanel from '@/components/InfoPanel.vue';
 
 export default {
   name: 'App',
@@ -184,9 +75,9 @@ export default {
     SimulationBar,
     Overlay,
     PositionMarker,
+    InfoPanel,
   },
   data: () => ({
-    drawer: false,
     window: null,
   }),
   computed: {
@@ -194,6 +85,7 @@ export default {
       data: (state) => state.data,
       locale: (state) => state.locale,
       simulationActive: (state) => state.simulationActive,
+      drawer: (state) => state.drawer,
     }),
   },
   beforeCreate() {
@@ -201,20 +93,6 @@ export default {
   },
   created() {
     this.$i18n.locale = this.locale;
-  },
-  methods: {
-    convertMSToKnots(ms) {
-      return ms * 1.943844;
-    },
-    convertMSToKmh(ms) {
-      return ms * 3.6;
-    },
-    convertMToFeet(m) {
-      return m * 3.28084;
-    },
-    roundAltitude(altitude) {
-      return Math.floor(altitude);
-    },
   },
 };
 </script>

@@ -3,78 +3,61 @@
     class="settings"
   >
     <v-list-item>
-      <v-icon
-        v-if="settings"
-        @click="settings = false"
-      >
-        mdi-arrow-down-drop-circle-outline
-      </v-icon>
-      <v-icon
-        v-else
-        @click="settings = true"
-      >
-        mdi-arrow-up-drop-circle-outline
-      </v-icon>
       <span
         class="section-header"
       >
         {{ $t('Settings') }}
       </span>
     </v-list-item>
-    <div
-      v-if="settings"
+    <v-list-item>
+      <v-list-item-content>
+        <v-switch
+          :label="$t('Move map')"
+          :input-value="data.mapLockedToPosition"
+          ripple
+          @change="updateMapLockedToPosition"
+        />
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item
+      class="zoom-level"
     >
-      <v-divider />
-      <v-list-item>
-        <v-list-item-content>
-          <v-switch
-            :label="$t('Move map')"
-            :input-value="data.mapLockedToPosition"
-            ripple
-            @change="updateMapLockedToPosition"
-          />
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item
-        class="zoom-level"
-      >
-        <v-list-item-title>
-          {{ $t('Zoom level') }}
-        </v-list-item-title>
-        <v-list-item-content>
-          <v-slider
-            :value="data.zoomLevel"
-            min="0"
-            max="18"
-            step="1"
-            ticks="always"
-            light
-            color="rgba(255, 255, 255, 0.75)"
-            track-color="rgba(255, 255, 255, 0.75)"
-            thumb-label="always"
-            :thumb-size="24"
-            class="zoom-slider"
-            @change="updateZoomLevel"
-          />
-        </v-list-item-content>
-      </v-list-item>
-      <v-list-item
-        class="language"
-      >
-        <v-list-item-title>
-          {{ $t('Language') }}
-        </v-list-item-title>
-        <v-list-item-content>
-          <v-select
-            v-model="$i18n.locale"
-            dense
-            outlined
-            :items="langs"
-            @change="changeLangInLocalstorage()"
-          />
-        </v-list-item-content>
-      </v-list-item>
-    </div>
+      <v-list-item-title>
+        {{ $t('Zoom level') }}
+      </v-list-item-title>
+      <v-list-item-content>
+        <v-slider
+          :value="data.zoomLevel"
+          min="0"
+          max="18"
+          step="1"
+          ticks="always"
+          light
+          color="rgba(255, 255, 255, 0.75)"
+          track-color="rgba(255, 255, 255, 0.75)"
+          thumb-label="always"
+          :thumb-size="24"
+          class="zoom-slider"
+          @change="updateZoomLevel"
+        />
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item
+      class="language"
+    >
+      <v-list-item-title>
+        {{ $t('Language') }}
+      </v-list-item-title>
+      <v-list-item-content>
+        <v-select
+          v-model="$i18n.locale"
+          dense
+          outlined
+          :items="langs"
+          @change="changeLangInLocalstorage()"
+        />
+      </v-list-item-content>
+    </v-list-item>
   </v-list>
 </template>
 
@@ -84,7 +67,6 @@ import { mapState } from 'vuex';
 export default {
   name: 'Settings',
   data: () => ({
-    settings: false,
     langs: [
       {
         text: 'EN',
@@ -105,10 +87,6 @@ export default {
       data: (state) => state.data,
       locale: (state) => state.locale,
     }),
-  },
-  watch: {
-  },
-  mounted() {
   },
   methods: {
     updateMapLockedToPosition(event) {
