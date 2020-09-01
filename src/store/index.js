@@ -13,7 +13,6 @@ export default new Vuex.Store({
       latitude: 0,
       longitude: 0,
       altitudeSea: 0, // m
-      bearing: 0,
       groundSpeed: 0, // m/s
       heading: 0,
       pitch: 0,
@@ -40,9 +39,6 @@ export default new Vuex.Store({
     },
     UPDATE_ALTITUDE_SEA: (state, altitudeSea) => {
       state.data.altitudeSea = altitudeSea;
-    },
-    UPDATE_BEARING: (state, bearing) => {
-      state.data.bearing = bearing;
     },
     UPDATE_GROUND_SPEED: (state, groundSpeed) => {
       state.data.groundSpeed = groundSpeed;
@@ -85,7 +81,6 @@ export default new Vuex.Store({
                 commit('UPDATE_LATITUDE', pos[x].latitude);
                 commit('UPDATE_LONGITUDE', pos[x].longitude);
                 commit('UPDATE_ALTITUDE_SEA', pos[x].altitudeSea);
-                commit('UPDATE_BEARING', pos[x].bearing);
                 commit('UPDATE_GROUND_SPEED', pos[x].groundSpeed);
                 commit('UPDATE_HEADING', pos[x].heading);
                 commit('UPDATE_PITCH', pos[x].pitch);
@@ -106,7 +101,6 @@ export default new Vuex.Store({
         if (position.latitude !== state.data.latitude) { commit('UPDATE_LATITUDE', position.latitude); }
         if (position.longitude !== state.data.longitude) { commit('UPDATE_LONGITUDE', position.longitude); }
         if (position.altitudeSea !== state.data.altitudeSea) { commit('UPDATE_ALTITUDE_SEA', position.altitudeSea); }
-        if (position.bearing !== state.data.bearing) { commit('UPDATE_BEARING', position.bearing); }
         if (position.groundSpeed !== state.data.groundSpeed) { commit('UPDATE_GROUND_SPEED', position.groundSpeed); }
         if (position.heading !== state.data.heading) { commit('UPDATE_HEADING', position.heading); }
         if (position.pitch !== state.data.pitch) { commit('UPDATE_PITCH', position.pitch); }

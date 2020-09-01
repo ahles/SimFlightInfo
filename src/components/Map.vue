@@ -27,7 +27,7 @@ export default {
       type: Number,
       default: 0,
     },
-    bearing: {
+    heading: {
       required: true,
       type: Number,
       default: 0,
@@ -105,19 +105,19 @@ export default {
           this.marker = L.marker(
             [this.latitude, this.longitude],
             {
-              rotationAngle: this.bearing,
+              rotationAngle: this.heading,
             },
           ).addTo(this.map);
           // console.log('this.marker', this.marker);
         } else {
           this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
-          this.marker.setRotationAngle(this.bearing);
+          this.marker.setRotationAngle(this.heading);
         }
       }
     },
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
-      marker.style.transform = `rotate(${this.bearing}deg)`;
+      marker.style.transform = `rotate(${this.heading}deg)`;
     },
   },
 };

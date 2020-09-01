@@ -58,16 +58,6 @@
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>
-              {{ $t('Bearing') }}
-            </v-list-item-title>
-            <v-list-item-subtitle>
-              {{ data.bearing.toFixed(1) }}°
-            </v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>
               {{ $t('Heading') }}
             </v-list-item-title>
             <v-list-item-subtitle>
@@ -125,7 +115,7 @@
           :message-index="data.messageIndex"
           :latitude="data.latitude"
           :longitude="data.longitude"
-          :bearing="data.bearing"
+          :heading="data.heading"
           :zoom-level="data.zoomLevel"
           :map-locked-to-position="data.mapLockedToPosition"
         />

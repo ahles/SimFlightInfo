@@ -27,7 +27,7 @@ function readMessage(msg) {
       latitude: parseFloat(messageParts[2]),
       longitude: parseFloat(messageParts[1]),
       altitudeSea: parseFloat(messageParts[3]), // m
-      bearing: parseFloat(messageParts[4]),
+      // bearing: parseFloat(messageParts[4]),
       groundSpeed: parseFloat(messageParts[5]), // m/s
       heading: xatt.heading,
       pitch: xatt.pitch,
