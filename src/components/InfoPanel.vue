@@ -44,21 +44,22 @@
     </div>
 
     <div class="info-panel__col info-panel__col--narrow">
-      <p>
-        <span class="info-panel__unit">{{ $t('Roll') }}</span><br>
-        {{ roll }}°
-      </p>
+      <Roll
+        :roll="roll"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import Pitch from '@/components/Pitch.vue';
+import Roll from '@/components/Roll.vue';
 
 export default {
   name: 'InfoPanel',
   components: {
     Pitch,
+    Roll,
   },
   props: {
     latitude: {
