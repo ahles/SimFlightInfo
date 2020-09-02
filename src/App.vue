@@ -137,7 +137,7 @@ html {
 }
 
 .v-navigation-drawer__content {
-  padding-top: 60px;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
