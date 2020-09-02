@@ -77,9 +77,6 @@ export default {
     PositionMarker,
     InfoPanel,
   },
-  data: () => ({
-    window: null,
-  }),
   computed: {
     ...mapState({
       data: (state) => state.data,
