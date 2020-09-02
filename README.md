@@ -46,4 +46,4 @@ npm run lint
 
 ## notes & todos
 
-- check polyfill / autoprefix for Electron 5 / Chrome M73
+- check polyfill / autoprefix for Electron 9 / Chrome 83
