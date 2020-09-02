@@ -1,8 +1,8 @@
 import { app, protocol, BrowserWindow } from 'electron';
 import {
   createProtocol,
-  installVueDevtools,
 } from 'vue-cli-plugin-electron-builder/lib';
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer';
 import udplistener from './udplistener';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -17,7 +17,7 @@ function createWindow() {
   // Create the browser window.
   const windowOptions = {
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
     },
     width: 1000,
     height: 1000,
@@ -70,7 +70,7 @@ app.on('activate', () => {
 app.on('ready', async () => {
   if (isDevelopment && !process.env.IS_TEST) {
     // Install Vue Devtools
-    await installVueDevtools();
+    await installExtension(VUEJS_DEVTOOLS);
   }
   createWindow();
 });

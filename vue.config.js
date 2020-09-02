@@ -6,5 +6,8 @@ module.exports = {
       localeDir: 'locales',
       enableInSFC: true,
     },
+    electronBuilder: {
+      nodeIntegration: true,
+    },
   },
 };
