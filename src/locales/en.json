@@ -4,14 +4,16 @@
   "Longitude": "Longitude",
   "Language": "Language",
   "Altitude above sea": "ASL",
-  "Ground Speed": "Ground",
+  "Ground Speed": "GS",
   "Heading": "Heading",
   "Pitch": "Pitch",
   "Roll": "Roll",
   "Settings": "Settings",
-  "Move map": "Move map",
+  "Map follows airplane": "Map follows airplane",
   "Zoom level": "Zoom level",
   "Simulating": "Simulating",
   "Simulate": "Simulate",
-  "Not receiving data": "Not receiving data"
+  "Not receiving data": "Not receiving data",
+  "Yes": "Yes",
+  "No": "No"
 }

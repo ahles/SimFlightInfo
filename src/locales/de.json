@@ -1,11 +1,11 @@
 {
-  "Altitude above sea": "Höhe über dem Meer",
+  "Altitude above sea": "über Meer",
   "Latitude": "Breitengrad",
   "Longitude": "Längengrad",
   "Language": "Sprache",
-  "Move map": "Karte bewegen",
+  "Map follows airplane": "Karte folgt dem Flugzeug",
   "Not receiving data": "Es werden keine Daten empfangen",
-  "Ground Speed": "Geschwindigkeit zum Boden",
+  "Ground Speed": "VG",
   "Heading": "Richtung",
   "Pitch": "Pitch",
   "Roll": "Roll",
@@ -13,5 +13,7 @@
   "Settings": "Einstellungen",
   "Simulate": "Simulieren",
   "Simulating": "Am Simulieren",
-  "Zoom level": "Zoom"
+  "Zoom level": "Zoom",
+  "Yes": "Ja",
+  "No": "Nein"
 }

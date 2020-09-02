@@ -3,15 +3,17 @@
   "Latitude": "Latitud",
   "Longitude": "Longitud",
   "Language": "Idioma",
-  "Altitude above sea": "Altitud sobre el mar",
-  "Ground Speed": "Velocidad suelo",
+  "Altitude above sea": "s. n. m.",
+  "Ground Speed": "V suelo",
   "Heading": "Dirección",
   "Pitch": "Pitch",
   "Roll": "Roll",
   "Settings": "Ajustes",
-  "Move map": "Mover mapa",
-  "Zoom level": "Nivel del zoom",
+  "Map follows airplane": "Mapa sigue al avión",
+  "Zoom level": "Nivel de zoom",
   "Simulating": "Simulando",
   "Simulate": "Simular",
-  "Not receiving data": "No recibiendo data"
+  "Not receiving data": "No recibiendo data",
+  "Yes": "Sí",
+  "No": "No"
 }
