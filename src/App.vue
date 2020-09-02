@@ -48,6 +48,12 @@
       <SimulationBar
         :simulating="simulationActive"
       />
+
+      <Geonames
+        v-if="false/* || data.receivingData*/"
+        :latitude="data.latitude"
+        :longitude="data.longitude"
+      />
     </v-main>
 
     <Overlay
@@ -65,6 +71,7 @@ import SimulationBar from '@/components/SimulationBar.vue';
 import Overlay from '@/components/Overlay.vue';
 import PositionMarker from '@/components/PositionMarker.vue';
 import InfoPanel from '@/components/InfoPanel.vue';
+import Geonames from '@/components/Geonames.vue';
 
 export default {
   name: 'App',
@@ -76,6 +83,7 @@ export default {
     Overlay,
     PositionMarker,
     InfoPanel,
+    Geonames,
   },
   computed: {
     ...mapState({
