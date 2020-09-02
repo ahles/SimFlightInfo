@@ -1,31 +1,25 @@
 <template>
-  <v-list
-    class="settings"
-  >
-    <v-list-item>
-      <span
-        class="section-header"
-      >
+  <ul class="settings">
+    <li class="settings__header">
+      <p>
         {{ $t('Settings') }}
-      </span>
-    </v-list-item>
-    <v-list-item>
-      <v-list-item-content>
+      </p>
+    </li>
+    <li class="settings__lock">
+      <p>{{ $t('Map follows airplane') }}</p>
+      <p>
         <v-switch
-          :label="$t('Move map')"
+          class="lock__switch"
+          :label="(data.mapLockedToPosition) ? $t('Yes') : $t('No')"
           :input-value="data.mapLockedToPosition"
           ripple
           @change="updateMapLockedToPosition"
         />
-      </v-list-item-content>
-    </v-list-item>
-    <v-list-item
-      class="zoom-level"
-    >
-      <v-list-item-title>
-        {{ $t('Zoom level') }}
-      </v-list-item-title>
-      <v-list-item-content>
+      </p>
+    </li>
+    <li class="settings__zoom">
+      <p>{{ $t('Zoom level') }}</p>
+      <p>
         <v-slider
           :value="data.zoomLevel"
           min="0"
@@ -40,25 +34,22 @@
           class="zoom-slider"
           @change="updateZoomLevel"
         />
-      </v-list-item-content>
-    </v-list-item>
-    <v-list-item
-      class="language"
-    >
-      <v-list-item-title>
-        {{ $t('Language') }}
-      </v-list-item-title>
-      <v-list-item-content>
+      </p>
+    </li>
+    <li class="settings__lang">
+      <p>{{ $t('Language') }}</p>
+      <p>
         <v-select
           v-model="$i18n.locale"
           dense
           outlined
           :items="langs"
+          class="lang-select"
           @change="changeLangInLocalstorage()"
         />
-      </v-list-item-content>
-    </v-list-item>
-  </v-list>
+      </p>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -103,48 +94,54 @@ export default {
 </script>
 
 <style lang="scss">
-.section-header {
-  font-size: 1.6rem;
-  font-weight: 300;
-}
+.settings {
+  color: white;
+  list-style-type: none;
+  padding: 0 !important;
 
-.zoom-level {
-  min-height: 0 !important;
-
-  &.v-list-item {
-    flex-direction: column;
-  }
-  .v-list-item__content {
-    padding-top: 40px;
-    width: 100%;
-  }
-  .v-list-item__title {
-    justify-content: flex-start;
-    text-align: left;
-    align-self: flex-start;
-  }
-  .v-input--slider {
-    width: 100%;
-  }
-  .v-slider__thumb-label {
-    color: #000;
-  }
-}
-
-.language {
-  &.v-list-item {
-    flex-direction: column;
-    min-height: 0;
-  }
-  .v-list-item__title {
-    justify-content: flex-start;
-    text-align: left;
-    align-self: flex-start;
+  p {
+    margin-bottom: 0;
   }
 
-  .v-list-item__content {
-    width: 80px;
-    align-self: flex-start;
+  li {
+    padding: 20px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .v-messages,
+  .v-text-field__details {
+    display: none;
+  }
+
+  &__header {
+    padding: 30px 0;
+
+    p {
+      font-size: 2rem;
+      font-weight: 300;
+    }
+  }
+
+  &__zoom {
+
+    .zoom-slider {
+      padding-top: 32px;
+
+      .v-input__slot {
+        margin-bottom: 0;
+      }
+
+      .v-slider__thumb-label {
+        color: black;
+      }
+    }
+  }
+
+  &__lang {
+    .lang-select {
+      padding-top: 12px;
+      width: 80px;
+    }
   }
 }
 </style>
