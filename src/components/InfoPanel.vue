@@ -164,13 +164,13 @@ export default {
 
   &__unit {
     font-size: .9rem;
-    font-weight: 200;
+    font-weight: 300;
     white-space: nowrap;
   }
 
   &__value {
     font-size: 1.6rem;
-    font-weight: 300;
+    font-weight: 400;
     white-space: nowrap;
   }
 }
