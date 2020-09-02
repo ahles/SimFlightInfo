@@ -18,6 +18,7 @@ function createWindow() {
   const windowOptions = {
     webPreferences: {
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
+      enableRemoteModule: true,
     },
     width: 1000,
     height: 1000,
