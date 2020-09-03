@@ -9,7 +9,6 @@ export default new Vuex.Store({
   state: {
     data: {
       messageIndex: 0,
-      receivingData: false,
       latitude: 0,
       longitude: 0,
       altitudeSea: 0, // m
@@ -17,9 +16,10 @@ export default new Vuex.Store({
       heading: 0,
       pitch: 0,
       roll: 0,
-      mapLockedToPosition: true,
-      zoomLevel: 10,
     },
+    receivingData: false,
+    mapLockedToPosition: true,
+    zoomLevel: 10,
     drawer: false,
     simulationActive: false,
     locale: 'en',
@@ -27,7 +27,7 @@ export default new Vuex.Store({
   mutations: {
     /* eslint-disable no-param-reassign */
     UPDATE_RECEIVING_DATA: (state, receivingData) => {
-      state.data.receivingData = receivingData;
+      state.receivingData = receivingData;
     },
     UPDATE_MESSAGE_INDEX: (state, messageIndex) => {
       state.data.messageIndex = messageIndex;
@@ -54,10 +54,10 @@ export default new Vuex.Store({
       state.data.roll = roll;
     },
     UPDATE_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
-      state.data.mapLockedToPosition = mapLockedToPosition;
+      state.mapLockedToPosition = mapLockedToPosition;
     },
     UPDATE_ZOOM_LEVEL: (state, zoomLevel) => {
-      state.data.zoomLevel = zoomLevel;
+      state.zoomLevel = zoomLevel;
     },
     UPDATE_SIMULATION_ACTIVE: (state, simulationActive) => {
       state.simulationActive = simulationActive;
@@ -73,7 +73,7 @@ export default new Vuex.Store({
   actions: {
     simulateData: ({ commit, state }) => {
       const positions = require('../assets/example-flight.json'); // eslint-disable-line
-      if (!state.data.receivingData) {
+      if (!state.receivingData) {
         commit('UPDATE_RECEIVING_DATA', true);
       }
       commit('UPDATE_ZOOM_LEVEL', 14);
@@ -98,7 +98,7 @@ export default new Vuex.Store({
     },
     receiveData: ({ commit, state }) => {
       ipcRenderer.on('position', (event, position) => {
-        if (!state.data.receivingData) {
+        if (!state.receivingData) {
           commit('UPDATE_RECEIVING_DATA', true);
         }
         if (position.messageIndex !== state.data.messageIndex) { commit('UPDATE_MESSAGE_INDEX', position.messageIndex); }

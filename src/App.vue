@@ -12,11 +12,11 @@
     </v-navigation-drawer>
 
     <v-main
-      :class="{ overlay__blur: !data.receivingData }"
+      :class="{ overlay__blur: !receivingData }"
     >
       <transition name="fade">
         <PositionMarker
-          v-if="data.mapLockedToPosition && data.messageIndex > 0"
+          v-if="mapLockedToPosition && data.messageIndex > 0"
         />
       </transition>
 
@@ -27,8 +27,8 @@
           :latitude="data.latitude"
           :longitude="data.longitude"
           :heading="data.heading"
-          :zoom-level="data.zoomLevel"
-          :map-locked-to-position="data.mapLockedToPosition"
+          :zoom-level="zoomLevel"
+          :map-locked-to-position="mapLockedToPosition"
         />
       </transition>
 
@@ -50,14 +50,14 @@
       />
 
       <Geonames
-        v-if="false/* || data.receivingData*/"
+        v-if="false/* || receivingData*/"
         :latitude="data.latitude"
         :longitude="data.longitude"
       />
     </v-main>
 
     <Overlay
-      v-if="!data.receivingData"
+      v-if="!receivingData"
     />
   </v-app>
 </template>
@@ -90,6 +90,9 @@ export default {
       data: (state) => state.data,
       locale: (state) => state.locale,
       simulationActive: (state) => state.simulationActive,
+      receivingData: (state) => state.receivingData,
+      mapLockedToPosition: (state) => state.mapLockedToPosition,
+      zoomLevel: (state) => state.zoomLevel,
     }),
     drawer: {
       get() {

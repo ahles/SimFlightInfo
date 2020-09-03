@@ -10,8 +10,8 @@
       <p>
         <v-switch
           class="lock__switch"
-          :label="(data.mapLockedToPosition) ? $t('Yes') : $t('No')"
-          :input-value="data.mapLockedToPosition"
+          :label="(mapLockedToPosition) ? $t('Yes') : $t('No')"
+          :input-value="mapLockedToPosition"
           ripple
           @change="updateMapLockedToPosition"
         />
@@ -21,7 +21,7 @@
       <p>{{ $t('Zoom level') }}</p>
       <p>
         <v-slider
-          :value="data.zoomLevel"
+          :value="zoomLevel"
           min="0"
           max="18"
           step="1"
@@ -75,8 +75,9 @@ export default {
   }),
   computed: {
     ...mapState({
-      data: (state) => state.data,
       locale: (state) => state.locale,
+      mapLockedToPosition: (state) => state.mapLockedToPosition,
+      zoomLevel: (state) => state.zoomLevel,
     }),
   },
   methods: {

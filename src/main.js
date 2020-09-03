@@ -4,7 +4,7 @@ import vuetify from './plugins/vuetify';
 import App from './App.vue';
 import store from './store';
 import '@babel/polyfill';
-import i18n from './i18n';
+import i18n from './plugins/i18n';
 
 require('../node_modules/leaflet/dist/leaflet.css');
 require('../node_modules/leaflet-rotatedmarker/leaflet.rotatedMarker.js');
