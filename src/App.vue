@@ -50,7 +50,7 @@
       />
 
       <Geonames
-        v-if="false/* || receivingData*/"
+        v-if="receivingData"
         :latitude="data.latitude"
         :longitude="data.longitude"
       />
