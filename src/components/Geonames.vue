@@ -9,7 +9,7 @@
       </h2>
       <v-icon
         class="geonames__refresh"
-        @click="initGeonames"
+        @click="refresh"
       >
         mdi-refresh-circle
       </v-icon>
@@ -78,12 +78,28 @@ export default {
     wikipedia: null,
     validWikipediaResponse: false,
   }),
+  computed: {
+    isOnZeroZeroPosition() {
+      if (
+        this.latitude < 0.05
+        && this.latitude > -0.05
+        && this.longitude < 0.05
+        && this.longitude > -0.05
+      ) {
+        return true;
+      }
+      return false;
+    },
+  },
   mounted() {
     setTimeout(() => {
       this.initGeonames();
     }, 1000);
   },
   methods: {
+    refresh() {
+      this.initGeonames();
+    },
     async initGeonames() {
       this.initialized = false;
       const geonamesCountryCode = await this.getGeonamesCountryCode();
@@ -104,13 +120,14 @@ export default {
         }
       }
 
-      const geonamesWikipedia = await this.getGeonamesWikipedia();
-      console.log('geonamesWikipedia', geonamesWikipedia);
-      if (geonamesWikipedia && typeof (geonamesWikipedia.geonames) !== 'undefined') {
-        this.wikipedia = geonamesWikipedia.geonames;
-        this.validWikipediaResponse = true;
-      } else {
-        this.validWikipediaResponse = false;
+      if (!this.isOnZeroZeroPosition) {
+        const geonamesWikipedia = await this.getGeonamesWikipedia();
+        if (geonamesWikipedia && typeof (geonamesWikipedia.geonames) !== 'undefined') {
+          this.wikipedia = geonamesWikipedia.geonames;
+          this.validWikipediaResponse = true;
+        } else {
+          this.validWikipediaResponse = false;
+        }
       }
 
       this.initialized = true;
@@ -166,14 +183,34 @@ export default {
   &__header {
     display: flex;
     justify-content: space-between;
+    position: relative;
+  }
+
+  &__title {
     margin-bottom: 10px;
+    font-weight: 300;
   }
 
   p {
-    margin-bottom: 0;
+    margin-bottom: 10px;
+    font-weight: 200;
+  }
+
+  a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+
+      &:hover {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        transition: all .3s ease-in;
+      }
   }
 
   &__refresh {
+    position: absolute;
+    top: -5px;
+    right: -5px;
     color: rgba(255, 255, 255, 0.7);
     cursor: pointer;
 
@@ -191,19 +228,7 @@ export default {
   }
 
   &__wikipedia {
-    margin-top: 1rem;
-
-    h2 {
-      margin-bottom: 10px;
-    }
-
-    p {
-      line-height: 1.2;
-    }
-
-    a {
-      color: white;
-    }
+    margin-top: 2rem;
   }
 }
 </style>
