@@ -1,4 +1,9 @@
-import { app, protocol, BrowserWindow } from 'electron';
+import {
+  app,
+  protocol,
+  BrowserWindow,
+  shell,
+} from 'electron';
 import {
   createProtocol,
 } from 'vue-cli-plugin-electron-builder/lib';
@@ -31,6 +36,11 @@ async function createWindow() {
 
   win = new BrowserWindow(windowOptions);
   udplistener.init(win, isDevelopment);
+
+  win.webContents.on('new-window', (e, url) => {
+    e.preventDefault();
+    shell.openExternal(url);
+  });
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
