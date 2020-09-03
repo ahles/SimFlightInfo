@@ -128,6 +128,8 @@ export default {
         } else {
           this.validWikipediaResponse = false;
         }
+      } else {
+        this.wikipedia = [];
       }
 
       this.initialized = true;
