@@ -16,17 +16,17 @@
     >
       <transition name="fade">
         <PositionMarker
-          v-if="mapLockedToPosition && data.messageIndex > 0"
+          v-if="mapLockedToPosition && messageIndex > 0"
         />
       </transition>
 
       <transition name="fade">
         <Map
-          v-if="data.messageIndex > 0"
-          :message-index="data.messageIndex"
-          :latitude="data.latitude"
-          :longitude="data.longitude"
-          :heading="data.heading"
+          v-if="messageIndex > 0"
+          :message-index="messageIndex"
+          :latitude="latitude"
+          :longitude="longitude"
+          :heading="heading"
           :zoom-level="zoomLevel"
           :map-locked-to-position="mapLockedToPosition"
         />
@@ -34,14 +34,14 @@
 
       <transition name="fade">
         <InfoPanel
-          v-if="data.messageIndex > 0"
-          :latitude="data.latitude"
-          :longitude="data.longitude"
-          :heading="data.heading"
-          :altitude-sea="data.altitudeSea"
-          :ground-speed="data.groundSpeed"
-          :pitch="data.pitch"
-          :roll="data.roll"
+          v-if="messageIndex > 0"
+          :latitude="latitude"
+          :longitude="longitude"
+          :heading="heading"
+          :altitude-sea="altitudeSea"
+          :ground-speed="groundSpeed"
+          :pitch="pitch"
+          :roll="roll"
         />
       </transition>
 
@@ -51,13 +51,14 @@
 
       <Geonames
         v-if="receivingData"
-        :latitude="data.latitude"
-        :longitude="data.longitude"
+        :latitude="latitude"
+        :longitude="longitude"
       />
     </v-main>
 
     <Overlay
       v-if="!receivingData"
+      @simulate="simulateData"
     />
   </v-app>
 </template>
@@ -73,6 +74,8 @@ import PositionMarker from '@/components/PositionMarker.vue';
 import InfoPanel from '@/components/InfoPanel.vue';
 import Geonames from '@/components/Geonames.vue';
 
+const { ipcRenderer } = require('electron');
+
 export default {
   name: 'App',
   components: {
@@ -85,9 +88,18 @@ export default {
     InfoPanel,
     Geonames,
   },
+  data: () => ({
+    messageIndex: 0,
+    latitude: 0,
+    longitude: 0,
+    altitudeSea: 0, // m
+    groundSpeed: 0, // m/s
+    heading: 0,
+    pitch: 0,
+    roll: 0,
+  }),
   computed: {
     ...mapState({
-      data: (state) => state.data,
       locale: (state) => state.locale,
       simulationActive: (state) => state.simulationActive,
       receivingData: (state) => state.receivingData,
@@ -103,11 +115,70 @@ export default {
       },
     },
   },
-  beforeCreate() {
-    this.$store.dispatch('receiveData');
-  },
   created() {
+    this.receiveData();
     this.$i18n.locale = this.locale;
+  },
+  methods: {
+    receiveData() {
+      ipcRenderer.on('position', (event, position) => {
+        if (!this.receivingData) {
+          this.$store.commit('UPDATE_RECEIVING_DATA', true);
+        }
+        if (position.messageIndex !== this.messageIndex) {
+          this.messageIndex = position.messageIndex;
+        }
+        if (position.latitude !== this.latitude) {
+          this.latitude = position.latitude;
+        }
+        if (position.longitude !== this.longitude) {
+          this.longitude = position.longitude;
+        }
+        if (position.altitudeSea !== this.altitudeSea) {
+          this.altitudeSea = position.altitudeSea;
+        }
+        if (position.groundSpeed !== this.groundSpeed) {
+          this.groundSpeed = position.groundSpeed;
+        }
+        if (position.heading !== this.heading) {
+          this.heading = position.heading;
+        }
+        if (position.pitch !== this.pitch) {
+          this.pitch = position.pitch;
+        }
+        if (position.roll !== this.roll) {
+          this.roll = position.roll;
+        }
+      });
+    },
+    simulateData() {
+      this.$store.commit('UPDATE_SIMULATION_ACTIVE', true);
+      const positions = require('./assets/example-flight.json'); // eslint-disable-line
+      if (!this.receivingData) {
+        this.$store.commit('UPDATE_RECEIVING_DATA', true);
+      }
+      this.$store.commit('UPDATE_ZOOM_LEVEL', 14);
+      /* eslint-disable no-loop-func */
+      for (let i = 0; i < positions.length; i += 1) {
+        ((x, pos) => {
+          if (typeof positions[i] !== 'undefined') {
+            setTimeout(() => {
+              if (this.simulationActive && typeof pos[x] !== 'undefined') {
+                this.latitude = pos[x].latitude;
+                this.longitude = pos[x].longitude;
+                this.altitudeSea = pos[x].altitudeSea;
+                this.groundSpeed = pos[x].groundSpeed;
+                this.heading = pos[x].heading;
+                this.pitch = pos[x].pitch;
+                this.roll = pos[x].roll;
+                this.messageIndex = i;
+              }
+            }, x * 1000, positions);
+          }
+        })(i, positions);
+      }
+      /* eslint-enable no-loop-func */
+    },
   },
 };
 </script>

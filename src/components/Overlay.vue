@@ -46,8 +46,7 @@ export default {
   name: 'Overlay',
   methods: {
     simulate() {
-      this.$store.commit('UPDATE_SIMULATION_ACTIVE', true);
-      this.$store.dispatch('simulateData');
+      this.$emit('simulate');
     },
   },
 };
