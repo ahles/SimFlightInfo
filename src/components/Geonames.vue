@@ -152,7 +152,7 @@ export default {
 <style lang="scss" scoped>
 .geonames {
   position: absolute;
-  top: 40px;
+  top: 20px;
   left: 20px;
   width: auto;
   height: auto;
