@@ -19,7 +19,16 @@
       v-if="validCountryResponse"
       class="geonames__country"
     >
-      Country: {{ countryName }}
+      <span v-if="wikipediaCountryUrl">
+        <a
+          :href="wikipediaCountryUrl"
+          target="_blank"
+          class="link"
+        >
+          {{ countryName }}
+        </a>
+      </span>
+      <span v-else>Country: {{ countryName }}</span>
     </p>
 
     <p
@@ -41,7 +50,7 @@
         :key="index"
       >
         <a
-          class="v-link"
+          class="link"
           :href="`https://${item.wikipediaUrl}`"
           target="_blank"
         >
@@ -89,6 +98,12 @@ export default {
         return true;
       }
       return false;
+    },
+    wikipediaCountryUrl() {
+      if (this.countryName) {
+        return `https://en.wikipedia.org/wiki/${this.countryName.replace(' ', '_')}`;
+      }
+      return null;
     },
   },
   mounted() {
@@ -186,6 +201,7 @@ export default {
     display: flex;
     justify-content: space-between;
     position: relative;
+    padding-right: 30px;
   }
 
   &__title {
@@ -198,7 +214,7 @@ export default {
     font-weight: 200;
   }
 
-  a {
+  .link {
       color: white;
       text-decoration: none;
       border-bottom: 1px solid transparent;
