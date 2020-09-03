@@ -5,7 +5,7 @@
   >
     <div class="geonames__header">
       <h2 class="geonames__title">
-        Country
+        Flying over
       </h2>
       <v-icon
         class="geonames__refresh"
@@ -15,22 +15,19 @@
       </v-icon>
     </div>
 
-    <table class="geonames__table">
-      <tr>
-        <td>Name</td>
-        <td>{{ countryName }}</td>
-      </tr>
-      <tr>
-        <td>Code</td>
-        <td>{{ countryCode }}</td>
-      </tr>
-      <!--
-      <tr>
-        <td>Country Language Codes</td>
-        <td>{{ countryLanguageCodes }}</td>
-      </tr>
-      -->
-    </table>
+    <p
+      v-if="validCountryResponse"
+      class="geonames__country"
+    >
+      Country: {{ countryName }}
+    </p>
+
+    <p
+      v-if="validOceanResponse"
+      class="geonames__ocean"
+    >
+      Ocean: {{ oceanName }}
+    </p>
   </div>
 </template>
 
@@ -51,34 +48,57 @@ export default {
   },
   data: () => ({
     initialized: false,
-    validResponse: false,
-    countryCode: '',
-    countryName: '',
-    countryLanguageCodes: '',
+    validCountryResponse: false,
+    countryCode: null,
+    countryName: null,
+    countryLanguageCodes: null,
+    oceanName: null,
+    validOceanResponse: false,
   }),
   mounted() {
-    this.initGeonames();
+    setTimeout(() => {
+      this.initGeonames();
+    }, 1000);
   },
   methods: {
-    initGeonames() {
+    async initGeonames() {
       this.initialized = false;
-      setTimeout(() => {
-        this.getCountryCode().then((response) => {
-          console.log('response', response);
-          this.initialized = true;
-        });
-      }, 1000);
+      const geonamesCountryCode = await this.getGeonamesCountryCode();
+      if (geonamesCountryCode && typeof (geonamesCountryCode.countryCode) !== 'undefined') {
+        this.validOceanResponse = false;
+        this.countryCode = geonamesCountryCode.countryCode;
+        this.countryName = geonamesCountryCode.countryName;
+        this.countryLanguageCodes = geonamesCountryCode.countryLanguageCodes;
+        this.validCountryResponse = true;
+      } else {
+        this.validCountryResponse = false;
+        const geonamesOcean = await this.getGeonamesOcean();
+        if (geonamesOcean && typeof (geonamesOcean.ocean) !== 'undefined') {
+          this.oceanName = geonamesOcean.ocean.name;
+          this.validOceanResponse = true;
+        }
+      }
+      this.initialized = true;
     },
-    async getCountryCode() {
+    async getGeonamesCountryCode() {
       const url = `http://api.geonames.org/countryCodeJSON?lat=${this.latitude}&lng=${this.longitude}&username=fortyparsley`;
-      await fetch(url)
-        .then((response) => response.json())
-        .then((data) => {
-          this.countryCode = data.countryCode;
-          this.countryName = data.countryName;
-          this.countryLanguageCodes = data.languages;
-          return data;
-        });
+      const response = await fetch(url);
+
+      if (response.status === 200) {
+        const data = await response.json();
+        return data;
+      }
+      return null;
+    },
+    async getGeonamesOcean() {
+      const url = `http://api.geonames.org/oceanJSON?lat=${this.latitude}&lng=${this.longitude}&username=fortyparsley `;
+      const response = await fetch(url);
+
+      if (response.status === 200) {
+        const data = await response.json();
+        return data;
+      }
+      return null;
     },
   },
 };
@@ -102,6 +122,10 @@ export default {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 0;
   }
 
   &__refresh {
