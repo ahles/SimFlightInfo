@@ -205,13 +205,15 @@ export default {
   }
 
   &__title {
+    font-size: 1.2rem;
     margin-bottom: 10px;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   p {
+    font-size: 0.8rem;
     margin-bottom: 10px;
-    font-weight: 200;
+    font-weight: 300;
   }
 
   .link {
