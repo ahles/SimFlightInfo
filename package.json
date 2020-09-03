@@ -18,7 +18,7 @@
     "@babel/polyfill": "^7.11.5",
     "@mdi/font": "^5.5.55",
     "core-js": "^3.6.5",
-    "electron": "^9.2.1",
+    "electron": "^9.3.0",
     "electron-devtools-installer": "^3.1.1",
     "leaflet": "^1.4.0",
     "vue": "^2.5.21",
