@@ -28,6 +28,27 @@
     >
       Ocean: {{ oceanName }}
     </p>
+
+    <div
+      v-if="validWikipediaResponse && wikipedia.length > 0"
+      class="geonames__wikipedia"
+    >
+      <h2 class="geonames__title">
+        Wikipedia Articles
+      </h2>
+      <p
+        v-for="(item, index) in wikipedia"
+        :key="index"
+      >
+        <a
+          class="v-link"
+          :href="`https://${item.wikipediaUrl}`"
+          target="_blank"
+        >
+          {{ item.title }}
+        </a>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -54,6 +75,8 @@ export default {
     countryLanguageCodes: null,
     oceanName: null,
     validOceanResponse: false,
+    wikipedia: null,
+    validWikipediaResponse: false,
   }),
   mounted() {
     setTimeout(() => {
@@ -76,8 +99,20 @@ export default {
         if (geonamesOcean && typeof (geonamesOcean.ocean) !== 'undefined') {
           this.oceanName = geonamesOcean.ocean.name;
           this.validOceanResponse = true;
+        } else {
+          this.validOceanResponse = false;
         }
       }
+
+      const geonamesWikipedia = await this.getGeonamesWikipedia();
+      console.log('geonamesWikipedia', geonamesWikipedia);
+      if (geonamesWikipedia && typeof (geonamesWikipedia.geonames) !== 'undefined') {
+        this.wikipedia = geonamesWikipedia.geonames;
+        this.validWikipediaResponse = true;
+      } else {
+        this.validWikipediaResponse = false;
+      }
+
       this.initialized = true;
     },
     async getGeonamesCountryCode() {
@@ -91,7 +126,17 @@ export default {
       return null;
     },
     async getGeonamesOcean() {
-      const url = `http://api.geonames.org/oceanJSON?lat=${this.latitude}&lng=${this.longitude}&username=fortyparsley `;
+      const url = `http://api.geonames.org/oceanJSON?lat=${this.latitude}&lng=${this.longitude}&username=fortyparsley`;
+      const response = await fetch(url);
+
+      if (response.status === 200) {
+        const data = await response.json();
+        return data;
+      }
+      return null;
+    },
+    async getGeonamesWikipedia() {
+      const url = `http://api.geonames.org/findNearbyWikipediaJSON?lat=${this.latitude}&lng=${this.longitude}&username=fortyparsley`;
       const response = await fetch(url);
 
       if (response.status === 200) {
@@ -142,6 +187,22 @@ export default {
 
     td:first-of-type {
       padding-right: 10px;
+    }
+  }
+
+  &__wikipedia {
+    margin-top: 1rem;
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.2;
+    }
+
+    a {
+      color: white;
     }
   }
 }
