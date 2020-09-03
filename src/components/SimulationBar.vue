@@ -6,7 +6,6 @@
     icon="cast"
   >
     {{ $t('Simulating') }}
-    <v-spacer />
     <v-btn
       title="stop"
       color="warning"
@@ -51,12 +50,8 @@ export default {
 .simulating {
   margin-top: 0;
   padding: 8px 16px;
-
-  div {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: flex-end;
 
   .v-icon {
     color: white !important;
