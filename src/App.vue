@@ -239,6 +239,17 @@ html {
   }
 }
 
+.link {
+    color: white !important;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      transition: all .3s ease-in;
+    }
+}
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .25s;
 }

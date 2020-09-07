@@ -1,64 +1,66 @@
 <template>
-  <div
-    v-if="initialized"
-    class="geonames"
-  >
-    <div class="geonames__header">
-      <h2 class="geonames__title">
-        Flying over
-      </h2>
-      <v-icon
-        class="geonames__refresh"
-        @click="refresh"
-      >
-        mdi-refresh-circle
-      </v-icon>
-    </div>
-
-    <p
-      v-if="validCountryResponse"
-      class="geonames__country"
-    >
-      <span v-if="wikipediaCountryUrl">
-        <a
-          :href="wikipediaCountryUrl"
-          target="_blank"
-          class="link"
-        >
-          {{ countryName }}
-        </a>
-      </span>
-      <span v-else>Country: {{ countryName }}</span>
-    </p>
-
-    <p
-      v-if="validOceanResponse"
-      class="geonames__ocean"
-    >
-      Ocean: {{ oceanName }}
-    </p>
-
+  <transition name="fade">
     <div
-      v-if="validWikipediaResponse && wikipedia.length > 0"
-      class="geonames__wikipedia"
+      v-if="initialized"
+      class="geonames"
     >
-      <h2 class="geonames__title">
-        Wikipedia Articles
-      </h2>
-      <p
-        v-for="(item, index) in wikipedia"
-        :key="index"
-      >
-        <a
-          class="link"
-          :href="`https://${item.wikipediaUrl}`"
-          target="_blank"
+      <div class="geonames__header">
+        <h2 class="geonames__title">
+          Flying over
+        </h2>
+        <v-icon
+          class="geonames__refresh"
+          @click="refresh"
         >
-          {{ item.title }}
-        </a>
+          mdi-refresh-circle
+        </v-icon>
+      </div>
+
+      <p
+        v-if="validCountryResponse"
+        class="geonames__country"
+      >
+        <span v-if="wikipediaCountryUrl">
+          <a
+            :href="wikipediaCountryUrl"
+            target="_blank"
+            class="link"
+          >
+            {{ countryName }}
+          </a>
+        </span>
+        <span v-else>Country: {{ countryName }}</span>
       </p>
+
+      <p
+        v-if="validOceanResponse"
+        class="geonames__ocean"
+      >
+        Ocean: {{ oceanName }}
+      </p>
+
+      <div
+        v-if="validWikipediaResponse && wikipedia.length > 0"
+        class="geonames__wikipedia"
+      >
+        <h2 class="geonames__title">
+          Wikipedia Articles
+        </h2>
+        <p
+          v-for="(item, index) in wikipedia"
+          :key="index"
+        >
+          <a
+            class="link"
+            :href="`https://${item.wikipediaUrl}`"
+            target="_blank"
+          >
+            {{ item.title }}
+          </a>
+        </p>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -88,6 +90,9 @@ export default {
     validWikipediaResponse: false,
   }),
   computed: {
+    geonamesUser() {
+      return this.$store.state.userSettings.geonamesUser;
+    },
     isOnZeroZeroPosition() {
       if (
         this.latitude < 0.05
@@ -117,6 +122,13 @@ export default {
     },
     async initGeonames() {
       this.initialized = false;
+      if (
+        this.geonamesUser === null
+        || this.geonamesUser === ''
+      ) {
+        this.initialized = true;
+        return;
+      }
       const geonamesCountryCode = await this.getGeonamesCountryCode();
       if (geonamesCountryCode && typeof (geonamesCountryCode.countryCode) !== 'undefined') {
         this.validOceanResponse = false;
@@ -150,7 +162,7 @@ export default {
       this.initialized = true;
     },
     async getGeonamesCountryCode() {
-      const url = `http://api.geonames.org/countryCodeJSON?lat=${this.latitude}&lng=${this.longitude}&username=fortyparsley`;
+      const url = `http://api.geonames.org/countryCodeJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
       const response = await fetch(url);
 
       if (response.status === 200) {
@@ -160,7 +172,7 @@ export default {
       return null;
     },
     async getGeonamesOcean() {
-      const url = `http://api.geonames.org/oceanJSON?lat=${this.latitude}&lng=${this.longitude}&username=fortyparsley`;
+      const url = `http://api.geonames.org/oceanJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
       const response = await fetch(url);
 
       if (response.status === 200) {
@@ -170,7 +182,7 @@ export default {
       return null;
     },
     async getGeonamesWikipedia() {
-      const url = `http://api.geonames.org/findNearbyWikipediaJSON?lat=${this.latitude}&lng=${this.longitude}&username=fortyparsley`;
+      const url = `http://api.geonames.org/findNearbyWikipediaJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
       const response = await fetch(url);
 
       if (response.status === 200) {
@@ -214,17 +226,6 @@ export default {
     font-size: 0.8rem;
     margin-bottom: 10px;
     font-weight: 300;
-  }
-
-  .link {
-      color: white;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-
-      &:hover {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-        transition: all .3s ease-in;
-      }
   }
 
   &__refresh {

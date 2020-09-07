@@ -49,6 +49,32 @@
         />
       </p>
     </li>
+    <li class="settings__geonames">
+      <p
+        class="mb-5"
+      >
+        Geonames
+      </p>
+      <p>
+        <v-text-field
+          v-model="geonamesUser"
+          :label="$t('Geonames User')"
+          filled
+        />
+      </p>
+      <p
+        v-if="geonamesUser === null || geonamesUser === ''"
+        class="mt-5"
+      >
+        <a
+          href="https://www.geonames.org/login"
+          class="link"
+          target="_blank"
+        >
+          Geonames Registration
+        </a>
+      </p>
+    </li>
   </ul>
 </template>
 
@@ -79,6 +105,14 @@ export default {
       mapLockedToPosition: (state) => state.userSettings.mapLockedToPosition,
       zoomLevel: (state) => state.userSettings.zoomLevel,
     }),
+    geonamesUser: {
+      get() {
+        return this.$store.state.userSettings.geonamesUser;
+      },
+      set(value) {
+        this.$store.commit('SET_GEONAMES_USER', value);
+      },
+    },
   },
   methods: {
     updateMapLockedToPosition(event) {

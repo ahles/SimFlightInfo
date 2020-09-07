@@ -12,6 +12,7 @@ const userSettings = {
   mapLockedToPosition: true,
   zoomLevel: 14,
   locale: 'en',
+  geonamesUser: null,
 };
 
 export default new Vuex.Store({
@@ -42,6 +43,9 @@ export default new Vuex.Store({
     SET_LOCALE: (state, locale) => {
       state.userSettings.locale = locale;
     },
+    SET_GEONAMES_USER: (state, geonamesUser) => {
+      state.userSettings.geonamesUser = geonamesUser;
+    },
     /* eslint-enable no-param-reassign */
   },
   actions: {
@@ -52,6 +56,7 @@ export default new Vuex.Store({
             commit('UPDATE_MAP_LOCKED_TO_POSITION', data.userSettings.mapLockedToPosition);
             commit('UPDATE_ZOOM_LEVEL', data.userSettings.zoomLevel);
             commit('SET_LOCALE', data.userSettings.locale);
+            commit('SET_GEONAMES_USER', data.userSettings.geonamesUser);
           });
         }
       });
