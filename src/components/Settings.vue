@@ -75,9 +75,9 @@ export default {
   }),
   computed: {
     ...mapState({
-      locale: (state) => state.locale,
-      mapLockedToPosition: (state) => state.mapLockedToPosition,
-      zoomLevel: (state) => state.zoomLevel,
+      locale: (state) => state.userSettings.locale,
+      mapLockedToPosition: (state) => state.userSettings.mapLockedToPosition,
+      zoomLevel: (state) => state.userSettings.zoomLevel,
     }),
   },
   methods: {

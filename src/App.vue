@@ -100,11 +100,11 @@ export default {
   }),
   computed: {
     ...mapState({
-      locale: (state) => state.locale,
+      locale: (state) => state.userSettings.locale,
       simulationActive: (state) => state.simulationActive,
       receivingData: (state) => state.receivingData,
-      mapLockedToPosition: (state) => state.mapLockedToPosition,
-      zoomLevel: (state) => state.zoomLevel,
+      mapLockedToPosition: (state) => state.userSettings.mapLockedToPosition,
+      zoomLevel: (state) => state.userSettings.zoomLevel,
     }),
     drawer: {
       get() {
@@ -115,7 +115,13 @@ export default {
       },
     },
   },
+  watch: {
+    locale() {
+      this.$i18n.locale = this.locale;
+    },
+  },
   created() {
+    this.$store.dispatch('getJsonSettings');
     this.receiveData();
     this.$i18n.locale = this.locale;
   },

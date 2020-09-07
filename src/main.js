@@ -29,6 +29,8 @@ L.Icon.Default.mergeOptions({
   /* eslint-enable global-require */
 });
 
+// console.log('store.state', store.state);
+
 Vue.config.productionTip = false;
 
 new Vue({
