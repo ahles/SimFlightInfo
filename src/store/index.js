@@ -6,12 +6,12 @@ import {
   setJsonStorageMutations,
 } from './jsonStoragePlugin';
 
+Vue.use(Vuex);
+
 const storage = require('electron-json-storage');
 
 const storageKey = 'settings';
 setJsonStorageKey(storageKey);
-
-Vue.use(Vuex);
 
 const userSettings = {
   mapLockedToPosition: true,
