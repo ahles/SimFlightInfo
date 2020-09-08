@@ -116,10 +116,10 @@ export default {
   },
   methods: {
     updateMapLockedToPosition(event) {
-      this.$store.commit('UPDATE_MAP_LOCKED_TO_POSITION', event);
+      this.$store.commit('SET_MAP_LOCKED_TO_POSITION', event);
     },
     updateZoomLevel(event) {
-      this.$store.commit('UPDATE_ZOOM_LEVEL', event);
+      this.$store.commit('SET_ZOOM_LEVEL', event);
     },
     changeLangInLocalstorage() {
       this.$store.commit('SET_LOCALE', this.$i18n.locale);

@@ -75,7 +75,7 @@ export default {
   mounted() {
     this.initializeMap();
     this.map.on('zoomend', () => {
-      this.$store.commit('UPDATE_ZOOM_LEVEL', this.map._zoom); // eslint-disable-line no-underscore-dangle
+      this.$store.commit('SET_ZOOM_LEVEL', this.map._zoom); // eslint-disable-line no-underscore-dangle
     });
   },
   methods: {

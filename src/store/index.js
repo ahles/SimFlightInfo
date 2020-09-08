@@ -25,19 +25,19 @@ export default new Vuex.Store({
   },
   mutations: {
     /* eslint-disable no-param-reassign */
-    UPDATE_RECEIVING_DATA: (state, receivingData) => {
+    SET_RECEIVING_DATA: (state, receivingData) => {
       state.receivingData = receivingData;
     },
-    UPDATE_SIMULATION_ACTIVE: (state, simulationActive) => {
+    SET_SIMULATION_ACTIVE: (state, simulationActive) => {
       state.simulationActive = simulationActive;
     },
     SET_DRAWER: (state, drawer) => {
       state.drawer = drawer;
     },
-    UPDATE_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
+    SET_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
       state.userSettings.mapLockedToPosition = mapLockedToPosition;
     },
-    UPDATE_ZOOM_LEVEL: (state, zoomLevel) => {
+    SET_ZOOM_LEVEL: (state, zoomLevel) => {
       state.userSettings.zoomLevel = zoomLevel;
     },
     SET_LOCALE: (state, locale) => {
@@ -53,8 +53,8 @@ export default new Vuex.Store({
       storage.has(storageKey, (error, hasKey) => {
         if (hasKey) {
           storage.get(storageKey, (error2, data) => {
-            commit('UPDATE_MAP_LOCKED_TO_POSITION', data.userSettings.mapLockedToPosition);
-            commit('UPDATE_ZOOM_LEVEL', data.userSettings.zoomLevel);
+            commit('SET_MAP_LOCKED_TO_POSITION', data.userSettings.mapLockedToPosition);
+            commit('SET_ZOOM_LEVEL', data.userSettings.zoomLevel);
             commit('SET_LOCALE', data.userSettings.locale);
             commit('SET_GEONAMES_USER', data.userSettings.geonamesUser);
           });

@@ -129,7 +129,7 @@ export default {
     receiveData() {
       ipcRenderer.on('position', (event, position) => {
         if (!this.receivingData) {
-          this.$store.commit('UPDATE_RECEIVING_DATA', true);
+          this.$store.commit('SET_RECEIVING_DATA', true);
         }
         if (position.messageIndex !== this.messageIndex) {
           this.messageIndex = position.messageIndex;
@@ -158,12 +158,12 @@ export default {
       });
     },
     simulateData() {
-      this.$store.commit('UPDATE_SIMULATION_ACTIVE', true);
+      this.$store.commit('SET_SIMULATION_ACTIVE', true);
       const positions = require('./assets/example-flight.json'); // eslint-disable-line
       if (!this.receivingData) {
-        this.$store.commit('UPDATE_RECEIVING_DATA', true);
+        this.$store.commit('SET_RECEIVING_DATA', true);
       }
-      this.$store.commit('UPDATE_ZOOM_LEVEL', 14);
+      this.$store.commit('SET_ZOOM_LEVEL', 14);
       /* eslint-disable no-loop-func */
       for (let i = 0; i < positions.length; i += 1) {
         ((x, pos) => {

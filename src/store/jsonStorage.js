@@ -17,8 +17,8 @@ const jsonStorage = (store) => {
   store.subscribe((mutation, state) => {
     if (
       mutation.type === 'SET_LOCALE'
-      || mutation.type === 'UPDATE_ZOOM_LEVEL'
-      || mutation.type === 'UPDATE_MAP_LOCKED_TO_POSITION'
+      || mutation.type === 'SET_ZOOM_LEVEL'
+      || mutation.type === 'SET_MAP_LOCKED_TO_POSITION'
       || mutation.type === 'SET_GEONAMES_USER'
     ) {
       storage.set(storageKey, state);

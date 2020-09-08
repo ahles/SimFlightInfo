@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     stopSimulation() {
-      this.$store.commit('UPDATE_SIMULATION_ACTIVE', false);
+      this.$store.commit('SET_SIMULATION_ACTIVE', false);
       this.window.reload();
     },
   },
