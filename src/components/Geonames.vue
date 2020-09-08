@@ -40,14 +40,14 @@
       </p>
 
       <div
-        v-if="validWikipediaResponse && wikipedia.length > 0"
+        v-if="validWikipediaLinksResponse && wikipediaLinks.length > 0"
         class="geonames__wikipedia"
       >
         <h2 class="geonames__title">
           Wikipedia Articles
         </h2>
         <p
-          v-for="(item, index) in wikipedia"
+          v-for="(item, index) in wikipediaLinks"
           :key="index"
         >
           <a
@@ -86,8 +86,10 @@ export default {
     countryLanguageCodes: null,
     oceanName: null,
     validOceanResponse: false,
-    wikipedia: null,
-    validWikipediaResponse: false,
+    wikipediaLinks: null,
+    validWikipediaLinksResponse: false,
+    osmPOIs: null,
+    validOsmPOIsResponse: false,
   }),
   computed: {
     geonamesUser() {
@@ -148,15 +150,27 @@ export default {
       }
 
       if (!this.isOnZeroZeroPosition) {
-        const geonamesWikipedia = await this.getGeonamesWikipedia();
-        if (geonamesWikipedia && typeof (geonamesWikipedia.geonames) !== 'undefined') {
-          this.wikipedia = geonamesWikipedia.geonames;
-          this.validWikipediaResponse = true;
+        const geonamesWikipediaLinks = await this.getGeonamesWikipediaLinks();
+        if (geonamesWikipediaLinks && typeof (geonamesWikipediaLinks.geonames) !== 'undefined') {
+          this.wikipediaLinks = geonamesWikipediaLinks.geonames;
+          this.validWikipediaLinksResponse = true;
         } else {
-          this.validWikipediaResponse = false;
+          this.validWikipediaLinksResponse = false;
         }
       } else {
-        this.wikipedia = [];
+        this.wikipediaLinks = [];
+      }
+
+      if (!this.isOnZeroZeroPosition) {
+        const geonamesOsmPOIs = await this.getGeonamesOsmPOIs();
+        if (geonamesOsmPOIs && geonamesOsmPOIs.poi.length > 0) {
+          this.osmPOIs = geonamesOsmPOIs.poi;
+          this.validOsmPOIsResponse = true;
+        } else {
+          this.validOsmPOIsResponse = false;
+        }
+      } else {
+        this.osmPOIs = [];
       }
 
       this.initialized = true;
@@ -181,12 +195,23 @@ export default {
       }
       return null;
     },
-    async getGeonamesWikipedia() {
+    async getGeonamesWikipediaLinks() {
       const url = `http://api.geonames.org/findNearbyWikipediaJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
       const response = await fetch(url);
 
       if (response.status === 200) {
         const data = await response.json();
+        return data;
+      }
+      return null;
+    },
+    async getGeonamesOsmPOIs() {
+      const url = `http://api.geonames.org/findNearbyPOIsOSMJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
+      const response = await fetch(url);
+
+      if (response.status === 200) {
+        const data = await response.json();
+        console.log('data', data);
         return data;
       }
       return null;
