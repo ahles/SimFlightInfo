@@ -2,9 +2,15 @@ const storage = require('electron-json-storage');
 
 const storageKey = 'settings';
 
+// const defaultDataPath = storage.getDefaultDataPath();
+// console.log('defaultDataPath', defaultDataPath);
+
 /**
  * Windows path:
  * C:\Users\USERNAME\AppData\Roaming\whereismyplane\storage
+ *
+ * Mac path:
+ * /Users/USERNAME/Library/Application Support/whereismyplane/storage
  */
 
 const jsonStorage = (store) => {
