@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div
-      v-if="initialized"
+      v-if="geonamesUser && initialized"
       class="geonames"
     >
       <div class="geonames__header">
@@ -27,7 +27,10 @@
             class="link"
           >
             {{ countryName }}
-          </a>
+          </a><br>
+          <img
+            :src="`https://www.countryflags.io/${countryCode}/flat/64.png`"
+          >
         </span>
         <span v-else>Country: {{ countryName }}</span>
       </p>
@@ -81,19 +84,25 @@ export default {
   data: () => ({
     initialized: false,
     validCountryResponse: false,
-    countryCode: null,
+    countryCode: 'BL',
     countryName: null,
     countryLanguageCodes: null,
     oceanName: null,
     validOceanResponse: false,
     wikipediaLinks: null,
     validWikipediaLinksResponse: false,
-    osmPOIs: null,
-    validOsmPOIsResponse: false,
+    // osmPOIs: null,
+    // validOsmPOIsResponse: false,
   }),
   computed: {
     geonamesUser() {
-      return this.$store.state.userSettings.geonamesUser;
+      if (
+        this.$store.state.userSettings.geonamesUser
+        && this.$store.state.userSettings.geonamesUser !== ''
+      ) {
+        return this.$store.state.userSettings.geonamesUser;
+      }
+      return null;
     },
     isOnZeroZeroPosition() {
       if (
@@ -161,17 +170,17 @@ export default {
         this.wikipediaLinks = [];
       }
 
-      if (!this.isOnZeroZeroPosition) {
-        const geonamesOsmPOIs = await this.getGeonamesOsmPOIs();
-        if (geonamesOsmPOIs && geonamesOsmPOIs.poi.length > 0) {
-          this.osmPOIs = geonamesOsmPOIs.poi;
-          this.validOsmPOIsResponse = true;
-        } else {
-          this.validOsmPOIsResponse = false;
-        }
-      } else {
-        this.osmPOIs = [];
-      }
+      // if (!this.isOnZeroZeroPosition) {
+      //   const geonamesOsmPOIs = await this.getGeonamesOsmPOIs();
+      //   if (geonamesOsmPOIs && geonamesOsmPOIs.poi.length > 0) {
+      //     this.osmPOIs = geonamesOsmPOIs.poi;
+      //     this.validOsmPOIsResponse = true;
+      //   } else {
+      //     this.validOsmPOIsResponse = false;
+      //   }
+      // } else {
+      //   this.osmPOIs = [];
+      // }
 
       this.initialized = true;
     },
@@ -205,17 +214,17 @@ export default {
       }
       return null;
     },
-    async getGeonamesOsmPOIs() {
-      const url = `http://api.geonames.org/findNearbyPOIsOSMJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
-      const response = await fetch(url);
+    // async getGeonamesOsmPOIs() {
+    //   const url = `http://api.geonames.org/findNearbyPOIsOSMJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
+    //   const response = await fetch(url);
 
-      if (response.status === 200) {
-        const data = await response.json();
-        console.log('data', data);
-        return data;
-      }
-      return null;
-    },
+    //   if (response.status === 200) {
+    //     const data = await response.json();
+    //     console.log('data', data);
+    //     return data;
+    //   }
+    //   return null;
+    // },
   },
 };
 </script>

@@ -64,8 +64,9 @@
       </p>
       <p
         v-if="geonamesUser === null || geonamesUser === ''"
-        class="mt-5"
+        class="settings__geonames__hint mt-5"
       >
+        Please enter a username
         <a
           href="https://www.geonames.org/login"
           class="link"
@@ -176,6 +177,14 @@ export default {
     .lang-select {
       padding-top: 12px;
       width: 80px;
+    }
+  }
+
+  &__geonames {
+
+    &__hint {
+      font-weight: 300;
+      font-size: 90%;
     }
   }
 }

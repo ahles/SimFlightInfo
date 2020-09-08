@@ -242,11 +242,11 @@ html {
 .link {
     color: white !important;
     text-decoration: none;
-    border-bottom: 1px solid transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
     &:hover {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
       transition: all .3s ease-in;
+      border-bottom: 1px solid transparent;
     }
 }
 
