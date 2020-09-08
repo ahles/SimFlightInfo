@@ -1,10 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import jsonStorage from './jsonStorage';
+import {
+  jsonStoragePlugin,
+  setJsonStorageKey,
+  setJsonStorageMutations,
+} from './jsonStoragePlugin';
 
 const storage = require('electron-json-storage');
 
 const storageKey = 'settings';
+setJsonStorageKey(storageKey);
 
 Vue.use(Vuex);
 
@@ -15,8 +20,16 @@ const userSettings = {
   geonamesUser: null,
 };
 
+const jsonStorageMutations = [
+  'SET_MAP_LOCKED_TO_POSITION',
+  'SET_ZOOM_LEVEL',
+  'SET_LOCALE',
+  'SET_GEONAMES_USER',
+];
+setJsonStorageMutations(jsonStorageMutations);
+
 export default new Vuex.Store({
-  plugins: [jsonStorage],
+  plugins: [jsonStoragePlugin],
   state: {
     receivingData: false,
     drawer: false,
