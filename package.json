@@ -1,7 +1,7 @@
 {
   "name": "whereismyplane",
-  "version": "1.1.2",
-  "description": "Displays the position of your airplane in X-Plane",
+  "version": "1.2.0",
+  "description": "Displays the position of your airplane in MSFS2020",
   "author": "Philippe Ahles <philippe@ahles.ch>",
   "scripts": {
     "build": "vue-cli-service build",
@@ -50,12 +50,13 @@
     "vuetify-loader": "^1.6.0"
   },
   "keywords": [
-    "X-Plane",
+    "MSFS2020",
     "Map",
     "Openstreetmap",
     "Vue.js",
     "Electron.js",
-    "Leaflet.js"
+    "Leaflet.js",
+    "Geonames"
   ],
   "license": "MIT",
   "repository": {
