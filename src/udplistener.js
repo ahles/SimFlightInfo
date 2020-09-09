@@ -1,30 +1,46 @@
+// https://github.com/ollyau/EFBConnect
+// https://www.foreflight.com/support/network-gps/
+
 const dgram = require('dgram');
 
+let messageIndex = 0;
+
+const xatt = {
+  heading: 0,
+  pitch: 0,
+  roll: 0,
+};
+
 function readMessage(msg) {
-  let result = {
-    latitude: 0,
-    longitude: 0,
-    altitude: 0,
-  };
+  const message = msg.toString();
+  const messageParts = message.split(',');
 
-  const index = msg.readInt8(5);
-  const latitude = msg.slice(9, 13).readFloatLE();
-  const longitude = msg.slice(13, 17).readFloatLE();
-  const altitudeSea = msg.slice(17, 21).readFloatLE();
-  const altitudeGround = msg.slice(21, 25).readFloatLE();
-  const onRunway = msg.slice(25, 29).readFloatLE();
-
-  if (index === 20) {
-    result = {
-      latitude,
-      longitude,
-      altitudeSea,
-      altitudeGround,
-      onRunway,
-    };
+  if (messageParts[0].startsWith('XATT')) {
+    xatt.heading = parseFloat(messageParts[1]);
+    xatt.pitch = parseFloat(messageParts[2]);
+    xatt.roll = parseFloat(messageParts[3]);
   }
 
-  return result;
+  if (messageParts[0] === 'XGPSMSFS') {
+    const result = {
+      messageIndex,
+      latitude: parseFloat(messageParts[2]),
+      longitude: parseFloat(messageParts[1]),
+      altitudeSea: parseFloat(messageParts[3]), // m
+      // bearing: parseFloat(messageParts[4]),
+      groundSpeed: parseFloat(messageParts[5]), // m/s
+      heading: xatt.heading,
+      pitch: xatt.pitch,
+      roll: xatt.roll,
+    };
+
+    messageIndex += 1;
+
+    // console.log('result', result);
+    return result;
+  }
+
+  return null;
 }
 
 module.exports = {
@@ -32,7 +48,7 @@ module.exports = {
   log: false,
   logFile: './src/assets/log.json',
   udpHost: '127.0.0.1',
-  udpPort: 49000,
+  udpPort: 49002,
   udpClient: null,
   init(win, isDevelopment) {
     if (!this.initialized) {
@@ -51,12 +67,12 @@ module.exports = {
 
       this.udpClient.on('message', (msg) => {
         const position = readMessage(msg);
-        win.webContents.send('position', position);
-        if (isDevelopment && this.log) {
-          this.appendPositionToLog(position);
-        }
-        if (isDevelopment && this.debug) {
-          console.log(`🧭  Position data received: Lat ${position.latitude} | Lon ${position.longitude} | Alt ${position.altitude}`);
+        if (position) {
+          // console.log('position', position);
+          win.webContents.send('position', position);
+          if (isDevelopment && this.log) {
+            this.appendPositionToLog(position);
+          }
         }
       });
 

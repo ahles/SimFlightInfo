@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import L from 'leaflet';
-import Vuetify from 'vuetify';
-import colors from 'vuetify/es5/util/colors';
-import 'vuetify/dist/vuetify.min.css';
+import vuetify from './plugins/vuetify';
 import App from './App.vue';
 import store from './store';
+import '@babel/polyfill';
+import i18n from './plugins/i18n';
 
 require('../node_modules/leaflet/dist/leaflet.css');
 require('../node_modules/leaflet-rotatedmarker/leaflet.rotatedMarker.js');
@@ -16,6 +16,7 @@ require('../node_modules/leaflet-rotatedmarker/leaflet.rotatedMarker.js');
 delete L.Icon.Default.prototype._getIconUrl; // eslint-disable-line no-underscore-dangle
 L.Icon.Default.mergeOptions({
   iconSize: [40, 40],
+  iconAnchor: [20, 30],
   /* eslint-disable global-require */
 
   // default leaflet icons:
@@ -28,22 +29,13 @@ L.Icon.Default.mergeOptions({
   /* eslint-enable global-require */
 });
 
-/**
- * vuetify configuration
- * https://leafletjs.com/
- */
-Vue.use(Vuetify, {
-  theme: {
-    primary: colors.teal.base,
-    secondary: colors.red.lighten4,
-    accent: colors.indigo.base,
-    error: colors.red.darken4,
-  },
-});
+// console.log('store.state', store.state);
 
 Vue.config.productionTip = false;
 
 new Vue({
   store,
-  render: h => h(App),
+  vuetify,
+  i18n,
+  render: (h) => h(App),
 }).$mount('#app');

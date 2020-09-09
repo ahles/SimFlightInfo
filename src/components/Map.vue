@@ -1,6 +1,8 @@
 <template>
-  <div class="map__wrapper">
-    <div id="map"></div>
+  <div
+    class="map__wrapper"
+  >
+    <div id="map" />
   </div>
 </template>
 
@@ -10,12 +12,22 @@ import L from 'leaflet';
 export default {
   name: 'Map',
   props: {
+    messageIndex: {
+      required: true,
+      type: Number,
+      default: 0,
+    },
     latitude: {
       required: true,
       type: Number,
       default: 0,
     },
     longitude: {
+      required: true,
+      type: Number,
+      default: 0,
+    },
+    heading: {
       required: true,
       type: Number,
       default: 0,
@@ -35,22 +47,22 @@ export default {
     return {
       map: null,
       marker: null,
-      angle: 0,
-      previousLatitude: 0,
-      previousLongitude: 0,
       tileLayer: null,
       mapLayers: {
         layerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-        layerOptions: { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' },
+        layerOptions: {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        },
       },
     };
   },
   watch: {
-    latitude() {
+    messageIndex() {
       this.positionMarkerAndSetMapView();
     },
     zoomLevel() {
       this.map._zoom = this.zoomLevel; // eslint-disable-line no-underscore-dangle
+      this.positionMarkerAndSetMapView();
     },
     view() {
       this.map.removeLayer(this.tileLayer);
@@ -63,7 +75,7 @@ export default {
   mounted() {
     this.initializeMap();
     this.map.on('zoomend', () => {
-      this.$store.commit('UPDATE_ZOOM_LEVEL', this.map._zoom); // eslint-disable-line no-underscore-dangle
+      this.$store.commit('SET_ZOOM_LEVEL', this.map._zoom); // eslint-disable-line no-underscore-dangle
     });
   },
   methods: {
@@ -79,16 +91,8 @@ export default {
         this.mapLayers.layerUrl,
         this.mapLayers.layerOptions,
       ).addTo(this.map);
-
-      this.marker = L.marker(
-        [this.latitude, this.longitude],
-        {
-          rotationAngle: this.angle,
-        },
-      ).addTo(this.map);
     },
     positionMarkerAndSetMapView() {
-      this.calculateAngle();
       if (this.mapLockedToPosition) {
         if (this.marker !== null) {
           this.map.removeLayer(this.marker);
@@ -101,51 +105,25 @@ export default {
           this.marker = L.marker(
             [this.latitude, this.longitude],
             {
-              rotationAngle: this.angle,
+              rotationAngle: this.heading,
             },
           ).addTo(this.map);
+          // console.log('this.marker', this.marker);
         } else {
           this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
-          this.marker.setRotationAngle(this.angle);
+          this.marker.setRotationAngle(this.heading);
         }
       }
-
-      this.previousLatitude = this.latitude;
-      this.previousLongitude = this.longitude;
-    },
-    calculateAngle() {
-      // https://stackoverflow.com/questions/3932502/calculate-angle-between-two-latitude-longitude-points
-      const p1 = {
-        x: this.previousLatitude,
-        y: this.previousLongitude,
-      };
-      const p2 = {
-        x: this.latitude,
-        y: this.longitude,
-      };
-      this.angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
     },
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
-      marker.style.transform = `rotate(${this.angle}deg)`;
+      marker.style.transform = `rotate(${this.heading}deg)`;
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
-
-table {
-  margin: 0 auto;
-  border-collapse: collapse;
-  border: 1px solid black;
-
-  td,
-  th {
-    border: 1px solid black;
-    padding: 10px;
-  }
-}
+<style lang="scss">
 #map {
   position: absolute;
   top: 0;
@@ -156,14 +134,7 @@ table {
   height: calc(100vh - 48px);
   z-index: 0;
 }
-.altitude {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 1;
-  background: rgba(255,255,255,0.75);
-  padding: 10px;
-  border-radius: 10px;
-  font-weight: bold;
+.leaflet-marker-icon {
+  filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
 }
 </style>

@@ -1,0 +1,20 @@
+{
+  "Position": "Position",
+  "Latitude": "Latitude",
+  "Longitude": "Longitude",
+  "Language": "Language",
+  "Altitude above sea": "ASL",
+  "Geonames User": "Username",
+  "Ground Speed": "GS",
+  "Heading": "Heading",
+  "Pitch": "Pitch",
+  "Roll": "Roll",
+  "Settings": "Settings",
+  "Map follows airplane": "Map follows airplane",
+  "Zoom level": "Zoom level",
+  "Simulating": "Simulating",
+  "Simulate": "Simulate",
+  "Not receiving data": "Not receiving data",
+  "Yes": "Yes",
+  "No": "No"
+}

@@ -1,8 +1,13 @@
-import { app, protocol, BrowserWindow } from 'electron';
+import {
+  app,
+  protocol,
+  BrowserWindow,
+  shell,
+} from 'electron';
 import {
   createProtocol,
-  installVueDevtools,
 } from 'vue-cli-plugin-electron-builder/lib';
+import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer';
 import udplistener from './udplistener';
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
@@ -13,11 +18,12 @@ let win;
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }]);
 
-function createWindow() {
+async function createWindow() {
   // Create the browser window.
   const windowOptions = {
     webPreferences: {
-      nodeIntegration: true,
+      nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
+      enableRemoteModule: true,
     },
     width: 1000,
     height: 1000,
@@ -31,9 +37,14 @@ function createWindow() {
   win = new BrowserWindow(windowOptions);
   udplistener.init(win, isDevelopment);
 
+  win.webContents.on('new-window', (e, url) => {
+    e.preventDefault();
+    shell.openExternal(url);
+  });
+
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
-    win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
+    await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
     if (!process.env.IS_TEST) win.webContents.openDevTools();
   } else {
     createProtocol('app');
@@ -70,7 +81,7 @@ app.on('activate', () => {
 app.on('ready', async () => {
   if (isDevelopment && !process.env.IS_TEST) {
     // Install Vue Devtools
-    await installVueDevtools();
+    await installExtension(VUEJS_DEVTOOLS);
   }
   createWindow();
 });
