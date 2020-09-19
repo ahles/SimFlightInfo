@@ -5,6 +5,9 @@
   "Language": "Sprache",
   "Map follows airplane": "Karte folgt dem Flugzeug",
   "Not receiving data": "Es werden keine Daten empfangen",
+  "Show Geonames panel": "Geonames info anzeigen",
+  "Please enter a Geonames username": "Bitte Geonames Benutzername angeben",
+  "Geonames Registration": "Geonames Registrierung",
   "Geonames User": "Benutzername",
   "Ground Speed": "VG",
   "Heading": "Richtung",
@@ -16,5 +19,10 @@
   "Simulating": "Am Simulieren",
   "Zoom level": "Zoom",
   "Yes": "Ja",
-  "No": "Nein"
+  "No": "Nein",
+  "Show info panel": "Infofenster anzeigen",
+  "Username invalid": "Benutzername ungültig",
+  "Flying over": "Am Fliegen über",
+  "Wikipedia articles": "Wikipedia Artikel",
+  "Ocean": "Ozean"
 }

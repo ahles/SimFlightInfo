@@ -4,9 +4,12 @@
       v-if="geonamesUser && initialized"
       class="geonames"
     >
-      <div class="geonames__header">
+      <div
+        v-if="usernameValid"
+        class="geonames__header"
+      >
         <h2 class="geonames__title">
-          Flying over
+          {{ $t('Flying over') }}
         </h2>
         <v-icon
           class="geonames__refresh"
@@ -14,6 +17,18 @@
         >
           mdi-refresh-circle
         </v-icon>
+      </div>
+
+      <div
+        v-else
+        class="geonames__header geonames__header--invalid"
+      >
+        <h2 class="geonames__title">
+          Geonames
+        </h2>
+        <p class="mb-0">
+          {{ $t('Username invalid') }}
+        </p>
       </div>
 
       <p
@@ -32,14 +47,14 @@
             :src="`https://www.countryflags.io/${countryCode}/flat/64.png`"
           >
         </span>
-        <span v-else>Country: {{ countryName }}</span>
+        <span v-else>{{ $t('Country') }}: {{ countryName }}</span>
       </p>
 
       <p
         v-if="validOceanResponse"
         class="geonames__ocean"
       >
-        Ocean: {{ oceanName }}
+        {{ $t('Ocean') }}: {{ oceanName }}
       </p>
 
       <div
@@ -47,7 +62,7 @@
         class="geonames__wikipedia"
       >
         <h2 class="geonames__title">
-          Wikipedia Articles
+          {{ $t('Wikipedia articles') }}
         </h2>
         <p
           v-for="(item, index) in wikipediaLinks"
@@ -83,6 +98,7 @@ export default {
   },
   data: () => ({
     initialized: false,
+    usernameValid: false,
     validCountryResponse: false,
     countryCode: 'BL',
     countryName: null,
@@ -122,6 +138,11 @@ export default {
       return null;
     },
   },
+  watch: {
+    geonamesUser() {
+      this.initGeonames();
+    },
+  },
   mounted() {
     setTimeout(() => {
       this.initGeonames();
@@ -133,6 +154,10 @@ export default {
     },
     async initGeonames() {
       this.initialized = false;
+      this.validCountryResponse = false;
+      this.validOceanResponse = false;
+      this.validWikipediaLinksResponse = false;
+
       if (
         this.geonamesUser === null
         || this.geonamesUser === ''
@@ -141,46 +166,49 @@ export default {
         return;
       }
       const geonamesCountryCode = await this.getGeonamesCountryCode();
-      if (geonamesCountryCode && typeof (geonamesCountryCode.countryCode) !== 'undefined') {
-        this.validOceanResponse = false;
-        this.countryCode = geonamesCountryCode.countryCode;
-        this.countryName = geonamesCountryCode.countryName;
-        this.countryLanguageCodes = geonamesCountryCode.countryLanguageCodes;
-        this.validCountryResponse = true;
-      } else {
-        this.validCountryResponse = false;
-        const geonamesOcean = await this.getGeonamesOcean();
-        if (geonamesOcean && typeof (geonamesOcean.ocean) !== 'undefined') {
-          this.oceanName = geonamesOcean.ocean.name;
-          this.validOceanResponse = true;
-        } else {
+
+      if (this.usernameValid) {
+        if (geonamesCountryCode && typeof (geonamesCountryCode.countryCode) !== 'undefined') {
           this.validOceanResponse = false;
-        }
-      }
-
-      if (!this.isOnZeroZeroPosition) {
-        const geonamesWikipediaLinks = await this.getGeonamesWikipediaLinks();
-        if (geonamesWikipediaLinks && typeof (geonamesWikipediaLinks.geonames) !== 'undefined') {
-          this.wikipediaLinks = geonamesWikipediaLinks.geonames;
-          this.validWikipediaLinksResponse = true;
+          this.countryCode = geonamesCountryCode.countryCode;
+          this.countryName = geonamesCountryCode.countryName;
+          this.countryLanguageCodes = geonamesCountryCode.countryLanguageCodes;
+          this.validCountryResponse = true;
         } else {
-          this.validWikipediaLinksResponse = false;
+          this.validCountryResponse = false;
+          const geonamesOcean = await this.getGeonamesOcean();
+          if (geonamesOcean && typeof (geonamesOcean.ocean) !== 'undefined') {
+            this.oceanName = geonamesOcean.ocean.name;
+            this.validOceanResponse = true;
+          } else {
+            this.validOceanResponse = false;
+          }
         }
-      } else {
-        this.wikipediaLinks = [];
-      }
 
-      // if (!this.isOnZeroZeroPosition) {
-      //   const geonamesOsmPOIs = await this.getGeonamesOsmPOIs();
-      //   if (geonamesOsmPOIs && geonamesOsmPOIs.poi.length > 0) {
-      //     this.osmPOIs = geonamesOsmPOIs.poi;
-      //     this.validOsmPOIsResponse = true;
-      //   } else {
-      //     this.validOsmPOIsResponse = false;
-      //   }
-      // } else {
-      //   this.osmPOIs = [];
-      // }
+        if (!this.isOnZeroZeroPosition) {
+          const geonamesWikipediaLinks = await this.getGeonamesWikipediaLinks();
+          if (geonamesWikipediaLinks && typeof (geonamesWikipediaLinks.geonames) !== 'undefined') {
+            this.wikipediaLinks = geonamesWikipediaLinks.geonames;
+            this.validWikipediaLinksResponse = true;
+          } else {
+            this.validWikipediaLinksResponse = false;
+          }
+        } else {
+          this.wikipediaLinks = [];
+        }
+
+        // if (!this.isOnZeroZeroPosition) {
+        //   const geonamesOsmPOIs = await this.getGeonamesOsmPOIs();
+        //   if (geonamesOsmPOIs && geonamesOsmPOIs.poi.length > 0) {
+        //     this.osmPOIs = geonamesOsmPOIs.poi;
+        //     this.validOsmPOIsResponse = true;
+        //   } else {
+        //     this.validOsmPOIsResponse = false;
+        //   }
+        // } else {
+        //   this.osmPOIs = [];
+        // }
+      }
 
       this.initialized = true;
     },
@@ -189,8 +217,13 @@ export default {
       const response = await fetch(url);
 
       if (response.status === 200) {
+        this.usernameValid = true;
         const data = await response.json();
         return data;
+      }
+
+      if (response.status === 401) {
+        this.usernameValid = false;
       }
       return null;
     },
@@ -248,6 +281,10 @@ export default {
     justify-content: space-between;
     position: relative;
     padding-right: 30px;
+
+    &--invalid {
+      flex-direction: column;
+    }
   }
 
   &__title {

@@ -34,7 +34,7 @@
 
       <transition name="fade">
         <InfoPanel
-          v-if="messageIndex > 0"
+          v-if="showInfoPanel && messageIndex > 0"
           :latitude="latitude"
           :longitude="longitude"
           :heading="heading"
@@ -49,11 +49,13 @@
         :simulating="simulationActive"
       />
 
-      <Geonames
-        v-if="receivingData"
-        :latitude="latitude"
-        :longitude="longitude"
-      />
+      <transition name="fade">
+        <Geonames
+          v-if="showGeonamesPanel && receivingData"
+          :latitude="latitude"
+          :longitude="longitude"
+        />
+      </transition>
     </v-main>
 
     <Overlay
@@ -105,6 +107,8 @@ export default {
       receivingData: (state) => state.receivingData,
       mapLockedToPosition: (state) => state.userSettings.mapLockedToPosition,
       zoomLevel: (state) => state.userSettings.zoomLevel,
+      showInfoPanel: (state) => state.userSettings.showInfoPanel,
+      showGeonamesPanel: (state) => state.userSettings.showGeonamesPanel,
     }),
     drawer: {
       get() {

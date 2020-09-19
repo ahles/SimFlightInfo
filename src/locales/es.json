@@ -4,6 +4,9 @@
   "Longitude": "Longitud",
   "Language": "Idioma",
   "Altitude above sea": "s. n. m.",
+  "Show Geonames panel": "Mostrar panel de Geonames",
+  "Please enter a Geonames username": "Ingrese un nombre de usuario de Geonames",
+  "Geonames Registration": "Inscripción Geonames",
   "Geonames User": "Nombre de usuario",
   "Ground Speed": "V suelo",
   "Heading": "Dirección",
@@ -16,5 +19,10 @@
   "Simulate": "Simular",
   "Not receiving data": "No recibiendo data",
   "Yes": "Sí",
-  "No": "No"
+  "No": "No",
+  "Show info panel": "Mostrar panel de información",
+  "Username invalid": "Nombre de usuario invalido",
+  "Flying over": "Volando sobre",
+  "Wikipedia articles": "Artículos de Wikipedia",
+  "Ocean": "Oceano"
 }

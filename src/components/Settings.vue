@@ -6,6 +6,62 @@
       </p>
     </li>
     <li class="settings__lock">
+      <p>{{ $t('Show info panel') }}</p>
+      <p>
+        <v-switch
+          class="info_panel"
+          :label="(showInfoPanel) ? $t('Yes') : $t('No')"
+          :input-value="showInfoPanel"
+          ripple
+          @change="updateShowInfoPanel"
+        />
+      </p>
+    </li>
+
+    <li class="settings__geonames">
+      <p
+        class="mb-5"
+      >
+        {{ $t('Show Geonames panel') }}
+      </p>
+      <p>
+        <v-switch
+          class="geonames_panel"
+          :label="(showGeonamesPanel) ? $t('Yes') : $t('No')"
+          :input-value="showGeonamesPanel"
+          ripple
+          @change="updateShowGeonamesPanel"
+        />
+      </p>
+      <div
+        v-if="showGeonamesPanel"
+        class="geonames__details"
+      >
+        <p
+          v-if="geonamesUser === null || geonamesUser === ''"
+          class="settings__geonames__hint mt-5 mb-5"
+        >
+          {{ $t('Please enter a Geonames username') }}<br>
+          <a
+            href="https://www.geonames.org/login"
+            class="link"
+            target="_blank"
+          >
+            {{ $t('Geonames Registration') }}
+          </a>
+        </p>
+        <p>
+          <v-text-field
+            :value="geonamesUser"
+            :label="$t('Geonames User')"
+            filled
+            @blur="updateGeonamesUsername"
+          />
+        </p>
+      </div>
+    </li>
+
+    <li class="settings__lock">
       <p>{{ $t('Map follows airplane') }}</p>
       <p>
         <v-switch
@@ -49,33 +105,6 @@
         />
       </p>
     </li>
-    <li class="settings__geonames">
-      <p
-        class="mb-5"
-      >
-        Geonames
-      </p>
-      <p>
-        <v-text-field
-          v-model="geonamesUser"
-          :label="$t('Geonames User')"
-          filled
-        />
-      </p>
-      <p
-        v-if="geonamesUser === null || geonamesUser === ''"
-        class="settings__geonames__hint mt-5"
-      >
-        Please enter a username
-        <a
-          href="https://www.geonames.org/login"
-          class="link"
-          target="_blank"
-        >
-          Geonames Registration
-        </a>
-      </p>
-    </li>
   </ul>
 </template>
 
@@ -105,15 +134,10 @@ export default {
       locale: (state) => state.userSettings.locale,
       mapLockedToPosition: (state) => state.userSettings.mapLockedToPosition,
       zoomLevel: (state) => state.userSettings.zoomLevel,
+      showInfoPanel: (state) => state.userSettings.showInfoPanel,
+      showGeonamesPanel: (state) => state.userSettings.showGeonamesPanel,
+      geonamesUser: (state) => state.userSettings.geonamesUser,
     }),
-    geonamesUser: {
-      get() {
-        return this.$store.state.userSettings.geonamesUser;
-      },
-      set(value) {
-        this.$store.commit('SET_GEONAMES_USER', value);
-      },
-    },
   },
   methods: {
     updateMapLockedToPosition(event) {
@@ -124,6 +148,15 @@ export default {
     },
     changeLangInLocalstorage() {
       this.$store.commit('SET_LOCALE', this.$i18n.locale);
+    },
+    updateShowInfoPanel(event) {
+      this.$store.commit('SET_SHOW_INFO_PANEL', event);
+    },
+    updateShowGeonamesPanel(event) {
+      this.$store.commit('SET_SHOW_GEONAMES_PANEL', event);
+    },
+    updateGeonamesUsername(event) {
+      this.$store.commit('SET_GEONAMES_USER', event.target.value);
     },
   },
 };

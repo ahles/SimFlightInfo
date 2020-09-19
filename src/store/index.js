@@ -17,6 +17,8 @@ const userSettings = {
   mapLockedToPosition: true,
   zoomLevel: 14,
   locale: 'en',
+  showInfoPanel: true,
+  showGeonamesPanel: false,
   geonamesUser: null,
 };
 
@@ -25,6 +27,8 @@ const jsonStorageMutations = [
   'SET_ZOOM_LEVEL',
   'SET_LOCALE',
   'SET_GEONAMES_USER',
+  'SET_SHOW_INFO_PANEL',
+  'SET_SHOW_GEONAMES_PANEL',
 ];
 setJsonStorageMutations(jsonStorageMutations);
 
@@ -50,6 +54,12 @@ export default new Vuex.Store({
     SET_MAP_LOCKED_TO_POSITION: (state, mapLockedToPosition) => {
       state.userSettings.mapLockedToPosition = mapLockedToPosition;
     },
+    SET_SHOW_INFO_PANEL: (state, showInfoPanel) => {
+      state.userSettings.showInfoPanel = showInfoPanel;
+    },
+    SET_SHOW_GEONAMES_PANEL: (state, showGeonamesPanel) => {
+      state.userSettings.showGeonamesPanel = showGeonamesPanel;
+    },
     SET_ZOOM_LEVEL: (state, zoomLevel) => {
       state.userSettings.zoomLevel = zoomLevel;
     },
@@ -70,6 +80,8 @@ export default new Vuex.Store({
             commit('SET_ZOOM_LEVEL', data.userSettings.zoomLevel);
             commit('SET_LOCALE', data.userSettings.locale);
             commit('SET_GEONAMES_USER', data.userSettings.geonamesUser);
+            commit('SET_SHOW_INFO_PANEL', data.userSettings.showInfoPanel);
+            commit('SET_SHOW_GEONAMES_PANEL', data.userSettings.showGeonamesPanel);
           });
         }
       });

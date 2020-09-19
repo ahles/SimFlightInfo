@@ -4,6 +4,9 @@
   "Longitude": "Longitude",
   "Language": "Language",
   "Altitude above sea": "ASL",
+  "Show Geonames panel": "Show Geonames panel",
+  "Please enter a Geonames username": "Please enter a Geonames username",
+  "Geonames Registration": "Geonames Registration",
   "Geonames User": "Username",
   "Ground Speed": "GS",
   "Heading": "Heading",
@@ -16,5 +19,10 @@
   "Simulate": "Simulate",
   "Not receiving data": "Not receiving data",
   "Yes": "Yes",
-  "No": "No"
+  "No": "No",
+  "Show info panel": "Show info panel",
+  "Username invalid": "Username invalid",
+  "Flying over": "Flying over",
+  "Wikipedia articles": "Wikipedia articles",
+  "Ocean": "Ocean"
 }
