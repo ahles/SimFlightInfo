@@ -13,6 +13,7 @@
           :label="(showInfoPanel) ? $t('Yes') : $t('No')"
           :input-value="showInfoPanel"
           ripple
+          dense
           @change="updateShowInfoPanel"
         />
       </p>
@@ -30,12 +31,13 @@
           :label="(showGeonamesPanel) ? $t('Yes') : $t('No')"
           :input-value="showGeonamesPanel"
           ripple
+          dense
           @change="updateShowGeonamesPanel"
         />
       </p>
       <div
         v-if="showGeonamesPanel"
-        class="geonames__details"
+        class="mt-2"
       >
         <p
           v-if="geonamesUser === null || geonamesUser === ''"
@@ -55,6 +57,7 @@
             :value="geonamesUser"
             :label="$t('Geonames User')"
             filled
+            dense
             @blur="updateGeonamesUsername"
           />
         </p>
@@ -69,6 +72,7 @@
           :label="(mapLockedToPosition) ? $t('Yes') : $t('No')"
           :input-value="mapLockedToPosition"
           ripple
+          dense
           @change="updateMapLockedToPosition"
         />
       </p>
@@ -167,6 +171,7 @@ export default {
   color: white;
   list-style-type: none;
   padding: 0 !important;
+  line-height: 1;
 
   p {
     margin-bottom: 0;
