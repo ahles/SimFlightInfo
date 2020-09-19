@@ -107,6 +107,16 @@ export default {
     validOceanResponse: false,
     wikipediaLinks: null,
     validWikipediaLinksResponse: false,
+    wikipediaFeatureAllowedList: [
+      'city',
+      'waterbody',
+      'airport',
+      'landmark',
+      // 'railwaystation',
+    ],
+    wikipediaTitleBlockStringList: [
+      'hotel',
+    ],
     // osmPOIs: null,
     // validOsmPOIsResponse: false,
   }),
@@ -188,7 +198,24 @@ export default {
         if (!this.isOnZeroZeroPosition) {
           const geonamesWikipediaLinks = await this.getGeonamesWikipediaLinks();
           if (geonamesWikipediaLinks && typeof (geonamesWikipediaLinks.geonames) !== 'undefined') {
-            this.wikipediaLinks = geonamesWikipediaLinks.geonames;
+            const filteredGeonamesWikipediaFeatureLinks = geonamesWikipediaLinks.geonames.filter((item) => { // eslint-disable-line
+              console.log('item.feature', item.feature);
+              if (this.wikipediaFeatureAllowedList.includes(item.feature)) {
+                return true;
+              }
+              return false;
+            });
+
+            const filteredGeonamesWikipediaTitleLinks = filteredGeonamesWikipediaFeatureLinks.filter((item) => { // eslint-disable-line
+              // eslint-disable-next-line consistent-return
+              if (this.stringContainsBlockedString(item.summary)) {
+                return false;
+              }
+              console.log('item.summary', item.summary);
+              return true;
+            });
+            this.wikipediaLinks = filteredGeonamesWikipediaTitleLinks.slice(0, 10);
+
             this.validWikipediaLinksResponse = true;
           } else {
             this.validWikipediaLinksResponse = false;
@@ -211,6 +238,16 @@ export default {
       }
 
       this.initialized = true;
+    },
+    stringContainsBlockedString(string) {
+      let result = false;
+      // eslint-disable-next-line consistent-return
+      this.wikipediaTitleBlockStringList.forEach((blockedWord) => {
+        if (string.includes(blockedWord)) {
+          result = true;
+        }
+      });
+      return result;
     },
     async getGeonamesCountryCode() {
       const url = `http://api.geonames.org/countryCodeJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
@@ -238,7 +275,7 @@ export default {
       return null;
     },
     async getGeonamesWikipediaLinks() {
-      const url = `http://api.geonames.org/findNearbyWikipediaJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
+      const url = `http://api.geonames.org/findNearbyWikipediaJSON?lat=${this.latitude}&lng=${this.longitude}&lang=${this.$i18n.locale}&radius=20&maxRows=20&username=${this.geonamesUser}`;
       const response = await fetch(url);
 
       if (response.status === 200) {
