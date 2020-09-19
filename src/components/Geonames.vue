@@ -199,7 +199,7 @@ export default {
           const geonamesWikipediaLinks = await this.getGeonamesWikipediaLinks();
           if (geonamesWikipediaLinks && typeof (geonamesWikipediaLinks.geonames) !== 'undefined') {
             const filteredGeonamesWikipediaFeatureLinks = geonamesWikipediaLinks.geonames.filter((item) => { // eslint-disable-line
-              console.log('item.feature', item.feature);
+              // console.log('item.feature', item.feature);
               if (this.wikipediaFeatureAllowedList.includes(item.feature)) {
                 return true;
               }
@@ -211,7 +211,7 @@ export default {
               if (this.stringContainsBlockedString(item.summary)) {
                 return false;
               }
-              console.log('item.summary', item.summary);
+              // console.log('item.summary', item.summary);
               return true;
             });
             this.wikipediaLinks = filteredGeonamesWikipediaTitleLinks.slice(0, 10);
