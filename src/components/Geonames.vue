@@ -106,6 +106,7 @@ export default {
     oceanName: null,
     validOceanResponse: false,
     wikipediaLinks: null,
+    wikipediaLinksMax: 10,
     validWikipediaLinksResponse: false,
     wikipediaFeatureAllowedList: [
       'city',
@@ -117,6 +118,7 @@ export default {
     ],
     wikipediaTitleBlockStringList: [
       'hotel',
+      'luxury resort',
     ],
     // osmPOIs: null,
     // validOsmPOIsResponse: false,
@@ -196,53 +198,48 @@ export default {
           }
         }
 
+        /* eslint-disable max-len */
         if (!this.isOnZeroZeroPosition) {
           const geonamesWikipediaLinks = await this.getGeonamesWikipediaLinks();
+
           if (geonamesWikipediaLinks && typeof (geonamesWikipediaLinks.geonames) !== 'undefined') {
-            const filteredGeonamesWikipediaFeatureLinks = geonamesWikipediaLinks.geonames.filter((item) => { // eslint-disable-line
-              // console.log('item.feature', item.feature);
-              if (this.wikipediaFeatureAllowedList.includes(item.feature)) {
-                return true;
-              }
-              return false;
-            });
-
-            const filteredGeonamesWikipediaTitleLinks = filteredGeonamesWikipediaFeatureLinks.filter((item) => { // eslint-disable-line
-              // eslint-disable-next-line consistent-return
-              if (this.stringContainsBlockedString(item.summary)) {
+            // if there are more than 10 link in the response -> filter
+            if (geonamesWikipediaLinks.geonames.length > this.wikipediaLinksMax) {
+              const filteredGeonamesWikipediaFeatureLinks = geonamesWikipediaLinks.geonames.filter((item) => {
+                if (typeof item.feature === 'undefined' || this.wikipediaFeatureAllowedList.includes(item.feature)) {
+                  return true;
+                }
                 return false;
+              });
+              if (filteredGeonamesWikipediaFeatureLinks.length > this.wikipediaLinksMax) {
+                const filteredGeonamesWikipediaTitleLinks = filteredGeonamesWikipediaFeatureLinks.filter((item) => {
+                  if (this.stringContainsBlockedString(item.summary)) {
+                    return false;
+                  }
+                  return true;
+                });
+                this.wikipediaLinks = filteredGeonamesWikipediaTitleLinks.slice(0, (this.wikipediaLinksMax - 1));
+              } else {
+                this.wikipediaLinks = filteredGeonamesWikipediaFeatureLinks;
               }
-              // console.log('item.summary', item.summary);
-              return true;
-            });
-            this.wikipediaLinks = filteredGeonamesWikipediaTitleLinks.slice(0, 10);
-
+            } else {
+              this.wikipediaLinks = geonamesWikipediaLinks;
+            }
             this.validWikipediaLinksResponse = true;
           } else {
             this.validWikipediaLinksResponse = false;
+            this.wikipediaLinks = [];
           }
         } else {
           this.wikipediaLinks = [];
         }
-
-        // if (!this.isOnZeroZeroPosition) {
-        //   const geonamesOsmPOIs = await this.getGeonamesOsmPOIs();
-        //   if (geonamesOsmPOIs && geonamesOsmPOIs.poi.length > 0) {
-        //     this.osmPOIs = geonamesOsmPOIs.poi;
-        //     this.validOsmPOIsResponse = true;
-        //   } else {
-        //     this.validOsmPOIsResponse = false;
-        //   }
-        // } else {
-        //   this.osmPOIs = [];
-        // }
       }
+      /* eslint-enable max-len */
 
       this.initialized = true;
     },
     stringContainsBlockedString(string) {
       let result = false;
-      // eslint-disable-next-line consistent-return
       this.wikipediaTitleBlockStringList.forEach((blockedWord) => {
         if (string.includes(blockedWord)) {
           result = true;
