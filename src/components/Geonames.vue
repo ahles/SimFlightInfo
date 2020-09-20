@@ -112,6 +112,7 @@ export default {
       'waterbody',
       'airport',
       'landmark',
+      'event',
       // 'railwaystation',
     ],
     wikipediaTitleBlockStringList: [
