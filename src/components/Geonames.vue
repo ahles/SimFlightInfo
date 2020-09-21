@@ -282,17 +282,6 @@ export default {
       }
       return null;
     },
-    // async getGeonamesOsmPOIs() {
-    //   const url = `http://api.geonames.org/findNearbyPOIsOSMJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.geonamesUser}`;
-    //   const response = await fetch(url);
-
-    //   if (response.status === 200) {
-    //     const data = await response.json();
-    //     console.log('data', data);
-    //     return data;
-    //   }
-    //   return null;
-    // },
   },
 };
 </script>
