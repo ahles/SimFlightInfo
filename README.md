@@ -42,8 +42,3 @@ npm run electron:build
 ```
 npm run lint
 ```
-
-
-## notes & todos
-
-- check polyfill / autoprefix for Electron 9 / Chrome 83
