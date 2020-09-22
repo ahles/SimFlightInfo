@@ -11,12 +11,24 @@
         <h2 class="geonames__title">
           {{ $t('Flying over') }}
         </h2>
-        <v-icon
-          class="geonames__refresh"
-          @click="refresh"
+
+        <v-tooltip
+          open-delay="1000"
+          bottom
         >
-          mdi-refresh-circle
-        </v-icon>
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon
+              class="geonames__refresh"
+              v-bind="attrs"
+              dark
+              v-on="on"
+              @click="refresh"
+            >
+              mdi-refresh-circle
+            </v-icon>
+          </template>
+          <span>{{ $t('Refresh') }} (G)</span>
+        </v-tooltip>
       </div>
 
       <div
@@ -82,6 +94,8 @@
 </template>
 
 <script>
+const { ipcRenderer } = require('electron');
+
 export default {
   name: 'Geonames',
   props: {
@@ -160,6 +174,9 @@ export default {
     setTimeout(() => {
       this.initGeonames();
     }, 1000);
+    ipcRenderer.on('geonames-reload', () => {
+      this.initGeonames();
+    });
   },
   methods: {
     refresh() {

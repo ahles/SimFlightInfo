@@ -10,6 +10,8 @@ import {
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer';
 import udplistener from './udplistener';
 
+const electronLocalshortcut = require('electron-localshortcut');
+
 const isDevelopment = process.env.NODE_ENV !== 'production';
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -36,6 +38,10 @@ async function createWindow() {
 
   win = new BrowserWindow(windowOptions);
   udplistener.init(win, isDevelopment);
+
+  electronLocalshortcut.register(win, 'G', () => {
+    win.webContents.send('geonames-reload');
+  });
 
   win.webContents.on('new-window', (e, url) => {
     e.preventDefault();
