@@ -45,9 +45,11 @@
         />
       </transition>
 
-      <SimulationBar
-        :simulating="simulationActive"
-      />
+      <transition name="fade">
+        <SimulationBar
+          :simulating="simulationActive"
+        />
+      </transition>
 
       <transition name="fade">
         <Geonames
