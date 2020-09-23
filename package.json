@@ -1,6 +1,6 @@
 {
   "name": "whereismyplane",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Displays the position of your airplane in MSFS2020",
   "author": "Philippe Ahles <philippe@ahles.ch>",
   "scripts": {
