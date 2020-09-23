@@ -20,6 +20,7 @@ const userSettings = {
   showInfoPanel: true,
   showGeonamesPanel: false,
   geonamesUser: null,
+  showMarkerPanel: true,
 };
 
 const jsonStorageMutations = [
@@ -29,6 +30,7 @@ const jsonStorageMutations = [
   'SET_GEONAMES_USER',
   'SET_SHOW_INFO_PANEL',
   'SET_SHOW_GEONAMES_PANEL',
+  'SET_SHOW_MARKER_PANEL',
 ];
 setJsonStorageMutations(jsonStorageMutations);
 
@@ -69,6 +71,9 @@ export default new Vuex.Store({
     SET_GEONAMES_USER: (state, geonamesUser) => {
       state.userSettings.geonamesUser = geonamesUser;
     },
+    SET_SHOW_MARKER_PANEL: (state, showMarkerPanel) => {
+      state.userSettings.showMarkerPanel = showMarkerPanel;
+    },
     /* eslint-enable no-param-reassign */
   },
   actions: {
@@ -82,6 +87,7 @@ export default new Vuex.Store({
             commit('SET_GEONAMES_USER', data.userSettings.geonamesUser);
             commit('SET_SHOW_INFO_PANEL', data.userSettings.showInfoPanel);
             commit('SET_SHOW_GEONAMES_PANEL', data.userSettings.showGeonamesPanel);
+            commit('SET_SHOW_MARKER_PANEL', data.userSettings.showMarkerPanel);
           });
         }
       });

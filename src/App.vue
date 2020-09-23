@@ -58,6 +58,12 @@
           :longitude="longitude"
         />
       </transition>
+
+      <transition name="fade">
+        <MarkerPanel
+          v-if="showMarkerPanel && receivingData"
+        />
+      </transition>
     </v-main>
 
     <Overlay
@@ -77,6 +83,7 @@ import Overlay from '@/components/Overlay.vue';
 import PositionMarker from '@/components/PositionMarker.vue';
 import InfoPanel from '@/components/InfoPanel.vue';
 import Geonames from '@/components/Geonames.vue';
+import MarkerPanel from '@/components/MarkerPanel.vue';
 
 const { ipcRenderer } = require('electron');
 
@@ -91,6 +98,7 @@ export default {
     PositionMarker,
     InfoPanel,
     Geonames,
+    MarkerPanel,
   },
   data: () => ({
     messageIndex: 0,
@@ -111,6 +119,7 @@ export default {
       zoomLevel: (state) => state.userSettings.zoomLevel,
       showInfoPanel: (state) => state.userSettings.showInfoPanel,
       showGeonamesPanel: (state) => state.userSettings.showGeonamesPanel,
+      showMarkerPanel: (state) => state.userSettings.showMarkerPanel,
     }),
     drawer: {
       get() {
