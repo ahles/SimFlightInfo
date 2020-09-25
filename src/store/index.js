@@ -21,6 +21,11 @@ const userSettings = {
   showGeonamesPanel: false,
   geonamesUser: null,
   showMarkerPanel: true,
+  marker: {
+    latitude: null,
+    longitude: null,
+    name: '',
+  },
 };
 
 const jsonStorageMutations = [
@@ -31,6 +36,9 @@ const jsonStorageMutations = [
   'SET_SHOW_INFO_PANEL',
   'SET_SHOW_GEONAMES_PANEL',
   'SET_SHOW_MARKER_PANEL',
+  'SET_CUSTOM_MARKER_LATITUDE',
+  'SET_CUSTOM_MARKER_LONGITUDE',
+  'SET_CUSTOM_MARKER_NAME',
 ];
 setJsonStorageMutations(jsonStorageMutations);
 
@@ -41,6 +49,9 @@ export default new Vuex.Store({
     drawer: false,
     simulationActive: false,
     userSettings,
+  },
+  getters: {
+    getMarker: (state) => () => state.userSettings.marker,
   },
   mutations: {
     /* eslint-disable no-param-reassign */
@@ -74,6 +85,15 @@ export default new Vuex.Store({
     SET_SHOW_MARKER_PANEL: (state, showMarkerPanel) => {
       state.userSettings.showMarkerPanel = showMarkerPanel;
     },
+    SET_CUSTOM_MARKER_LATITUDE: (state, latitude) => {
+      state.userSettings.marker.latitude = latitude;
+    },
+    SET_CUSTOM_MARKER_LONGITUDE: (state, longitude) => {
+      state.userSettings.marker.longitude = longitude;
+    },
+    SET_CUSTOM_MARKER_NAME: (state, name) => {
+      state.userSettings.marker.name = name;
+    },
     /* eslint-enable no-param-reassign */
   },
   actions: {
@@ -88,6 +108,9 @@ export default new Vuex.Store({
             commit('SET_SHOW_INFO_PANEL', data.userSettings.showInfoPanel);
             commit('SET_SHOW_GEONAMES_PANEL', data.userSettings.showGeonamesPanel);
             commit('SET_SHOW_MARKER_PANEL', data.userSettings.showMarkerPanel);
+            commit('SET_CUSTOM_MARKER_LATITUDE', data.userSettings.marker.latitude);
+            commit('SET_CUSTOM_MARKER_LONGITUDE', data.userSettings.marker.longitude);
+            commit('SET_CUSTOM_MARKER_NAME', data.userSettings.marker.name);
           });
         }
       });

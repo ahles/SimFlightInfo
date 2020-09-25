@@ -6,38 +6,45 @@
       {{ $t('Set Marker') }}
     </h2>
     <div
-      v-if="!isSet"
+      v-if="isEdit"
       class="marker-panel__edit"
     >
       <p>
         <v-text-field
-          v-model="latitude"
+          ref="latitude"
+          v-model="marker.latitude"
           :label="$t('Latitude')"
           filled
           dense
           dark
           suffix="°"
+          required
           :rules="[rules.required, rules.latitude]"
         />
       </p>
       <p>
         <v-text-field
-          v-model="longitude"
+          ref="longitude"
+          v-model="marker.longitude"
           :label="$t('Longitude')"
           filled
           dense
           dark
           suffix="°"
+          required
           :rules="[rules.required, rules.longitude]"
         />
       </p>
       <p>
         <v-text-field
-          v-model="name"
+          ref="name"
+          v-model="marker.name"
           :label="$t('Name')"
           filled
           dense
           dark
+          required
+          :rules="[rules.required]"
         />
       </p>
       <p>
@@ -50,6 +57,24 @@
         </v-btn>
       </p>
     </div>
+    <div
+      v-else
+      class="marker-panel__view"
+    >
+      <p>Latitude: {{ marker.latitude }}°</p>
+      <p>Longitude: {{ marker.longitude }}°</p>
+      <p>Name: {{ marker.name }}</p>
+      <v-btn
+        small
+        dark
+        class="marker-panel__edit-button"
+        @click="isEdit = true"
+      >
+        <v-icon>
+          mdi-pencil
+        </v-icon>
+      </v-btn>
+    </div>
   </div>
 </template>
 
@@ -58,26 +83,53 @@
 export default {
   name: 'MarkerPanel',
   data: () => ({
-    isSet: false,
-    latitude: null,
-    longitude: null,
-    name: '',
+    isEdit: false,
+    formInValid: true,
     // https://codepen.io/pen/?editors=1010
     rules: {
-      required: (value) => !!value || 'Required.',
-      latitude: (value) => {
-        const valid = !!((Number(value) >= -90 && Number(value <= 90)));
-        return valid || 'invalid latitude';
-      },
-      longitude: (value) => {
-        const valid = !!((Number(value) >= -180 && Number(value <= 180)));
-        return valid || 'invalid longitude';
-      },
+      required: null,
+      latitude: null,
+      longitude: null,
     },
   }),
+  computed: {
+    marker() {
+      return this.$store.getters.getMarker();
+    },
+  },
+  created() {
+    this.initRules();
+  },
   methods: {
     setMarker() {
-      console.log('setMarker');
+      this.validateForm();
+      if (!this.formInValid) {
+        this.$store.commit('SET_CUSTOM_MARKER_LATITUDE', this.marker.latitude);
+        this.$store.commit('SET_CUSTOM_MARKER_LONGITUDE', this.marker.longitude);
+        this.$store.commit('SET_CUSTOM_MARKER_NAME', this.marker.name);
+        this.isEdit = false;
+      }
+    },
+    initRules() {
+      this.rules.required = (value) => !!value || 'Required.';
+      this.rules.latitude = (value) => {
+        const valid = !!((Number(value) >= -90 && Number(value) <= 90));
+        return valid || 'invalid latitude';
+      };
+      this.rules.longitude = (value) => {
+        const valid = !!((Number(value) >= -180 && Number(value) <= 180));
+        return valid || 'invalid longitude';
+      };
+    },
+    validateForm() {
+      this.formInValid = false;
+
+      Object.keys(this.marker).forEach((formElement) => {
+        const validation = this.$refs[formElement].validate(true);
+        if (validation === false) {
+          this.formInValid = true;
+        }
+      });
     },
   },
 };
@@ -87,10 +139,9 @@ export default {
 .marker-panel {
   position: absolute;
   top: 20px;
-  left: 50%;
+  right: 20px;
   width: 200px;
-  transform: translateX(-50%);
-  z-index: 5;
+  z-index: 2;
   background-color: #363636;
   color: white;
   padding: 1rem;
@@ -116,6 +167,11 @@ export default {
     // .v-text-field__details {
     //   display: none !important;
     // }
+  }
+
+  &__view p {
+    font-weight: 300;
+    margin-bottom: 8px;
   }
 
 }

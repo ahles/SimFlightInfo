@@ -140,6 +140,9 @@ export default {
     this.receiveData();
     this.$i18n.locale = this.locale;
   },
+  updated() {
+    this.$store.dispatch('getJsonSettings');
+  },
   methods: {
     receiveData() {
       ipcRenderer.on('position', (event, position) => {
@@ -241,6 +244,10 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.v-navigation-drawer--absolute {
+  z-index: 3;
 }
 
 .v-btn--fab.v-size--small.v-btn--absolute.v-btn--bottom.menu,
