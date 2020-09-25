@@ -240,7 +240,7 @@ export default {
                 this.wikipediaLinks = filteredGeonamesWikipediaFeatureLinks;
               }
             } else {
-              this.wikipediaLinks = geonamesWikipediaLinks;
+              this.wikipediaLinks = geonamesWikipediaLinks.geonames;
             }
             this.validWikipediaLinksResponse = true;
           } else {
@@ -361,7 +361,7 @@ export default {
   }
 
   &__wikipedia {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 }
 </style>
