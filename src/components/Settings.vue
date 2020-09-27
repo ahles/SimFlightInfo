@@ -19,6 +19,20 @@
       </p>
     </li>
 
+    <li class="settings__marker">
+      <p>{{ $t('Show marker panel') }}</p>
+      <p>
+        <v-switch
+          class="marker_panel"
+          :label="(showMarkerPanel) ? $t('Yes') : $t('No')"
+          :input-value="showMarkerPanel"
+          ripple
+          dense
+          @change="updateShowMarkerPanel"
+        />
+      </p>
+    </li>
+
     <li class="settings__geonames">
       <p
         class="mb-5"
@@ -140,6 +154,7 @@ export default {
       zoomLevel: (state) => state.userSettings.zoomLevel,
       showInfoPanel: (state) => state.userSettings.showInfoPanel,
       showGeonamesPanel: (state) => state.userSettings.showGeonamesPanel,
+      showMarkerPanel: (state) => state.userSettings.showMarkerPanel,
       geonamesUser: (state) => state.userSettings.geonamesUser,
     }),
   },
@@ -158,6 +173,9 @@ export default {
     },
     updateShowGeonamesPanel(event) {
       this.$store.commit('SET_SHOW_GEONAMES_PANEL', event);
+    },
+    updateShowMarkerPanel(event) {
+      this.$store.commit('SET_SHOW_MARKER_PANEL', event);
     },
     updateGeonamesUsername(event) {
       this.$store.commit('SET_GEONAMES_USER', event.target.value);

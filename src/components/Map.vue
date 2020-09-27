@@ -47,6 +47,7 @@ export default {
     return {
       map: null,
       marker: null,
+      customMarkerInstance: null,
       tileLayer: null,
       mapLayers: {
         layerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -55,6 +56,11 @@ export default {
         },
       },
     };
+  },
+  computed: {
+    customMarker() {
+      return this.$store.getters.getMarker();
+    },
   },
   watch: {
     messageIndex() {
@@ -71,12 +77,19 @@ export default {
         this.mapLayers.layerOptions,
       ).addTo(this.map);
     },
+    customMarker: {
+      handler() {
+        this.setCustomMarker();
+      },
+      deep: true,
+    },
   },
   mounted() {
     this.initializeMap();
     this.map.on('zoomend', () => {
       this.$store.commit('SET_ZOOM_LEVEL', this.map._zoom); // eslint-disable-line no-underscore-dangle
     });
+    this.setCustomMarker();
   },
   methods: {
     initializeMap() {
@@ -118,6 +131,22 @@ export default {
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
       marker.style.transform = `rotate(${this.heading}deg)`;
+    },
+    setCustomMarker() {
+      if (
+        this.customMarker.latitude !== null
+        && this.customMarker.longitude !== null
+        && this.customMarker.name !== ''
+      ) {
+        if (this.customMarkerInstance) {
+          // eslint-disable-next-line max-len
+          this.customMarkerInstance.setLatLng(L.latLng(this.customMarker.latitude, this.customMarker.longitude));
+        } else {
+          this.customMarkerInstance = L.marker(
+            [this.customMarker.latitude, this.customMarker.longitude],
+          ).addTo(this.map);
+        }
+      }
     },
   },
 };
