@@ -150,12 +150,14 @@ export default {
         this.$store.commit('SET_CUSTOM_MARKER_LONGITUDE', this.localMarker.longitude);
         this.$store.commit('SET_CUSTOM_MARKER_NAME', this.localMarker.name);
         this.isEdit = false;
+        this.$store.commit('SET_CUSTOM_MARKER_SET', true);
       }
     },
     clearMarker() {
       this.$store.commit('SET_CUSTOM_MARKER_LATITUDE', null);
       this.$store.commit('SET_CUSTOM_MARKER_LONGITUDE', null);
       this.$store.commit('SET_CUSTOM_MARKER_NAME', '');
+      this.$store.commit('SET_CUSTOM_MARKER_SET', false);
     },
     initRules() {
       this.rules.required = (value) => !!value || 'Required.';

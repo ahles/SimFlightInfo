@@ -48,6 +48,8 @@ export default {
       map: null,
       marker: null,
       planeMarkerIcon: null,
+      customMarkerIcon: null,
+      customMarkerInstance: null,
       tileLayer: null,
       mapLayers: {
         layerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -56,6 +58,14 @@ export default {
         },
       },
     };
+  },
+  computed: {
+    customMarkerSet() {
+      return this.$store.state.customMarkerSet;
+    },
+    customMarker() {
+      return this.$store.getters.getMarker();
+    },
   },
   watch: {
     messageIndex() {
@@ -72,12 +82,22 @@ export default {
         this.mapLayers.layerOptions,
       ).addTo(this.map);
     },
+    customMarkerSet(newValue) {
+      if (newValue) {
+        this.addCustomMarker();
+      } else {
+        this.removeCustomMarker();
+      }
+    },
   },
   mounted() {
     this.initializeMap();
     this.map.on('zoomend', () => {
       this.$store.commit('SET_ZOOM_LEVEL', this.map._zoom); // eslint-disable-line no-underscore-dangle
     });
+    if (this.customMarkerSet) {
+      this.addCustomMarker();
+    }
   },
   methods: {
     initializeMap() {
@@ -86,6 +106,18 @@ export default {
         zoom: this.zoomLevel,
         zoomControl: false,
         renderer: L.canvas(),
+      });
+
+      this.planeMarkerIcon = L.icon({
+        iconUrl: require('@/assets/images/plane.svg'), // eslint-disable-line
+        iconSize: [40, 40],
+        iconAnchor: [20, 35],
+      });
+
+      this.customMarkerIcon = L.icon({
+        iconUrl: require('@/assets/images/map-marker.svg'), // eslint-disable-line
+        iconSize: [40, 40],
+        iconAnchor: [20, 35],
       });
 
       this.tileLayer = L.tileLayer(
@@ -106,6 +138,7 @@ export default {
           this.marker = L.marker(
             [this.latitude, this.longitude],
             {
+              icon: this.planeMarkerIcon,
               rotationAngle: this.heading,
             },
           ).addTo(this.map);
@@ -119,6 +152,21 @@ export default {
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
       marker.style.transform = `rotate(${this.heading}deg)`;
+    },
+    addCustomMarker() {
+      // console.log('%c addCustomMarker ', 'background-color: #bada55; color: black;');
+      // console.log('this.customMarker', this.customMarker);
+      this.customMarkerInstance = L.marker(
+        [this.customMarker.latitude, this.customMarker.longitude],
+        {
+          icon: this.customMarkerIcon,
+        },
+      ).addTo(this.map);
+      // console.log('this.customMarkerInstance', this.customMarkerInstance);
+    },
+    removeCustomMarker() {
+      // console.log('%c removeCustomMarker ', 'background-color: #bada55; color: black;');
+      this.customMarkerInstance.remove();
     },
   },
 };
@@ -135,6 +183,7 @@ export default {
   height: calc(100vh - 48px);
   z-index: 0;
 }
+
 .leaflet-marker-icon {
   filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
 }
