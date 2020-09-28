@@ -46,8 +46,8 @@ export default {
   data() {
     return {
       map: null,
-      marker: null,
       planeMarkerIcon: null,
+      planeMarkerInstance: null,
       customMarkerIcon: null,
       customMarkerInstance: null,
       tileLayer: null,
@@ -127,15 +127,15 @@ export default {
     },
     positionMarkerAndSetMapView() {
       if (this.mapLockedToPosition) {
-        if (this.marker !== null) {
-          this.map.removeLayer(this.marker);
-          this.marker = null;
+        if (this.planeMarkerInstance !== null) {
+          this.map.removeLayer(this.planeMarkerInstance);
+          this.planeMarkerInstance = null;
         }
         this.rotateFixedMarker();
         this.map.setView([this.latitude, this.longitude]);
       } else {
-        if (this.marker === null) { // eslint-disable-line no-lonely-if
-          this.marker = L.marker(
+        if (this.planeMarkerInstance === null) { // eslint-disable-line no-lonely-if
+          this.planeMarkerInstance = L.marker(
             [this.latitude, this.longitude],
             {
               icon: this.planeMarkerIcon,
@@ -144,8 +144,8 @@ export default {
           ).addTo(this.map);
           // console.log('this.marker', this.marker);
         } else {
-          this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
-          this.marker.setRotationAngle(this.heading);
+          this.planeMarkerInstance.setLatLng(L.latLng(this.latitude, this.longitude));
+          this.planeMarkerInstance.setRotationAngle(this.heading);
         }
       }
     },
