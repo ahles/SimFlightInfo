@@ -154,18 +154,14 @@ export default {
       marker.style.transform = `rotate(${this.heading}deg)`;
     },
     addCustomMarker() {
-      // console.log('%c addCustomMarker ', 'background-color: #bada55; color: black;');
-      // console.log('this.customMarker', this.customMarker);
       this.customMarkerInstance = L.marker(
         [this.customMarker.latitude, this.customMarker.longitude],
         {
           icon: this.customMarkerIcon,
         },
       ).addTo(this.map);
-      // console.log('this.customMarkerInstance', this.customMarkerInstance);
     },
     removeCustomMarker() {
-      // console.log('%c removeCustomMarker ', 'background-color: #bada55; color: black;');
       this.customMarkerInstance.remove();
     },
   },
