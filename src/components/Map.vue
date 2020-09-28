@@ -9,6 +9,9 @@
 <script>
 import L from 'leaflet';
 
+const customMarkerIcon = require('@/assets/images/map-marker.svg');
+const planeMarkerIcon = require('@/assets/images/plane.svg');
+
 export default {
   name: 'Map',
   props: {
@@ -109,13 +112,13 @@ export default {
       });
 
       this.planeMarkerIcon = L.icon({
-        iconUrl: require('@/assets/images/plane.svg'), // eslint-disable-line
+        iconUrl: planeMarkerIcon,
         iconSize: [40, 40],
         iconAnchor: [20, 35],
       });
 
       this.customMarkerIcon = L.icon({
-        iconUrl: require('@/assets/images/map-marker.svg'), // eslint-disable-line
+        iconUrl: customMarkerIcon,
         iconSize: [40, 40],
         iconAnchor: [20, 35],
       });
