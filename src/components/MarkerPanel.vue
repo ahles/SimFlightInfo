@@ -47,13 +47,23 @@
           :rules="[rules.required]"
         />
       </p>
-      <p>
+      <p
+        class="marker-panel__buttons"
+      >
         <v-btn
           small
           dark
           @click="setMarker"
         >
-          {{ $t('set') }}
+          <v-icon>mdi-content-save</v-icon>
+        </v-btn>
+
+        <v-btn
+          small
+          dark
+          @click="clearMarker"
+        >
+          <v-icon>mdi-close-circle</v-icon>
         </v-btn>
       </p>
     </div>
@@ -142,6 +152,11 @@ export default {
         this.isEdit = false;
       }
     },
+    clearMarker() {
+      this.$store.commit('SET_CUSTOM_MARKER_LATITUDE', null);
+      this.$store.commit('SET_CUSTOM_MARKER_LONGITUDE', null);
+      this.$store.commit('SET_CUSTOM_MARKER_NAME', '');
+    },
     initRules() {
       this.rules.required = (value) => !!value || 'Required.';
       this.rules.latitude = (value) => {
@@ -199,6 +214,11 @@ export default {
     // .v-text-field__details {
     //   display: none !important;
     // }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__table {
