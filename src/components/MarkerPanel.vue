@@ -12,7 +12,7 @@
       <p>
         <v-text-field
           ref="latitude"
-          v-model="marker.latitude"
+          v-model="localMarker.latitude"
           :label="$t('Latitude')"
           filled
           dense
@@ -25,7 +25,7 @@
       <p>
         <v-text-field
           ref="longitude"
-          v-model="marker.longitude"
+          v-model="localMarker.longitude"
           :label="$t('Longitude')"
           filled
           dense
@@ -38,7 +38,7 @@
       <p>
         <v-text-field
           ref="name"
-          v-model="marker.name"
+          v-model="localMarker.name"
           :label="$t('Name')"
           filled
           dense
@@ -61,9 +61,34 @@
       v-else
       class="marker-panel__view"
     >
-      <p>Latitude: {{ marker.latitude }}°</p>
-      <p>Longitude: {{ marker.longitude }}°</p>
-      <p>Name: {{ marker.name }}</p>
+      <table class="marker-panel__table">
+        <tbody>
+          <tr>
+            <td>
+              {{ $t('Latitude') }}
+            </td>
+            <td>
+              {{ localMarker.latitude }}°
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{ $t('Longitude') }}
+            </td>
+            <td>
+              {{ localMarker.longitude }}°
+            </td>
+          </tr>
+          <tr>
+            <td>
+              {{ $t('Name') }}
+            </td>
+            <td>
+              {{ localMarker.name }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <v-btn
         small
         dark
@@ -91,22 +116,29 @@ export default {
       latitude: null,
       longitude: null,
     },
-  }),
-  computed: {
-    marker() {
-      return this.$store.getters.getMarker();
+    localMarker: {
+      latitude: null,
+      longitude: null,
+      name: '',
     },
-  },
+  }),
   created() {
     this.initRules();
+  },
+  mounted() {
+    this.localMarker = this.$store.getters.getMarker();
+  },
+  updated() {
+    this.localMarker = this.$store.getters.getMarker();
   },
   methods: {
     setMarker() {
       this.validateForm();
       if (!this.formInValid) {
-        this.$store.commit('SET_CUSTOM_MARKER_LATITUDE', this.marker.latitude);
-        this.$store.commit('SET_CUSTOM_MARKER_LONGITUDE', this.marker.longitude);
-        this.$store.commit('SET_CUSTOM_MARKER_NAME', this.marker.name);
+        // console.log('this.$refs.latitude.$el', this.$refs.latitude);
+        this.$store.commit('SET_CUSTOM_MARKER_LATITUDE', this.localMarker.latitude);
+        this.$store.commit('SET_CUSTOM_MARKER_LONGITUDE', this.localMarker.longitude);
+        this.$store.commit('SET_CUSTOM_MARKER_NAME', this.localMarker.name);
         this.isEdit = false;
       }
     },
@@ -124,7 +156,7 @@ export default {
     validateForm() {
       this.formInValid = false;
 
-      Object.keys(this.marker).forEach((formElement) => {
+      Object.keys(this.localMarker).forEach((formElement) => {
         const validation = this.$refs[formElement].validate(true);
         if (validation === false) {
           this.formInValid = true;
@@ -140,7 +172,7 @@ export default {
   position: absolute;
   top: 20px;
   right: 20px;
-  width: 200px;
+  min-width: 200px;
   z-index: 2;
   background-color: #363636;
   color: white;
@@ -169,9 +201,17 @@ export default {
     // }
   }
 
-  &__view p {
-    font-weight: 300;
-    margin-bottom: 8px;
+  &__table {
+    width: 100%;
+    margin: 10px 0;
+
+    td {
+      font-weight: 300;
+
+      &:last-of-type {
+        text-align: right;
+      }
+    }
   }
 
 }
