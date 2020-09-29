@@ -138,6 +138,9 @@ export default {
     // validOsmPOIsResponse: false,
   }),
   computed: {
+    locale() {
+      return this.$store.state.userSettings.locale;
+    },
     geonamesUser() {
       if (
         this.$store.state.userSettings.geonamesUser
@@ -168,6 +171,9 @@ export default {
   watch: {
     geonamesUser() {
       this.initGeonames();
+    },
+    locale() {
+      this.refresh();
     },
   },
   mounted() {
