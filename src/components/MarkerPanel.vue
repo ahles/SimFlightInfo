@@ -35,18 +35,6 @@
           :rules="[rules.required, rules.longitude]"
         />
       </p>
-      <p>
-        <v-text-field
-          ref="name"
-          v-model="localMarker.name"
-          :label="$t('Name')"
-          filled
-          dense
-          dark
-          required
-          :rules="[rules.required]"
-        />
-      </p>
       <p
         class="marker-panel__buttons"
       >
@@ -89,14 +77,6 @@
               {{ localMarker.longitude }}°
             </td>
           </tr>
-          <tr>
-            <td>
-              {{ $t('Name') }}
-            </td>
-            <td>
-              {{ localMarker.name }}
-            </td>
-          </tr>
         </tbody>
       </table>
       <v-btn
@@ -129,7 +109,6 @@ export default {
     localMarker: {
       latitude: null,
       longitude: null,
-      name: '',
     },
   }),
   created() {
@@ -145,19 +124,14 @@ export default {
     setMarker() {
       this.validateForm();
       if (!this.formInValid) {
-        // console.log('this.$refs.latitude.$el', this.$refs.latitude);
-        this.$store.commit('SET_CUSTOM_MARKER_LATITUDE', this.localMarker.latitude);
-        this.$store.commit('SET_CUSTOM_MARKER_LONGITUDE', this.localMarker.longitude);
-        this.$store.commit('SET_CUSTOM_MARKER_NAME', this.localMarker.name);
+        this.$store.commit('SET_CUSTOM_MARKER_LATITUDE', Number(this.localMarker.latitude));
+        this.$store.commit('SET_CUSTOM_MARKER_LONGITUDE', Number(this.localMarker.longitude));
         this.isEdit = false;
-        this.$store.commit('SET_CUSTOM_MARKER_SET', true);
       }
     },
     clearMarker() {
       this.$store.commit('SET_CUSTOM_MARKER_LATITUDE', null);
       this.$store.commit('SET_CUSTOM_MARKER_LONGITUDE', null);
-      this.$store.commit('SET_CUSTOM_MARKER_NAME', '');
-      this.$store.commit('SET_CUSTOM_MARKER_SET', false);
     },
     initRules() {
       this.rules.required = (value) => !!value || 'Required.';

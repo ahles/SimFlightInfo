@@ -63,9 +63,6 @@ export default {
     };
   },
   computed: {
-    customMarkerSet() {
-      return this.$store.state.customMarkerSet;
-    },
     customMarker() {
       return this.$store.getters.getMarker();
     },
@@ -85,12 +82,11 @@ export default {
         this.mapLayers.layerOptions,
       ).addTo(this.map);
     },
-    customMarkerSet(newValue) {
-      if (newValue) {
-        this.addCustomMarker();
-      } else {
-        this.removeCustomMarker();
-      }
+    customMarker: {
+      deep: true,
+      handler() {
+        this.handleCustomMarker();
+      },
     },
   },
   mounted() {
@@ -98,9 +94,11 @@ export default {
     this.map.on('zoomend', () => {
       this.$store.commit('SET_ZOOM_LEVEL', this.map._zoom); // eslint-disable-line no-underscore-dangle
     });
-    if (this.customMarkerSet) {
-      this.addCustomMarker();
-    }
+    this.handleCustomMarker();
+  },
+  updated() {
+    this.map = null;
+    this.initializeMap();
   },
   methods: {
     initializeMap() {
@@ -156,16 +154,34 @@ export default {
       const marker = document.getElementsByClassName('position-marker')[0];
       marker.style.transform = `rotate(${this.heading}deg)`;
     },
-    addCustomMarker() {
-      this.customMarkerInstance = L.marker(
-        [this.customMarker.latitude, this.customMarker.longitude],
-        {
-          icon: this.customMarkerIcon,
-        },
-      ).addTo(this.map);
-    },
-    removeCustomMarker() {
-      this.customMarkerInstance.remove();
+    handleCustomMarker() {
+      // this.customMarker.latitude = Number(this.customMarker.latitude);
+      // this.customMarker.longitude = Number(this.customMarker.longitude);
+      if (
+        this.customMarker.latitude
+        && typeof this.customMarker.latitude === 'number'
+        && this.customMarker.longitude
+        && typeof this.customMarker.longitude === 'number'
+      ) {
+        if (this.customMarkerInstance) {
+          this.customMarkerInstance.setLatLng(
+            [this.customMarker.latitude, this.customMarker.longitude],
+          );
+        } else {
+          this.customMarkerInstance = L.marker(
+            [this.customMarker.latitude, this.customMarker.longitude],
+            {
+              icon: this.customMarkerIcon,
+            },
+          ).addTo(this.map);
+        }
+      } else {
+        // eslint-disable-next-line
+        if (this.customMarkerInstance) {
+          this.customMarkerInstance.remove();
+          this.customMarkerInstance = null;
+        }
+      }
     },
   },
 };
