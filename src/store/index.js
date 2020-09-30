@@ -20,7 +20,7 @@ const userSettings = {
   showInfoPanel: true,
   showGeonamesPanel: false,
   geonamesUser: null,
-  showMarkerPanel: true,
+  showMarkerPanel: false,
   marker: {
     latitude: null,
     longitude: null,
