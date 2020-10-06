@@ -19,6 +19,63 @@
       ripple
       small
       class="window-button"
+      @click.stop="updateShowGeonamesPanel"
+    >
+      <v-icon
+        v-if="showGeonamesPanel"
+        dark
+      >
+        mdi-lightbulb-outline
+      </v-icon>
+      <v-icon
+        v-else
+        dark
+      >
+        mdi-lightbulb-off-outline
+      </v-icon>
+    </v-btn>
+    <v-btn
+      ripple
+      small
+      class="window-button"
+      @click.stop="updateShowMarkerPanel"
+    >
+      <v-icon
+        v-if="showMarkerPanel"
+        dark
+      >
+        mdi-map-marker-outline
+      </v-icon>
+      <v-icon
+        v-else
+        dark
+      >
+        mdi-map-marker-off-outline
+      </v-icon>
+    </v-btn>
+    <v-btn
+      ripple
+      small
+      class="window-button"
+      @click.stop="updateShowInfoPanel"
+    >
+      <v-icon
+        v-if="showInfoPanel"
+        dark
+      >
+        mdi-compass-outline
+      </v-icon>
+      <v-icon
+        v-else
+        dark
+      >
+        mdi-compass-off-outline
+      </v-icon>
+    </v-btn>
+    <v-btn
+      ripple
+      small
+      class="window-button"
       @click.stop="drawer = !drawer"
     >
       <v-icon dark>
@@ -63,11 +120,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 const { remote } = require('electron');
 
 export default {
   name: 'Header',
   computed: {
+    ...mapState({
+      showInfoPanel: (state) => state.userSettings.showInfoPanel,
+      showGeonamesPanel: (state) => state.userSettings.showGeonamesPanel,
+      showMarkerPanel: (state) => state.userSettings.showMarkerPanel,
+    }),
     drawer: {
       get() {
         return this.$store.state.drawer;
@@ -81,6 +145,15 @@ export default {
     this.window = remote.getCurrentWindow();
   },
   methods: {
+    updateShowInfoPanel() {
+      this.$store.commit('SET_SHOW_INFO_PANEL', !this.showInfoPanel);
+    },
+    updateShowMarkerPanel() {
+      this.$store.commit('SET_SHOW_MARKER_PANEL', !this.showMarkerPanel);
+    },
+    updateShowGeonamesPanel() {
+      this.$store.commit('SET_SHOW_GEONAMES_PANEL', !this.showGeonamesPanel);
+    },
     closeWindow() {
       this.window.close();
     },

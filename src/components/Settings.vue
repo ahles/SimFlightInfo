@@ -5,6 +5,7 @@
         {{ $t('Settings') }}
       </p>
     </li>
+    <!--
     <li class="settings__lock">
       <p>{{ $t('Show info panel') }}</p>
       <p>
@@ -32,6 +33,7 @@
         />
       </p>
     </li>
+    -->
 
     <li class="settings__geonames">
       <p
@@ -168,14 +170,8 @@ export default {
     changeLangInLocalstorage() {
       this.$store.commit('SET_LOCALE', this.$i18n.locale);
     },
-    updateShowInfoPanel(event) {
-      this.$store.commit('SET_SHOW_INFO_PANEL', event);
-    },
     updateShowGeonamesPanel(event) {
       this.$store.commit('SET_SHOW_GEONAMES_PANEL', event);
-    },
-    updateShowMarkerPanel(event) {
-      this.$store.commit('SET_SHOW_MARKER_PANEL', event);
     },
     updateGeonamesUsername(event) {
       this.$store.commit('SET_GEONAMES_USER', event.target.value);
