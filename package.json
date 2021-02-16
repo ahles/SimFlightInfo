@@ -1,6 +1,6 @@
 {
   "name": "SimFlightInfo",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Displays the position of your airplane in MSFS2020",
   "author": "Philippe Ahles <philippe@ahles.ch>",
   "scripts": {
