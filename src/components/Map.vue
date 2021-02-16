@@ -9,6 +9,9 @@
 <script>
 import L from 'leaflet';
 
+const customMarkerIcon = require('@/assets/images/map-marker.svg');
+const planeMarkerIcon = require('@/assets/images/plane.svg');
+
 export default {
   name: 'Map',
   props: {
@@ -46,7 +49,10 @@ export default {
   data() {
     return {
       map: null,
-      marker: null,
+      planeMarkerIcon: null,
+      planeMarkerInstance: null,
+      customMarkerIcon: null,
+      customMarkerInstance: null,
       tileLayer: null,
       mapLayers: {
         layerUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -55,6 +61,11 @@ export default {
         },
       },
     };
+  },
+  computed: {
+    customMarker() {
+      return this.$store.getters.getMarker();
+    },
   },
   watch: {
     messageIndex() {
@@ -71,12 +82,23 @@ export default {
         this.mapLayers.layerOptions,
       ).addTo(this.map);
     },
+    customMarker: {
+      deep: true,
+      handler() {
+        this.handleCustomMarker();
+      },
+    },
   },
   mounted() {
     this.initializeMap();
     this.map.on('zoomend', () => {
       this.$store.commit('SET_ZOOM_LEVEL', this.map._zoom); // eslint-disable-line no-underscore-dangle
     });
+    this.handleCustomMarker();
+  },
+  updated() {
+    this.map = null;
+    this.initializeMap();
   },
   methods: {
     initializeMap() {
@@ -87,6 +109,18 @@ export default {
         renderer: L.canvas(),
       });
 
+      this.planeMarkerIcon = L.icon({
+        iconUrl: planeMarkerIcon,
+        iconSize: [40, 40],
+        iconAnchor: [20, 35],
+      });
+
+      this.customMarkerIcon = L.icon({
+        iconUrl: customMarkerIcon,
+        iconSize: [40, 40],
+        iconAnchor: [20, 35],
+      });
+
       this.tileLayer = L.tileLayer(
         this.mapLayers.layerUrl,
         this.mapLayers.layerOptions,
@@ -94,30 +128,60 @@ export default {
     },
     positionMarkerAndSetMapView() {
       if (this.mapLockedToPosition) {
-        if (this.marker !== null) {
-          this.map.removeLayer(this.marker);
-          this.marker = null;
+        if (this.planeMarkerInstance !== null) {
+          this.map.removeLayer(this.planeMarkerInstance);
+          this.planeMarkerInstance = null;
         }
         this.rotateFixedMarker();
         this.map.setView([this.latitude, this.longitude]);
       } else {
-        if (this.marker === null) { // eslint-disable-line no-lonely-if
-          this.marker = L.marker(
+        if (this.planeMarkerInstance === null) { // eslint-disable-line no-lonely-if
+          this.planeMarkerInstance = L.marker(
             [this.latitude, this.longitude],
             {
+              icon: this.planeMarkerIcon,
               rotationAngle: this.heading,
             },
           ).addTo(this.map);
           // console.log('this.marker', this.marker);
         } else {
-          this.marker.setLatLng(L.latLng(this.latitude, this.longitude));
-          this.marker.setRotationAngle(this.heading);
+          this.planeMarkerInstance.setLatLng(L.latLng(this.latitude, this.longitude));
+          this.planeMarkerInstance.setRotationAngle(this.heading);
         }
       }
     },
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
       marker.style.transform = `rotate(${this.heading}deg)`;
+    },
+    handleCustomMarker() {
+      // this.customMarker.latitude = Number(this.customMarker.latitude);
+      // this.customMarker.longitude = Number(this.customMarker.longitude);
+      if (
+        this.customMarker.latitude
+        && typeof this.customMarker.latitude === 'number'
+        && this.customMarker.longitude
+        && typeof this.customMarker.longitude === 'number'
+      ) {
+        if (this.customMarkerInstance) {
+          this.customMarkerInstance.setLatLng(
+            [this.customMarker.latitude, this.customMarker.longitude],
+          );
+        } else {
+          this.customMarkerInstance = L.marker(
+            [this.customMarker.latitude, this.customMarker.longitude],
+            {
+              icon: this.customMarkerIcon,
+            },
+          ).addTo(this.map);
+        }
+      } else {
+        // eslint-disable-next-line
+        if (this.customMarkerInstance) {
+          this.customMarkerInstance.remove();
+          this.customMarkerInstance = null;
+        }
+      }
     },
   },
 };
@@ -134,6 +198,7 @@ export default {
   height: calc(100vh - 48px);
   z-index: 0;
 }
+
 .leaflet-marker-icon {
   filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
 }

@@ -234,6 +234,10 @@ html {
   justify-content: space-between;
 }
 
+.v-navigation-drawer--absolute {
+  z-index: 3;
+}
+
 .v-btn--fab.v-size--small.v-btn--absolute.v-btn--bottom.menu,
 .v-btn--fab.v-size--small.v-btn--absolute.v-btn--bottom.close {
   bottom: 30px;

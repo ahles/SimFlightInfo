@@ -5,6 +5,7 @@
         {{ $t('Settings') }}
       </p>
     </li>
+    <!--
     <li class="settings__lock">
       <p>{{ $t('Show info panel') }}</p>
       <p>
@@ -18,6 +19,21 @@
         />
       </p>
     </li>
+
+    <li class="settings__marker">
+      <p>{{ $t('Show marker panel') }}</p>
+      <p>
+        <v-switch
+          class="marker_panel"
+          :label="(showMarkerPanel) ? $t('Yes') : $t('No')"
+          :input-value="showMarkerPanel"
+          ripple
+          dense
+          @change="updateShowMarkerPanel"
+        />
+      </p>
+    </li>
+    -->
 
     <li class="settings__geonames">
       <p
@@ -140,6 +156,7 @@ export default {
       zoomLevel: (state) => state.userSettings.zoomLevel,
       showInfoPanel: (state) => state.userSettings.showInfoPanel,
       showGeonamesPanel: (state) => state.userSettings.showGeonamesPanel,
+      showMarkerPanel: (state) => state.userSettings.showMarkerPanel,
       geonamesUser: (state) => state.userSettings.geonamesUser,
     }),
   },
@@ -152,9 +169,6 @@ export default {
     },
     changeLangInLocalstorage() {
       this.$store.commit('SET_LOCALE', this.$i18n.locale);
-    },
-    updateShowInfoPanel(event) {
-      this.$store.commit('SET_SHOW_INFO_PANEL', event);
     },
     updateShowGeonamesPanel(event) {
       this.$store.commit('SET_SHOW_GEONAMES_PANEL', event);

@@ -138,6 +138,9 @@ export default {
     // validOsmPOIsResponse: false,
   }),
   computed: {
+    locale() {
+      return this.$store.state.userSettings.locale;
+    },
     geonamesUser() {
       if (
         this.$store.state.userSettings.geonamesUser
@@ -168,6 +171,9 @@ export default {
   watch: {
     geonamesUser() {
       this.initGeonames();
+    },
+    locale() {
+      this.refresh();
     },
   },
   mounted() {
@@ -240,7 +246,7 @@ export default {
                 this.wikipediaLinks = filteredGeonamesWikipediaFeatureLinks;
               }
             } else {
-              this.wikipediaLinks = geonamesWikipediaLinks;
+              this.wikipediaLinks = geonamesWikipediaLinks.geonames;
             }
             this.validWikipediaLinksResponse = true;
           } else {
@@ -361,7 +367,7 @@ export default {
   }
 
   &__wikipedia {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 }
 </style>
