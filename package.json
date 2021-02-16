@@ -1,5 +1,5 @@
 {
-  "name": "whereismyplane",
+  "name": "SimFlightInfo",
   "version": "1.2.1",
   "description": "Displays the position of your airplane in MSFS2020",
   "author": "Philippe Ahles <philippe@ahles.ch>",
@@ -62,6 +62,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ahles/whereismyplane.git"
+    "url": "https://github.com/ahles/SimFLightInfo.git"
   }
 }

@@ -12,7 +12,7 @@
         class="app-icon"
       >
         flight
-      </v-icon> <span class="app-title">Whereismyplane</span>
+      </v-icon> <span class="app-title">SimFlightInfo</span>
     </v-toolbar-title>
     <v-spacer />
     <v-btn
@@ -32,25 +32,6 @@
         dark
       >
         mdi-lightbulb-off-outline
-      </v-icon>
-    </v-btn>
-    <v-btn
-      ripple
-      small
-      class="window-button"
-      @click.stop="updateShowMarkerPanel"
-    >
-      <v-icon
-        v-if="showMarkerPanel"
-        dark
-      >
-        mdi-map-marker-outline
-      </v-icon>
-      <v-icon
-        v-else
-        dark
-      >
-        mdi-map-marker-off-outline
       </v-icon>
     </v-btn>
     <v-btn

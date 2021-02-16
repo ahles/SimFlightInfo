@@ -14,10 +14,10 @@ export const setJsonStorageMutations = (mutations) => {
 
 /**
  * Windows path:
- * C:\Users\USERNAME\AppData\Roaming\whereismyplane\storage
+ * C:\Users\USERNAME\AppData\Roaming\SimFlightInfo\storage
  *
  * Mac path:
- * /Users/USERNAME/Library/Application Support/whereismyplane/storage
+ * /Users/USERNAME/Library/Application Support/SimFlightInfo/storage
  */
 export const jsonStoragePlugin = (store) => {
   store.subscribe((mutation, state) => {
