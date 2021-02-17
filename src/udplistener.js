@@ -27,7 +27,6 @@ function readMessage(msg) {
       latitude: parseFloat(messageParts[2]),
       longitude: parseFloat(messageParts[1]),
       altitudeSea: parseFloat(messageParts[3]), // m
-      // bearing: parseFloat(messageParts[4]),
       groundSpeed: parseFloat(messageParts[5]), // m/s
       heading: xatt.heading,
       pitch: xatt.pitch,
@@ -36,7 +35,6 @@ function readMessage(msg) {
 
     messageIndex += 1;
 
-    // console.log('result', result);
     return result;
   }
 
@@ -68,7 +66,6 @@ module.exports = {
       this.udpClient.on('message', (msg) => {
         const position = readMessage(msg);
         if (position) {
-          // console.log('position', position);
           win.webContents.send('position', position);
           if (isDevelopment && this.log) {
             this.appendPositionToLog(position);
