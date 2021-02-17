@@ -15,7 +15,6 @@
   },
   "main": "background.js",
   "dependencies": {
-    "@babel/polyfill": "^7.11.5",
     "@mdi/font": "^5.6.55",
     "core-js": "^3.6.5",
     "electron": "^9.3.2",
