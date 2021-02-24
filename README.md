@@ -2,7 +2,7 @@
 
 SimFlightInfo is a desktop ppp that listens to the position information from Micrososft Flight Simulator™ (MSFS2020)  – forwarded over the network by [EFBConnect](https://github.com/ollyau/EFBConnect/releases) – and displays the current airplane location on a map.
 
-Additionally it displays the name and the flag of the country your airplane is flying over and links to Wikipedia articles nearby (20 km).
+Additionally it displays the name and the flag of the country your airplane is located at and shows links to Wikipedia articles nearby (20 km).
 
 You can try this app in simulation mode without running simulator.
 
@@ -21,7 +21,7 @@ Install [EFBConnect](https://github.com/ollyau/EFBConnect/releases) on the same 
 
 ## Recommended
 
-To be able to display the info panel with the country information, flag and Wikipedia links, you need a [Geonames](http://www.geonames.org/) account. You can register it for free [here](https://www.geonames.org/login). Please enter your username in the settings panel of SimFlightInfo.
+To be able to display the info panel with the country information, flag and Wikipedia links, you need a [Geonames](http://www.geonames.org/) account. You can register it for free [here](https://www.geonames.org/login). Please enter your [Geonames](http://www.geonames.org/) username in the settings panel of SimFlightInfo.
 
 ---
 
