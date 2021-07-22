@@ -6,18 +6,18 @@ Additionally it displays the name and the flag of the country your airplane is l
 
 You can try this app in simulation mode without running simulator.
 
-## Installation & Usage
-
-Download and install the [latest release](https://github.com/ahles/SimFlightInfo/releases/latest) (win & mac) of SimFlightInfo.
-
-Or you can build your own for your operating system following the development & build instructions at the bottom of this document.
-
 ## Prerequisite
 
 Install [EFBConnect](https://github.com/ollyau/EFBConnect/releases) on the same computer as the simulator is running.
 
 - If you plan to use SimFlightInfo on the same computer as the simulator is running, configure EFBConnect to send the data to 127.0.0.1.
 - If you plan to use SimFlightInfo on another computer (in the same local network), use the IP address of that computer in EFBConnect.
+
+## Installation & Usage
+
+Download and install the [latest release](https://github.com/ahles/SimFlightInfo/releases/latest) (win & mac) of SimFlightInfo.
+
+Or you can build your own for your operating system following the development & build instructions at the bottom of this document.
 
 ## Recommended
 
