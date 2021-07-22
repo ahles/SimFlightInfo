@@ -5,7 +5,7 @@ import store from './store';
 import i18n from './plugins/i18n';
 
 require('../node_modules/leaflet/dist/leaflet.css');
-require('../node_modules/leaflet-rotatedmarker/leaflet.rotatedMarker.js');
+require('../node_modules/leaflet-rotatedmarker/leaflet.rotatedMarker');
 
 Vue.config.productionTip = false;
 
