@@ -56,7 +56,8 @@
             {{ countryName }}
           </a><br>
           <img
-            :src="`https://www.countryflags.io/${countryCode}/flat/64.png`"
+            :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`"
+            class="geonames__flag"
           >
         </span>
         <span v-else>{{ $t('Country') }}: {{ countryName }}</span>
@@ -338,6 +339,11 @@ export default {
     font-size: 1.2rem;
     margin-bottom: 10px;
     font-weight: 400;
+  }
+
+  &__flag {
+    width: 50px;
+    margin-top: 10px;
   }
 
   p {
