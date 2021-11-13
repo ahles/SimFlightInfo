@@ -343,6 +343,7 @@ export default {
 
   &__flag {
     width: 50px;
+    margin-top: 10px;
   }
 
   p {
