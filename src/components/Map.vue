@@ -10,6 +10,7 @@
 import L from 'leaflet';
 
 const planeMarkerIcon = require('@/assets/images/plane.svg');
+const wikipediaMarkerIcon = require('@/assets/images/map-marker.svg');
 
 export default {
   name: 'Map',
@@ -57,7 +58,14 @@ export default {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         },
       },
+      wikipediaMarkerIcon: null,
+      wikipediaMarkers: [],
     };
+  },
+  computed: {
+    geonamesWikipediaLinks() {
+      return this.$store.state.geonamesWikipediaLinks;
+    },
   },
   watch: {
     messageIndex() {
@@ -73,6 +81,10 @@ export default {
         this.mapLayers.layerUrl,
         this.mapLayers.layerOptions,
       ).addTo(this.map);
+    },
+    geonamesWikipediaLinks() {
+      console.info('Links changed');
+      this.showWikipediaMarkers();
     },
   },
   mounted() {
@@ -96,6 +108,12 @@ export default {
 
       this.planeMarkerIcon = L.icon({
         iconUrl: planeMarkerIcon,
+        iconSize: [40, 40],
+        iconAnchor: [20, 35],
+      });
+
+      this.wikipediaMarkerIcon = L.icon({
+        iconUrl: wikipediaMarkerIcon,
         iconSize: [40, 40],
         iconAnchor: [20, 35],
       });
@@ -132,6 +150,27 @@ export default {
     rotateFixedMarker() {
       const marker = document.getElementsByClassName('position-marker')[0];
       marker.style.transform = `rotate(${this.heading}deg)`;
+    },
+    showWikipediaMarkers() {
+      this.clearWikipediaMarkers();
+      if (this.geonamesWikipediaLinks.length > 0) {
+        this.geonamesWikipediaLinks.forEach((element) => {
+          this.wikipediaMarkers.push(L.marker(
+            [element.lat, element.lng],
+            {
+              icon: this.wikipediaMarkerIcon,
+            },
+          ).addTo(this.map));
+        });
+      }
+    },
+    clearWikipediaMarkers() {
+      if (this.wikipediaMarkers.length > 0) {
+        this.wikipediaMarkers.forEach((element) => {
+          this.map.removeLayer(element);
+        });
+        this.wikipediaMarkers = [];
+      }
     },
   },
 };

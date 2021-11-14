@@ -27,6 +27,7 @@ const jsonStorageMutations = [
   'SET_ZOOM_LEVEL',
   'SET_LOCALE',
   'SET_GEONAMES_USER',
+  'SET_GEONAMES_WIKIPEDIA_LINKS',
   'SET_SHOW_INFO_PANEL',
   'SET_SHOW_GEONAMES_PANEL',
 ];
@@ -39,6 +40,7 @@ export default new Vuex.Store({
     drawer: false,
     simulationActive: false,
     userSettings,
+    geonamesWikipediaLinks: [],
   },
   mutations: {
     /* eslint-disable no-param-reassign */
@@ -59,6 +61,9 @@ export default new Vuex.Store({
     },
     SET_SHOW_GEONAMES_PANEL: (state, showGeonamesPanel) => {
       state.userSettings.showGeonamesPanel = showGeonamesPanel;
+    },
+    SET_GEONAMES_WIKIPEDIA_LINKS: (state, geonamesWikipediaLinks) => {
+      state.geonamesWikipediaLinks = geonamesWikipediaLinks;
     },
     SET_ZOOM_LEVEL: (state, zoomLevel) => {
       state.userSettings.zoomLevel = zoomLevel;
