@@ -193,6 +193,16 @@ export default {
 
 .leaflet-marker-icon {
   filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
+}
+
+.leaflet-div-icon {
+  background: transparent !important;
+  border: none;
+
+  & > div {
+    width: 100%;
+    height: 100%;
+  }
 
   .number {
     position: relative;
@@ -200,15 +210,6 @@ export default {
     font-size: 12px;
     width: 25px;
     text-align: center;
-  }
-}
-
-.leaflet-div-icon {
-  background: transparent !important;
-  border: none;
-
-  img {
-    height: 100%;
   }
 }
 </style>
