@@ -9,8 +9,6 @@
 <script>
 import L from 'leaflet';
 
-require('@/lib/leaflet_numbered_markers');
-
 const planeMarkerIcon = require('@/assets/images/plane.svg');
 const wikipediaMarkerIcon = require('@/assets/images/map-marker.svg');
 
@@ -160,8 +158,7 @@ export default {
           this.wikipediaMarkers.push(L.marker(
             [element.lat, element.lng],
             {
-              icon: new L.NumberedDivIcon({ number: '1' }),
-              title: 'Test',
+              icon: this.wikipediaMarkerIcon,
             },
           ).addTo(this.map));
         });
@@ -193,22 +190,5 @@ export default {
 
 .leaflet-marker-icon {
   filter: drop-shadow( -2px 3px 2px rgba(0, 0, 0, .7));
-
-  .number {
-    position: relative;
-    top: -37px;
-    font-size: 12px;
-    width: 25px;
-    text-align: center;
-  }
-}
-
-.leaflet-div-icon {
-  background: transparent !important;
-  border: none;
-
-  img {
-    height: 100%;
-  }
 }
 </style>
