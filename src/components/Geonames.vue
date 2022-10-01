@@ -120,6 +120,7 @@ export default {
     countryLanguageCodes: null,
     oceanName: null,
     validOceanResponse: false,
+    wikipediaLinks: null,
     wikipediaLinksMax: 10,
     validWikipediaLinksResponse: false,
     wikipediaFeatureAllowedList: [
@@ -166,9 +167,6 @@ export default {
         return `https://en.wikipedia.org/wiki/${this.countryName.replace(' ', '_')}`;
       }
       return null;
-    },
-    wikipediaLinks() {
-      return this.$store.state.geonamesWikipediaLinks;
     },
   },
   watch: {
@@ -224,7 +222,6 @@ export default {
           }
         }
 
-        let result = [];
         /* eslint-disable max-len */
         if (!this.isOnZeroZeroPosition) {
           const geonamesWikipediaLinks = await this.getGeonamesWikipediaLinks();
@@ -240,29 +237,29 @@ export default {
               });
               if (filteredGeonamesWikipediaFeatureLinks.length > this.wikipediaLinksMax) {
                 const filteredGeonamesWikipediaTitleLinks = filteredGeonamesWikipediaFeatureLinks.filter((item) => {
-                  if (item.summary !== undefined && this.stringContainsBlockedString(item.summary)) {
+                  if (this.stringContainsBlockedString(item.summary)) {
                     return false;
                   }
                   return true;
                 });
-                result = filteredGeonamesWikipediaTitleLinks.slice(0, (this.wikipediaLinksMax - 1));
+                this.wikipediaLinks = filteredGeonamesWikipediaTitleLinks.slice(0, (this.wikipediaLinksMax - 1));
               } else {
-                result = filteredGeonamesWikipediaFeatureLinks;
+                this.wikipediaLinks = filteredGeonamesWikipediaFeatureLinks;
               }
             } else {
-              result = geonamesWikipediaLinks.geonames;
+              this.wikipediaLinks = geonamesWikipediaLinks.geonames;
             }
             this.validWikipediaLinksResponse = true;
           } else {
             this.validWikipediaLinksResponse = false;
-            result = [];
+            this.wikipediaLinks = [];
           }
         } else {
-          result = [];
+          this.wikipediaLinks = [];
         }
-        this.$store.commit('SET_GEONAMES_WIKIPEDIA_LINKS', result);
       }
       /* eslint-enable max-len */
+
       this.initialized = true;
     },
     stringContainsBlockedString(string) {
