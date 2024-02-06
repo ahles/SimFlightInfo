@@ -3,6 +3,9 @@
   "version": "1.2.6",
   "description": "Displays the position of your airplane in MSFS2020",
   "author": "Philippe Ahles <philippe@ahles.ch>",
+  "engines" : {
+    "node" : ">=16.0.0 <17.0.0"
+  },
   "scripts": {
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
