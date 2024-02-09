@@ -1,24 +1,20 @@
 {
-  "name": "electron-vue-vite",
-  "version": "28.0.0",
-  "main": "dist-electron/main/index.js",
-  "description": "Really simple Electron + Vue + Vite boilerplate.",
-  "author": "草鞋没号 <308487730@qq.com>",
+  "name": "simflightinfo",
+  "version": "2.0.0",
+  "description": "Displays the position of your airplane in MSFS2020",
+  "author": "Philippe Ahles <philippe@ahles.ch>",
   "license": "MIT",
-  "private": true,
   "keywords": [
-    "electron",
-    "rollup",
-    "vite",
-    "vue3",
-    "vue"
+    "MSFS2020",
+    "Map",
+    "Openstreetmap",
+    "Vue.js",
+    "Electron.js",
+    "Leaflet.js",
+    "Geonames"
   ],
-  "debug": {
-    "env": {
-      "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
-    }
-  },
   "type": "module",
+  "main": "dist-electron/main/index.js",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build && electron-builder",
@@ -35,5 +31,14 @@
     "vite-plugin-electron-renderer": "^0.14.5",
     "vue": "^3.4.1",
     "vue-tsc": "^1.8.27"
+  },
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahles/SimFLightInfo.git"
   }
 }
