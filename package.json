@@ -40,5 +40,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ahles/SimFLightInfo.git"
+  },
+  "dependencies": {
+    "node-simconnect": "^3.6.1"
   }
 }
