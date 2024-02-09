@@ -1,0 +1,46 @@
+:root {
+    --color-background: #111111;
+    --color-panels: #222222;
+    --color-border-content: #444444;
+    --color-text: #cccccc;
+    --color-text-highlight: #eeeeee;
+}
+
+/**
+    Mobile first
+    Breakpoints: 960px, 1200px
+*/
+html {
+    font-size: 62.5%;
+
+    @media screen and (min-width: 960px) {
+        font-size: 75%;
+    }
+
+    @media screen and (min-width: 1600px) {
+        font-size: 90%;
+    }
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    box-sizing: border-box;
+    color: var(--color-text);
+    background-color: var(--color-background);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 0;
+}
+
+img,
+svg {
+    display: block;
+}
+
+svg {
+    pointer-events: none;
+}
