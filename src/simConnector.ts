@@ -41,8 +41,8 @@ const simConnector = {
                 altitudeAboveGround: recvSimObjectData.data.readFloat64(),
                 latitude: recvSimObjectData.data.readFloat64(),
                 longitude: recvSimObjectData.data.readFloat64(),
-                degreesBank: radiansToDegrees(recvSimObjectData.data.readFloat64()),
-                degreesPitch: radiansToDegrees(recvSimObjectData.data.readFloat64()),
+                degreesBank: radToDeg(recvSimObjectData.data.readFloat64()),
+                degreesPitch: radToDeg(recvSimObjectData.data.readFloat64()),
                 airSpeedTrue: recvSimObjectData.data.readFloat64(),
                 airSpeedIndicated: recvSimObjectData.data.readFloat64(),
                 verticalSpeed: recvSimObjectData.data.readInt32(),
@@ -81,7 +81,7 @@ const simConnector = {
   },
 }
 
-const radiansToDegrees = (radians: number): number => {
+const radToDeg = (radians: number): number => {
   return radians * (180/Math.PI);
 }
 
