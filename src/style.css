@@ -4,6 +4,16 @@
     --color-border-content: #444444;
     --color-text: #cccccc;
     --color-text-highlight: #eeeeee;
+
+    --default-font-size: 1.4rem;
+
+    --space: 1rem;
+
+    --header-height: 2rem;
+    /*--title-height: 6rem;*/
+
+    --sidepanel-width: 20rem;
+
 }
 
 /**
@@ -23,6 +33,9 @@ html {
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    padding: 0;
+
 }
 
 body {
@@ -31,7 +44,7 @@ body {
     background-color: var(--color-background);
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    font-size: 1.4rem;
+    font-size: var(--default-font-size);
     margin: 0;
     padding: 0;
 }
