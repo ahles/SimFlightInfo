@@ -80,7 +80,9 @@ async function createWindow() {
   })
   // win.webContents.on('will-navigate', (event, url) => { }) #344
 
-  simConnector.init(win)
+  setTimeout(() => {
+    simConnector.init(win)
+  }, 3000)
 }
 
 app.whenReady().then(createWindow)

@@ -1,4 +1,4 @@
-export interface SimInterface {
+export interface FlightInterface {
   latitude: number,
   longitude: number,
   altitude: number,
@@ -9,4 +9,9 @@ export interface SimInterface {
   airSpeedTrue: number,
   airSpeedIndicated: number,
   verticalSpeed: number,
+}
+
+export interface SimStatetInterface {
+  connected: boolean,
+  exception: any
 }

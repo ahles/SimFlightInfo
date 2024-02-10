@@ -1,26 +1,39 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { SimInterface } from './Interfaces'
+import { onBeforeMount } from 'vue'
+import { FlightInterface } from './Interfaces'
 
 import { useSimStateStore } from './stores/simState'
+import { useFlightStateStore } from './stores/flightState'
 import HeaderComponent from "./components/layout/HeaderComponent.vue";
 import LoadingBarComponent from "./components/gui/LoadingBarComponent.vue";
 const simState = useSimStateStore()
+const flightState = useFlightStateStore()
 
-onMounted(() => {
-  window.ipcRenderer.on('simconnect-data', (event, data: SimInterface) => {
+onBeforeMount(() => {
+  window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
+    console.log('connected', connected);
+    simState.connected = connected
+  })
+
+  // TODO: not receiving
+  window.ipcRenderer.on('simconnect-simstate-exception', (event, exception) => {
+    console.log('exception', exception);
+    simState.exception = exception
+  })
+
+  window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightInterface) => {
     // console.log('event', event);
     // console.log('data', data);
-    simState.latitude = data.latitude
-    simState.longitude = data.longitude
-    simState.altitude = data.altitude
-    simState.altitudeAboveGround = data.altitudeAboveGround
-    simState.heading = data.heading
-    simState.degreesBank = data.degreesBank
-    simState.degreesPitch = data.degreesPitch
-    simState.airSpeedTrue = data.airSpeedTrue
-    simState.airSpeedIndicated = data.airSpeedIndicated
-    simState.verticalSpeed = data.verticalSpeed
+    flightState.latitude = data.latitude
+    flightState.longitude = data.longitude
+    flightState.altitude = data.altitude
+    flightState.altitudeAboveGround = data.altitudeAboveGround
+    flightState.heading = data.heading
+    flightState.degreesBank = data.degreesBank
+    flightState.degreesPitch = data.degreesPitch
+    flightState.airSpeedTrue = data.airSpeedTrue
+    flightState.airSpeedIndicated = data.airSpeedIndicated
+    flightState.verticalSpeed = data.verticalSpeed
   })
 })
 </script>
@@ -29,16 +42,22 @@ onMounted(() => {
   <HeaderComponent />
   <main class="main">
     <div class="debug">
-      <p>Latitude:  {{ simState.latitude }}</p>
-      <p>Longitude: {{ simState.longitude }}</p>
-      <p>Altitude: {{ simState.altitude }}</p>
-      <p>Altitude above ground: {{ simState.altitudeAboveGround }}</p>
-      <p>Heading: {{ simState.heading }}</p>
-      <p>Bank: {{ simState.degreesBank }}</p>
-      <p>Pitch: {{ simState.degreesPitch }}</p>
-      <p>Air Speed True: {{ simState.airSpeedTrue }}</p>
-      <p>Air Speed Indicated: {{ simState.airSpeedIndicated }}</p>
-      <p>Vertical Speed: {{ simState.verticalSpeed }}</p>
+      <p>Sim connected: {{ simState.connected }}</p>
+      <p>Sim exception: {{ simState.exception }}</p>
+
+
+
+      <br>
+      <p>Latitude: {{ flightState.latitude }}</p>
+      <p>Longitude: {{ flightState.longitude }}</p>
+      <p>Altitude: {{ flightState.altitude }}</p>
+      <p>Altitude above ground: {{ flightState.altitudeAboveGround }}</p>
+      <p>Heading: {{ flightState.heading }}</p>
+      <p>Bank: {{ flightState.degreesBank }}</p>
+      <p>Pitch: {{ flightState.degreesPitch }}</p>
+      <p>Air Speed True: {{ flightState.airSpeedTrue }}</p>
+      <p>Air Speed Indicated: {{ flightState.airSpeedIndicated }}</p>
+      <p>Vertical Speed: {{ flightState.verticalSpeed }}</p>
     </div>
   </main>
   <LoadingBarComponent />

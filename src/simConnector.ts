@@ -1,5 +1,5 @@
 import { open, Protocol, SimConnectDataType, SimConnectConstants, SimConnectPeriod } from 'node-simconnect';
-import { SimInterface } from './Interfaces'
+import { FlightInterface } from './Interfaces'
 
 /**
  * node-simconnect
@@ -15,7 +15,8 @@ const simConnector = {
   init(win) {
     open('simflightinfo', Protocol.FSX_SP2)
       .then(function ({ recvOpen, handle }) {
-        // console.log('Connected to', recvOpen.applicationName);
+        console.log('Connected to', recvOpen.applicationName);
+        win.webContents.send('simconnect-simstate-connected', true)
 
         // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Misc_Variables.htm#PLANE_LATITUDE
         handle.addToDataDefinition(DEFINITION_1, 'PLANE HEADING DEGREES GYRO', 'degrees', SimConnectDataType.FLOAT64);
@@ -34,7 +35,7 @@ const simConnector = {
         handle.on('simObjectData', recvSimObjectData => {
           switch (recvSimObjectData.requestID) {
             case REQUEST_1: {
-              const receivedData: SimInterface = {
+              const receivedData: FlightInterface = {
                 // Read order is important!
                 heading: recvSimObjectData.data.readFloat64(),
                 altitude: recvSimObjectData.data.readFloat64(),
@@ -48,7 +49,7 @@ const simConnector = {
                 verticalSpeed: recvSimObjectData.data.readInt32(),
               }
               // console.log('receivedData', receivedData);
-              win.webContents.send('simconnect-data', receivedData)
+              win.webContents.send('simconnect-flightdata', receivedData)
               break;
             }
           }
@@ -65,6 +66,7 @@ const simConnector = {
         });
         handle.on('exception', function (recvException) {
           console.log(recvException);
+          win.webContents.send('simconnect-simstate-exception', recvException)
         });
         handle.on('quit', function () {
           console.log('Simulator quit');
