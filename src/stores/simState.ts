@@ -4,8 +4,6 @@ import type { Coordinate } from 'ol/coordinate'
 interface StateInterface {
   center: Coordinate
   zoom: number
-  weapon: number
-  asideCollapsed: boolean
 }
 
 export const useSimStateStore = defineStore({
@@ -14,8 +12,6 @@ export const useSimStateStore = defineStore({
   state: (): StateInterface => ({
     center: [31.392222, 48.999722],
     zoom: 7,
-    weapon: 1,
-    asideCollapsed: false
   }),
   // actions: {
   //   addMarker(marker: MarkerInterface) {
