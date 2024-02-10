@@ -1,3 +1,4 @@
+import { BrowserWindow } from 'electron'
 import { open, Protocol, SimConnectDataType, SimConnectConstants, SimConnectPeriod } from 'node-simconnect';
 import { FlightInterface } from './Interfaces'
 
@@ -12,7 +13,7 @@ const REQUEST_1 = 0;
 const DEFINITION_1 = 0;
 
 const simConnector = {
-  init(win) {
+  init(win: BrowserWindow) {
     open('simflightinfo', Protocol.FSX_SP2)
       .then(function ({ recvOpen, handle }) {
         console.log('Connected to', recvOpen.applicationName);
@@ -64,9 +65,8 @@ const simConnector = {
               break;
           }
         });
-        handle.on('exception', function (recvException) {
-          console.log(recvException);
-          win.webContents.send('simconnect-simstate-exception', recvException)
+        handle.on('exception', (recvException) => {
+          console.log(recvException)
         });
         handle.on('quit', function () {
           console.log('Simulator quit');
@@ -78,7 +78,7 @@ const simConnector = {
         handle.subscribeToSystemEvent(EVENT_ID_PAUSE, 'Pause');
       })
       .catch(function (error) {
-        console.log('Connection failed:', error);
+        win.webContents.send('simconnect-simstate-exception', error)
       });
   },
 }

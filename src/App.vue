@@ -17,7 +17,6 @@ onBeforeMount(() => {
 
   // TODO: not receiving
   window.ipcRenderer.on('simconnect-simstate-exception', (event, exception) => {
-    console.log('exception', exception);
     simState.exception = exception
   })
 
