@@ -1,4 +1,5 @@
 import { open, Protocol, SimConnectDataType, SimConnectConstants, SimConnectPeriod } from 'node-simconnect';
+import { SimInterface } from './Interfaces'
 
 /**
  * node-simconnect
@@ -33,7 +34,7 @@ const simConnector = {
         handle.on('simObjectData', recvSimObjectData => {
           switch (recvSimObjectData.requestID) {
             case REQUEST_1: {
-              const receivedData = {
+              const receivedData: SimInterface = {
                 // Read order is important!
                 heading: recvSimObjectData.data.readFloat64(),
                 altitude: recvSimObjectData.data.readFloat64(),

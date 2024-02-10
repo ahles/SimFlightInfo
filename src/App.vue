@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { SimInterface } from './Interfaces'
 
 import { useSimStateStore } from './stores/simState'
 const simState = useSimStateStore()
 
 onMounted(() => {
-  window.ipcRenderer.on('simconnect-data', (event, data) => {
+  window.ipcRenderer.on('simconnect-data', (event, data: SimInterface) => {
     // console.log('event', event);
     // console.log('data', data);
     simState.latitude = data.latitude
     simState.longitude = data.longitude
     simState.altitude = data.altitude
+    simState.altitudeAboveGround = data.altitudeAboveGround
     simState.heading = data.heading
     simState.degreesBank = data.degreesBank
     simState.degreesPitch = data.degreesPitch

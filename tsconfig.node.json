@@ -12,5 +12,6 @@
     "electron",
     "src/simConnector.ts",
     "src/stores/simState.ts",
+    "src/Interfaces.ts"
   ]
 }
