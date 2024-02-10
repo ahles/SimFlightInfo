@@ -1,17 +1,15 @@
 import { defineStore } from 'pinia'
-import type { Coordinate } from 'ol/coordinate'
 
-interface StateInterface {
-  center: Coordinate
-  zoom: number
+interface SimInterface {
+  latitude: number,
+  longitude: number
 }
 
 export const useSimStateStore = defineStore({
   id: 'simState',
-  // persist: true,
-  state: (): StateInterface => ({
-    center: [31.392222, 48.999722],
-    zoom: 7,
+  state: (): SimInterface => ({
+    latitude: 0,
+    longitude: 0,
   }),
   // actions: {
   //   addMarker(marker: MarkerInterface) {
