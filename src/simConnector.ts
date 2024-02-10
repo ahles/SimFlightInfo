@@ -16,10 +16,16 @@ const simConnector = {
       .then(function ({ recvOpen, handle }) {
         // console.log('Connected to', recvOpen.applicationName);
 
-        handle.addToDataDefinition(DEFINITION_1, 'Kohlsman setting hg', 'inHg', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'Indicated Altitude', 'feet', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'Plane Latitude', 'degrees', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'Plane Longitude', 'degrees', SimConnectDataType.FLOAT64);
+        // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Misc_Variables.htm#PLANE_LATITUDE
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE HEADING DEGREES GYRO', 'degrees', SimConnectDataType.FLOAT64);
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE ALTITUDE', 'feet', SimConnectDataType.FLOAT64);
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE ALT ABOVE GROUND', 'feet', SimConnectDataType.FLOAT64);
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE LATITUDE', 'degrees', SimConnectDataType.FLOAT64);
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE LONGITUDE', 'degrees', SimConnectDataType.FLOAT64);
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE BANK DEGREES', 'degrees', SimConnectDataType.FLOAT64);
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE PITCH DEGREES', 'radians', SimConnectDataType.FLOAT64);
+        handle.addToDataDefinition(DEFINITION_1, 'AIRSPEED TRUE', 'Knots', SimConnectDataType.FLOAT64);
+        handle.addToDataDefinition(DEFINITION_1, 'AIRSPEED INDICATED', 'Knots', SimConnectDataType.FLOAT64);
         handle.addToDataDefinition(DEFINITION_1, 'VERTICAL SPEED', 'Feet per second', SimConnectDataType.INT32);
 
         handle.requestDataOnSimObject(REQUEST_1, DEFINITION_1, SimConnectConstants.OBJECT_ID_USER, SimConnectPeriod.SIM_FRAME);
@@ -29,10 +35,15 @@ const simConnector = {
             case REQUEST_1: {
               const receivedData = {
                 // Read order is important!
-                kohlsmann: recvSimObjectData.data.readFloat64(),
+                heading: recvSimObjectData.data.readFloat64(),
                 altitude: recvSimObjectData.data.readFloat64(),
+                altitudeAboveGround: recvSimObjectData.data.readFloat64(),
                 latitude: recvSimObjectData.data.readFloat64(),
                 longitude: recvSimObjectData.data.readFloat64(),
+                degreesBank: radiansToDegrees(recvSimObjectData.data.readFloat64()),
+                degreesPitch: radiansToDegrees(recvSimObjectData.data.readFloat64()),
+                airSpeedTrue: recvSimObjectData.data.readFloat64(),
+                airSpeedIndicated: recvSimObjectData.data.readFloat64(),
                 verticalSpeed: recvSimObjectData.data.readInt32(),
               }
               // console.log('receivedData', receivedData);
@@ -67,6 +78,10 @@ const simConnector = {
         console.log('Connection failed:', error);
       });
   },
+}
+
+const radiansToDegrees = (radians: number): number => {
+  return radians * (180/Math.PI);
 }
 
 export default simConnector

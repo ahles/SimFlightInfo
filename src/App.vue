@@ -11,7 +11,11 @@ onMounted(() => {
     simState.latitude = data.latitude
     simState.longitude = data.longitude
     simState.altitude = data.altitude
-    simState.kohlsmann = data.kohlsmann
+    simState.heading = data.heading
+    simState.degreesBank = data.degreesBank
+    simState.degreesPitch = data.degreesPitch
+    simState.airSpeedTrue = data.airSpeedTrue
+    simState.airSpeedIndicated = data.airSpeedIndicated
     simState.verticalSpeed = data.verticalSpeed
   })
 })
@@ -21,8 +25,13 @@ onMounted(() => {
 <p>Latitude:  {{ simState.latitude }}</p>
 <p>Longitude: {{ simState.longitude }}</p>
 <p>Altitude: {{ simState.altitude }}</p>
-<p>Hg kohlsmann: {{ simState.kohlsmann }}</p>
-<p>VSpeed: {{ simState.verticalSpeed }}</p>
+<p>Altitude above ground: {{ simState.altitudeAboveGround }}</p>
+<p>Heading: {{ simState.heading }}</p>
+<p>Bank: {{ simState.degreesBank }}</p>
+<p>Pitch: {{ simState.degreesPitch }}</p>
+<p>Air Speed True: {{ simState.airSpeedTrue }}</p>
+<p>Air Speed Indicated: {{ simState.airSpeedIndicated }}</p>
+<p>Vertical Speed: {{ simState.verticalSpeed }}</p>
 </template>
 
 <style>
