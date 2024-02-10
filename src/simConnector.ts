@@ -1,5 +1,10 @@
 import { open, Protocol } from 'node-simconnect';
 
+/**
+ * node-simconnect
+ * https://github.com/EvenAR/node-simconnect
+ */
+
 const EVENT_ID_PAUSE = 1;
 
 const simConnector = {
