@@ -20,6 +20,11 @@
     "build": "vue-tsc --noEmit && vite build && electron-builder",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "node-simconnect": "^3.6.1",
+    "ol": "^8.2.0",
+    "pinia": "^2.1.7"
+  },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.1",
     "electron": "^28.1.0",
@@ -40,10 +45,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ahles/SimFLightInfo.git"
-  },
-  "dependencies": {
-    "node-simconnect": "^3.6.1",
-    "ol": "^8.2.0",
-    "pinia": "^2.1.7"
   }
 }
