@@ -81,6 +81,12 @@ const simConnector = {
   },
 }
 
+/**
+ * Converts an angle from radians to degrees.
+ *
+ * @param radians - The angle in radians to convert.
+ * @returns The angle converted to degrees.
+ */
 const radToDeg = (radians: number): number => {
   return radians * (180/Math.PI);
 }
