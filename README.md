@@ -1,4 +1,43 @@
-# electron-vite-vue
+# SimFlightInfo 🛩 🌍
+
+SimFlightInfo is a desktop ppp that listens to the position information from Micrososft Flight Simulator™ (MSFS2020)  – forwarded over the network by [EFBConnect](https://github.com/ollyau/EFBConnect/releases) – and displays the current airplane location on a map.
+
+Additionally it displays the name and the flag of the country your airplane is located at and shows links to Wikipedia articles nearby (20 km).
+
+You can try this app in simulation mode without running simulator.
+
+## Prerequisite
+
+Install [EFBConnect](https://github.com/ollyau/EFBConnect/releases) on the same computer as the simulator is running.
+
+- If you plan to use SimFlightInfo on the same computer as the simulator is running, configure EFBConnect to send the data to 127.0.0.1.
+- If you plan to use SimFlightInfo on another computer (in the same local network), use the IP address of that computer in EFBConnect.
+
+## Installation & Usage
+
+Download and install the [latest release](https://github.com/ahles/SimFlightInfo/releases/latest) (win & mac) of SimFlightInfo.
+
+Or you can build your own for your operating system following the development & build instructions at the bottom of this document.
+
+## Recommended
+
+To be able to display the info panel with the country information, flag and Wikipedia links, you need a [Geonames](http://www.geonames.org/) account. You can register it for free [here](https://www.geonames.org/login). Please enter your [Geonames](http://www.geonames.org/) username in the settings panel of SimFlightInfo.
+
+---
+
+![Screenshot](/docs/screenshot.png?raw=true "SimFlightInfo Screenshot")
+
+---
+
+
+
+
+
+
+
+
+
+## electron-vite-vue
 
 🥳 Really simple `Electron` + `Vue` + `Vite` boilerplate.
 
@@ -10,7 +49,7 @@
 [![GitHub Build](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml/badge.svg)](https://github.com/electron-vite/electron-vite-vue/actions/workflows/build.yml)
 [![GitHub Discord](https://img.shields.io/badge/chat-discord-blue?logo=discord)](https://discord.gg/sRqjYpEAUK)
 
-## Features
+### Features
 
 📦 Out of the box  
 🎯 Based on the official [template-vue-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts), less invasive  
@@ -19,7 +58,7 @@
 🔩 Support C/C++ native addons  
 🖥 It's easy to implement multiple windows  
 
-## Quick Setup
+### Quick Setup
 
 ```sh
 # clone the project
@@ -35,11 +74,11 @@ npm install
 npm run dev
 ```
 
-## Debug
+### Debug
 
 ![electron-vite-react-debug.gif](https://github.com/electron-vite/electron-vite-react/blob/main/electron-vite-react-debug.gif?raw=true)
 
-## Directory
+### Directory
 
 ```diff
 + ├─┬ electron
@@ -73,7 +112,7 @@ export default {
 ```
 -->
 
-## FAQ
+### FAQ
 
 - [C/C++ addons, Node.js modules - Pre-Bundling](https://github.com/electron-vite/vite-plugin-electron-renderer#dependency-pre-bundling)
 - [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron-renderer#dependencies-vs-devdependencies)
