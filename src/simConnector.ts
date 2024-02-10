@@ -36,7 +36,7 @@ const simConnector = {
                 verticalSpeed: recvSimObjectData.data.readInt32(),
               }
               // console.log('receivedData', receivedData);
-              win.webContents.send('simconnect-data', receivedData);
+              win.webContents.send('simconnect-data', receivedData)
               break;
             }
           }
