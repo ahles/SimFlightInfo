@@ -7,6 +7,9 @@
 
     --color-accent-1: #0663ad;
 
+    --color-success: #00cc00;
+    --color-error: orangered;
+
     --default-font-size: 1.4rem;
 
     --space: 1rem;
@@ -58,6 +61,10 @@ svg {
 
 svg {
     pointer-events: none;
+}
+
+p {
+    margin: 0;
 }
 
 .fade-enter-active,

@@ -7,6 +7,7 @@ import { useFlightStateStore } from './stores/flightState'
 import HeaderComponent from "./components/layout/HeaderComponent.vue";
 import LoadingBarComponent from "./components/gui/LoadingBarComponent.vue";
 import Map from './components/Map.vue'
+import ConnectionInformation from './components/ConnectionInformation.vue'
 
 const appState = useAppStateStore()
 const simState = useSimStateStore()
@@ -15,9 +16,6 @@ const flightState = useFlightStateStore()
 onMounted(() => {
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
     simState.connected = connected
-    if (connected) {
-      appState.loading = false
-    }
   })
 
   // TODO: not receiving
@@ -48,7 +46,7 @@ onMounted(() => {
   <main class="main">
     <Map v-if="simState.connected"/>
     <div v-else>
-      Simulator not connected
+      <ConnectionInformation v-if="appState.loading"/>
     </div>
     <div class="debug">
       <p>Sim connected: {{ simState.connected }}</p>
