@@ -4,7 +4,7 @@ export const useAppStateStore = defineStore({
   id: 'appState',
   state: () => ({
     sidePanelOpen: false,
-    loading: false,
+    loading: true,
     theme: 'dark',
     themeSelectorOpen: false,
     themes: [

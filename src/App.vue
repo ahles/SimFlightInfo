@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { FlightInterface } from './Interfaces'
+import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
 import { useFlightStateStore } from './stores/flightState'
 import HeaderComponent from "./components/layout/HeaderComponent.vue";
 import LoadingBarComponent from "./components/gui/LoadingBarComponent.vue";
 import Map from './components/Map.vue'
 
+const appState = useAppStateStore()
 const simState = useSimStateStore()
 const flightState = useFlightStateStore()
 
@@ -38,6 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <LoadingBarComponent v-if="appState.loading"/>
   <HeaderComponent />
   <main class="main">
     <Map v-if="simState.connected"/>
