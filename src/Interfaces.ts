@@ -1,6 +1,6 @@
 export interface FlightInterface {
-  latitude: number,
   longitude: number,
+  latitude: number,
   altitude: number,
   altitudeAboveGround: number,
   heading: number,

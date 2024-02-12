@@ -114,7 +114,7 @@ ipcMain.handle('open-win', (_, arg) => {
   const childWindow = new BrowserWindow({
     webPreferences: {
       preload,
-      nodeIntegration: true,
+      nodeIntegration: false,
       contextIsolation: false,
     },
   })

@@ -1,15 +1,17 @@
 <script setup lang="ts">
-import { onBeforeMount } from 'vue'
+import { onMounted } from 'vue'
 import { FlightInterface } from './Interfaces'
 
 import { useSimStateStore } from './stores/simState'
 import { useFlightStateStore } from './stores/flightState'
 import HeaderComponent from "./components/layout/HeaderComponent.vue";
 import LoadingBarComponent from "./components/gui/LoadingBarComponent.vue";
+import Map from './components/Map.vue'
+
 const simState = useSimStateStore()
 const flightState = useFlightStateStore()
 
-onBeforeMount(() => {
+onMounted(() => {
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
     console.log('connected', connected);
     simState.connected = connected
@@ -39,6 +41,7 @@ onBeforeMount(() => {
 
 <template>
   <HeaderComponent />
+  <Map />
   <main class="main">
     <div class="debug">
       <p>Sim connected: {{ simState.connected }}</p>
