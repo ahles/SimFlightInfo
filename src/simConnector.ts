@@ -14,7 +14,7 @@ const DEFINITION_1 = 0;
 
 const simConnector = {
   init(win: BrowserWindow) {
-    open('simflightinfo', Protocol.FSX_SP2)
+    open('SimFlightInfo', Protocol.FSX_SP2)
       .then(function ({ recvOpen, handle }) {
         console.log('Connected to', recvOpen.applicationName);
         win.webContents.send('simconnect-simstate-connected', true)
