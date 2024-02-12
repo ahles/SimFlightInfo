@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { FlightInterface } from './Interfaces'
-
 import { useSimStateStore } from './stores/simState'
 import { useFlightStateStore } from './stores/flightState'
 import HeaderComponent from "./components/layout/HeaderComponent.vue";
@@ -13,7 +12,6 @@ const flightState = useFlightStateStore()
 
 onMounted(() => {
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
-    console.log('connected', connected);
     simState.connected = connected
   })
 
@@ -41,13 +39,14 @@ onMounted(() => {
 
 <template>
   <HeaderComponent />
-  <Map />
   <main class="main">
+    <Map v-if="simState.connected"/>
+    <div v-else>
+      Simulator not connected
+    </div>
     <div class="debug">
       <p>Sim connected: {{ simState.connected }}</p>
       <p>Sim exception: {{ simState.exception }}</p>
-
-
 
       <br>
       <p>Latitude: {{ flightState.latitude }}</p>
@@ -72,6 +71,8 @@ onMounted(() => {
   bottom: 0;
   z-index: 10;
   font-size: 1rem;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.75);
 
   p {
     margin: 0;
