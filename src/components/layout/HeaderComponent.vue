@@ -37,7 +37,7 @@ const appState = useAppStateStore()
   </header>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .header {
   color: var(--color-text);
   background-color: var(--color-panels);
@@ -58,12 +58,12 @@ const appState = useAppStateStore()
     top: - var(--header-height);
     transition: top 0.2s ease-in;
   }
+}
 
-  &__left,
-  &__right {
-    display: flex;
-    align-items: center;
-  }
+.header__left,
+.header__right {
+  display: flex;
+  align-items: center;
 }
 
 .logo {

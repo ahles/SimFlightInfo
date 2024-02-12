@@ -36,7 +36,7 @@ watch(loading, (newValue) => {
   </transition>
 </template>
 
-<style scoped lang="scss">
+<style scoped>
 .loading-bar {
   position: fixed;
   z-index: 40;
@@ -44,31 +44,31 @@ watch(loading, (newValue) => {
   left: 0;
   right: 0;
 
-  &__line {
-    height: 0.25rem;
+}
 
-    animation: animateBg 2s infinite linear;
-    background-color: #fff;
-    background-image: linear-gradient(
-      90deg,
-      var(--color-accent-1),
-      var(--color-accent-1),
-      var(--color-accent-1),
-      var(--color-white),
-      var(--color-accent-1),
-      var(--color-accent-1),
-      var(--color-accent-1),
-      var(--color-white)
-    );
-    background-size: 300% 100%;
-  }
+.loading-bar__line {
+  height: 0.25rem;
 
-  &__text {
-    font-family: 'Roboto-Regular', sans-serif;
-    font-weight: normal;
-    text-align: center;
-    color: var(--color-accent-1);
-  }
+  animation: animateBg 2s infinite linear;
+  background-color: #fff;
+  background-image: linear-gradient(
+    90deg,
+    var(--color-accent-1),
+    var(--color-accent-1),
+    var(--color-accent-1),
+    var(--color-white),
+    var(--color-accent-1),
+    var(--color-accent-1),
+    var(--color-accent-1),
+    var(--color-white)
+  );
+  background-size: 300% 100%;
+}
+
+.loading-bar___text {
+  font-weight: normal;
+  text-align: center;
+  color: var(--color-accent-1);
 }
 
 @keyframes animateBg {
