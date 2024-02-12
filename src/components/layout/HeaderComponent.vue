@@ -51,13 +51,6 @@ const appState = useAppStateStore()
   box-shadow:
     0 0.1rem 0.3rem rgba(0, 0, 0, 0.24),
     0 0.1rem 0.2rem rgba(0, 0, 0, 0.48);
-
-  transition: top 0.1s ease-out;
-
-  &.hidden {
-    top: - var(--header-height);
-    transition: top 0.2s ease-in;
-  }
 }
 
 .header__left,
