@@ -3,44 +3,36 @@ import { fromLonLat, toLonLat } from 'ol/proj'
 import View from 'ol/View'
 import Map from 'ol/Map'
 import { Tile as TileLayer } from 'ol/layer'
-import { OSM } from 'ol/source'
-
-// import { useFlightStateStore } from '../stores/flightState'
-
-// const flightState = useFlightStateStore()
-
-const view: View = new View({
-  center: fromLonLat([0.0]),
-  enableRotation: false
-})
-
-const source = new OSM()
+import OSM from 'ol/source/OSM.js' // import has to be like that, it won't work with import { OSM } from 'ol/source' 
 
 const tileLayer = new TileLayer({
-  source: source
+  source: new OSM()
 })
 tileLayer.set('name', 'map')
 
-export const initMap = () => {
-    console.log('initMap')
+export const initMap = (lon: number, lat: number) => {
     return new Promise<Map>((resolve) => {
-    const map = new Map({
-      layers: [],
-      target: 'map',
-      view: view
-    })
-    map.on('loadend', function () {
-      resolve(map)
-    })
-    // map.on('moveend', function () {
-    //   const center = view.getCenter()
-    //   if (center) {
-    //     uwrState.center = toLonLat(center)
-    //   }
-    //   const zoom = view.getZoom()
-    //   if (zoom) {
-    //     uwrState.zoom = zoom
-    //   }
-    // })
+      const map = new Map({
+        layers: [tileLayer],
+        target: 'map',
+        view: new View({
+          center: fromLonLat([lon, lat]),
+          enableRotation: false,
+          zoom: 5,
+        })
+      })
+      map.on('loadend', function () {
+        resolve(map)
+      })
+      // map.on('moveend', function () {
+      //   const center = view.getCenter()
+      //   if (center) {
+      //     uwrState.center = toLonLat(center)
+      //   }
+      //   const zoom = view.getZoom()
+      //   if (zoom) {
+      //     uwrState.zoom = zoom
+      //   }
+      // })
   })
 }

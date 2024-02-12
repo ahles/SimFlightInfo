@@ -67,6 +67,12 @@ onMounted(() => {
 
 <style>
 .debug {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 10;
+  font-size: 1rem;
+
   p {
     margin: 0;
   }

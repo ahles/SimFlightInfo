@@ -15,19 +15,4 @@ export const useFlightStateStore = defineStore({
     airSpeedIndicated: 0,
     verticalSpeed: 0,
   }),
-  // actions: {
-  //   addMarker(marker: MarkerInterface) {
-  //     this.markers.push(marker)
-  //   },
-  //   getMarkers() {
-  //     const result: Array<MarkerInterface> = []
-  //     this.markers.forEach((element: MarkerInterface) => {
-  //       result.push(element)
-  //     })
-  //     return result
-  //   },
-  //   clearMarkers() {
-  //     this.markers = []
-  //   }
-  // }
 })

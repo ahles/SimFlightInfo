@@ -2,7 +2,6 @@ import { defineStore } from 'pinia'
 
 export const useAppStateStore = defineStore({
   id: 'appState',
-  // persist: true,
   state: () => ({
     sidePanelOpen: false,
     loading: false,
