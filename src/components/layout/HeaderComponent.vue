@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import IconAirplaneComponent from '../icons/IconAirplaneComponent.vue';
+import IconCogComponent from '../icons/IconCogComponent.vue';
 import IconWindowMinimizeComponent from '../icons/IconWindowMinimizeComponent.vue';
 import IconWindowMaximizeComponent from '../icons/IconWindowMaximizeComponent.vue';
 import IconWindowCloseComponent from '../icons/IconWindowCloseComponent.vue';
 import ButtonComponent from '../gui/ButtonComponent.vue';
+import { useAppStateStore } from '../../stores/appState';
 
+const appState = useAppStateStore()
 const header = ref(null)
 let maximized = false
+
+function toggleSidepanel() {
+  appState.sidePanelToggle()
+}
 
 function windowClose() {
   window.ipcRenderer.send('window-close')
@@ -36,9 +43,10 @@ function windowMaximize() {
     </div>
     <div class="header__middle"></div>
     <div class="header__right">
-      <ButtonComponent @click="windowMinimize" title="mimimize" type="icon"><IconWindowMinimizeComponent /></ButtonComponent>
-      <ButtonComponent @click="windowMaximize" title="maximize" type="icon"><IconWindowMaximizeComponent /></ButtonComponent>
-      <ButtonComponent @click="windowClose" title="close" type="icon"><IconWindowCloseComponent /></ButtonComponent>
+      <ButtonComponent @click="toggleSidepanel" title="settings" type="icon" class="btn__window btn__window--space-right"><IconCogComponent /></ButtonComponent>
+      <ButtonComponent @click="windowMinimize" title="mimimize" type="icon" class="btn__window"><IconWindowMinimizeComponent /></ButtonComponent>
+      <ButtonComponent @click="windowMaximize" title="maximize" type="icon" class="btn__window"><IconWindowMaximizeComponent /></ButtonComponent>
+      <ButtonComponent @click="windowClose" title="close" type="icon" class="btn__window"><IconWindowCloseComponent /></ButtonComponent>
     </div>
   </header>
 </template>
@@ -81,5 +89,14 @@ function windowMaximize() {
 .title {
   font-size: 1.2rem;
   line-height: 1;
+  pointer-events: none;
+}
+
+.btn__window {
+  margin-left: 0.5rem;
+}
+
+.btn__window--space-right {
+  margin-right: 2rem;
 }
 </style>
