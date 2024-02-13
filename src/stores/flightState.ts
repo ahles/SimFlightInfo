@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import { FlightInterface } from '../Interfaces'
+import { FlightStateInterface } from '../Interfaces'
 
 export const useFlightStateStore = defineStore({
   id: 'flightState',
-  state: (): FlightInterface => ({
+  state: (): FlightStateInterface => ({
     latitude: 0,
     longitude: 0,
     altitude: 0,

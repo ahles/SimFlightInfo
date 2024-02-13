@@ -8,6 +8,7 @@ import HeaderComponent from "./components/layout/HeaderComponent.vue";
 import LoadingBarComponent from "./components/gui/LoadingBarComponent.vue";
 import Map from './components/Map.vue'
 import ConnectionInformation from './components/ConnectionInformation.vue'
+import InfoPanelComponent from './components/gui/InfoPanelComponent.vue'
 
 const appState = useAppStateStore()
 const simState = useSimStateStore()
@@ -45,6 +46,7 @@ onMounted(() => {
 <template>
   <LoadingBarComponent v-if="appState.loading"/>
   <HeaderComponent />
+  <InfoPanelComponent />
   <main class="main" v-if="simState.connected">
     <Map/>
   </main>
