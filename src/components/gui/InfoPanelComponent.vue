@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useFlightStateStore } from '../../stores/flightState'
 const flightState = useFlightStateStore()
+import Pitch from './Pitch.vue'
+import Bank from './Bank.vue'
 </script>
 
 <template>
@@ -29,6 +31,12 @@ const flightState = useFlightStateStore()
       <div class="info-panel__value">{{ flightState.airSpeedIndicated.toFixed(0) }}&nbsp;kts</div>
       <div class="info-panel__name">airSpeedIndicated</div>
     </div> -->
+    <div class="info-panel__col">
+      <Pitch :pitch="flightState.degreesPitch" />
+    </div>
+    <div class="info-panel__col">
+      <Bank :bank="flightState.degreesBank" />
+    </div>
   </div>
 </template>
 
