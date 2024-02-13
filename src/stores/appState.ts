@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { AppStateInterface } from '../Interfaces'
 
 export const useAppStateStore = defineStore({
   id: 'appState',
