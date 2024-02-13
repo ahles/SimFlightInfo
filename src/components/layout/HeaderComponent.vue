@@ -24,7 +24,7 @@ const appState = useAppStateStore()
 </script>
 
 <template>
-  <header ref="header" class="header">
+  <header class="header">
     <div class="header__left">
       <IconAirplaneComponent class="logo" />
       <span class="title">SimFlightInfo</span>
@@ -47,6 +47,9 @@ const appState = useAppStateStore()
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  -webkit-app-region: drag;
+  cursor: grab;
 
   box-shadow:
     0 0.1rem 0.3rem rgba(0, 0, 0, 0.24),

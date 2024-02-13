@@ -115,21 +115,21 @@ app.on('activate', () => {
 })
 
 // New window example arg: new windows url
-ipcMain.handle('open-win', (_, arg) => {
-  const childWindow = new BrowserWindow({
-    webPreferences: {
-      preload,
-      nodeIntegration: false,
-      contextIsolation: false,
-    },
-  })
+// ipcMain.handle('open-win', (_, arg) => {
+//   const childWindow = new BrowserWindow({
+//     webPreferences: {
+//       preload,
+//       nodeIntegration: false,
+//       contextIsolation: false,
+//     },
+//   })
 
-  if (process.env.VITE_DEV_SERVER_URL) {
-    childWindow.loadURL(`${url}#${arg}`)
-  } else {
-    childWindow.loadFile(indexHtml, { hash: arg })
-  }
-})
+//   if (process.env.VITE_DEV_SERVER_URL) {
+//     childWindow.loadURL(`${url}#${arg}`)
+//   } else {
+//     childWindow.loadFile(indexHtml, { hash: arg })
+//   }
+// })
 
 ipcMain.on('retry-sim-connection', () => {
   simConnector.init(win)
