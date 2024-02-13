@@ -21,10 +21,13 @@ onMounted(() => {
     simState.connected = connected
   })
 
-  // TODO: not receiving
   window.ipcRenderer.on('simconnect-simstate-exception', (event, exception) => {
     appState.loading = false
     simState.exception = exception
+  })
+
+  window.ipcRenderer.on('simconnect-active', (event, active) => {
+    simState.active = active
   })
 
   window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightStateInterface) => {
@@ -49,7 +52,7 @@ onMounted(() => {
   <HeaderComponent />
   <main v-if="simState.connected" class="main">
     <MapComponent />
-    <InfoPanelComponent />
+    <InfoPanelComponent v-if="simState.active"/>
   </main>
   <div v-else>
     <ConnectionInformationComponent />
@@ -57,6 +60,7 @@ onMounted(() => {
   <div class="debug">
     <p>Sim connected: {{ simState.connected }}</p>
     <p>Sim exception: {{ simState.exception }}</p>
+    <p>Sim active: {{ simState.active }}</p>
 
     <br />
     <p>latitude: {{ flightState.latitude }}</p>

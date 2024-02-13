@@ -6,6 +6,7 @@ export interface AppStateInterface {
 export interface SimStateInterface {
   connected: boolean
   exception: any
+  active: boolean
 }
 
 export interface FlightStateInterface {
