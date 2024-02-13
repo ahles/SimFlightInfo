@@ -41,12 +41,40 @@ function windowMaximize() {
       <IconAirplaneComponent class="logo" />
       <span class="title">SimFlightInfo</span>
     </div>
-    <div class="header__middle"></div>
+    <div class="header__middle" />
     <div class="header__right">
-      <ButtonComponent @click="toggleSidepanel" title="settings" type="icon" class="btn__window btn__window--space-right"><IconCogComponent /></ButtonComponent>
-      <ButtonComponent @click="windowMinimize" title="mimimize" type="icon" class="btn__window"><IconWindowMinimizeComponent /></ButtonComponent>
-      <ButtonComponent @click="windowMaximize" title="maximize" type="icon" class="btn__window"><IconWindowMaximizeComponent /></ButtonComponent>
-      <ButtonComponent @click="windowClose" title="close" type="icon" class="btn__window"><IconWindowCloseComponent /></ButtonComponent>
+      <ButtonComponent
+        title="settings"
+        type="icon"
+        class="btn__window btn__window--space-right"
+        @click="toggleSidepanel"
+      >
+        <IconCogComponent />
+      </ButtonComponent>
+      <ButtonComponent
+        title="mimimize"
+        type="icon"
+        class="btn__window"
+        @click="windowMinimize"
+      >
+        <IconWindowMinimizeComponent />
+      </ButtonComponent>
+      <ButtonComponent
+        title="maximize"
+        type="icon"
+        class="btn__window"
+        @click="windowMaximize"
+      >
+        <IconWindowMaximizeComponent />
+      </ButtonComponent>
+      <ButtonComponent
+        title="close"
+        type="icon"
+        class="btn__window"
+        @click="windowClose"
+      >
+        <IconWindowCloseComponent />
+      </ButtonComponent>
     </div>
   </header>
 </template>

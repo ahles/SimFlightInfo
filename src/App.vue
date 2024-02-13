@@ -46,7 +46,7 @@ onMounted(() => {
 <template>
   <LoadingBarComponent v-if="appState.loading"/>
   <HeaderComponent />
-  <main class="main" v-if="simState.connected">
+  <main v-if="simState.connected" class="main">
     <Map/>
     <InfoPanelComponent />
   </main>

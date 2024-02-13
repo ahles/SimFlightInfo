@@ -18,7 +18,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build && electron-builder",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "node-simconnect": "^3.6.1",
@@ -26,9 +27,15 @@
     "pinia": "^2.1.7"
   },
   "devDependencies": {
+    "@rushstack/eslint-patch": "^1.7.2",
     "@vitejs/plugin-vue": "^5.0.1",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^12.0.0",
     "electron": "^28.1.0",
     "electron-builder": "^24.9.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-vue": "^9.21.1",
+    "prettier": "^3.2.5",
     "tree-kill": "^1.2.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",

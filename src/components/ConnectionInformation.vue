@@ -22,14 +22,29 @@ function retry() {
   <div class="connection-information">
     <h2>Connecting to Simulator...</h2>
     <transition name="fade">
-      <div class="connection-information__status connection-information__status--error" v-if="simState.connected === false && simState.exception !== null">
+      <div
+        v-if="simState.connected === false && simState.exception !== null"
+        class="connection-information__status connection-information__status--error"
+      >
         <IconAlertComponent class="connection-information__icon" />
-        <div class="connection-information__text">{{ simState.exception }}</div>
-        <ButtonComponent class="connection-information__retry" @click="retry" title="retry" type="icon"><IconReloadComponent /></ButtonComponent>
+        <div class="connection-information__text">
+          {{ simState.exception }}
+        </div>
+        <ButtonComponent
+          class="connection-information__retry"
+          title="retry"
+          type="icon"
+          @click="retry"
+        >
+          <IconReloadComponent />
+        </ButtonComponent>
       </div>
     </transition>
     <transition name="fade">
-      <div class="connection-information__status connection-information__status--success" v-if="simState.connected">
+      <div
+        v-if="simState.connected"
+        class="connection-information__status connection-information__status--success"
+      >
         <IconCheckComponent class="connection-information__icon" />
         <span class="connection-information__text">Connected to Kitty Hawk</span>
       </div>
