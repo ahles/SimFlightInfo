@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import IconAirplaneComponent from '../icons/IconAirplaneComponent.vue';
 import IconWindowMinimizeComponent from '../icons/IconWindowMinimizeComponent.vue';
 import IconWindowMaximizeComponent from '../icons/IconWindowMaximizeComponent.vue';
@@ -8,20 +8,6 @@ import ButtonComponent from '../gui/ButtonComponent.vue';
 
 const header = ref(null)
 let maximized = false
-
-onMounted(() => {
-  // @ts-ignore
-  const headerDiv: HTMLDivElement = header.value
-  window.onscroll = function () {
-    if (headerDiv) {
-      if (window.scrollY <= headerDiv.clientHeight) {
-        headerDiv.classList.remove('hidden')
-      } else {
-        headerDiv.classList.add('hidden')
-      }
-    }
-  }
-})
 
 function windowClose() {
   window.ipcRenderer.send('window-close')
