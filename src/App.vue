@@ -15,11 +15,13 @@ const flightState = useFlightStateStore()
 
 onMounted(() => {
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
+    appState.loading = false
     simState.connected = connected
   })
 
   // TODO: not receiving
   window.ipcRenderer.on('simconnect-simstate-exception', (event, exception) => {
+    appState.loading = false
     simState.exception = exception
   })
 
@@ -46,7 +48,7 @@ onMounted(() => {
   <main class="main">
     <Map v-if="simState.connected"/>
     <div v-else>
-      <ConnectionInformation v-if="appState.loading"/>
+      <ConnectionInformation />
     </div>
     <div class="debug">
       <p>Sim connected: {{ simState.connected }}</p>

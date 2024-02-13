@@ -125,3 +125,7 @@ ipcMain.handle('open-win', (_, arg) => {
     childWindow.loadFile(indexHtml, { hash: arg })
   }
 })
+
+ipcMain.on('retry-sim-connection', () => {
+  simConnector.init(win)
+})
