@@ -1,9 +1,6 @@
 <template>
   <svg viewBox="0 0 24 24">
     <title>window-maximize</title>
-    <path
-      fill="currentColor"
-      d="M4,4H20V20H4V4M6,8V18H18V8H6Z"
-    />
+    <path fill="currentColor" d="M4,4H20V20H4V4M6,8V18H18V8H6Z" />
   </svg>
 </template>

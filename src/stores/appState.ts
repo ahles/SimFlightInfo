@@ -5,11 +5,11 @@ export const useAppStateStore = defineStore({
   id: 'appState',
   state: (): AppStateInterface => ({
     sidePanelOpen: false,
-    loading: true,
+    loading: true
   }),
   actions: {
     sidePanelToggle() {
       this.sidePanelOpen = !this.sidePanelOpen
-    },
+    }
   }
 })

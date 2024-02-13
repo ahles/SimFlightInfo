@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import IconAirplaneComponent from '../icons/IconAirplaneComponent.vue';
-import IconCogComponent from '../icons/IconCogComponent.vue';
-import IconWindowMinimizeComponent from '../icons/IconWindowMinimizeComponent.vue';
-import IconWindowMaximizeComponent from '../icons/IconWindowMaximizeComponent.vue';
-import IconWindowCloseComponent from '../icons/IconWindowCloseComponent.vue';
-import ButtonComponent from '../gui/ButtonComponent.vue';
-import { useAppStateStore } from '../../stores/appState';
+import IconAirplaneComponent from '../icons/IconAirplaneComponent.vue'
+import IconCogComponent from '../icons/IconCogComponent.vue'
+import IconWindowMinimizeComponent from '../icons/IconWindowMinimizeComponent.vue'
+import IconWindowMaximizeComponent from '../icons/IconWindowMaximizeComponent.vue'
+import IconWindowCloseComponent from '../icons/IconWindowCloseComponent.vue'
+import ButtonComponent from '../gui/ButtonComponent.vue'
+import { useAppStateStore } from '../../stores/appState'
 
 const appState = useAppStateStore()
 let maximized = false
@@ -41,36 +41,16 @@ function windowMaximize() {
     </div>
     <div class="header__middle" />
     <div class="header__right">
-      <ButtonComponent
-        title="settings"
-        type="icon"
-        class="btn__window btn__window--space-right"
-        @click="toggleSidepanel"
-      >
+      <ButtonComponent title="settings" type="icon" class="btn__window btn__window--space-right" @click="toggleSidepanel">
         <IconCogComponent />
       </ButtonComponent>
-      <ButtonComponent
-        title="mimimize"
-        type="icon"
-        class="btn__window"
-        @click="windowMinimize"
-      >
+      <ButtonComponent title="mimimize" type="icon" class="btn__window" @click="windowMinimize">
         <IconWindowMinimizeComponent />
       </ButtonComponent>
-      <ButtonComponent
-        title="maximize"
-        type="icon"
-        class="btn__window"
-        @click="windowMaximize"
-      >
+      <ButtonComponent title="maximize" type="icon" class="btn__window" @click="windowMaximize">
         <IconWindowMaximizeComponent />
       </ButtonComponent>
-      <ButtonComponent
-        title="close"
-        type="icon"
-        class="btn__window"
-        @click="windowClose"
-      >
+      <ButtonComponent title="close" type="icon" class="btn__window" @click="windowClose">
         <IconWindowCloseComponent />
       </ButtonComponent>
     </div>

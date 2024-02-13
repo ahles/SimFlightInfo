@@ -4,8 +4,8 @@ import { FlightStateInterface } from './Interfaces'
 import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
 import { useFlightStateStore } from './stores/flightState'
-import HeaderComponent from "./components/layout/HeaderComponent.vue";
-import LoadingBarComponent from "./components/gui/LoadingBarComponent.vue";
+import HeaderComponent from './components/layout/HeaderComponent.vue'
+import LoadingBarComponent from './components/gui/LoadingBarComponent.vue'
 import MapComponent from './components/MapComponent.vue'
 import ConnectionInformationComponent from './components/ConnectionInformationComponent.vue'
 import InfoPanelComponent from './components/gui/InfoPanelComponent.vue'
@@ -44,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <LoadingBarComponent v-if="appState.loading"/>
+  <LoadingBarComponent v-if="appState.loading" />
   <HeaderComponent />
   <main v-if="simState.connected" class="main">
     <MapComponent />
@@ -57,7 +57,7 @@ onMounted(() => {
     <p>Sim connected: {{ simState.connected }}</p>
     <p>Sim exception: {{ simState.exception }}</p>
 
-    <br>
+    <br />
     <p>latitude: {{ flightState.latitude }}</p>
     <p>longitude: {{ flightState.longitude }}</p>
     <p>altitude: {{ flightState.altitude }}</p>

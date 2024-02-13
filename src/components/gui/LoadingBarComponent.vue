@@ -49,17 +49,7 @@ watch(loading, (newValue) => {
 
     animation: animateBg 2s infinite linear;
     background-color: #fff;
-    background-image: linear-gradient(
-      90deg,
-      var(--color-accent-1),
-      var(--color-accent-1),
-      var(--color-accent-1),
-      var(--color-text-highlight),
-      var(--color-accent-1),
-      var(--color-accent-1),
-      var(--color-accent-1),
-      var(--color-text-highlight)
-    );
+    background-image: linear-gradient(90deg, var(--color-accent-1), var(--color-accent-1), var(--color-accent-1), var(--color-text-highlight), var(--color-accent-1), var(--color-accent-1), var(--color-accent-1), var(--color-text-highlight));
     background-size: 300% 100%;
   }
 

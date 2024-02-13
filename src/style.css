@@ -1,24 +1,23 @@
 :root {
-    --color-background: #111111;
-    --color-panels: #222222;
-    --color-border-content: #444444;
-    --color-text: #cccccc;
-    --color-text-highlight: #eeeeee;
+  --color-background: #111111;
+  --color-panels: #222222;
+  --color-border-content: #444444;
+  --color-text: #cccccc;
+  --color-text-highlight: #eeeeee;
 
-    --color-accent-1: #0663ad;
+  --color-accent-1: #0663ad;
 
-    --color-success: #00cc00;
-    --color-error: orangered;
+  --color-success: #00cc00;
+  --color-error: orangered;
 
-    --default-font-size: 1.4rem;
+  --default-font-size: 1.4rem;
 
-    --space: 1rem;
+  --space: 1rem;
 
-    --header-height: 2rem;
-    /*--title-height: 6rem;*/
+  --header-height: 2rem;
+  /*--title-height: 6rem;*/
 
-    --sidepanel-width: 20rem;
-
+  --sidepanel-width: 20rem;
 }
 
 /**
@@ -26,66 +25,65 @@
     Breakpoints: 960px, 1600px
 */
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 
-    @media screen and (min-width: 960px) {
-        font-size: 75%;
-    }
+  @media screen and (min-width: 960px) {
+    font-size: 75%;
+  }
 
-    @media screen and (min-width: 1600px) {
-        font-size: 90%;
-    }
+  @media screen and (min-width: 1600px) {
+    font-size: 90%;
+  }
 
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-    padding: 0;
-
+  padding: 0;
 }
 
 body {
-    box-sizing: border-box;
-    color: var(--color-text);
-    background-color: var(--color-background);
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
-    font-size: var(--default-font-size);
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  font-size: var(--default-font-size);
+  margin: 0;
+  padding: 0;
 }
 
 img,
 svg {
-    display: block;
+  display: block;
 }
 
 svg {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 h1,
 h2,
 h3 {
-    font-weight: 400;
-    margin: 0;
+  font-weight: 400;
+  margin: 0;
 }
 
 strong,
 b {
-    font-weight: 400;
+  font-weight: 400;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-   transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .fade-enter-from,
 .fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }

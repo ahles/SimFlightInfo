@@ -13,6 +13,6 @@ export const useFlightStateStore = defineStore({
     degreesPitch: 0,
     airSpeedTrue: 0,
     airSpeedIndicated: 0,
-    verticalSpeed: 0,
-  }),
+    verticalSpeed: 0
+  })
 })

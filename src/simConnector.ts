@@ -1,5 +1,5 @@
 import { BrowserWindow } from 'electron'
-import { open, Protocol, SimConnectDataType, SimConnectConstants, SimConnectPeriod } from 'node-simconnect';
+import { open, Protocol, SimConnectDataType, SimConnectConstants, SimConnectPeriod } from 'node-simconnect'
 import { FlightStateInterface } from './Interfaces'
 
 /**
@@ -7,33 +7,33 @@ import { FlightStateInterface } from './Interfaces'
  * https://github.com/EvenAR/node-simconnect
  */
 
-const EVENT_ID_PAUSE = 1;
+const EVENT_ID_PAUSE = 1
 
-const REQUEST_1 = 0;
-const DEFINITION_1 = 0;
+const REQUEST_1 = 0
+const DEFINITION_1 = 0
 
 const simConnector = {
   init(win: BrowserWindow) {
     open('SimFlightInfo', Protocol.FSX_SP2)
       .then(function ({ recvOpen, handle }) {
-        console.log('Connected to', recvOpen.applicationName);
+        console.log('Connected to', recvOpen.applicationName)
         win.webContents.send('simconnect-simstate-connected', true)
 
         // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Misc_Variables.htm#PLANE_LATITUDE
-        handle.addToDataDefinition(DEFINITION_1, 'PLANE HEADING DEGREES GYRO', 'degrees', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'PLANE ALTITUDE', 'feet', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'PLANE ALT ABOVE GROUND', 'feet', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'PLANE LATITUDE', 'degrees', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'PLANE LONGITUDE', 'degrees', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'PLANE BANK DEGREES', 'degrees', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'PLANE PITCH DEGREES', 'radians', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'AIRSPEED TRUE', 'Knots', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'AIRSPEED INDICATED', 'Knots', SimConnectDataType.FLOAT64);
-        handle.addToDataDefinition(DEFINITION_1, 'VERTICAL SPEED', 'Feet per second', SimConnectDataType.INT32);
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE HEADING DEGREES GYRO', 'degrees', SimConnectDataType.FLOAT64)
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE ALTITUDE', 'feet', SimConnectDataType.FLOAT64)
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE ALT ABOVE GROUND', 'feet', SimConnectDataType.FLOAT64)
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE LATITUDE', 'degrees', SimConnectDataType.FLOAT64)
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE LONGITUDE', 'degrees', SimConnectDataType.FLOAT64)
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE BANK DEGREES', 'degrees', SimConnectDataType.FLOAT64)
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE PITCH DEGREES', 'radians', SimConnectDataType.FLOAT64)
+        handle.addToDataDefinition(DEFINITION_1, 'AIRSPEED TRUE', 'Knots', SimConnectDataType.FLOAT64)
+        handle.addToDataDefinition(DEFINITION_1, 'AIRSPEED INDICATED', 'Knots', SimConnectDataType.FLOAT64)
+        handle.addToDataDefinition(DEFINITION_1, 'VERTICAL SPEED', 'Feet per second', SimConnectDataType.INT32)
 
-        handle.requestDataOnSimObject(REQUEST_1, DEFINITION_1, SimConnectConstants.OBJECT_ID_USER, SimConnectPeriod.SECOND);
+        handle.requestDataOnSimObject(REQUEST_1, DEFINITION_1, SimConnectConstants.OBJECT_ID_USER, SimConnectPeriod.SECOND)
 
-        handle.on('simObjectData', recvSimObjectData => {
+        handle.on('simObjectData', (recvSimObjectData) => {
           switch (recvSimObjectData.requestID) {
             case REQUEST_1: {
               const receivedData: FlightStateInterface = {
@@ -47,40 +47,40 @@ const simConnector = {
                 degreesPitch: radToDeg(recvSimObjectData.data.readFloat64()),
                 airSpeedTrue: recvSimObjectData.data.readFloat64(),
                 airSpeedIndicated: recvSimObjectData.data.readFloat64(),
-                verticalSpeed: recvSimObjectData.data.readInt32(),
+                verticalSpeed: recvSimObjectData.data.readInt32()
               }
               // console.log('receivedData', receivedData);
               win.webContents.send('simconnect-flightdata', receivedData)
-              break;
+              break
             }
           }
-        });
+        })
 
         handle.on('event', function (recvEvent) {
           // console.log('recvEvent', recvEvent);
           switch (recvEvent.clientEventId) {
             case EVENT_ID_PAUSE:
               // console.log(recvEvent.data === 1 ? 'Sim paused' : 'Sim unpaused');
-              win.webContents.send('simconnect-message', recvEvent.data === 1 ? 'Sim paused' : 'Sim unpaused');
-              break;
+              win.webContents.send('simconnect-message', recvEvent.data === 1 ? 'Sim paused' : 'Sim unpaused')
+              break
           }
-        });
+        })
         handle.on('exception', (recvException) => {
           console.log(recvException)
-        });
+        })
         handle.on('quit', function () {
-          console.log('Simulator quit');
-        });
+          console.log('Simulator quit')
+        })
         handle.on('close', function () {
-          console.log('Connection closed unexpectedly (simulator CTD?)');
-        });
+          console.log('Connection closed unexpectedly (simulator CTD?)')
+        })
 
-        handle.subscribeToSystemEvent(EVENT_ID_PAUSE, 'Pause');
+        handle.subscribeToSystemEvent(EVENT_ID_PAUSE, 'Pause')
       })
       .catch(function (error) {
         win.webContents.send('simconnect-simstate-exception', error)
-      });
-  },
+      })
+  }
 }
 
 /**
@@ -90,7 +90,7 @@ const simConnector = {
  * @returns The angle converted to degrees.
  */
 const radToDeg = (radians: number): number => {
-  return radians * (180/Math.PI);
+  return radians * (180 / Math.PI)
 }
 
 export default simConnector

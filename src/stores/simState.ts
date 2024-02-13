@@ -5,6 +5,6 @@ export const useSimStateStore = defineStore({
   id: 'simState',
   state: (): SimStateInterface => ({
     connected: false,
-    exception: null,
-  }),
+    exception: null
+  })
 })

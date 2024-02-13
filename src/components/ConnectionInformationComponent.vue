@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import IconReloadComponent from "./icons/IconReloadComponent.vue";
-import IconAlertComponent from "./icons/IconAlertComponent.vue";
-import IconCheckComponent from "./icons/IconCheckComponent.vue";
-import ButtonComponent from "./gui/ButtonComponent.vue";
+import IconReloadComponent from './icons/IconReloadComponent.vue'
+import IconAlertComponent from './icons/IconAlertComponent.vue'
+import IconCheckComponent from './icons/IconCheckComponent.vue'
+import ButtonComponent from './gui/ButtonComponent.vue'
 import { useAppStateStore } from '../stores/appState'
 import { useSimStateStore } from '../stores/simState'
 const appState = useAppStateStore()
@@ -22,29 +22,18 @@ function retry() {
   <div class="connection-information">
     <h2>Connecting to Simulator...</h2>
     <transition name="fade">
-      <div
-        v-if="simState.connected === false && simState.exception !== null"
-        class="connection-information__status connection-information__status--error"
-      >
+      <div v-if="simState.connected === false && simState.exception !== null" class="connection-information__status connection-information__status--error">
         <IconAlertComponent class="connection-information__icon" />
         <div class="connection-information__text">
           {{ simState.exception }}
         </div>
-        <ButtonComponent
-          class="connection-information__retry"
-          title="retry"
-          type="icon"
-          @click="retry"
-        >
+        <ButtonComponent class="connection-information__retry" title="retry" type="icon" @click="retry">
           <IconReloadComponent />
         </ButtonComponent>
       </div>
     </transition>
     <transition name="fade">
-      <div
-        v-if="simState.connected"
-        class="connection-information__status connection-information__status--success"
-      >
+      <div v-if="simState.connected" class="connection-information__status connection-information__status--success">
         <IconCheckComponent class="connection-information__icon" />
         <span class="connection-information__text">Connected to Kitty Hawk</span>
       </div>

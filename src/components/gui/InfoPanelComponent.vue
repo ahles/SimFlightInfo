@@ -8,44 +8,24 @@ import BankComponent from './BankComponent.vue'
 <template>
   <div class="info-panel">
     <div class="info-panel__col">
-      <div class="info-panel__value">
-        {{ flightState.latitude.toFixed(2) }}°
-      </div>
-      <div class="info-panel__name">
-        Latitude
-      </div>
+      <div class="info-panel__value">{{ flightState.latitude.toFixed(2) }}°</div>
+      <div class="info-panel__name">Latitude</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">
-        {{ flightState.longitude.toFixed(2) }}°
-      </div>
-      <div class="info-panel__name">
-        Longitude
-      </div>
+      <div class="info-panel__value">{{ flightState.longitude.toFixed(2) }}°</div>
+      <div class="info-panel__name">Longitude</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">
-        {{ flightState.heading.toFixed(0) }}°
-      </div>
-      <div class="info-panel__name">
-        Heading
-      </div>
+      <div class="info-panel__value">{{ flightState.heading.toFixed(0) }}°</div>
+      <div class="info-panel__name">Heading</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">
-        {{ flightState.altitude.toFixed(0) }}&nbsp;ft
-      </div>
-      <div class="info-panel__name">
-        ASL
-      </div>
+      <div class="info-panel__value">{{ flightState.altitude.toFixed(0) }}&nbsp;ft</div>
+      <div class="info-panel__name">ASL</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">
-        {{ flightState.airSpeedTrue.toFixed(0) }}&nbsp;kts
-      </div>
-      <div class="info-panel__name">
-        GS
-      </div>
+      <div class="info-panel__value">{{ flightState.airSpeedTrue.toFixed(0) }}&nbsp;kts</div>
+      <div class="info-panel__name">GS</div>
     </div>
     <!-- <div class="info-panel__col">
       <div class="info-panel__value">{{ flightState.airSpeedIndicated.toFixed(0) }}&nbsp;kts</div>

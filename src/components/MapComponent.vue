@@ -10,17 +10,17 @@ const flightState = useFlightStateStore()
 
 onMounted(async () => {
   await initMap(flightState.longitude, flightState.latitude)
-  appState.loading = false;
+  appState.loading = false
 })
 </script>
 
 <template>
-    <div id="map"></div>
+  <div id="map"></div>
 </template>
 
 <style scoped>
 #map {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 </style>

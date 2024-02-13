@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   title: string
-  type: "text" | "icon"
+  type: 'text' | 'icon'
 }>()
 </script>
 
@@ -52,7 +52,7 @@ defineProps<{
 
 .btn__icon:hover {
   color: var(--color-text-highlight);
-  transition: color .2s ease-in;
+  transition: color 0.2s ease-in;
 }
 
 .btn__text {
@@ -65,7 +65,6 @@ defineProps<{
 .btn__text:hover {
   color: var(--color-accent-1);
   background-color: var(--color-text-highlight);
-  transition: all .2s ease-in;
+  transition: all 0.2s ease-in;
 }
-
 </style>
