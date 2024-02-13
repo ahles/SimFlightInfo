@@ -40,9 +40,9 @@ function retry() {
 <style scoped>
 .connection-information {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 .connection-information h2 {

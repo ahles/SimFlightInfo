@@ -47,7 +47,6 @@ onMounted(() => {
   <HeaderComponent />
   <main class="main" v-if="simState.connected">
     <Map/>
-    
   </main>
   <div v-else>
     <ConnectionInformation />
@@ -68,7 +67,6 @@ onMounted(() => {
     <p>Air Speed Indicated: {{ flightState.airSpeedIndicated }}</p>
     <p>Vertical Speed: {{ flightState.verticalSpeed }}</p>
   </div>
-  <LoadingBarComponent />
 </template>
 
 <style>
