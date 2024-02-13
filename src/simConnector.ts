@@ -81,9 +81,6 @@ const simConnector = {
         win.webContents.send('simconnect-simstate-exception', error)
       });
   },
-  shutdown() {
-
-  },
 }
 
 /**
