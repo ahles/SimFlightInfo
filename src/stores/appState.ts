@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useAppStateStore = defineStore({
   id: 'appState',
   state: () => ({
-    // sidePanelOpen: false,
+    sidePanelOpen: false,
     loading: true,
     // theme: 'dark',
     // themeSelectorOpen: false,
@@ -18,10 +18,10 @@ export const useAppStateStore = defineStore({
     //   }
     // ]
   }),
-  // actions: {
-  //   sidePanelToggle() {
-  //     this.sidePanelOpen = !this.sidePanelOpen
-  //   },
+  actions: {
+    sidePanelToggle() {
+      this.sidePanelOpen = !this.sidePanelOpen
+    },
   //   themeSelectorToggle() {
   //     this.themeSelectorOpen = !this.themeSelectorOpen
   //   },
@@ -32,5 +32,5 @@ export const useAppStateStore = defineStore({
   //       htmlElement.dataset.theme = this.theme
   //     }
   //   }
-  // }
+  }
 })
