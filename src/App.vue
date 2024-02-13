@@ -5,6 +5,7 @@ import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
 import { useFlightStateStore } from './stores/flightState'
 import HeaderComponent from './components/layout/HeaderComponent.vue'
+import SidePanelComponent from './components/layout/SidePanelComponent.vue'
 import LoadingBarComponent from './components/gui/LoadingBarComponent.vue'
 import MapComponent from './components/MapComponent.vue'
 import ConnectionInformationComponent from './components/ConnectionInformationComponent.vue'
@@ -69,6 +70,7 @@ onMounted(() => {
     <p>airSpeedIndicated: {{ flightState.airSpeedIndicated }}</p>
     <p>verticalSpeed: {{ flightState.verticalSpeed }}</p>
   </div>
+  <SidePanelComponent />
 </template>
 
 <style>

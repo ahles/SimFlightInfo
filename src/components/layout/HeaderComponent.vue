@@ -61,8 +61,9 @@ function windowMaximize() {
 .header {
   color: var(--color-text);
   background-color: var(--color-panels);
-  height: 2rem;
-  padding: 0.5rem;
+  height: var(--header-height);
+  padding: 0 0.5rem;
+  border-bottom: 1px solid black;
 
   display: flex;
   justify-content: space-between;
