@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 
 export const useAppStateStore = defineStore({
   id: 'appState',
-  state: () => ({
+  state: (): AppStateInterface => ({
     sidePanelOpen: false,
     loading: true,
     // theme: 'dark',

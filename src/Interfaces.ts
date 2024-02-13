@@ -1,4 +1,14 @@
-export interface FlightInterface {
+export interface AppStateInterface {
+  sidePanelOpen: boolean,
+  loading: boolean,
+}
+
+export interface SimStateInterface {
+  connected: boolean,
+  exception: any
+}
+
+export interface FlightStateInterface {
   longitude: number,
   latitude: number,
   altitude: number,
@@ -9,9 +19,4 @@ export interface FlightInterface {
   airSpeedTrue: number,
   airSpeedIndicated: number,
   verticalSpeed: number,
-}
-
-export interface SimStatetInterface {
-  connected: boolean,
-  exception: any
 }

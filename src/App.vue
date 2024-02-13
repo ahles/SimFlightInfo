@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { FlightInterface } from './Interfaces'
+import { FlightStateInterface } from './Interfaces'
 import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
 import { useFlightStateStore } from './stores/flightState'
@@ -25,7 +25,7 @@ onMounted(() => {
     simState.exception = exception
   })
 
-  window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightInterface) => {
+  window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightStateInterface) => {
     // console.log('event', event);
     // console.log('data', data);
     flightState.latitude = data.latitude

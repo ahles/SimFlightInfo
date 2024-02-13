@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
-import { SimStatetInterface } from '../Interfaces'
+import { SimStateInterface } from '../Interfaces'
 
 export const useSimStateStore = defineStore({
   id: 'simState',
-  state: (): SimStatetInterface => ({
+  state: (): SimStateInterface => ({
     connected: false,
     exception: null,
   }),
