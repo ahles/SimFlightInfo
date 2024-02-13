@@ -2,6 +2,7 @@
 import IconReloadComponent from "./icons/IconReloadComponent.vue";
 import IconAlertComponent from "./icons/IconAlertComponent.vue";
 import IconCheckComponent from "./icons/IconCheckComponent.vue";
+import ButtonComponent from "./gui/ButtonComponent.vue";
 import { useAppStateStore } from '../stores/appState'
 import { useSimStateStore } from '../stores/simState'
 const appState = useAppStateStore()
@@ -24,7 +25,7 @@ function retry() {
       <div class="connection-information__status connection-information__status--error" v-if="simState.connected === false && simState.exception !== null">
         <IconAlertComponent class="connection-information__icon" />
         <div class="connection-information__text">{{ simState.exception }}</div>
-        <button @click="retry" class="connection-information__button" title="retry"><IconReloadComponent /></button>
+        <ButtonComponent class="connection-information__retry" @click="retry" title="retry" type="icon"><IconReloadComponent /></ButtonComponent>
       </div>
     </transition>
     <transition name="fade">
@@ -51,20 +52,10 @@ function retry() {
   font-size: 1.2rem;
 }
 
-.connection-information__button {
+.connection-information__retry {
   width: 4rem;
   height: 4rem;
   margin-top: 4rem;
-  padding: 0;
-  color: var(--color-accent-1);
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.connection-information__button:hover {
-  color: var(--color-text-highlight);
-  transition: color .2s ease-in;
 }
 
 .connection-information__status {
