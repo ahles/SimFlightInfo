@@ -2,14 +2,11 @@
 import { useAppStateStore } from '../../stores/appState'
 
 const appState = useAppStateStore()
-
 </script>
 
 <template>
   <Transition name="slide" mode="in-out">
-    <aside v-if="appState.sidePanelOpen" class="sidebar">
-        Settings
-    </aside>
+    <aside v-if="appState.sidePanelOpen" class="sidebar">Settings</aside>
   </Transition>
 </template>
 

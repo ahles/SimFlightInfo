@@ -6,6 +6,6 @@ export const useSimStateStore = defineStore({
   state: (): SimStateInterface => ({
     connected: false,
     exception: null,
-    active: false,
+    active: false
   })
 })

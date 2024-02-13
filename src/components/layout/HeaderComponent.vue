@@ -8,7 +8,7 @@ import IconWindowCloseComponent from '../icons/IconWindowCloseComponent.vue'
 import ButtonComponent from '../gui/ButtonComponent.vue'
 import { useAppStateStore } from '../../stores/appState'
 import { useSimStateStore } from '../../stores/simState'
-import IconConnectionStatusComponent from "../icons/IconConnectionStatusComponent.vue";
+import IconConnectionStatusComponent from '../icons/IconConnectionStatusComponent.vue'
 
 const appState = useAppStateStore()
 const simState = useSimStateStore()
@@ -147,5 +147,4 @@ const connectionStatusText = computed(() => {
 .connection-status__green {
   color: green;
 }
-
 </style>

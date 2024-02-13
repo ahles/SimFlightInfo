@@ -52,7 +52,7 @@ onMounted(() => {
   <HeaderComponent />
   <main v-if="simState.connected" class="main">
     <MapComponent />
-    <InfoPanelComponent v-if="simState.active"/>
+    <InfoPanelComponent v-if="simState.active" />
   </main>
   <div v-else>
     <ConnectionInformationComponent />
