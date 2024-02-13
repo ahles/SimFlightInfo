@@ -1,6 +1,6 @@
 import { BrowserWindow } from 'electron'
 import { open, Protocol, SimConnectDataType, SimConnectConstants, SimConnectPeriod } from 'node-simconnect';
-import { FlightInterface } from './Interfaces'
+import { FlightStateInterface } from './Interfaces'
 
 /**
  * node-simconnect
@@ -36,7 +36,7 @@ const simConnector = {
         handle.on('simObjectData', recvSimObjectData => {
           switch (recvSimObjectData.requestID) {
             case REQUEST_1: {
-              const receivedData: FlightInterface = {
+              const receivedData: FlightStateInterface = {
                 // Read order is important!
                 heading: recvSimObjectData.data.readFloat64(),
                 altitude: recvSimObjectData.data.readFloat64(),
@@ -80,6 +80,9 @@ const simConnector = {
       .catch(function (error) {
         win.webContents.send('simconnect-simstate-exception', error)
       });
+  },
+  shutdown() {
+
   },
 }
 

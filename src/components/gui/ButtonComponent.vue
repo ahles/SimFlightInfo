@@ -47,7 +47,7 @@ defineProps<{
 .btn__icon {
   width: 2rem;
   height: 2rem;
-  color: var(--color-accent-1);
+  color: var(--color-text);
 }
 
 .btn__icon:hover {

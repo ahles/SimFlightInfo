@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useAppStateStore } from '../../stores/appState'
-import IconMenuComponent from '../icons/IconMenuComponent.vue'
 import IconAirplaneComponent from '../icons/IconAirplaneComponent.vue';
+import IconWindowMinimizeComponent from '../icons/IconWindowMinimizeComponent.vue';
+import IconWindowMaximizeComponent from '../icons/IconWindowMaximizeComponent.vue';
+import IconWindowCloseComponent from '../icons/IconWindowCloseComponent.vue';
+import ButtonComponent from '../gui/ButtonComponent.vue';
 
 const header = ref(null)
+let maximized = false
 
 onMounted(() => {
   // @ts-ignore
@@ -20,7 +23,23 @@ onMounted(() => {
   }
 })
 
-const appState = useAppStateStore()
+function windowClose() {
+  window.ipcRenderer.send('window-close')
+}
+
+function windowMinimize() {
+  window.ipcRenderer.send('window-minimize')
+}
+
+function windowMaximize() {
+  if (maximized === false) {
+    maximized = true
+    window.ipcRenderer.send('window-maximize')
+  } else {
+    maximized = false
+    window.ipcRenderer.send('window-unmaximize')
+  }
+}
 </script>
 
 <template>
@@ -29,10 +48,11 @@ const appState = useAppStateStore()
       <IconAirplaneComponent class="logo" />
       <span class="title">SimFlightInfo</span>
     </div>
+    <div class="header__middle"></div>
     <div class="header__right">
-      <button class="button" title="Open menu" @click="appState.sidePanelToggle">
-        <IconMenuComponent />
-      </button>
+      <ButtonComponent @click="windowMinimize" title="mimimize" type="icon"><IconWindowMinimizeComponent /></ButtonComponent>
+      <ButtonComponent @click="windowMaximize" title="maximize" type="icon"><IconWindowMaximizeComponent /></ButtonComponent>
+      <ButtonComponent @click="windowClose" title="close" type="icon"><IconWindowCloseComponent /></ButtonComponent>
     </div>
   </header>
 </template>
@@ -48,9 +68,6 @@ const appState = useAppStateStore()
   justify-content: space-between;
   align-items: center;
 
-  -webkit-app-region: drag;
-  cursor: grab;
-
   box-shadow:
     0 0.1rem 0.3rem rgba(0, 0, 0, 0.24),
     0 0.1rem 0.2rem rgba(0, 0, 0, 0.48);
@@ -62,6 +79,13 @@ const appState = useAppStateStore()
   align-items: center;
 }
 
+.header__middle {
+  -webkit-app-region: drag;
+  cursor: grab;
+  flex-grow: 1;
+  height: 100%;
+}
+
 .logo {
   width: 2rem;
   height: 2rem;
@@ -71,26 +95,5 @@ const appState = useAppStateStore()
 .title {
   font-size: 1.2rem;
   line-height: 1;
-}
-
-.button {
-  display: block;
-  height: 3rem;
-  aspect-ratio: 1;
-  color: inherit;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  transition: color 0.3s ease-in;
-
-  &:hover {
-    color: var(--color-text-highlight);
-    transition: color 0.3s ease-in;
-  }
-
-  &:not(:last-of-type) {
-    margin-right: 1rem;
-  }
 }
 </style>
