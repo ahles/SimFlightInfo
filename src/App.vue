@@ -45,28 +45,29 @@ onMounted(() => {
 <template>
   <LoadingBarComponent v-if="appState.loading"/>
   <HeaderComponent />
-  <main class="main">
-    <Map v-if="simState.connected"/>
-    <div v-else>
-      <ConnectionInformation />
-    </div>
-    <div class="debug">
-      <p>Sim connected: {{ simState.connected }}</p>
-      <p>Sim exception: {{ simState.exception }}</p>
-
-      <br>
-      <p>Latitude: {{ flightState.latitude }}</p>
-      <p>Longitude: {{ flightState.longitude }}</p>
-      <p>Altitude: {{ flightState.altitude }}</p>
-      <p>Altitude above ground: {{ flightState.altitudeAboveGround }}</p>
-      <p>Heading: {{ flightState.heading }}</p>
-      <p>Bank: {{ flightState.degreesBank }}</p>
-      <p>Pitch: {{ flightState.degreesPitch }}</p>
-      <p>Air Speed True: {{ flightState.airSpeedTrue }}</p>
-      <p>Air Speed Indicated: {{ flightState.airSpeedIndicated }}</p>
-      <p>Vertical Speed: {{ flightState.verticalSpeed }}</p>
-    </div>
+  <main class="main" v-if="simState.connected">
+    <Map/>
+    
   </main>
+  <div v-else>
+    <ConnectionInformation />
+  </div>
+  <div class="debug">
+    <p>Sim connected: {{ simState.connected }}</p>
+    <p>Sim exception: {{ simState.exception }}</p>
+
+    <br>
+    <p>Latitude: {{ flightState.latitude }}</p>
+    <p>Longitude: {{ flightState.longitude }}</p>
+    <p>Altitude: {{ flightState.altitude }}</p>
+    <p>Altitude above ground: {{ flightState.altitudeAboveGround }}</p>
+    <p>Heading: {{ flightState.heading }}</p>
+    <p>Bank: {{ flightState.degreesBank }}</p>
+    <p>Pitch: {{ flightState.degreesPitch }}</p>
+    <p>Air Speed True: {{ flightState.airSpeedTrue }}</p>
+    <p>Air Speed Indicated: {{ flightState.airSpeedIndicated }}</p>
+    <p>Vertical Speed: {{ flightState.verticalSpeed }}</p>
+  </div>
   <LoadingBarComponent />
 </template>
 
