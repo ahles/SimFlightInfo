@@ -40,12 +40,12 @@ watch(loading, (newValue) => {
 .loading-bar {
   position: fixed;
   z-index: 40;
-  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
 
   .loading-bar__line {
-    height: 0.25rem;
+    height: 0.5rem;
 
     animation: animateBg 2s infinite linear;
     background-color: #fff;
