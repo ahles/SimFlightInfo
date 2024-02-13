@@ -1,5 +1,5 @@
 import 'ol/ol.css'
-import { fromLonLat, toLonLat } from 'ol/proj'
+import { fromLonLat } from 'ol/proj'
 import View from 'ol/View'
 import Map from 'ol/Map'
 import { Tile as TileLayer } from 'ol/layer'

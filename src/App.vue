@@ -6,8 +6,8 @@ import { useSimStateStore } from './stores/simState'
 import { useFlightStateStore } from './stores/flightState'
 import HeaderComponent from "./components/layout/HeaderComponent.vue";
 import LoadingBarComponent from "./components/gui/LoadingBarComponent.vue";
-import Map from './components/Map.vue'
-import ConnectionInformation from './components/ConnectionInformation.vue'
+import MapComponent from './components/MapComponent.vue'
+import ConnectionInformationComponent from './components/ConnectionInformationComponent.vue'
 import InfoPanelComponent from './components/gui/InfoPanelComponent.vue'
 
 const appState = useAppStateStore()
@@ -47,11 +47,11 @@ onMounted(() => {
   <LoadingBarComponent v-if="appState.loading"/>
   <HeaderComponent />
   <main v-if="simState.connected" class="main">
-    <Map/>
+    <MapComponent />
     <InfoPanelComponent />
   </main>
   <div v-else>
-    <ConnectionInformation />
+    <ConnectionInformationComponent />
   </div>
   <div class="debug">
     <p>Sim connected: {{ simState.connected }}</p>

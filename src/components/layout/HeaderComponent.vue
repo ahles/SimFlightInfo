@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import IconAirplaneComponent from '../icons/IconAirplaneComponent.vue';
 import IconCogComponent from '../icons/IconCogComponent.vue';
 import IconWindowMinimizeComponent from '../icons/IconWindowMinimizeComponent.vue';
@@ -9,7 +8,6 @@ import ButtonComponent from '../gui/ButtonComponent.vue';
 import { useAppStateStore } from '../../stores/appState';
 
 const appState = useAppStateStore()
-const header = ref(null)
 let maximized = false
 
 function toggleSidepanel() {
