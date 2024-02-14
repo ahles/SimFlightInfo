@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-// import type Map from 'ol/Map'
+import { onMounted, watch, ref } from 'vue'
 import PlaneMarkerComponent from './gui/PlaneMarkerComponent.vue'
-import { initMap } from '../modules/map'
+import { initMap, updatePosition } from '../modules/map'
 
 import { useAppStateStore } from '../stores/appState'
 
 const appState = useAppStateStore()
-
-// let map: Map
 
 const props = defineProps<{
   longitude: number,
@@ -20,6 +17,10 @@ onMounted(async () => {
   await initMap(props.longitude, props.latitude)
   appState.loading = false
 })
+
+watch(() => props.longitude, () => {
+  updatePosition(props.longitude, props.latitude)
+});
 </script>
 
 <template>

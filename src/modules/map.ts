@@ -10,24 +10,31 @@ import OSM from 'ol/source/OSM.js' // import has to be like that, it won't work 
 // import Vector from 'ol/source/Vector.js'; // import has to be like that, it won't work with import {Vector as VectorLayer} from 'ol/layer.js';
 
 let map: Map
+let view: View
 
 export const initMap = (longitude: number, latitude: number) => {
   return new Promise<Map>((resolve) => {
+    view = new View({
+      center: fromLonLat([longitude, latitude]),
+      enableRotation: false,
+      zoom: 10
+    })
+
     map = new Map({
       layers: [
         getOSMLayer()
       ],
       target: 'map',
-      view: new View({
-        center: fromLonLat([longitude, latitude]),
-        enableRotation: false,
-        zoom: 5
-      })
+      view: view,
     })
     map.on('loadend', function () {
       resolve(map)
     })
   })
+}
+
+export const updatePosition = (longitude: number, latitude: number) => {
+  view.setCenter([longitude, latitude])
 }
 
 const getOSMLayer = () => {
@@ -42,7 +49,7 @@ const getOSMLayer = () => {
 //   const iconFeature = new Feature({
 //     geometry: new Point([longitude, latitude]),
 //   });
-  
+
 //   const iconStyle = new Style({
 //     image: new Icon({
 //       anchor: [0, 0],
@@ -52,13 +59,13 @@ const getOSMLayer = () => {
 //       src: '/images/plane.svg',
 //     }),
 //   });
-  
+
 //   iconFeature.setStyle(iconStyle);
-  
+
 //   const vectorSource = new Vector({
 //     features: [iconFeature],
 //   });
-  
+
 //   const vectorLayer = new VectorLayer({
 //     source: vectorSource,
 //     zIndex: 10,
