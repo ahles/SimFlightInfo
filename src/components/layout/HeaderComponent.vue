@@ -38,7 +38,7 @@ function windowMaximize() {
 
 const connectionStatusColor = computed(() => {
   if (simState.connected === false) {
-    return 'onnection-status__red'
+    return 'connection-status__red'
   } else if (simState.connected === true && simState.active === false) {
     return 'connection-status__yellow'
   } else {
