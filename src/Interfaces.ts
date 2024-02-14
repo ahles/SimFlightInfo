@@ -1,6 +1,7 @@
 export interface AppStateInterface {
   sidePanelOpen: boolean
-  loading: boolean
+  loading: boolean,
+  airplaneCentered: boolean
 }
 
 export interface SimStateInterface {
