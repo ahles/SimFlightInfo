@@ -67,12 +67,15 @@ const simConnector = {
         })
         handle.on('exception', (recvException) => {
           console.log(recvException)
+          win.webContents.send('simconnect-simstate-exception', recvException)
         })
         handle.on('quit', function () {
           console.log('Simulator quit')
+          win.webContents.send('simconnect-simstate-closed')
         })
         handle.on('close', function () {
           console.log('Connection closed unexpectedly (simulator CTD?)')
+          win.webContents.send('simconnect-simstate-closed')
         })
 
         handle.subscribeToSystemEvent(EVENT_ID_PAUSE, 'Pause')

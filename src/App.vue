@@ -30,9 +30,12 @@ onMounted(() => {
     simState.active = active
   })
 
+  window.ipcRenderer.on('simconnect-closed', () => {
+    simState.active = false
+    simState.connected = false
+  })
+
   window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightStateInterface) => {
-    // console.log('event', event);
-    // console.log('data', data);
     flightState.latitude = data.latitude
     flightState.longitude = data.longitude
     flightState.altitude = data.altitude
