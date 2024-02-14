@@ -53,8 +53,7 @@ onMounted(() => {
 <template>
   <LoadingBarComponent v-if="appState.loading" />
   <HeaderComponent />
-  <!-- <main v-if="simState.connected" class="main"> -->
-  <main v-if="true" class="main">
+  <main v-if="simState.connected" class="main">
     <MapComponent
       :longitude="flightState.longitude"
       :latitude="flightState.latitude"
@@ -69,18 +68,17 @@ onMounted(() => {
     <p>Sim connected: {{ simState.connected }}</p>
     <p>Sim exception: {{ simState.exception }}</p>
     <p>Sim active: {{ simState.active }}</p>
-
     <br />
-    <p>latitude: {{ flightState.latitude }}</p>
-    <p>longitude: {{ flightState.longitude }}</p>
-    <p>altitude: {{ flightState.altitude }}</p>
-    <p>altitudeAboveGround: {{ flightState.altitudeAboveGround }}</p>
-    <p>heading: {{ flightState.heading }}</p>
-    <p>degreesBank: {{ flightState.degreesBank }}</p>
-    <p>PidegreesPitchtch: {{ flightState.degreesPitch }}</p>
-    <p>airSpeedTrue: {{ flightState.airSpeedTrue }}</p>
-    <p>airSpeedIndicated: {{ flightState.airSpeedIndicated }}</p>
-    <p>verticalSpeed: {{ flightState.verticalSpeed }}</p>
+    <p>latitude: {{ flightState.latitude }}°</p>
+    <p>longitude: {{ flightState.longitude }}°</p>
+    <p>altitude: {{ flightState.altitude }}&nbsp;ft</p>
+    <p>altitudeAboveGround: {{ flightState.altitudeAboveGround }}&nbsp;ft</p>
+    <p>heading: {{ flightState.heading }}°</p>
+    <p>degreesBank: {{ flightState.degreesBank }}&nbsp;rad</p>
+    <p>PidegreesPitchtch: {{ flightState.degreesPitch }}&nbsp;rad</p>
+    <p>airSpeedTrue: {{ flightState.airSpeedTrue }}&nbsp;kts</p>
+    <p>airSpeedIndicated: {{ flightState.airSpeedIndicated }}&nbsp;kts</p>
+    <p>verticalSpeed: {{ flightState.verticalSpeed }}&nbsp;ft/min</p>
   </div>
   <SidePanelComponent />
 </template>
