@@ -58,8 +58,23 @@ npm install
 npm run dev
 ```
 
-### vue-devtools global / remote
+### standalone vue-devtools
+
+Couldn't get vue devtools installer running within electron 2024-02-14
+
 https://devtools.vuejs.org/guide/installation.html#using-global-package
+
+```shell
+npm install -g @vue/devtools
+```
+
+Remove CSP meta tag in index.html head and insert
+```shell
+<script src="http://localhost:8098"></script>
+```
+
+then ```npm run dev```
+
 
 ### Debug
 
