@@ -73,8 +73,11 @@ Remove CSP meta tag in index.html head and insert
 <script src="http://localhost:8098"></script>
 ```
 
-then ```npm run dev```
+```shell
+vue-devools
+```
 
+then ```npm run dev```
 
 ### Debug
 
