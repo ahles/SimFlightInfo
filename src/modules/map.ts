@@ -47,6 +47,7 @@ const getMarkerLayer = (longitude: number, latitude: number, heading: number) =>
   const iconStyle = new Style({
     image: new Icon({
       anchor: [0, 0],
+      rotation: heading, // OpenLayers expects radians
       anchorXUnits: 'fraction',
       anchorYUnits: 'pixels',
       src: '/images/plane.svg',
