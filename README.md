@@ -58,6 +58,9 @@ npm install
 npm run dev
 ```
 
+### vue-devtools global / remote
+https://devtools.vuejs.org/guide/installation.html#using-global-package
+
 ### Debug
 
 ![electron-vite-react-debug.gif](https://github.com/electron-vite/electron-vite-react/blob/main/electron-vite-react-debug.gif?raw=true)
