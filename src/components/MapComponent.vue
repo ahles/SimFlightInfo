@@ -3,13 +3,17 @@ import { onMounted } from 'vue'
 import { initMap } from '../modules/map'
 
 import { useAppStateStore } from '../stores/appState'
-import { useFlightStateStore } from '../stores/flightState'
 
 const appState = useAppStateStore()
-const flightState = useFlightStateStore()
+
+const props = defineProps<{
+  longitude: number,
+  latitude: number,
+  heading: number
+}>()
 
 onMounted(async () => {
-  await initMap(flightState.longitude, flightState.latitude)
+  await initMap(props.longitude, props.latitude, props.heading)
   appState.loading = false
 })
 </script>
