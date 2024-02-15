@@ -4,8 +4,8 @@ import { FlightStateInterface } from '../Interfaces'
 export const useFlightStateStore = defineStore({
   id: 'flightState',
   state: (): FlightStateInterface => ({
-    latitude: 0, // °
-    longitude: 0, // °
+    latitude: 47.43, // °
+    longitude: 8.46, // °
     altitude: 0, // ft
     altitudeAboveGround: 0, // ft
     heading: 0, // degrees
