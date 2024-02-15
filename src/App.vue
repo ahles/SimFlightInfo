@@ -74,8 +74,8 @@ onMounted(() => {
     <p>altitude: {{ flightState.altitude }}&nbsp;ft</p>
     <p>altitudeAboveGround: {{ flightState.altitudeAboveGround }}&nbsp;ft</p>
     <p>heading: {{ flightState.heading }}°</p>
-    <p>degreesBank: {{ flightState.degreesBank }}&nbsp;rad</p>
-    <p>PidegreesPitchtch: {{ flightState.degreesPitch }}&nbsp;rad</p>
+    <p>degreesBank: {{ flightState.degreesBank }}&nbsp;°</p>
+    <p>degreesPitch: {{ flightState.degreesPitch }}&nbsp;°</p>
     <p>airSpeedTrue: {{ flightState.airSpeedTrue }}&nbsp;kts</p>
     <p>airSpeedIndicated: {{ flightState.airSpeedIndicated }}&nbsp;kts</p>
     <p>verticalSpeed: {{ flightState.verticalSpeed }}&nbsp;ft/min</p>
