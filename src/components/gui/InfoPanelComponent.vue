@@ -20,21 +20,21 @@ import BankComponent from './BankComponent.vue'
       <div class="info-panel__name">Heading</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.altitude }}&nbsp;ft</div>
-      <div class="info-panel__name">ASL</div>
+      <div class="info-panel__value">{{ flightState.altitude }}</div>
+      <div class="info-panel__name">ft ASL</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.airSpeedIndicated }}&nbsp;kts</div>
-      <div class="info-panel__name">IAS</div>
+      <div class="info-panel__value">{{ flightState.airSpeedIndicated }}</div>
+      <div class="info-panel__name">kts IAS</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.verticalSpeed }}&nbsp;ft/min</div>
-      <div class="info-panel__name">VS</div>
+      <div class="info-panel__value">{{ flightState.verticalSpeed }}</div>
+      <div class="info-panel__name">ft/min VS</div>
     </div>
-    <div class="info-panel__col">
+    <div class="info-panel__col info-panel__col--nowidth">
       <PitchComponent :pitch="flightState.degreesPitch" />
     </div>
-    <div class="info-panel__col">
+    <div class="info-panel__col info-panel__col--nowidth">
       <BankComponent :bank="flightState.degreesBank" />
     </div>
   </div>
@@ -52,11 +52,17 @@ import BankComponent from './BankComponent.vue'
   background-color: var(--color-panels);
   border-radius: 3px;
   display: flex;
+  padding: 1rem;
 }
 
 .info-panel__col {
-  width: 10rem;
-  padding: 1rem;
+  text-align: right;
+  width: 7rem;
+  padding: 0 1rem;
+}
+
+.info-panel__col--nowidth {
+  width: auto;
 }
 
 .info-panel__value {
@@ -65,7 +71,8 @@ import BankComponent from './BankComponent.vue'
 }
 
 .info-panel__name {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 300;
+  color: var(--color-text);
 }
 </style>
