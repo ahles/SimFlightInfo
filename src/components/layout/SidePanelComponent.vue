@@ -13,7 +13,8 @@ const appState = useAppStateStore()
       <hr class="sidebar__divider" />
       <div class="sidebar__content">
         <h3 class="sidebar__subtitle">Geonames</h3>
-        <input class="textinput" type="text" name="geonames" placeholder="geonames username" value="">
+        <label class="textinput__label" for="geonames">Enter your Geoname username:</label>
+        <input class="textinput" type="text" id="geonames" name="geonames" placeholder="enter your username" value="">
       </div>
     </aside>
   </Transition>
@@ -65,9 +66,19 @@ const appState = useAppStateStore()
   font-weight: 300;
 }
 
+.textinput:focus {
+  border-color: var(--color-text-highlight);
+  transition: border-color .2s ease-in;
+}
+
 .textinput::placeholder {
   color: var(--color-text);
   opacity: 0.5;
+}
+
+.textinput__label {
+  display: none;
+  font-size: 1rem;
 }
 
 .slide-enter-active {
