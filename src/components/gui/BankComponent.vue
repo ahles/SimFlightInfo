@@ -6,7 +6,7 @@ defineProps<{
 
 <template>
   <div class="bank">
-    <svg class="bank__airplane" :style="`transform: translate(-50%, -60%) rotateZ(${bank.toFixed(2)}deg)`" width="684.29" height="207.86" version="1.1" viewBox="0 0 181.05 54.996" xmlns="http://www.w3.org/2000/svg">
+    <svg class="bank__airplane" :style="`transform: translate(-50%, -60%) rotateZ(${bank}deg)`" width="684.29" height="207.86" version="1.1" viewBox="0 0 181.05 54.996" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(-13.796 -83.911)">
         <g fill="#ffffff" stroke-width=".26458">
           <rect x="15.119" y="114.9" width="178.4" height="8.3155" />

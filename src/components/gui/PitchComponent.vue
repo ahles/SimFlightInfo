@@ -1,19 +1,12 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
-const props = defineProps<{
+defineProps<{
   pitch: number
 }>()
-
-const localPitch = computed(() => {
-  return props.pitch.toFixed(2)
-})
-
 </script>
 
 <template>
   <div class="pitch">
-    <svg class="pitch__airplane" :style="`transform: translate(-50%, -50%) rotateZ(${localPitch}deg)`" width="1039" height="222.04" version="1.1" viewBox="0 0 274.9 58.749" xmlns="http://www.w3.org/2000/svg">
+    <svg class="pitch__airplane" :style="`transform: translate(-50%, -50%) rotateZ(${pitch}deg)`" width="1039" height="222.04" version="1.1" viewBox="0 0 274.9 58.749" xmlns="http://www.w3.org/2000/svg">
       <g transform="translate(.1237 -.17183)">
         <g transform="matrix(2.3988 0 0 2.3988 -69.318 -272.59)" fill="#ffffff">
           <path d="m42.361 124.55h100.53v13.096h-100.53z" fill-rule="evenodd" stroke-width=".29725" />

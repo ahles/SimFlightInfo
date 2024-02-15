@@ -16,25 +16,21 @@ import BankComponent from './BankComponent.vue'
       <div class="info-panel__name">Longitude</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.heading.toFixed(0) }}°</div>
+      <div class="info-panel__value">{{ flightState.heading }}°</div>
       <div class="info-panel__name">Heading</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.altitude.toFixed(0) }}&nbsp;ft</div>
+      <div class="info-panel__value">{{ flightState.altitude }}&nbsp;ft</div>
       <div class="info-panel__name">ASL</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.airSpeedTrue.toFixed(0) }}&nbsp;kts</div>
-      <div class="info-panel__name">GS</div>
+      <div class="info-panel__value">{{ flightState.airSpeedIndicated }}&nbsp;kts</div>
+      <div class="info-panel__name">IAS</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.verticalSpeed.toFixed(0) }}&nbsp;ft/min</div>
+      <div class="info-panel__value">{{ flightState.verticalSpeed }}&nbsp;ft/min</div>
       <div class="info-panel__name">VS</div>
     </div>
-    <!-- <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.airSpeedIndicated.toFixed(0) }}&nbsp;kts</div>
-      <div class="info-panel__name">airSpeedIndicated</div>
-    </div> -->
     <div class="info-panel__col">
       <PitchComponent :pitch="flightState.degreesPitch" />
     </div>

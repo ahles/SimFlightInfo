@@ -38,16 +38,16 @@ const simConnector = {
             case REQUEST_1: {
               const receivedData: FlightStateInterface = {
                 // Read order is important!
-                heading: recvSimObjectData.data.readFloat64(),
-                altitude: recvSimObjectData.data.readFloat64(),
-                altitudeAboveGround: recvSimObjectData.data.readFloat64(),
+                heading: Number(recvSimObjectData.data.readFloat64().toFixed(1)),
+                altitude: Number(recvSimObjectData.data.readFloat64().toFixed(0)),
+                altitudeAboveGround: Number(recvSimObjectData.data.readFloat64().toFixed(0)),
                 latitude: recvSimObjectData.data.readFloat64(),
                 longitude: recvSimObjectData.data.readFloat64(),
-                degreesBank: radToDeg(recvSimObjectData.data.readFloat64()) * -1,
-                degreesPitch: radToDeg(recvSimObjectData.data.readFloat64()) * -1,
-                airSpeedTrue: recvSimObjectData.data.readFloat64(),
-                airSpeedIndicated: recvSimObjectData.data.readFloat64(),
-                verticalSpeed: recvSimObjectData.data.readFloat64() * 60
+                degreesBank: Number((radToDeg(recvSimObjectData.data.readFloat64()) * -1).toFixed(1)),
+                degreesPitch: Number((radToDeg(recvSimObjectData.data.readFloat64()) * -1).toFixed(1)),
+                airSpeedTrue: Number(recvSimObjectData.data.readFloat64().toFixed(0)),
+                airSpeedIndicated: Number(recvSimObjectData.data.readFloat64().toFixed(0)),
+                verticalSpeed: Number((recvSimObjectData.data.readFloat64() * 60).toFixed(0))
               }
               // console.log('receivedData', receivedData);
               win.webContents.send('simconnect-flightdata', receivedData)
@@ -94,6 +94,10 @@ const simConnector = {
  */
 const radToDeg = (radians: number): number => {
   return radians * (180 / Math.PI)
+}
+
+const round = (num) => {
+  return Math.round((num + Number.EPSILON) * 100) / 100
 }
 
 export default simConnector
