@@ -27,6 +27,10 @@ import BankComponent from './BankComponent.vue'
       <div class="info-panel__value">{{ flightState.airSpeedTrue.toFixed(0) }}&nbsp;kts</div>
       <div class="info-panel__name">GS</div>
     </div>
+    <div class="info-panel__col">
+      <div class="info-panel__value">{{ flightState.verticalSpeed.toFixed(0) }}&nbsp;ft/min</div>
+      <div class="info-panel__name">VS</div>
+    </div>
     <!-- <div class="info-panel__col">
       <div class="info-panel__value">{{ flightState.airSpeedIndicated.toFixed(0) }}&nbsp;kts</div>
       <div class="info-panel__name">airSpeedIndicated</div>
