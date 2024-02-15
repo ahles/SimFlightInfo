@@ -7,9 +7,14 @@ const appState = useAppStateStore()
 <template>
   <Transition name="slide" mode="in-out">
     <aside v-if="appState.sidePanelOpen" class="sidebar">
-      <h2 class="sidebar__title">Settings</h2>
+      <div class="sidebar__content">
+        <h2 class="sidebar__title">Settings</h2>
+      </div>
       <hr class="sidebar__divider" />
-      <h3 class="sidebar__subtitle">Geonames</h3>
+      <div class="sidebar__content">
+        <h3 class="sidebar__subtitle">Geonames</h3>
+        <input class="textinput" type="text" name="geonames" placeholder="geonames username" value="">
+      </div>
     </aside>
   </Transition>
 </template>
@@ -22,7 +27,6 @@ const appState = useAppStateStore()
   width: var(--sidepanel-width);
   min-height: calc(100vh - var(--header-height));
   top: calc(var(--header-height) + 1px);
-  box-sizing: border-box; /** why not inherited? */
 
   background-color: var(--color-panels);
   box-shadow:
@@ -31,19 +35,39 @@ const appState = useAppStateStore()
 }
 
 .sidebar__title {
-  padding: 1.5rem 1rem 1rem 1rem;
   line-height: 1;
 }
 
 .sidebar__subtitle {
-  padding: 1rem;
   line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.sidebar__content {
+  padding: 1rem;
 }
 
 .sidebar__divider {
   border: none;
   border-bottom: 1px solid var(--color-text);
   opacity: 30%;
+}
+
+.textinput {
+  width: 100%;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-text);
+  padding: 0.5rem 0.75rem;
+  font-family: inherit;
+  font-size: 1.2rem;
+  outline: none;
+  font-weight: 300;
+}
+
+.textinput::placeholder {
+  color: var(--color-text);
+  opacity: 0.5;
 }
 
 .slide-enter-active {
