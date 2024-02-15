@@ -40,32 +40,3 @@ const getOSMLayer = () => {
   tileLayer.set('name', 'map')
   return tileLayer
 }
-
-// const getMarkerLayer = (longitude: number, latitude: number, heading: number) => {
-//   const iconFeature = new Feature({
-//     geometry: new Point([longitude, latitude]),
-//   });
-
-//   const iconStyle = new Style({
-//     image: new Icon({
-//       anchor: [0, 0],
-//       rotation: heading, // OpenLayers expects radians
-//       anchorXUnits: 'fraction',
-//       anchorYUnits: 'pixels',
-//       src: '/images/plane.svg',
-//     }),
-//   });
-
-//   iconFeature.setStyle(iconStyle);
-
-//   const vectorSource = new Vector({
-//     features: [iconFeature],
-//   });
-
-//   const vectorLayer = new VectorLayer({
-//     source: vectorSource,
-//     zIndex: 10,
-//   });
-
-//   return vectorLayer
-// }

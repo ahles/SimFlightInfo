@@ -46,8 +46,6 @@ import BankComponent from './BankComponent.vue'
   z-index: 20;
   left: 50%;
   bottom: 3rem;
-  /* width: 50rem; */
-  /* height: 5rem; */
   transform: translateX(-50%);
   background-color: var(--color-panels);
   border-radius: 3px;

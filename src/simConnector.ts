@@ -49,7 +49,6 @@ const simConnector = {
                 airSpeedIndicated: Number(recvSimObjectData.data.readFloat64().toFixed(0)),
                 verticalSpeed: Number((recvSimObjectData.data.readFloat64() * 60).toFixed(0))
               }
-              // console.log('receivedData', receivedData);
               win.webContents.send('simconnect-flightdata', receivedData)
               break
             }
@@ -57,10 +56,8 @@ const simConnector = {
         })
 
         handle.on('event', function (recvEvent) {
-          // console.log('recvEvent', recvEvent);
           switch (recvEvent.clientEventId) {
             case EVENT_ID_PAUSE:
-              // console.log(recvEvent.data === 1 ? 'Sim paused' : 'Sim unpaused');
               win.webContents.send('simconnect-active', recvEvent.data === 1 ? false : true)
               break
           }
@@ -94,10 +91,6 @@ const simConnector = {
  */
 const radToDeg = (radians: number): number => {
   return radians * (180 / Math.PI)
-}
-
-const round = (num) => {
-  return Math.round((num + Number.EPSILON) * 100) / 100
 }
 
 export default simConnector

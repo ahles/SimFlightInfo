@@ -15,6 +15,8 @@ const appState = useAppStateStore()
 const simState = useSimStateStore()
 const flightState = useFlightStateStore()
 
+const debug = false
+
 onMounted(() => {
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
     appState.loading = false
@@ -64,7 +66,7 @@ onMounted(() => {
   <div v-else>
     <ConnectionInformationComponent />
   </div>
-  <div class="debug">
+  <div class="debug" v-if="debug">
     <p>Sim connected: {{ simState.connected }}</p>
     <p>Sim exception: {{ simState.exception }}</p>
     <p>Sim active: {{ simState.active }}</p>
