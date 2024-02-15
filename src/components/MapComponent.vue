@@ -19,6 +19,7 @@ onMounted(async () => {
 })
 
 watch(() => props.longitude, () => {
+  // console.log('watch props.longitude', props.longitude);
   updatePosition(props.longitude, props.latitude)
 });
 </script>
