@@ -31,7 +31,6 @@ export const initMap = (longitude: number, latitude: number) => {
 
 export const updatePosition = (longitude: number, latitude: number) => {
   view.setCenter(fromLonLat([longitude, latitude]))
-  console.log('view.getProjection()', view.getProjection());
 }
 
 const getOSMLayer = () => {
