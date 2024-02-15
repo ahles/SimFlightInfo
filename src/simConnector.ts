@@ -29,7 +29,7 @@ const simConnector = {
         handle.addToDataDefinition(DEFINITION_1, 'PLANE PITCH DEGREES', 'radians', SimConnectDataType.FLOAT64)
         handle.addToDataDefinition(DEFINITION_1, 'AIRSPEED TRUE', 'Knots', SimConnectDataType.FLOAT64)
         handle.addToDataDefinition(DEFINITION_1, 'AIRSPEED INDICATED', 'Knots', SimConnectDataType.FLOAT64)
-        handle.addToDataDefinition(DEFINITION_1, 'VERTICAL SPEED', 'Feet per second', SimConnectDataType.INT32)
+        handle.addToDataDefinition(DEFINITION_1, 'VERTICAL SPEED', 'Feet per second', SimConnectDataType.FLOAT64)
 
         handle.requestDataOnSimObject(REQUEST_1, DEFINITION_1, SimConnectConstants.OBJECT_ID_USER, SimConnectPeriod.SECOND)
 
@@ -43,11 +43,11 @@ const simConnector = {
                 altitudeAboveGround: recvSimObjectData.data.readFloat64(),
                 latitude: recvSimObjectData.data.readFloat64(),
                 longitude: recvSimObjectData.data.readFloat64(),
-                degreesBank: radToDeg(recvSimObjectData.data.readFloat64()),
-                degreesPitch: radToDeg(recvSimObjectData.data.readFloat64()),
+                degreesBank: radToDeg(recvSimObjectData.data.readFloat64()) * -1,
+                degreesPitch: radToDeg(recvSimObjectData.data.readFloat64()) * -1,
                 airSpeedTrue: recvSimObjectData.data.readFloat64(),
                 airSpeedIndicated: recvSimObjectData.data.readFloat64(),
-                verticalSpeed: recvSimObjectData.data.readInt32()
+                verticalSpeed: recvSimObjectData.data.readFloat64() * 60
               }
               // console.log('receivedData', receivedData);
               win.webContents.send('simconnect-flightdata', receivedData)
