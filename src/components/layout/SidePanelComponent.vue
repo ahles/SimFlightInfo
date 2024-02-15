@@ -6,29 +6,44 @@ const appState = useAppStateStore()
 
 <template>
   <Transition name="slide" mode="in-out">
-    <aside v-if="appState.sidePanelOpen" class="sidebar">Settings</aside>
+    <aside v-if="appState.sidePanelOpen" class="sidebar">
+      <h2 class="sidebar__title">Settings</h2>
+      <hr class="sidebar__divider" />
+      <h3 class="sidebar__subtitle">Geonames</h3>
+    </aside>
   </Transition>
 </template>
 
 <style scoped>
 .sidebar {
   position: fixed;
+  right: 0;
+  z-index: 10;
   width: var(--sidepanel-width);
   min-height: calc(100vh - var(--header-height));
   top: calc(var(--header-height) + 1px);
-  right: 0;
-  z-index: 10;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: auto;
-  padding: 2rem;
+  box-sizing: border-box; /** why not inherited? */
 
   background-color: var(--color-panels);
   box-shadow:
     0 0.1rem 0.3rem rgba(0, 0, 0, 0.24),
     0 0.1rem 0.2rem rgba(0, 0, 0, 0.48);
+}
+
+.sidebar__title {
+  padding: 1.5rem 1rem 1rem 1rem;
+  line-height: 1;
+}
+
+.sidebar__subtitle {
+  padding: 1rem;
+  line-height: 1;
+}
+
+.sidebar__divider {
+  border: none;
+  border-bottom: 1px solid var(--color-text);
+  opacity: 30%;
 }
 
 .slide-enter-active {

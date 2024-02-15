@@ -60,7 +60,7 @@ const connectionStatusText = computed(() => {
   <header class="header">
     <div class="header__left">
       <IconAirplaneComponent class="logo" />
-      <span class="title">SimFlightInfo</span>
+      <h1 class="title">SimFlightInfo</h1>
     </div>
     <div class="header__middle" />
     <div class="header__right">
@@ -88,6 +88,7 @@ const connectionStatusText = computed(() => {
   height: var(--header-height);
   padding: 0 0.5rem;
   border-bottom: 1px solid black;
+  box-sizing: border-box; /** why not inherited? */
 
   display: flex;
   justify-content: space-between;
