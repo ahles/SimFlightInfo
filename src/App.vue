@@ -66,7 +66,7 @@ onMounted(() => {
   <div v-else>
     <ConnectionInformationComponent />
   </div>
-  <div class="debug" v-if="debug">
+  <div v-if="debug" class="debug">
     <p>Sim connected: {{ simState.connected }}</p>
     <p>Sim exception: {{ simState.exception }}</p>
     <p>Sim active: {{ simState.active }}</p>

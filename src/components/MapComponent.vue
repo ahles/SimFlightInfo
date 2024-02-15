@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, watch, ref } from 'vue'
+import { onMounted, watch } from 'vue'
 import PlaneMarkerComponent from './gui/PlaneMarkerComponent.vue'
 import { initMap, updatePosition } from '../modules/map'
 
