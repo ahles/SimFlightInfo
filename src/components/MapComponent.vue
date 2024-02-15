@@ -8,8 +8,8 @@ import { useAppStateStore } from '../stores/appState'
 const appState = useAppStateStore()
 
 const props = defineProps<{
-  longitude: number,
-  latitude: number,
+  longitude: number
+  latitude: number
   heading: number
 }>()
 
@@ -18,9 +18,12 @@ onMounted(async () => {
   appState.loading = false
 })
 
-watch(() => props.longitude, () => {
-  updatePosition(props.longitude, props.latitude)
-});
+watch(
+  () => props.longitude,
+  () => {
+    updatePosition(props.longitude, props.latitude)
+  }
+)
 </script>
 
 <template>

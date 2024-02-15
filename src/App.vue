@@ -56,11 +56,7 @@ onMounted(() => {
   <LoadingBarComponent v-if="appState.loading" />
   <HeaderComponent />
   <main v-if="simState.connected" class="main">
-    <MapComponent
-      :longitude="flightState.longitude"
-      :latitude="flightState.latitude"
-      :heading="flightState.heading"
-    />
+    <MapComponent :longitude="flightState.longitude" :latitude="flightState.latitude" :heading="flightState.heading" />
     <InfoPanelComponent v-if="simState.active" />
   </main>
   <div v-else>

@@ -21,7 +21,7 @@ export const initMap = (longitude: number, latitude: number) => {
         getOSMLayer() // EPSG:3857
       ],
       target: 'map',
-      view: view,
+      view: view
     })
     map.on('loadend', function () {
       resolve(map)
