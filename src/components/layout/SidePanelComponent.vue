@@ -23,8 +23,8 @@ function saveUsername() {
       <div class="sidebar__content">
         <h3 class="sidebar__subtitle">Geonames</h3>
         <label class="textinput__label" for="geonames">Enter your Geoname username:</label>
-        <input v-model="geonamesUsername" ref="geonames" id="geonames" class="textinput" type="text" name="geonames" placeholder="enter your username" />
-        <ButtonComponent @click="saveUsername" title="Save geonames username" type="icon"><IconSaveComponent /></ButtonComponent>
+        <input id="geonames" ref="geonames" v-model="geonamesUsername" class="textinput" type="text" name="geonames" placeholder="enter your username" />
+        <ButtonComponent title="Save geonames username" type="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
       </div>
     </aside>
   </Transition>

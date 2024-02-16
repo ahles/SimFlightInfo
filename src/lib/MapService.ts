@@ -32,7 +32,7 @@ class MapService {
       view: this.view
     });
 
-    return new Promise<Map>((resolve, reject) => {
+    return new Promise<Map>((resolve) => {
       // Assuming a better way to determine map readiness
       // Resolve the promise once the map has finished loading.
       if (this.map) {
@@ -55,7 +55,7 @@ class MapService {
     if (!this.view) {
       throw new Error("Map view is not initialized.");
     }
-    this.view.setCenter(fromLonLat([8.44, 47.3]));
+    this.view.setCenter(fromLonLat([longitude, latitude]));
   }
 
   private getOSMLayer() {
