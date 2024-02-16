@@ -74,7 +74,7 @@ Remove CSP meta tag in index.html head and insert
 ```
 
 ```shell
-vue-devools
+vue-devtools
 ```
 
 then ```npm run dev```
