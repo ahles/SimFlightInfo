@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useAppStateStore } from '../../stores/appState'
 import IconSaveComponent from '../icons/IconSaveComponent.vue'
 import ButtonComponent from '../gui/ButtonComponent.vue'
 
 const appState = useAppStateStore()
 
-const geonamesUsername = ref(appState.geonamesUsername)
+const { geonamesUsername } = storeToRefs(appState)
 
 function saveUsername() {
   appState.geonamesUsername = geonamesUsername.value

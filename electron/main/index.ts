@@ -87,9 +87,10 @@ async function createWindow() {
     return { action: 'deny' }
   })
   // win.webContents.on('will-navigate', (event, url) => { }) #344
+  const appState = store.get('appState')
 
   setTimeout(() => {
-    win?.webContents.send('read-settings', store.get('appState'))
+    win?.webContents.send('read-settings', appState)
   }, 2000)
 
   setTimeout(() => {
