@@ -1,8 +1,8 @@
 export interface AppStateInterface {
   sidePanelOpen: boolean
   loading: boolean
-  airplaneCentered: boolean,
-  geonamesUsername: string,
+  airplaneCentered: boolean
+  geonamesUsername: string
 }
 
 export interface SimStateInterface {

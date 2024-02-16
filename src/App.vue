@@ -22,7 +22,7 @@ const { geonamesUsername } = storeToRefs(appState)
 
 watch(geonamesUsername, () => {
   window.ipcRenderer.send('save-settings', {
-    'geonamesUsername': appState.geonamesUsername
+    geonamesUsername: appState.geonamesUsername
   })
 })
 

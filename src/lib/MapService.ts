@@ -6,8 +6,8 @@ import { Tile as TileLayer } from 'ol/layer.js'
 import OSM from 'ol/source/OSM.js'
 
 class MapService {
-  private map?: Map;
-  private view?: View;
+  private map?: Map
+  private view?: View
 
   /**
    * Initializes and returns a new OpenLayers Map object asynchronously.
@@ -17,20 +17,20 @@ class MapService {
    */
   async initMap(longitude: number, latitude: number): Promise<Map> {
     if (!document.getElementById('map')) {
-      throw new Error("Map container with id 'map' does not exist.");
+      throw new Error("Map container with id 'map' does not exist.")
     }
 
     this.view = new View({
       center: fromLonLat([longitude, latitude]),
       enableRotation: false,
       zoom: 12
-    });
+    })
 
     this.map = new Map({
       layers: [this.getOSMLayer()],
       target: 'map',
       view: this.view
-    });
+    })
 
     return new Promise<Map>((resolve) => {
       // Assuming a better way to determine map readiness
@@ -38,12 +38,11 @@ class MapService {
       if (this.map) {
         this.map.on('loadend', () => {
           if (this.map) {
-            resolve(this.map);
+            resolve(this.map)
           }
         })
       }
-
-    });
+    })
   }
 
   /**
@@ -53,16 +52,16 @@ class MapService {
    */
   updatePosition(longitude: number, latitude: number): void {
     if (!this.view) {
-      throw new Error("Map view is not initialized.");
+      throw new Error('Map view is not initialized.')
     }
-    this.view.setCenter(fromLonLat([longitude, latitude]));
+    this.view.setCenter(fromLonLat([longitude, latitude]))
   }
 
   private getOSMLayer() {
     return new TileLayer({
       source: new OSM()
-    });
+    })
   }
 }
 
-export default MapService;
+export default MapService
