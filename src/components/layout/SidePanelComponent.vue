@@ -1,7 +1,16 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useAppStateStore } from '../../stores/appState'
+import IconSaveComponent from '../icons/IconSaveComponent.vue'
+import ButtonComponent from '../gui/ButtonComponent.vue'
 
 const appState = useAppStateStore()
+
+const geonamesUsername = ref(appState.geonamesUsername)
+
+function saveUsername() {
+  appState.geonamesUsername = geonamesUsername.value
+}
 </script>
 
 <template>
@@ -14,7 +23,8 @@ const appState = useAppStateStore()
       <div class="sidebar__content">
         <h3 class="sidebar__subtitle">Geonames</h3>
         <label class="textinput__label" for="geonames">Enter your Geoname username:</label>
-        <input id="geonames" class="textinput" type="text" name="geonames" placeholder="enter your username" value="" />
+        <input v-model="geonamesUsername" ref="geonames" id="geonames" class="textinput" type="text" name="geonames" placeholder="enter your username" />
+        <ButtonComponent @click="saveUsername" title="Save geonames username" type="icon"><IconSaveComponent /></ButtonComponent>
       </div>
     </aside>
   </Transition>

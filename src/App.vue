@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onBeforeMount, onMounted, watch } from 'vue'
+import { storeToRefs } from 'pinia'
 import { FlightStateInterface } from './Interfaces'
 import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
@@ -16,6 +17,20 @@ const simState = useSimStateStore()
 const flightState = useFlightStateStore()
 
 const debug = false
+
+const { geonamesUsername } = storeToRefs(appState)
+
+watch(geonamesUsername, () => {
+  window.ipcRenderer.send('save-settings', {
+    'geonamesUsername': appState.geonamesUsername
+  })
+})
+
+onBeforeMount(() => {
+  window.ipcRenderer.on('read-settings', (response, data) => {
+    appState.geonamesUsername = data.geonamesUsername
+  })
+})
 
 onMounted(() => {
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {

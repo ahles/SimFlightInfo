@@ -6,7 +6,8 @@ export const useAppStateStore = defineStore({
   state: (): AppStateInterface => ({
     sidePanelOpen: false,
     loading: true,
-    airplaneCentered: true
+    airplaneCentered: true,
+    geonamesUsername: 'FortyParsley'
   }),
   actions: {
     sidePanelToggle() {

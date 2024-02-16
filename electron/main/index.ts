@@ -3,6 +3,9 @@ import { release } from 'node:os'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import simConnector from '../../src/simConnector'
+import Store  from 'electron-store'
+
+const store = new Store()
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -53,7 +56,7 @@ async function createWindow() {
       preload,
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
       // nodeIntegration: true,
-  
+
       // Consider using contextBridge.exposeInMainWorld
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
       // contextIsolation: false,
@@ -62,7 +65,7 @@ async function createWindow() {
     height: 1000,
     frame: false,
   }
-  
+
   win = new BrowserWindow(windowOptions)
 
   if (process.env.VITE_DEV_SERVER_URL) { // electron-vite-vue#298
@@ -84,6 +87,10 @@ async function createWindow() {
     return { action: 'deny' }
   })
   // win.webContents.on('will-navigate', (event, url) => { }) #344
+
+  setTimeout(() => {
+    win?.webContents.send('read-settings', store.get('appState'))
+  }, 2000)
 
   setTimeout(() => {
     simConnector.init(win)
@@ -133,4 +140,9 @@ ipcMain.on('window-maximize', () => {
 
 ipcMain.on('window-unmaximize', () => {
   win.unmaximize()
+})
+
+ipcMain.on('save-settings', (event, data) => {
+  // "C:\Users\phili\AppData\Roaming\SimFlightInfo\config.json"
+  store.set('appState', data);
 })
