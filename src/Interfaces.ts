@@ -17,6 +17,7 @@ export interface FlightStateInterface {
   altitude: number
   altitudeAboveGround: number
   heading: number
+  headingTrue: number
   degreesBank: number
   degreesPitch: number
   airSpeedTrue: number

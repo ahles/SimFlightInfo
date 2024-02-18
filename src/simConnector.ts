@@ -20,6 +20,7 @@ const simConnector = {
         win.webContents.send('simconnect-simstate-connected', true)
 
         // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Misc_Variables.htm#PLANE_LATITUDE
+        handle.addToDataDefinition(DEFINITION_1, 'PLANE HEADING DEGREES GYRO', 'degrees', SimConnectDataType.FLOAT64)
         handle.addToDataDefinition(DEFINITION_1, 'PLANE HEADING DEGREES TRUE', 'radians', SimConnectDataType.FLOAT64)
         handle.addToDataDefinition(DEFINITION_1, 'PLANE ALTITUDE', 'feet', SimConnectDataType.FLOAT64)
         handle.addToDataDefinition(DEFINITION_1, 'PLANE ALT ABOVE GROUND', 'feet', SimConnectDataType.FLOAT64)
@@ -38,7 +39,8 @@ const simConnector = {
             case REQUEST_1: {
               const receivedData: FlightStateInterface = {
                 // Read order is important!
-                heading: Number(radToDeg(recvSimObjectData.data.readFloat64()).toFixed(1)),
+                heading: Number(recvSimObjectData.data.readFloat64().toFixed(1)),
+                headingTrue: Number(radToDeg(recvSimObjectData.data.readFloat64()).toFixed(1)),
                 altitude: Number(recvSimObjectData.data.readFloat64().toFixed(0)),
                 altitudeAboveGround: Number(recvSimObjectData.data.readFloat64().toFixed(0)),
                 latitude: recvSimObjectData.data.readFloat64(),

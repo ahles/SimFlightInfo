@@ -10,7 +10,7 @@ const appState = useAppStateStore()
 const props = defineProps<{
   longitude: number
   latitude: number
-  heading: number
+  headingTrue: number
 }>()
 
 const mapService = new MapService()
@@ -30,7 +30,7 @@ watch(
 
 <template>
   <div id="map"></div>
-  <PlaneMarkerComponent :heading="heading" />
+  <PlaneMarkerComponent :headingTrue="headingTrue" />
 </template>
 
 <style>

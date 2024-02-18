@@ -58,6 +58,7 @@ onMounted(() => {
     flightState.altitude = data.altitude
     flightState.altitudeAboveGround = data.altitudeAboveGround
     flightState.heading = data.heading
+    flightState.headingTrue = data.headingTrue
     flightState.degreesBank = data.degreesBank
     flightState.degreesPitch = data.degreesPitch
     flightState.airSpeedTrue = data.airSpeedTrue
@@ -71,7 +72,7 @@ onMounted(() => {
   <LoadingBarComponent v-if="appState.loading" />
   <HeaderComponent />
   <main v-if="true" class="main">
-    <MapComponent :longitude="flightState.longitude" :latitude="flightState.latitude" :heading="flightState.heading" />
+    <MapComponent :longitude="flightState.longitude" :latitude="flightState.latitude" :headingTrue="flightState.headingTrue" />
     <InfoPanelComponent v-if="simState.active" />
   </main>
   <div v-else>
@@ -87,6 +88,7 @@ onMounted(() => {
     <p>altitude: {{ flightState.altitude }}&nbsp;ft</p>
     <p>altitudeAboveGround: {{ flightState.altitudeAboveGround }}&nbsp;ft</p>
     <p>heading: {{ flightState.heading }}°</p>
+    <p>headingTrue: {{ flightState.headingTrue }}°</p>
     <p>degreesBank: {{ flightState.degreesBank }}&nbsp;°</p>
     <p>degreesPitch: {{ flightState.degreesPitch }}&nbsp;°</p>
     <p>airSpeedTrue: {{ flightState.airSpeedTrue }}&nbsp;kts</p>

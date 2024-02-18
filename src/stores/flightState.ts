@@ -9,6 +9,7 @@ export const useFlightStateStore = defineStore({
     altitude: 0, // ft
     altitudeAboveGround: 0, // ft
     heading: 0, // degrees
+    headingTrue: 0, // degrees
     degreesBank: 0, // rad
     degreesPitch: 0, // rad
     airSpeedTrue: 0, // kts
