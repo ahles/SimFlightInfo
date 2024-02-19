@@ -60,7 +60,7 @@ const simConnector = {
         handle.on('event', function (recvEvent) {
           switch (recvEvent.clientEventId) {
             case EVENT_ID_PAUSE:
-              win.webContents.send('simconnect-active', recvEvent.data === 1 ? false : true)
+              win.webContents.send('simconnect-paused', recvEvent.data === 1 ? true : false)
               break
           }
         })

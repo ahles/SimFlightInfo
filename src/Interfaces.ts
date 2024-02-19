@@ -8,7 +8,7 @@ export interface AppStateInterface {
 export interface SimStateInterface {
   connected: boolean
   exception: any
-  active: boolean
+  paused: boolean
 }
 
 export interface FlightStateInterface {

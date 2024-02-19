@@ -36,10 +36,11 @@ function windowMaximize() {
   }
 }
 
+// TODO: couldn't this two computed be one watcher?
 const connectionStatusColor = computed(() => {
   if (simState.connected === false) {
     return 'connection-status__red'
-  } else if (simState.connected === true && simState.active === false) {
+  } else if (simState.connected === true && simState.paused === true) {
     return 'connection-status__yellow'
   } else {
     return 'connection-status__green'
@@ -48,10 +49,10 @@ const connectionStatusColor = computed(() => {
 const connectionStatusText = computed(() => {
   if (simState.connected === false) {
     return 'Sim not connected'
-  } else if (simState.connected === true && simState.active === false) {
+  } else if (simState.connected === true && simState.paused === true) {
     return 'Sim paused'
   } else {
-    return 'Sim active'
+    return 'Sim unpaused'
   }
 })
 </script>

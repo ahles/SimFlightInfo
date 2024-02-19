@@ -49,12 +49,12 @@ function intiSimconnectEvents() {
     simState.exception = exception
   })
 
-  window.ipcRenderer.on('simconnect-active', (event, active) => {
-    simState.active = active
+  window.ipcRenderer.on('simconnect-paused', (event, paused) => {
+    simState.paused = paused
   })
 
   window.ipcRenderer.on('simconnect-closed', () => {
-    simState.active = false
+    simState.paused = false
     simState.connected = false
   })
 
@@ -90,7 +90,7 @@ function intiSimconnectEvents() {
       <div v-if="debug" class="debug">
         <p>Sim connected: {{ simState.connected }}</p>
         <p>Sim exception: {{ simState.exception }}</p>
-        <p>Sim active: {{ simState.active }}</p>
+        <p>Sim paused: {{ simState.paused }}</p>
         <br />
         <p>latitude: {{ flightState.latitude }}°</p>
         <p>longitude: {{ flightState.longitude }}°</p>
