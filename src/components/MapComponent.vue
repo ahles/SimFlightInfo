@@ -30,7 +30,7 @@ watch(
 
 <template>
   <div id="map"></div>
-  <PlaneMarkerComponent :headingTrue="headingTrue" />
+  <PlaneMarkerComponent :heading-true="headingTrue" />
 </template>
 
 <style>
