@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import IconAirplaneComponent from '../icons/IconAirplaneComponent.vue'
 import IconCogComponent from '../icons/IconCogComponent.vue'
 import IconWindowMinimizeComponent from '../icons/IconWindowMinimizeComponent.vue'
@@ -7,11 +6,8 @@ import IconWindowMaximizeComponent from '../icons/IconWindowMaximizeComponent.vu
 import IconWindowCloseComponent from '../icons/IconWindowCloseComponent.vue'
 import ButtonComponent from '../gui/ButtonComponent.vue'
 import { useAppStateStore } from '../../stores/appState'
-import { useSimStateStore } from '../../stores/simState'
-import IconConnectionStatusComponent from '../icons/IconConnectionStatusComponent.vue'
 
 const appState = useAppStateStore()
-const simState = useSimStateStore()
 let maximized = false
 
 function toggleSidepanel() {
@@ -35,26 +31,6 @@ function windowMaximize() {
     window.ipcRenderer.send('window-unmaximize')
   }
 }
-
-// TODO: couldn't this two computed be one watcher?
-const connectionStatusColor = computed(() => {
-  if (simState.connected === false) {
-    return 'connection-status__red'
-  } else if (simState.connected === true && simState.paused === true) {
-    return 'connection-status__yellow'
-  } else {
-    return 'connection-status__green'
-  }
-})
-const connectionStatusText = computed(() => {
-  if (simState.connected === false) {
-    return 'Sim not connected'
-  } else if (simState.connected === true && simState.paused === true) {
-    return 'Sim paused'
-  } else {
-    return 'Sim unpaused'
-  }
-})
 </script>
 
 <template>
@@ -65,7 +41,6 @@ const connectionStatusText = computed(() => {
     </div>
     <div class="header__middle" />
     <div class="header__right">
-      <span :title="connectionStatusText"><IconConnectionStatusComponent class="connection-status" :class="connectionStatusColor" /></span>
       <ButtonComponent title="settings" type="icon" class="btn__window btn__window--space-right" @click="toggleSidepanel">
         <IconCogComponent />
       </ButtonComponent>
@@ -135,22 +110,5 @@ const connectionStatusText = computed(() => {
 
 .btn__window--space-right {
   margin-right: 2rem;
-}
-
-.connection-status {
-  width: 2rem;
-  height: 2rem;
-}
-
-.connection-status__red {
-  color: red;
-}
-
-.connection-status__yellow {
-  color: yellow;
-}
-
-.connection-status__green {
-  color: green;
 }
 </style>
