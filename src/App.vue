@@ -10,7 +10,7 @@ import SidePanelComponent from './components/layout/SidePanelComponent.vue'
 import LoadingBarComponent from './components/gui/LoadingBarComponent.vue'
 import MapComponent from './components/MapComponent.vue'
 import ConnectionInformationComponent from './components/ConnectionInformationComponent.vue'
-import InfoPanelComponent from './components/gui/InfoPanelComponent.vue'
+import InfoPanelComponent from './components/InfoPanelComponent.vue'
 
 const appState = useAppStateStore()
 const simState = useSimStateStore()

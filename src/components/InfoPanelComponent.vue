@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useFlightStateStore } from '../../stores/flightState'
+import { useFlightStateStore } from '../stores/flightState'
 const flightState = useFlightStateStore()
-import PitchComponent from './PitchComponent.vue'
-import BankComponent from './BankComponent.vue'
+import PitchComponent from './gui/PitchComponent.vue'
+import BankComponent from './gui/BankComponent.vue'
 </script>
 
 <template>
