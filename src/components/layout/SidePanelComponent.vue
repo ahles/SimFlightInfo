@@ -55,11 +55,6 @@ const appState = useAppStateStore()
   opacity: 30%;
 }
 
-.sidebar__row {
-  display: flex;
-  align-items: center;
-}
-
 .slide-enter-active {
   transition: transform 0.3s ease-out;
 }

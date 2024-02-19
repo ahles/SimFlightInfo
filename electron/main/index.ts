@@ -140,16 +140,13 @@ ipcMain.on('init-simconnector', () => {
   simConnector.init(win)
 })
 
-ipcMain.on('save-settings', (event, data) => {
+ipcMain.handle('save-settings', async (event, data) => {
   // "C:\Users\phili\AppData\Roaming\SimFlightInfo\config.json"
   store.set('appState', data);
+  return await store.get('appState')
 })
 
-ipcMain.on('request-settings', () => {
+ipcMain.handle('request-settings', async () => {
   // "C:\Users\phili\AppData\Roaming\SimFlightInfo\config.json"
-  const appState = store.get('appState')
-  setTimeout(() => {
-    console.log('appState', appState);
-    win.webContents.send('read-settings', appState)
-  }, 1000)
+  return await store.get('appState')
 })
