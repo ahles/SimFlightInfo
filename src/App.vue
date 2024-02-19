@@ -29,6 +29,11 @@ onBeforeMount(() => {
     appState.geonamesUsername = response.geonamesUsername
     intiSimconnectEvents()
   })
+
+  // addEventListener("resize", () => {
+  //   console.log('Window height:', window.innerHeight);
+  //   console.log('Window width:', window.innerWidth);
+  // });
 })
 
 function intiSimconnectEvents() {
@@ -104,7 +109,7 @@ function intiSimconnectEvents() {
   </Transition>
 </template>
 
-<style>
+<style scoped>
 .debug {
   position: absolute;
   left: 0;
@@ -120,27 +125,17 @@ function intiSimconnectEvents() {
   }
 }
 
-#app {
+.container {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   position: relative;
-}
-
-.container {
-  width: 100%;
-  height: 100%;
 }
 
 .main {
-  height: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: calc(100% - var(--header-height));
   position: relative;
-  margin-top: var(--header-height)
+  margin-top: var(--header-height);
 }
 </style>
