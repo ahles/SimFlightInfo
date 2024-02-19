@@ -7,7 +7,7 @@ export const useAppStateStore = defineStore({
     sidePanelOpen: false,
     loading: true,
     airplaneCentered: true,
-    geonamesUsername: 'FortyParsley'
+    geonamesUsername: ''
   }),
   actions: {
     sidePanelToggle() {
