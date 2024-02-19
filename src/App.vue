@@ -71,7 +71,7 @@ function intiSimconnectEvents() {
 
 <template>
   <Transition name="fade">
-    <div v-if="settingsLoaded">
+    <div v-if="settingsLoaded" class="container">
       <LoadingBarComponent v-if="appState.loading" />
       <HeaderComponent />
       <main v-if="simState.connected" class="main">
@@ -127,6 +127,11 @@ function intiSimconnectEvents() {
   flex-direction: column;
   overflow: hidden;
   position: relative;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
 }
 
 .main {
