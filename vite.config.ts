@@ -4,14 +4,17 @@ import vue from '@vitejs/plugin-vue'
 import electron from 'vite-plugin-electron/simple'
 import pkg from './package.json'
 import { URL} from "node:url";
+import { readFile } from 'fs/promises';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(async ({ command }) => {
   fs.rmSync('dist-electron', { recursive: true, force: true })
 
   const isServe = command === 'serve'
   const isBuild = command === 'build'
   const sourcemap = isServe || !!process.env.VSCODE_DEBUG
+
+  const indexDevTools = await getIndexDevTools()
 
   return {
     plugins: [
@@ -62,6 +65,13 @@ export default defineConfig(({ command }) => {
         // See 👉 https://github.com/electron-vite/vite-plugin-electron-renderer
         renderer: {},
       }),
+      {
+        name: 'index-html-build-replacement',
+        apply: 'serve',
+        transformIndexHtml() {
+          return indexDevTools
+        },
+      },
     ],
     server: process.env.VSCODE_DEBUG && (() => {
       const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
@@ -73,3 +83,13 @@ export default defineConfig(({ command }) => {
     clearScreen: false,
   }
 })
+
+async function getIndexDevTools() {
+  try {
+    const data = await readFile('./index_devtools.html', 'utf8');
+    return data;
+  } catch (err) {
+    console.error('Error reading file:', err);
+    throw err;
+  }
+}
