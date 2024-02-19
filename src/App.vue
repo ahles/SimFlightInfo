@@ -114,7 +114,7 @@ function intiSimconnectEvents() {
   position: absolute;
   left: 0;
   bottom: 0;
-  z-index: 10;
+  z-index: 99;
   font-size: 1rem;
   padding: 1rem;
   background-color: rgba(0, 0, 0, 0.75);

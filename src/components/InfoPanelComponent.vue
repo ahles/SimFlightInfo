@@ -43,7 +43,7 @@ import BankComponent from './gui/BankComponent.vue'
 <style scoped>
 .info-panel {
   position: absolute;
-  z-index: 20;
+  z-index: 10;
   left: 50%;
   bottom: 3rem;
   transform: translateX(-50%);

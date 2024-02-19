@@ -13,7 +13,7 @@ const appState = useAppStateStore()
 <style scoped>
 .geonames-panel {
   position: absolute;
-  z-index: 20;
+  z-index: 10;
   top: 2rem;
   left: 2rem;
   background-color: var(--color-panels);

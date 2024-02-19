@@ -24,7 +24,7 @@ const appState = useAppStateStore()
 .sidebar {
   position: fixed;
   right: 0;
-  z-index: 10;
+  z-index: 20;
   width: var(--sidepanel-width);
   min-height: 100vh;
   top: 0;
