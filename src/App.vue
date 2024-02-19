@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, onMounted, watch } from 'vue'
-import { storeToRefs } from 'pinia'
+import { onBeforeMount, ref } from 'vue'
 import { FlightStateInterface } from './Interfaces'
 import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
@@ -11,6 +10,7 @@ import LoadingBarComponent from './components/gui/LoadingBarComponent.vue'
 import MapComponent from './components/MapComponent.vue'
 import ConnectionInformationComponent from './components/ConnectionInformationComponent.vue'
 import InfoPanelComponent from './components/InfoPanelComponent.vue'
+import GeonamesPanelComponent from './components/GeonamesPanelComponent.vue'
 
 const appState = useAppStateStore()
 const simState = useSimStateStore()
@@ -18,21 +18,19 @@ const flightState = useFlightStateStore()
 
 const debug = false
 
-const { geonamesUsername } = storeToRefs(appState)
-
-watch(geonamesUsername, () => {
-  window.ipcRenderer.send('save-settings', {
-    geonamesUsername: appState.geonamesUsername
-  })
-})
+const settingsLoaded = ref(false)
 
 onBeforeMount(() => {
   window.ipcRenderer.on('read-settings', (response, data) => {
+    settingsLoaded.value = true
     appState.geonamesUsername = data.geonamesUsername
+    console.log('App.onBeforeMount() app Settings loaded from filesystem', data);
+    intiSimconnectEvents()
   })
 })
 
-onMounted(() => {
+function intiSimconnectEvents() {
+  console.log('App.intiSimconnectEvents()');
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
     appState.loading = false
     simState.connected = connected
@@ -65,37 +63,40 @@ onMounted(() => {
     flightState.airSpeedIndicated = data.airSpeedIndicated
     flightState.verticalSpeed = data.verticalSpeed
   })
-})
+}
 </script>
 
 <template>
-  <LoadingBarComponent v-if="appState.loading" />
-  <HeaderComponent />
-  <main v-if="true" class="main">
-    <MapComponent :longitude="flightState.longitude" :latitude="flightState.latitude" :headingTrue="flightState.headingTrue" />
-    <InfoPanelComponent v-if="simState.active" />
-  </main>
-  <div v-else>
-    <ConnectionInformationComponent />
+  <div v-if="settingsLoaded">
+    <LoadingBarComponent v-if="appState.loading" />
+    <HeaderComponent />
+    <main v-if="simState.connected" class="main">
+      <MapComponent :longitude="flightState.longitude" :latitude="flightState.latitude" :headingTrue="flightState.headingTrue" />
+      <InfoPanelComponent />
+      <GeonamesPanelComponent />
+    </main>
+    <div v-else>
+      <ConnectionInformationComponent />
+    </div>
+    <div v-if="debug" class="debug">
+      <p>Sim connected: {{ simState.connected }}</p>
+      <p>Sim exception: {{ simState.exception }}</p>
+      <p>Sim active: {{ simState.active }}</p>
+      <br />
+      <p>latitude: {{ flightState.latitude }}°</p>
+      <p>longitude: {{ flightState.longitude }}°</p>
+      <p>altitude: {{ flightState.altitude }}&nbsp;ft</p>
+      <p>altitudeAboveGround: {{ flightState.altitudeAboveGround }}&nbsp;ft</p>
+      <p>heading: {{ flightState.heading }}°</p>
+      <p>headingTrue: {{ flightState.headingTrue }}°</p>
+      <p>degreesBank: {{ flightState.degreesBank }}&nbsp;°</p>
+      <p>degreesPitch: {{ flightState.degreesPitch }}&nbsp;°</p>
+      <p>airSpeedTrue: {{ flightState.airSpeedTrue }}&nbsp;kts</p>
+      <p>airSpeedIndicated: {{ flightState.airSpeedIndicated }}&nbsp;kts</p>
+      <p>verticalSpeed: {{ flightState.verticalSpeed }}&nbsp;ft/min</p>
+    </div>
+    <SidePanelComponent />
   </div>
-  <div v-if="debug" class="debug">
-    <p>Sim connected: {{ simState.connected }}</p>
-    <p>Sim exception: {{ simState.exception }}</p>
-    <p>Sim active: {{ simState.active }}</p>
-    <br />
-    <p>latitude: {{ flightState.latitude }}°</p>
-    <p>longitude: {{ flightState.longitude }}°</p>
-    <p>altitude: {{ flightState.altitude }}&nbsp;ft</p>
-    <p>altitudeAboveGround: {{ flightState.altitudeAboveGround }}&nbsp;ft</p>
-    <p>heading: {{ flightState.heading }}°</p>
-    <p>headingTrue: {{ flightState.headingTrue }}°</p>
-    <p>degreesBank: {{ flightState.degreesBank }}&nbsp;°</p>
-    <p>degreesPitch: {{ flightState.degreesPitch }}&nbsp;°</p>
-    <p>airSpeedTrue: {{ flightState.airSpeedTrue }}&nbsp;kts</p>
-    <p>airSpeedIndicated: {{ flightState.airSpeedIndicated }}&nbsp;kts</p>
-    <p>verticalSpeed: {{ flightState.verticalSpeed }}&nbsp;ft/min</p>
-  </div>
-  <SidePanelComponent />
 </template>
 
 <style>
@@ -129,5 +130,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  margin-top: var(--header-height)
 }
 </style>

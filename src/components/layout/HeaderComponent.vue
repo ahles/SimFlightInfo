@@ -88,6 +88,11 @@ const connectionStatusText = computed(() => {
   height: var(--header-height);
   padding: 0 0.5rem;
   border-bottom: 1px solid black;
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;

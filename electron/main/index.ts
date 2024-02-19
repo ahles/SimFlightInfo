@@ -61,8 +61,8 @@ async function createWindow() {
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
       // contextIsolation: false,
     },
-    width: 1000,
-    height: 1000,
+    width: 1600,
+    height: 1600,
     frame: false,
   }
 
@@ -87,18 +87,17 @@ async function createWindow() {
     return { action: 'deny' }
   })
   // win.webContents.on('will-navigate', (event, url) => { }) #344
-  const appState = store.get('appState')
-
-  setTimeout(() => {
-    win?.webContents.send('read-settings', appState)
-  }, 2000)
-
-  setTimeout(() => {
-    simConnector.init(win)
-  }, 3000)
 }
 
-app.whenReady().then(createWindow)
+app.whenReady().then(() => {
+  createWindow()
+
+  const appState = store.get('appState')
+  setTimeout(() => {
+    win?.webContents.send('read-settings', appState)
+    simConnector.init(win)
+  }, 3000)
+})
 
 app.on('window-all-closed', () => {
   win = null

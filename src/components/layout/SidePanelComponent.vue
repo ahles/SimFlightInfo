@@ -1,15 +1,21 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
+import { ref, onMounted } from 'vue'
 import { useAppStateStore } from '../../stores/appState'
 import IconSaveComponent from '../icons/IconSaveComponent.vue'
 import ButtonComponent from '../gui/ButtonComponent.vue'
 
 const appState = useAppStateStore()
+const localGeonamesUsername = ref('')
 
-const { geonamesUsername } = storeToRefs(appState)
+onMounted(() => {
+  localGeonamesUsername.value = appState.geonamesUsername
+})
 
 function saveUsername() {
-  appState.geonamesUsername = geonamesUsername.value
+  // appState.geonamesUsername = localGeonamesUsername.value
+  window.ipcRenderer.send('save-settings', {
+    geonamesUsername: localGeonamesUsername.value
+  })
 }
 </script>
 
@@ -22,9 +28,11 @@ function saveUsername() {
       <hr class="sidebar__divider" />
       <div class="sidebar__content">
         <h3 class="sidebar__subtitle">Geonames</h3>
-        <label class="textinput__label" for="geonames">Enter your Geoname username:</label>
-        <input id="geonames" ref="geonames" v-model="geonamesUsername" class="textinput" type="text" name="geonames" placeholder="enter your username" />
-        <ButtonComponent title="Save geonames username" type="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
+        <div class="sidebar__row">
+          <label class="textinput__label" for="geonames">Enter your Geoname username:</label>
+          <input id="geonames" ref="geonames" v-model="localGeonamesUsername" class="textinput" type="text" name="geonames" placeholder="enter your username" />
+          <ButtonComponent title="Save geonames username" type="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
+        </div>
       </div>
     </aside>
   </Transition>
@@ -36,8 +44,9 @@ function saveUsername() {
   right: 0;
   z-index: 10;
   width: var(--sidepanel-width);
-  min-height: calc(100vh - var(--header-height));
-  top: calc(var(--header-height) + 1px);
+  min-height: 100vh;
+  top: 0;
+  padding-top: calc(var(--header-height) + 1rem);
 
   background-color: var(--color-panels);
   box-shadow:
@@ -64,6 +73,11 @@ function saveUsername() {
   opacity: 30%;
 }
 
+.sidebar__row {
+  display: flex;
+  align-items: center;
+}
+
 .textinput {
   width: 100%;
   color: var(--color-text);
@@ -74,6 +88,7 @@ function saveUsername() {
   font-size: 1.2rem;
   outline: none;
   font-weight: 300;
+   margin-right: 1rem;
 }
 
 .textinput:focus {
