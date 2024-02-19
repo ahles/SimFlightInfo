@@ -24,6 +24,8 @@ const debug = false
 const settingsLoaded = ref(false)
 
 onBeforeMount(() => {
+  window.ipcRenderer.send('request-settings')
+
   window.ipcRenderer.on('read-settings', (response, data) => {
     settingsLoaded.value = true
     appState.geonamesUsername = data.geonamesUsername
@@ -33,6 +35,7 @@ onBeforeMount(() => {
 })
 
 function intiSimconnectEvents() {
+  window.ipcRenderer.send('init-simconnector')
   // console.log('App.intiSimconnectEvents()');
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
     appState.loading = false

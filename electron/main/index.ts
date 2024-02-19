@@ -91,12 +91,6 @@ async function createWindow() {
 
 app.whenReady().then(() => {
   createWindow()
-
-  const appState = store.get('appState')
-  setTimeout(() => {
-    win?.webContents.send('read-settings', appState)
-    simConnector.init(win)
-  }, 3000)
 })
 
 app.on('window-all-closed', () => {
@@ -142,7 +136,20 @@ ipcMain.on('window-unmaximize', () => {
   win.unmaximize()
 })
 
+ipcMain.on('init-simconnector', () => {
+  simConnector.init(win)
+})
+
 ipcMain.on('save-settings', (event, data) => {
   // "C:\Users\phili\AppData\Roaming\SimFlightInfo\config.json"
   store.set('appState', data);
+})
+
+ipcMain.on('request-settings', () => {
+  // "C:\Users\phili\AppData\Roaming\SimFlightInfo\config.json"
+  const appState = store.get('appState')
+  setTimeout(() => {
+    console.log('appState', appState);
+    win.webContents.send('read-settings', appState)
+  }, 1000)
 })

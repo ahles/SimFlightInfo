@@ -12,7 +12,6 @@ onMounted(() => {
 })
 
 function saveUsername() {
-  // appState.geonamesUsername = localGeonamesUsername.value
   window.ipcRenderer.send('save-settings', {
     geonamesUsername: localGeonamesUsername.value
   })
