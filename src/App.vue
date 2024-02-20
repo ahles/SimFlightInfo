@@ -26,7 +26,9 @@ const settingsLoaded = ref(false)
 onBeforeMount(() => {
   window.ipcRenderer.invoke('request-settings').then((response) => {
     settingsLoaded.value = true
-    appState.geonamesUsername = response.geonamesUsername
+    if (response !== undefined) {
+      appState.geonamesUsername = response.geonamesUsername
+    }
     intiSimconnectEvents()
   })
 
