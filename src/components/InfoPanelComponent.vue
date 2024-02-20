@@ -49,6 +49,7 @@ import BankComponent from './gui/BankComponent.vue'
   transform: translateX(-50%);
   background-color: var(--color-panels);
   border-radius: 3px;
+  /* TODO: grid! */
   display: flex;
   padding: 1rem;
   box-shadow:
