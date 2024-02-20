@@ -51,25 +51,42 @@ import BankComponent from './gui/BankComponent.vue'
   border-radius: 3px;
   display: flex;
   padding: 1rem;
+  box-shadow:
+    0 0.1rem 0.3rem rgba(0, 0, 0, 0.24),
+    0 0.1rem 0.2rem rgba(0, 0, 0, 0.48);
 }
 
 .info-panel__col {
-  text-align: right;
-  width: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 8.5rem;
   padding: 0 1rem;
+  border-right: 1px solid var(--color-background);
+}
+
+.info-panel__col:first-of-type {
+  padding-left: 0;
+  width: 7rem;
+}
+
+.info-panel__col:last-of-type {
+  padding: 0;
 }
 
 .info-panel__col--nowidth {
+  border-right: none;
   width: auto;
 }
 
 .info-panel__value {
-  font-size: 2rem;
+  font-size: 1.6rem;
   color: var(--color-text-highlight);
 }
 
 .info-panel__name {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--color-text);
 }

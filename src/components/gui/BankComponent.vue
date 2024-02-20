@@ -21,8 +21,8 @@ defineProps<{
 <style scoped>
 .bank {
   position: relative;
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 100%;
   border: 1px solid #fff;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.25));
