@@ -27,7 +27,7 @@ function retry() {
         <div class="connection-information__text">
           {{ simState.exception }}
         </div>
-        <ButtonComponent class="connection-information__retry" title="retry" type="icon" @click="retry">
+        <ButtonComponent class="connection-information__retry" title="retry" variant="icon" @click="retry">
           <IconReloadComponent />
         </ButtonComponent>
       </div>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 defineProps<{
   title: string
-  type: 'text' | 'icon'
+  variant: 'text' | 'icon'
 }>()
 </script>
 
 <template>
-  <button :title="title" type="button" class="btn" :class="`btn__${type}`">
+  <button :title="title" type="button" class="btn" :class="`btn__${variant}`">
     <slot></slot>
   </button>
 </template>

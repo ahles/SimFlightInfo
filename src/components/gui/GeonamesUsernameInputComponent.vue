@@ -36,7 +36,7 @@ watch(saveSuccess, (newValue) => {
     <div class="geonames-username-input" :class="{ success: saveSuccess }">
       <label class="geonames-username-input__label" for="geonames">Enter your Geoname username:</label>
       <input id="geonames" v-model="localGeonamesUsername" class="geonames-username-input__input" type="text" name="geonames" placeholder="enter your username" @keyup.enter="saveUsername" />
-      <ButtonComponent class="geonames-username-input__button" title="Save geonames username" type="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
+      <ButtonComponent class="geonames-username-input__button" title="Save geonames username" variant="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
     </div>
 </template>
 
