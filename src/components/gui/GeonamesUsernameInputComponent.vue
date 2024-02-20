@@ -24,10 +24,8 @@ function saveUsername() {
 
 watch(saveSuccess, (newValue) => {
   if (newValue) {
-    console.log('saveSuccess')
     setTimeout(() => {
       saveSuccess.value = false
-      console.log('reset saveSuccess')
     }, 1000)
   }
 })
