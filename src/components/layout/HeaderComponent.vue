@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import IconAirplaneComponent from '../icons/IconAirplaneComponent.vue'
 import IconCogComponent from '../icons/IconCogComponent.vue'
 import IconWindowMinimizeComponent from '../icons/IconWindowMinimizeComponent.vue'
 import IconWindowMaximizeComponent from '../icons/IconWindowMaximizeComponent.vue'
@@ -36,7 +35,7 @@ function windowMaximize() {
 <template>
   <header class="header">
     <div class="header__left">
-      <IconAirplaneComponent class="logo" />
+      <img class="logo" src="../../assets/icon.png" width="512" height="512" alt="app icon airplane">
       <h1 class="title">SimFlightInfo</h1>
     </div>
     <div class="header__middle" />
@@ -112,7 +111,7 @@ function windowMaximize() {
   border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: border-color .1s ease-in;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 }
 
 .btn__window--gui:hover {
