@@ -82,6 +82,7 @@ function intiSimconnectEvents() {
       <LoadingBarComponent v-if="appState.loading" />
       <HeaderComponent />
       <main v-if="simState.connected" class="main">
+      <!-- <main v-if="true" class="main"> -->
         <MapComponent :longitude="flightState.longitude" :latitude="flightState.latitude" :heading-true="flightState.headingTrue" />
         <InfoPanelComponent />
         <GeonamesPanelComponent />
