@@ -7,6 +7,7 @@ import ButtonComponent from '../gui/ButtonComponent.vue'
 const appState = useAppStateStore()
 const localGeonamesUsername = ref('')
 const saveSuccess = ref(false)
+const saveError = ref(false)
 
 onMounted(() => {
   localGeonamesUsername.value = appState.geonamesUsername
@@ -19,6 +20,9 @@ function saveUsername() {
     localGeonamesUsername.value = result.geonamesUsername
     appState.geonamesUsername = result.geonamesUsername
     saveSuccess.value = true
+  }).catch((error) => {
+    alert(error)
+    saveError.value = true
   })
 }
 
@@ -30,10 +34,18 @@ watch(saveSuccess, (newValue) => {
   }
 })
 
+watch(saveError, (newValue) => {
+  if (newValue) {
+    setTimeout(() => {
+      saveError.value = false
+    }, 1000)
+  }
+})
+
 </script>
 
 <template>
-    <div class="geonames-username-input" :class="{ success: saveSuccess }">
+    <div class="geonames-username-input" :class="{ success: saveSuccess, error: saveError }">
       <label class="geonames-username-input__label" for="geonames">Enter your Geoname username:</label>
       <input id="geonames" v-model="localGeonamesUsername" class="geonames-username-input__input" type="text" name="geonames" placeholder="enter your username" @keyup.enter="saveUsername" />
       <ButtonComponent class="geonames-username-input__button" title="Save geonames username" variant="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
@@ -49,6 +61,11 @@ watch(saveSuccess, (newValue) => {
 
   &.success {
     color: var(--color-success);
+    transition: color .1s ease-in;
+  }
+
+  &.error {
+    color: var(--color-error);
     transition: color .1s ease-in;
   }
 }
