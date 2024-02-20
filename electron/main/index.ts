@@ -4,8 +4,6 @@ import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import simConnector from '../../src/simConnector'
 import Store  from 'electron-store'
-import path from 'path'
-import { format as urlFormat } from 'url'
 
 const store = new Store()
 
@@ -51,14 +49,9 @@ const url = process.env.VITE_DEV_SERVER_URL
 const indexHtml = join(process.env.DIST, 'index.html')
 
 async function createWindow() {
-  const iconUrl = urlFormat({
-    pathname: path.join(__dirname + '../../../public/images/icon.png')
-  })
-  
   const windowOptions = {
     title: 'SimFlightInfo',
-    // icon: join(process.env.VITE_PUBLIC, 'favicon.ico'),
-    icon: iconUrl,
+    icon: join(process.env.VITE_PUBLIC, 'images/icon.png'), // TODO: create favicon.ico
     webPreferences: {
       preload,
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
