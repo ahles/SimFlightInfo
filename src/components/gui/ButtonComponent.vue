@@ -1,12 +1,12 @@
 <script setup lang="ts">
 defineProps<{
   title: string
-  variant: 'text' | 'icon'
+  variant: 'text' | 'icon' | 'gui'
 }>()
 </script>
 
 <template>
-  <button :title="title" type="button" class="btn" :class="`btn__${variant}`">
+  <button :title="title" type="button" class="btn" :class="`btn--${variant}`">
     <slot></slot>
   </button>
 </template>
@@ -20,25 +20,25 @@ defineProps<{
   cursor: pointer;
 }
 
-.btn__icon {
+.btn--icon {
   width: 2rem;
   height: 2rem;
   color: var(--color-text);
 }
 
-.btn__icon:hover {
+.btn--icon:hover {
   color: var(--color-text-highlight);
   transition: color 0.2s ease-in;
 }
 
-.btn__text {
+.btn--text {
   color: var(--color-text-highlight);
   background-color: var(--color-accent-1);
   padding: 0.5rem 1rem;
   border-radius: 3px;
 }
 
-.btn__text:hover {
+.btn--text:hover {
   color: var(--color-accent-1);
   background-color: var(--color-text-highlight);
   transition: all 0.2s ease-in;

@@ -44,13 +44,13 @@ function windowMaximize() {
       <ButtonComponent title="settings" variant="icon" class="btn__window btn__window--space-right" @click="toggleSidepanel">
         <IconCogComponent />
       </ButtonComponent>
-      <ButtonComponent title="mimimize" variant="icon" class="btn__window" @click="windowMinimize">
+      <ButtonComponent title="mimimize" variant="icon" class="btn__window btn__window--gui  btn__window--minimize" @click="windowMinimize">
         <IconWindowMinimizeComponent />
       </ButtonComponent>
-      <ButtonComponent title="maximize" variant="icon" class="btn__window" @click="windowMaximize">
+      <ButtonComponent title="maximize" variant="icon" class="btn__window btn__window--gui" @click="windowMaximize">
         <IconWindowMaximizeComponent />
       </ButtonComponent>
-      <ButtonComponent title="close" variant="icon" class="btn__window" @click="windowClose">
+      <ButtonComponent title="close" variant="icon" class="btn__window btn__window--gui" @click="windowClose">
         <IconWindowCloseComponent />
       </ButtonComponent>
     </div>
@@ -106,6 +106,23 @@ function windowMaximize() {
 
 .btn__window {
   margin-left: 0.5rem;
+}
+
+.btn__window--gui {
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: border-color .1s ease-in;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px
+}
+
+.btn__window--gui:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  transition: border-color .1s ease-in;
+}
+
+.btn__window--minimize {
+
+  padding-top: 0.5rem;
 }
 
 .btn__window--space-right {
