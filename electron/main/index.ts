@@ -57,6 +57,7 @@ async function createWindow() {
   
   const windowOptions = {
     title: 'SimFlightInfo',
+    // icon: join(process.env.VITE_PUBLIC, 'favicon.ico'),
     icon: iconUrl,
     webPreferences: {
       preload,
