@@ -29,6 +29,11 @@ onBeforeMount(() => {
     if (response !== undefined) {
       appState.geonamesUsername = response.geonamesUsername
     }
+
+    /**
+     * TODO: create composable for simconnect events and use one channel.
+     * Use event payload to differentiate the events
+     */
     intiSimconnectEvents()
   })
 
