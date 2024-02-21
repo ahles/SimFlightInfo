@@ -14,16 +14,19 @@ onMounted(() => {
 })
 
 function saveUsername() {
-  window.ipcRenderer.invoke('save-settings', {
-    geonamesUsername: localGeonamesUsername.value
-  }).then((result) => {
-    localGeonamesUsername.value = result.geonamesUsername
-    appState.geonamesUsername = result.geonamesUsername
-    saveSuccess.value = true
-  }).catch((error) => {
-    alert(error)
-    saveError.value = true
-  })
+  window.ipcRenderer
+    .invoke('save-settings', {
+      geonamesUsername: localGeonamesUsername.value
+    })
+    .then((result) => {
+      localGeonamesUsername.value = result.geonamesUsername
+      appState.geonamesUsername = result.geonamesUsername
+      saveSuccess.value = true
+    })
+    .catch((error) => {
+      alert(error)
+      saveError.value = true
+    })
 }
 
 watch(saveSuccess, (newValue) => {
@@ -41,15 +44,14 @@ watch(saveError, (newValue) => {
     }, 1000)
   }
 })
-
 </script>
 
 <template>
-    <div class="geonames-username-input" :class="{ success: saveSuccess, error: saveError }">
-      <label class="geonames-username-input__label" for="geonames">Enter your Geoname username:</label>
-      <input id="geonames" v-model="localGeonamesUsername" class="geonames-username-input__input" type="text" name="geonames" placeholder="enter your username" @keyup.enter="saveUsername" />
-      <ButtonComponent class="geonames-username-input__button" title="Save geonames username" variant="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
-    </div>
+  <div class="geonames-username-input" :class="{ success: saveSuccess, error: saveError }">
+    <label class="geonames-username-input__label" for="geonames">Enter your Geoname username:</label>
+    <input id="geonames" v-model="localGeonamesUsername" class="geonames-username-input__input" type="text" name="geonames" placeholder="enter your username" @keyup.enter="saveUsername" />
+    <ButtonComponent class="geonames-username-input__button" title="Save geonames username" variant="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
+  </div>
 </template>
 
 <style scoped>
@@ -57,16 +59,16 @@ watch(saveError, (newValue) => {
   display: flex;
   align-items: center;
   color: var(--color-text);
-  transition: color .1s ease-in;
+  transition: color 0.1s ease-in;
 
   &.success {
     color: var(--color-success);
-    transition: color .1s ease-in;
+    transition: color 0.1s ease-in;
   }
 
   &.error {
     color: var(--color-error);
-    transition: color .1s ease-in;
+    transition: color 0.1s ease-in;
   }
 }
 

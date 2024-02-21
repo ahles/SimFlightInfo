@@ -94,7 +94,7 @@ function intiSimconnectEvents() {
 
 /**
  * Checks if the flight is approximately at the geographic coordinates (0,0).
- * 
+ *
  * This function determines whether the given flight's latitude and longitude
  * are within a specified threshold of zero. It's useful for identifying if the
  * flight is near the "null island" point, which is a common default for undefined
@@ -106,8 +106,8 @@ function intiSimconnectEvents() {
  * otherwise returns `false`.
  */
 function flightIsOnNullIsland(data: FlightStateInterface): boolean {
-  const threshold = 0.05;
-  return Math.abs(data.latitude) < threshold && Math.abs(data.longitude) < threshold;
+  const threshold = 0.05
+  return Math.abs(data.latitude) < threshold && Math.abs(data.longitude) < threshold
 }
 </script>
 
@@ -117,7 +117,7 @@ function flightIsOnNullIsland(data: FlightStateInterface): boolean {
       <LoadingBarComponent v-if="appState.loading" />
       <HeaderComponent />
       <main v-if="simState.connected" class="main">
-      <!-- <main v-if="true" class="main"> -->
+        <!-- <main v-if="true" class="main"> -->
         <MapComponent :longitude="flightState.longitude" :latitude="flightState.latitude" :heading-true="flightState.headingTrue" />
         <InfoPanelComponent />
         <GeonamesPanelComponent />
