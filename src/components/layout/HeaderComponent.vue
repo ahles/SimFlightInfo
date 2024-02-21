@@ -59,7 +59,7 @@ function windowMaximize() {
 <style scoped>
 .header {
   color: var(--color-text);
-  background-color: var(--color-panels);
+  background-color: var(--color-background);
   height: var(--header-height);
   padding: 0 0.5rem;
   border-bottom: 1px solid black;

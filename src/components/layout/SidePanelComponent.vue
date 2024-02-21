@@ -31,9 +31,7 @@ const appState = useAppStateStore()
   padding-top: calc(var(--header-height) + 1rem);
 
   background-color: var(--color-panels);
-  box-shadow:
-    0 0.1rem 0.3rem rgba(0, 0, 0, 0.24),
-    0 0.1rem 0.2rem rgba(0, 0, 0, 0.48);
+  box-shadow: -0.2rem 0px 0.2rem 0.02rem var(--color-background);
 }
 
 .sidebar__title {
