@@ -61,18 +61,40 @@ function intiSimconnectEvents() {
   })
 
   window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightStateInterface) => {
-    flightState.latitude = data.latitude
-    flightState.longitude = data.longitude
-    flightState.altitude = data.altitude
-    flightState.altitudeAboveGround = data.altitudeAboveGround
-    flightState.heading = data.heading
-    flightState.headingTrue = data.headingTrue
-    flightState.degreesBank = data.degreesBank
-    flightState.degreesPitch = data.degreesPitch
-    flightState.airSpeedTrue = data.airSpeedTrue
-    flightState.airSpeedIndicated = data.airSpeedIndicated
-    flightState.verticalSpeed = data.verticalSpeed
+    if (flightIsOnNullIsland(data)) {
+      flightState.$reset()
+    } else {
+      flightState.latitude = data.latitude
+      flightState.longitude = data.longitude
+      flightState.altitude = data.altitude
+      flightState.altitudeAboveGround = data.altitudeAboveGround
+      flightState.heading = data.heading
+      flightState.headingTrue = data.headingTrue
+      flightState.degreesBank = data.degreesBank
+      flightState.degreesPitch = data.degreesPitch
+      flightState.airSpeedTrue = data.airSpeedTrue
+      flightState.airSpeedIndicated = data.airSpeedIndicated
+      flightState.verticalSpeed = data.verticalSpeed
+    }
   })
+}
+
+/**
+ * Checks if the flight is approximately at the geographic coordinates (0,0).
+ * 
+ * This function determines whether the given flight's latitude and longitude
+ * are within a specified threshold of zero. It's useful for identifying if the
+ * flight is near the "null island" point, which is a common default for undefined
+ * geographic data.
+ *
+ * @param {FlightStateInterface} data - An object containing the flight's current state,
+ * including its latitude and longitude.
+ * @returns {boolean} - Returns `true` if the flight is within the threshold of (0,0),
+ * otherwise returns `false`.
+ */
+function flightIsOnNullIsland(data: FlightStateInterface): boolean {
+  const threshold = 0.05;
+  return Math.abs(data.latitude) < threshold && Math.abs(data.longitude) < threshold;
 }
 </script>
 
