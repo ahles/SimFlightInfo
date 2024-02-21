@@ -14,7 +14,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="geonames-panel">
+  <div v-if="appState.geonamesPanelVisible" class="geonames-panel">
       <h2 class="geonames-panel__title">Flying over</h2>
       <div v-if="appState.geonamesUsername !== ''" class="geonames-panel__content">
         

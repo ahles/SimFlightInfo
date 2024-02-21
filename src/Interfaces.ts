@@ -2,6 +2,7 @@ export interface AppStateInterface {
   sidePanelOpen: boolean
   loading: boolean
   airplaneCentered: boolean
+  geonamesPanelVisible: boolean
   geonamesUsername: string
 }
 
