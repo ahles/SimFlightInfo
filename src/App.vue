@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onBeforeMount, ref } from 'vue'
+import { ref, onBeforeMount, onUnmounted } from 'vue'
 import { FlightStateInterface } from './Interfaces'
 import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
@@ -36,6 +36,14 @@ onBeforeMount(() => {
   //   console.log('Window height:', window.innerHeight);
   //   console.log('Window width:', window.innerWidth);
   // });
+})
+
+onUnmounted(() => {
+  window.ipcRenderer.removeAllListeners('simconnect-simstate-connected')
+  window.ipcRenderer.removeAllListeners('simconnect-simstate-exception')
+  window.ipcRenderer.removeAllListeners('simconnect-paused')
+  window.ipcRenderer.removeAllListeners('simconnect-closed')
+  window.ipcRenderer.removeAllListeners('simconnect-flightdata')
 })
 
 function intiSimconnectEvents() {
