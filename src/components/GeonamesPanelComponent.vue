@@ -53,7 +53,7 @@ async function getGeonamesInformation() {
   <div v-if="appState.geonamesPanelVisible" class="geonames-panel">
     <div class="geonames-panel__header">
       <h2 class="geonames-panel__title">Flying over</h2>
-      <ButtonComponent class="geonames-panel__reload" title="reload" variant="icon" @click="getGeonamesInformation">
+      <ButtonComponent class="geonames-panel__reload" title="refresh" variant="icon" @click="getGeonamesInformation">
         <IconReloadComponent />
       </ButtonComponent>
     </div>
