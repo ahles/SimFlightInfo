@@ -6,8 +6,8 @@ import { FlightData } from './Interfaces'
  * @returns flight data
  */
 export function useSimConnectForeground() {
-  const latitude = ref(0)
-  const longitude = ref(0)
+  const latitude = ref(47.4)
+  const longitude = ref(8.5)
   const altitude = ref(0)
   const altitudeAboveGround = ref(0)
   const heading = ref(0)

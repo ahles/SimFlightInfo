@@ -25,3 +25,8 @@ export interface FlightData {
   airSpeedIndicated: number
   verticalSpeed: number
 }
+
+export interface CountryInterface {
+  code: string
+  name: string
+}

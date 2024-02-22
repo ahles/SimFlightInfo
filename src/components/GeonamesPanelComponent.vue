@@ -1,22 +1,60 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { CountryInterface } from '../Interfaces'
+import GeonamesAPI from '../GeonamesAPI';
 import { useAppStateStore } from '../stores/appState'
+import ButtonComponent from './gui/ButtonComponent.vue'
 import IconAlertComponent from './icons/IconAlertComponent.vue'
+import IconReloadComponent from './icons/IconReloadComponent.vue'
 
 const appState = useAppStateStore()
 
-defineProps<{
+const props = defineProps<{
   longitude: Number
   latitude: Number
 }>()
+
+const geonames = new GeonamesAPI(appState.geonamesUsername)
+const countryCode = ref('')
+const countryName = ref('')
+
+onMounted(async () => {
+  geonames.setCoordinate(props.longitude, props.latitude)
+  await getGeonamesInformation()
+})
+
+async function getGeonamesInformation() {
+  const country: CountryInterface|null = await geonames.getCountry()
+  console.log('country', country);
+  if (country !== null) {
+    countryCode.value = country.code
+    countryName.value = country.name
+  } else {
+    countryCode.value = ''
+    countryName.value = ''
+  }
+}
 
 </script>
 
 <template>
   <div v-if="appState.geonamesPanelVisible" class="geonames-panel">
-    <h2 class="geonames-panel__title">Flying over</h2>
+    <div class="geonames-panel__header">
+      <h2 class="geonames-panel__title">Flying over</h2>
+      <ButtonComponent class="geonames-panel__reload" title="reload" variant="icon" @click="getGeonamesInformation">
+        <IconReloadComponent />
+      </ButtonComponent>
+    </div>
     <div v-if="appState.geonamesUsername !== ''" class="geonames-panel__content">
       <p>Longitude: {{ longitude }}</p>
       <p>Latitude: {{ latitude }}</p>
+      <p>Country code: {{ countryCode }}</p>
+      <p>Country name: {{ countryName }}</p>
+      <img
+        v-if="countryCode !== ''"
+        :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`"
+        class="geonames-panel__flag"
+      >
     </div>
     <div v-else class="geonames-panel__error">
       <IconAlertComponent />
@@ -36,6 +74,11 @@ defineProps<{
   padding: 1rem;
 }
 
+.geonames-panel__header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .geonames-panel__title {
   font-size: 1.6rem;
   line-height: 1;
@@ -51,5 +94,9 @@ defineProps<{
     width: 1.2rem;
     margin-right: 0.4rem;
   }
+}
+
+.geonames-panel__flag {
+  height: 3rem;
 }
 </style>

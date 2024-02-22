@@ -96,8 +96,8 @@ function initSimconnectEvents() {
     <div v-if="settingsLoaded" class="container">
       <LoadingBarComponent v-if="appState.loading" />
       <HeaderComponent />
-      <main v-if="simState.connected" class="main">
-        <!-- <main v-if="true" class="main"> -->
+      <!-- <main v-if="simState.connected" class="main"> -->
+      <main v-if="true" class="main">
         <MapComponent
           :longitude="longitude"
           :latitude="latitude"
