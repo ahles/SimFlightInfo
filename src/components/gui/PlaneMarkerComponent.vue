@@ -19,5 +19,6 @@ defineProps<{
   left: 50%;
   z-index: 5;
   transform-origin: center center;
+  pointer-events: none;
 }
 </style>
