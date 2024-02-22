@@ -18,6 +18,7 @@ const geonames = new GeonamesAPI(appState.geonamesUsername)
 const geonamesValidResponse = ref(false)
 const countryCode = ref('')
 const countryName = ref('')
+const oceanName = ref('')
 
 onMounted(async () => {
   geonames.setCoordinate(props.longitude, props.latitude)
@@ -25,12 +26,18 @@ onMounted(async () => {
 })
 
 async function getGeonamesInformation() {
+  geonames.setCoordinate(props.longitude, props.latitude)
   const country: CountryInterface|null = await geonames.getCountry()
-  console.log('country', country);
   if (country !== null) {
     countryCode.value = country.code
     countryName.value = country.name
     geonamesValidResponse.value = true
+  } else {
+    const ocean = await geonames.getOcean()
+    if (ocean !== null) {
+      oceanName.value = ocean
+      geonamesValidResponse.value = true
+    }
   }
 }
 </script>
@@ -44,20 +51,25 @@ async function getGeonamesInformation() {
       </ButtonComponent>
     </div>
     <div v-if="appState.geonamesUsername !== '' && geonamesValidResponse" class="geonames-panel__content">
-      <p>Longitude: {{ longitude }}</p>
-      <p>Latitude: {{ latitude }}</p>
-      <p>Country code: {{ countryCode }}</p>
-      <p>Country name: {{ countryName }}</p>
-      <img
-        v-if="countryCode !== ''"
-        :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`"
-        class="geonames-panel__flag"
-      >
+      <div v-if="countryCode !== ''">
+        <p>{{ countryName }}</p>
+        <img
+          :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`"
+          class="geonames-panel__flag"
+        >
+      </div>
+      <div v-if="oceanName !== ''">
+        <p>{{ oceanName }}</p>
+      </div>
     </div>
     <div v-else class="geonames-panel__error">
       <IconAlertComponent />
       <p v-if="appState.geonamesUsername === ''">No geonames username configured</p>
       <p v-if="geonamesValidResponse === false">Could not fetch from geonames</p>
+    </div>
+    <div class="geonames-debug">
+      <p>Longitude: {{ longitude }}</p>
+      <p>Latitude: {{ latitude }}</p>
     </div>
   </div>
 </template>
@@ -97,5 +109,11 @@ async function getGeonamesInformation() {
 
 .geonames-panel__flag {
   height: 3rem;
+}
+
+.geonames-debug {
+  margin-top: 1rem;
+  font-size: 1rem;
+  opacity: 0.75;
 }
 </style>

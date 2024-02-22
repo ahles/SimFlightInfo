@@ -17,11 +17,11 @@ defineProps<{
 <template>
   <div class="info-panel">
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ latitude.toFixed(2) }}°</div>
+      <div class="info-panel__value">{{ latitude.toFixed(3) }}°</div>
       <div class="info-panel__name">Latitude</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ longitude.toFixed(2) }}°</div>
+      <div class="info-panel__value">{{ longitude.toFixed(3) }}°</div>
       <div class="info-panel__name">Longitude</div>
     </div>
     <div class="info-panel__col">
@@ -71,7 +71,7 @@ defineProps<{
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  width: 8.5rem;
+  width: 10rem;
   padding: 0 1rem;
   border-right: 1px solid var(--color-background);
 }
