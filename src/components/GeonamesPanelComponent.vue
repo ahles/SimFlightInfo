@@ -40,6 +40,7 @@ const wikipediaOceanLink = computed(() => {
 })
 
 async function getGeonamesInformation() {
+  appState.loading = true
   geonames.setLocation(props.latitude, props.longitude)
   const country: CountryInterface | null = await geonames.getCountry()
   if (country !== null) {
@@ -47,11 +48,15 @@ async function getGeonamesInformation() {
     countryName.value = country.name
     oceanName.value = ''
     geonamesValidResponse.value = true
+    appState.loading = false
   } else {
     const ocean = await geonames.getOcean()
     if (ocean !== null) {
       oceanName.value = ocean
+      countryCode.value = ''
+      countryName.value = ''
       geonamesValidResponse.value = true
+      appState.loading = false
     }
   }
 }
@@ -67,12 +72,12 @@ async function getGeonamesInformation() {
     </div>
     <div v-if="appState.geonamesUsername !== '' && geonamesValidResponse" class="geonames-panel__content">
       <div v-if="countryCode !== '' && wikipediaCountryLink !== ''">
-        <p class="geonames-panel__contry">
+        <p class="geonames-panel__location">
           <a :href="wikipediaCountryLink" target="_blank" rel="noopener">{{ countryName }}</a>
         </p>
         <img :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`" class="geonames-panel__flag" />
       </div>
-      <div v-if="oceanName !== ''">
+      <div v-if="oceanName !== ''" class="geonames-panel__location">
         <p><a :href="wikipediaOceanLink" target="_blank" rel="noopener">{{ oceanName }}</a></p>
       </div>
     </div>
@@ -80,10 +85,6 @@ async function getGeonamesInformation() {
       <IconAlertComponent />
       <p v-if="appState.geonamesUsername === ''">No geonames username configured</p>
       <p v-if="geonamesValidResponse === false">Could not fetch from geonames</p>
-    </div>
-    <div class="geonames-debug">
-      <p>Longitude: {{ longitude }}</p>
-      <p>Latitude: {{ latitude }}</p>
     </div>
   </div>
 </template>
@@ -120,7 +121,7 @@ async function getGeonamesInformation() {
   height: 1.6rem;
 }
 
-.geonames-panel__contry {
+.geonames-panel__location {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -138,11 +139,5 @@ async function getGeonamesInformation() {
     width: 1.2rem;
     margin-right: 0.4rem;
   }
-}
-
-.geonames-debug {
-  margin-top: 1rem;
-  font-size: 1rem;
-  opacity: 0.75;
 }
 </style>

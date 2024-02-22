@@ -40,7 +40,7 @@ watch(loading, (newValue) => {
 .loading-bar {
   position: fixed;
   z-index: 40;
-  bottom: 0;
+  top: var(--header-height);
   left: 0;
   right: 0;
 
