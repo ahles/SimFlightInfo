@@ -10,6 +10,9 @@ class MapService {
   private map?: Map
   private view?: View
 
+  longitude: number = 0
+  latitude: number = 0
+
   /**
    * Initializes and returns a new OpenLayers Map object asynchronously.
    * @param longitude The longitude part of the initial center point in decimal degrees.
@@ -21,8 +24,11 @@ class MapService {
       throw new Error("Map container with id 'map' does not exist.")
     }
 
+    this.longitude = longitude
+    this.latitude = latitude
+
     this.view = new View({
-      center: fromLonLat([longitude, latitude]),
+      center: fromLonLat([this.longitude, this.latitude]),
       enableRotation: false,
       zoom: 12
     })
@@ -32,6 +38,10 @@ class MapService {
       target: 'map',
       view: this.view,
       interactions: defaults({dragPan: false})
+    })
+
+    this.map.on('moveend', () => {
+      this.centerMapOnPosition()
     })
 
     return new Promise<Map>((resolve) => {
@@ -53,11 +63,23 @@ class MapService {
    * @param latitude The latitude part of the new center point in decimal degrees.
    */
   updatePosition(longitude: number, latitude: number): void {
+    this.longitude = longitude
+    this.latitude = latitude
+
     if (!this.view) {
       throw new Error('Map view is not initialized.')
     }
-    this.view.setCenter(fromLonLat([longitude, latitude]))
+    this.view.setCenter(fromLonLat([this.longitude, this.latitude]))
   }
+
+  centerMapOnPosition() {
+    if (!this.view) {
+      throw new Error('Map view is not initialized.')
+    }
+
+    this.view.setCenter(fromLonLat([this.longitude, this.latitude]))
+  }
+
 
   private getOSMLayer() {
     return new TileLayer({
