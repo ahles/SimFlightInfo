@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  pitch: number
+  pitch: Number
 }>()
 </script>
 

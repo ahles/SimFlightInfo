@@ -1,9 +1,12 @@
 <script setup lang="ts">
+// Vue.js imports
 import { ref, onBeforeMount, onUnmounted } from 'vue'
-import { FlightStateInterface } from './Interfaces'
+// Pinia stores imports
 import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
-import { useFlightStateStore } from './stores/flightState'
+// Composable import
+import { useSimConnectForeground } from './simConnectForeground'
+// Components imports
 import HeaderComponent from './components/layout/HeaderComponent.vue'
 import SidePanelComponent from './components/layout/SidePanelComponent.vue'
 import LoadingBarComponent from './components/gui/LoadingBarComponent.vue'
@@ -12,16 +15,35 @@ import ConnectionInformationComponent from './components/ConnectionInformationCo
 import InfoPanelComponent from './components/InfoPanelComponent.vue'
 import GeonamesPanelComponent from './components/GeonamesPanelComponent.vue'
 
+// Initialize the pinia stores
 const appState = useAppStateStore()
 const simState = useSimStateStore()
-const flightState = useFlightStateStore()
 
-const debug = false
+// Use composable to listen for simconnect FlightData
+const {
+    latitude,
+    longitude,
+    altitude,
+    altitudeAboveGround,
+    heading,
+    headingTrue,
+    degreesBank,
+    degreesPitch,
+    airSpeedTrue,
+    airSpeedIndicated,
+    verticalSpeed
+} = useSimConnectForeground()
 
 /**
- * Are the app settings loaded from the filesystem?
+ * Could the settings be loaded from the file system?
+ * "C:\Users\phili\AppData\Roaming\SimFlightInfo\config.json"
  */
 const settingsLoaded = ref(false)
+
+/**
+ * Set to true if you want to display the debug information
+ */
+const debug = false
 
 onBeforeMount(() => {
   window.ipcRenderer.invoke('request-settings').then((savedAppState) => {
@@ -29,12 +51,7 @@ onBeforeMount(() => {
     if (savedAppState !== undefined) {
       appState.geonamesUsername = savedAppState.geonamesUsername
     }
-
-    /**
-     * TODO: create composable for simconnect events and use one channel.
-     * Use event payload to differentiate the events
-     */
-    intiSimconnectEvents()
+    initSimconnectEvents()
   })
 
   // addEventListener("resize", () => {
@@ -48,10 +65,9 @@ onUnmounted(() => {
   window.ipcRenderer.removeAllListeners('simconnect-simstate-exception')
   window.ipcRenderer.removeAllListeners('simconnect-paused')
   window.ipcRenderer.removeAllListeners('simconnect-closed')
-  window.ipcRenderer.removeAllListeners('simconnect-flightdata')
 })
 
-function intiSimconnectEvents() {
+function initSimconnectEvents() {
   window.ipcRenderer.send('init-simconnectbackground')
 
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
@@ -72,42 +88,6 @@ function intiSimconnectEvents() {
     simState.paused = false
     simState.connected = false
   })
-
-  window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightStateInterface) => {
-    if (flightIsOnNullIsland(data)) {
-      flightState.$reset()
-    } else {
-      flightState.latitude = data.latitude
-      flightState.longitude = data.longitude
-      flightState.altitude = data.altitude
-      flightState.altitudeAboveGround = data.altitudeAboveGround
-      flightState.heading = data.heading
-      flightState.headingTrue = data.headingTrue
-      flightState.degreesBank = data.degreesBank
-      flightState.degreesPitch = data.degreesPitch
-      flightState.airSpeedTrue = data.airSpeedTrue
-      flightState.airSpeedIndicated = data.airSpeedIndicated
-      flightState.verticalSpeed = data.verticalSpeed
-    }
-  })
-}
-
-/**
- * Checks if the flight is approximately at the geographic coordinates (0,0).
- *
- * This function determines whether the given flight's latitude and longitude
- * are within a specified threshold of zero. It's useful for identifying if the
- * flight is near the "null island" point, which is a common default for undefined
- * geographic data.
- *
- * @param {FlightStateInterface} data - An object containing the flight's current state,
- * including its latitude and longitude.
- * @returns {boolean} - Returns `true` if the flight is within the threshold of (0,0),
- * otherwise returns `false`.
- */
-function flightIsOnNullIsland(data: FlightStateInterface): boolean {
-  const threshold = 0.05
-  return Math.abs(data.latitude) < threshold && Math.abs(data.longitude) < threshold
 }
 </script>
 
@@ -118,9 +98,25 @@ function flightIsOnNullIsland(data: FlightStateInterface): boolean {
       <HeaderComponent />
       <main v-if="simState.connected" class="main">
         <!-- <main v-if="true" class="main"> -->
-        <MapComponent :longitude="flightState.longitude" :latitude="flightState.latitude" :heading-true="flightState.headingTrue" />
-        <InfoPanelComponent />
-        <GeonamesPanelComponent />
+        <MapComponent
+          :longitude="longitude"
+          :latitude="latitude"
+          :heading-true="headingTrue"
+        />
+        <InfoPanelComponent
+          :longitude="longitude"
+          :latitude="latitude"
+          :heading="heading"
+          :altitude="altitude"
+          :air-speed-indicated="airSpeedIndicated"
+          :vertical-speed="verticalSpeed"
+          :degrees-pitch="degreesPitch"
+          :degrees-bank="degreesBank"
+        />
+        <GeonamesPanelComponent
+          :longitude="longitude"
+          :latitude="latitude"
+        />
       </main>
       <div v-else>
         <ConnectionInformationComponent />
@@ -130,17 +126,17 @@ function flightIsOnNullIsland(data: FlightStateInterface): boolean {
         <p>Sim exception: {{ simState.exception }}</p>
         <p>Sim paused: {{ simState.paused }}</p>
         <br />
-        <p>latitude: {{ flightState.latitude }}°</p>
-        <p>longitude: {{ flightState.longitude }}°</p>
-        <p>altitude: {{ flightState.altitude }}&nbsp;ft</p>
-        <p>altitudeAboveGround: {{ flightState.altitudeAboveGround }}&nbsp;ft</p>
-        <p>heading: {{ flightState.heading }}°</p>
-        <p>headingTrue: {{ flightState.headingTrue }}°</p>
-        <p>degreesBank: {{ flightState.degreesBank }}&nbsp;°</p>
-        <p>degreesPitch: {{ flightState.degreesPitch }}&nbsp;°</p>
-        <p>airSpeedTrue: {{ flightState.airSpeedTrue }}&nbsp;kts</p>
-        <p>airSpeedIndicated: {{ flightState.airSpeedIndicated }}&nbsp;kts</p>
-        <p>verticalSpeed: {{ flightState.verticalSpeed }}&nbsp;ft/min</p>
+        <p>latitude: {{ latitude }}°</p>
+        <p>longitude: {{ longitude }}°</p>
+        <p>altitude: {{ altitude }}&nbsp;ft</p>
+        <p>altitudeAboveGround: {{ altitudeAboveGround }}&nbsp;ft</p>
+        <p>heading: {{ heading }}°</p>
+        <p>headingTrue: {{ headingTrue }}°</p>
+        <p>degreesBank: {{ degreesBank }}&nbsp;°</p>
+        <p>degreesPitch: {{ degreesPitch }}&nbsp;°</p>
+        <p>airSpeedTrue: {{ airSpeedTrue }}&nbsp;kts</p>
+        <p>airSpeedIndicated: {{ airSpeedIndicated }}&nbsp;kts</p>
+        <p>verticalSpeed: {{ verticalSpeed }}&nbsp;ft/min</p>
       </div>
       <SidePanelComponent />
     </div>

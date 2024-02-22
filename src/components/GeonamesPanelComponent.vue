@@ -1,22 +1,23 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { useAppStateStore } from '../stores/appState'
-import { useFlightStateStore } from '../stores/flightState'
 import IconAlertComponent from './icons/IconAlertComponent.vue'
 
 const appState = useAppStateStore()
-const flightState = useFlightStateStore()
 
-onMounted(() => {
-  console.log('longitude', flightState.longitude)
-  console.log('latitude', flightState.latitude)
-})
+defineProps<{
+  longitude: Number
+  latitude: Number
+}>()
+
 </script>
 
 <template>
   <div v-if="appState.geonamesPanelVisible" class="geonames-panel">
     <h2 class="geonames-panel__title">Flying over</h2>
-    <div v-if="appState.geonamesUsername !== ''" class="geonames-panel__content"></div>
+    <div v-if="appState.geonamesUsername !== ''" class="geonames-panel__content">
+      <p>Longitude: {{ longitude }}</p>
+      <p>Latitude: {{ latitude }}</p>
+    </div>
     <div v-else class="geonames-panel__error">
       <IconAlertComponent />
       <p>No geonames username configured</p>

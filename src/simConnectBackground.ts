@@ -1,6 +1,6 @@
 import { BrowserWindow } from 'electron'
 import { open, Protocol, SimConnectDataType, SimConnectConstants, SimConnectPeriod } from 'node-simconnect'
-import { FlightStateInterface } from './Interfaces'
+import { FlightData } from './Interfaces'
 
 /**
  * node-simconnect
@@ -37,7 +37,7 @@ const simConnectBackground = {
         handle.on('simObjectData', (recvSimObjectData) => {
           switch (recvSimObjectData.requestID) {
             case REQUEST_1: {
-              const receivedData: FlightStateInterface = {
+              const receivedData: FlightData = {
                 // Read order is important!
                 heading: Number(recvSimObjectData.data.readFloat64().toFixed(1)),
                 headingTrue: Number(radToDeg(recvSimObjectData.data.readFloat64()).toFixed(1)),

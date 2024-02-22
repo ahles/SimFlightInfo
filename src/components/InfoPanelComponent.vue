@@ -1,41 +1,50 @@
 <script setup lang="ts">
-import { useFlightStateStore } from '../stores/flightState'
-const flightState = useFlightStateStore()
 import PitchComponent from './gui/PitchComponent.vue'
 import BankComponent from './gui/BankComponent.vue'
+
+defineProps<{
+  longitude: Number
+  latitude: Number
+  heading: Number
+  altitude: Number
+  airSpeedIndicated: Number
+  verticalSpeed: Number
+  degreesPitch: Number
+  degreesBank: Number
+}>()
 </script>
 
 <template>
   <div class="info-panel">
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.latitude.toFixed(2) }}°</div>
+      <div class="info-panel__value">{{ latitude.toFixed(2) }}°</div>
       <div class="info-panel__name">Latitude</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.longitude.toFixed(2) }}°</div>
+      <div class="info-panel__value">{{ longitude.toFixed(2) }}°</div>
       <div class="info-panel__name">Longitude</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.heading }}°</div>
+      <div class="info-panel__value">{{ heading }}°</div>
       <div class="info-panel__name">Heading</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.altitude }}</div>
+      <div class="info-panel__value">{{ altitude }}</div>
       <div class="info-panel__name">ft ASL</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.airSpeedIndicated }}</div>
+      <div class="info-panel__value">{{ airSpeedIndicated }}</div>
       <div class="info-panel__name">kts IAS</div>
     </div>
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ flightState.verticalSpeed }}</div>
+      <div class="info-panel__value">{{ verticalSpeed }}</div>
       <div class="info-panel__name">ft/min VS</div>
     </div>
     <div class="info-panel__col info-panel__col--nowidth">
-      <PitchComponent :pitch="flightState.degreesPitch" />
+      <PitchComponent :pitch="degreesPitch" />
     </div>
     <div class="info-panel__col info-panel__col--nowidth">
-      <BankComponent :bank="flightState.degreesBank" />
+      <BankComponent :bank="degreesBank" />
     </div>
   </div>
 </template>

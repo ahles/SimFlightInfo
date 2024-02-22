@@ -12,7 +12,7 @@ export interface SimStateInterface {
   paused: boolean
 }
 
-export interface FlightStateInterface {
+export interface FlightData {
   longitude: number
   latitude: number
   altitude: number
