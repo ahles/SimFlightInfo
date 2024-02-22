@@ -2,6 +2,7 @@ import 'ol/ol.css'
 import { fromLonLat } from 'ol/proj'
 import View from 'ol/View'
 import Map from 'ol/Map'
+import {defaults} from 'ol/interaction.js';
 import { Tile as TileLayer } from 'ol/layer.js'
 import OSM from 'ol/source/OSM.js'
 
@@ -29,7 +30,8 @@ class MapService {
     this.map = new Map({
       layers: [this.getOSMLayer()],
       target: 'map',
-      view: this.view
+      view: this.view,
+      interactions: defaults({dragPan: false})
     })
 
     return new Promise<Map>((resolve) => {

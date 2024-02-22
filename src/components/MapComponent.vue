@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, watch } from 'vue'
 import PlaneMarkerComponent from './gui/PlaneMarkerComponent.vue'
+import { flightIsOnNullIsland } from '../lib/helpers'
 import MapService from '../lib/MapService'
 
 import { useAppStateStore } from '../stores/appState'

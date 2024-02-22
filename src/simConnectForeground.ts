@@ -1,5 +1,6 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { FlightData } from './Interfaces'
+import { flightIsOnNullIsland } from './lib/helpers'
 
 /**
  * Listen to the simconnect events and return reactive flight data
@@ -21,7 +22,7 @@ export function useSimConnectForeground() {
   onMounted(() => {
     window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightData) => {
       // If the airplane is in the null island area, force all values to 0
-      if (flightIsOnNullIsland(data)) {
+      if (flightIsOnNullIsland(data.longitude, data.latitude)) {
         latitude.value = 0
         longitude.value = 0
         altitude.value = 0
@@ -66,22 +67,4 @@ export function useSimConnectForeground() {
     airSpeedIndicated,
     verticalSpeed
   }
-}
-
-/**
- * Checks if the flight is approximately at the geographic coordinates (0,0).
- *
- * This function determines whether the given flight's latitude and longitude
- * are within a specified threshold of zero. It's useful for identifying if the
- * flight is near the "null island" point, which is a common default for undefined
- * geographic data.
- *
- * @param {FlightData} data - An object containing the flight's current state,
- * including its latitude and longitude.
- * @returns {boolean} - Returns `true` if the flight is within the threshold of (0,0),
- * otherwise returns `false`.
- */
-function flightIsOnNullIsland(data: FlightData): boolean {
-  const threshold = 0.05
-  return Math.abs(data.latitude) < threshold && Math.abs(data.longitude) < threshold
 }
