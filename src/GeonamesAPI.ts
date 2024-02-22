@@ -1,4 +1,4 @@
-import { CountryInterface } from './Interfaces'
+import { CountryInterface, GeonamesWikipedia } from './Interfaces'
 
 /**
  * GeoNames Webservice Exceptions:
@@ -28,8 +28,9 @@ export default class GeonamesAPI {
    * @param apiPath The API path to fetch data from.
    * @returns The JSON response from the API.
    */
-  private async fetchData(apiPath: string): Promise<any> {
-    const url = `http://api.geonames.org/${apiPath}?username=${this.userName}&lat=${this.latitude}&lng=${this.longitude}`;
+  private async fetchData(apiPath: string, additionalParams: string = ''): Promise<any> {
+    const url = `http://api.geonames.org/${apiPath}?username=${this.userName}&lat=${this.latitude}&lng=${this.longitude}${additionalParams}`;
+    console.log('url', url)
     try {
       const response = await fetch(url);
       if (response.ok) {
@@ -65,6 +66,25 @@ export default class GeonamesAPI {
     const data = await this.fetchData('oceanJSON')
     if (data && Object.hasOwn(data, 'ocean')) {
       return data.ocean.name
+    }
+    return null
+  }
+
+  async getWikipediaLinks(): Promise<Array<GeonamesWikipedia> | null> {
+    const data = await this.fetchData('findNearbyWikipediaJSON', '&radius=20&maxRows=20')
+    if (data && Object.hasOwn(data, 'geonames')) {
+      const result: Array<GeonamesWikipedia> = []
+      for (const item of data.geonames) {
+        result.push({
+          title: item.title,
+          wikipediaUrl: item.wikipediaUrl,
+          longitude: item.lng,
+          latitude: item.lat,
+          distance: Number(item.distance)
+        })
+      }
+      result.sort((a, b) => parseFloat(String(a.distance)) - parseFloat(String(b.distance)))
+      return result
     }
     return null
   }

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
-import { CountryInterface } from '../Interfaces'
+import { CountryInterface, GeonamesWikipedia } from '../Interfaces'
 import GeonamesAPI from '../GeonamesAPI'
 import { useAppStateStore } from '../stores/appState'
 import ButtonComponent from './gui/ButtonComponent.vue'
@@ -19,6 +19,7 @@ const geonamesValidResponse = ref(false)
 const countryCode = ref('')
 const countryName = ref('')
 const oceanName = ref('')
+const wikipediaLinks = ref<GeonamesWikipedia[] | null>(null)
 
 onMounted(async () => {
   geonames.setLocation(props.latitude, props.longitude)
@@ -48,7 +49,6 @@ async function getGeonamesInformation() {
     countryName.value = country.name
     oceanName.value = ''
     geonamesValidResponse.value = true
-    appState.loading = false
   } else {
     const ocean = await geonames.getOcean()
     if (ocean !== null) {
@@ -56,9 +56,11 @@ async function getGeonamesInformation() {
       countryCode.value = ''
       countryName.value = ''
       geonamesValidResponse.value = true
-      appState.loading = false
     }
   }
+  wikipediaLinks.value = await geonames.getWikipediaLinks()
+  console.log('wikipediaLinks', wikipediaLinks.value)
+  appState.loading = false
 }
 </script>
 
@@ -79,6 +81,13 @@ async function getGeonamesInformation() {
       </div>
       <div v-if="oceanName !== ''" class="geonames-panel__location">
         <p><a :href="wikipediaOceanLink" target="_blank" rel="noopener">{{ oceanName }}</a></p>
+      </div>
+      <div class="geonames-panel__wikipedia-links" v-if="wikipediaLinks">
+        <ul>
+          <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
+            <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener">{{ wikipediaLink.title }}</a>
+          </li>
+        </ul>
       </div>
     </div>
     <div v-else class="geonames-panel__error">
@@ -110,6 +119,10 @@ async function getGeonamesInformation() {
   align-items: flex-start;
 }
 
+.geonames-panel__content {
+  font-size: 1rem;
+}
+
 .geonames-panel__title {
   font-size: 1.6rem;
   line-height: 1;
@@ -122,12 +135,21 @@ async function getGeonamesInformation() {
 }
 
 .geonames-panel__location {
-  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .geonames-panel__flag {
   height: 3rem;
+}
+
+.geonames-panel__wikipedia-links {
+  margin-top: 1rem;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .geonames-panel__error {

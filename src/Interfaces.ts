@@ -30,3 +30,13 @@ export interface CountryInterface {
   code: string
   name: string
 }
+
+// TODO: Add feature for later filtering
+export interface GeonamesWikipedia {
+  title: string
+  wikipediaUrl: string
+  longitude: number
+  latitude: number
+  distance: number
+}
+
