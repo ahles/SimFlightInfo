@@ -10,7 +10,7 @@
     "vite.config.ts",
     "package.json",
     "electron",
-    "src/simConnector.ts",
+    "src/simConnectSender.ts",
     "src/stores/appState.ts",
     "src/stores/simState.ts",
     "src/stores/flightState.ts",

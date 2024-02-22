@@ -24,10 +24,10 @@ const debug = false
 const settingsLoaded = ref(false)
 
 onBeforeMount(() => {
-  window.ipcRenderer.invoke('request-settings').then((response) => {
+  window.ipcRenderer.invoke('request-settings').then((savedAppState) => {
     settingsLoaded.value = true
-    if (response !== undefined) {
-      appState.geonamesUsername = response.geonamesUsername
+    if (savedAppState !== undefined) {
+      appState.geonamesUsername = savedAppState.geonamesUsername
     }
 
     /**
@@ -52,7 +52,7 @@ onUnmounted(() => {
 })
 
 function intiSimconnectEvents() {
-  window.ipcRenderer.send('init-simconnector')
+  window.ipcRenderer.send('init-simconnectsender')
 
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
     appState.loading = false

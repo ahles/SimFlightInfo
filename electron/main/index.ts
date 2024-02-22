@@ -2,7 +2,7 @@ import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import simConnector from '../../src/simConnector'
+import simConnectSender from '../../src/simConnectSender'
 import Store  from 'electron-store'
 
 const store = new Store()
@@ -116,7 +116,7 @@ app.on('activate', () => {
 })
 
 ipcMain.on('retry-sim-connection', () => {
-  simConnector.init(win)
+  simConnectSender.init(win)
 })
 
 ipcMain.on('window-close', () => {
@@ -136,8 +136,8 @@ ipcMain.on('window-unmaximize', () => {
   win.unmaximize()
 })
 
-ipcMain.on('init-simconnector', () => {
-  simConnector.init(win)
+ipcMain.on('init-simconnectsender', () => {
+  simConnectSender.init(win)
 })
 
 ipcMain.handle('save-settings', async (event, data) => {
@@ -148,5 +148,6 @@ ipcMain.handle('save-settings', async (event, data) => {
 
 ipcMain.handle('request-settings', async () => {
   // "C:\Users\phili\AppData\Roaming\SimFlightInfo\config.json"
-  return await store.get('appState')
+  const appState = await store.get('appState')
+  return appState
 })

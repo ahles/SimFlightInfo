@@ -12,7 +12,7 @@ const EVENT_ID_PAUSE = 1
 const REQUEST_1 = 0
 const DEFINITION_1 = 0
 
-const simConnector = {
+const simConnectSender = {
   init(win: BrowserWindow) {
     open('SimFlightInfo', Protocol.FSX_SP2)
       .then(function ({ recvOpen, handle }) {
@@ -95,4 +95,4 @@ const radToDeg = (radians: number): number => {
   return radians * (180 / Math.PI)
 }
 
-export default simConnector
+export default simConnectSender
