@@ -2,7 +2,7 @@ import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { release } from 'node:os'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import simConnectSender from '../../src/simConnectSender'
+import simConnectBackground from '../../src/simConnectBackground'
 import Store  from 'electron-store'
 
 const store = new Store()
@@ -116,7 +116,7 @@ app.on('activate', () => {
 })
 
 ipcMain.on('retry-sim-connection', () => {
-  simConnectSender.init(win)
+  simConnectBackground.init(win)
 })
 
 ipcMain.on('window-close', () => {
@@ -136,8 +136,8 @@ ipcMain.on('window-unmaximize', () => {
   win.unmaximize()
 })
 
-ipcMain.on('init-simconnectsender', () => {
-  simConnectSender.init(win)
+ipcMain.on('init-simconnectbackground', () => {
+  simConnectBackground.init(win)
 })
 
 ipcMain.handle('save-settings', async (event, data) => {

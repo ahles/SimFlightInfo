@@ -52,7 +52,7 @@ onUnmounted(() => {
 })
 
 function intiSimconnectEvents() {
-  window.ipcRenderer.send('init-simconnectsender')
+  window.ipcRenderer.send('init-simconnectbackground')
 
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
     appState.loading = false
