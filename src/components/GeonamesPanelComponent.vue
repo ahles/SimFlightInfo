@@ -15,6 +15,7 @@ const props = defineProps<{
 }>()
 
 const geonames = new GeonamesAPI(appState.geonamesUsername)
+const geonamesValidResponse = ref(false)
 const countryCode = ref('')
 const countryName = ref('')
 
@@ -29,12 +30,9 @@ async function getGeonamesInformation() {
   if (country !== null) {
     countryCode.value = country.code
     countryName.value = country.name
-  } else {
-    countryCode.value = ''
-    countryName.value = ''
+    geonamesValidResponse.value = true
   }
 }
-
 </script>
 
 <template>
@@ -45,7 +43,7 @@ async function getGeonamesInformation() {
         <IconReloadComponent />
       </ButtonComponent>
     </div>
-    <div v-if="appState.geonamesUsername !== ''" class="geonames-panel__content">
+    <div v-if="appState.geonamesUsername !== '' && geonamesValidResponse" class="geonames-panel__content">
       <p>Longitude: {{ longitude }}</p>
       <p>Latitude: {{ latitude }}</p>
       <p>Country code: {{ countryCode }}</p>
@@ -58,7 +56,8 @@ async function getGeonamesInformation() {
     </div>
     <div v-else class="geonames-panel__error">
       <IconAlertComponent />
-      <p>No geonames username configured</p>
+      <p v-if="appState.geonamesUsername === ''">No geonames username configured</p>
+      <p v-if="geonamesValidResponse === false">Could not fetch from geonames</p>
     </div>
   </div>
 </template>
