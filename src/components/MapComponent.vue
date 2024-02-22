@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, watch } from 'vue'
+import { onMounted, watch } from 'vue'
 import PlaneMarkerComponent from './gui/PlaneMarkerComponent.vue'
 import MapService from '../lib/MapService'
 
@@ -7,13 +7,10 @@ import { useAppStateStore } from '../stores/appState'
 
 const appState = useAppStateStore()
 
-let recenterInterval: NodeJS.Timeout
-
 const props = defineProps<{
   longitude: number
   latitude: number
   headingTrue: number
-  airSpeedIndicated: number
 }>()
 
 const mapService = new MapService()
@@ -28,18 +25,8 @@ watch(
 onMounted(async () => {
   await mapService.initMap(props.longitude, props.latitude)
   appState.loading = false
-  recenterInterval = setInterval(recenterTheMapEverySecond, 1000)
 })
 
-onUnmounted(() => {
-  if (recenterInterval) {
-    clearInterval(recenterInterval);
-  }
-})
-
-function recenterTheMapEverySecond() {
-  mapService.updatePosition(props.longitude, props.latitude)
-}
 </script>
 
 <template>
