@@ -1,58 +1,71 @@
 import { CountryInterface } from './Interfaces'
 
 /**
- * GeoNames Webservice Exception
+ * GeoNames Webservice Exceptions:
  * http://www.geonames.org/export/webservice-exception.html
  */
 export default class GeonamesAPI {
-  userName: String
+  private userName: string;
+  private latitude: number = 0;
+  private longitude: number = 0;
 
-  longitude!: Number
-  latitude!: Number
-
-  constructor(userName: String) {
-    this.userName = userName
+  constructor(userName: string) {
+    this.userName = userName;
   }
 
   /**
-   * Sets the geographical coordinates of the current instance.
-   *
-   * @param longitude - The longitude to set for the current instance.
-   * @param latitude - The latitude to set for the current instance.
-   * @returns void
+   * Sets the location for the API requests.
+   * @param latitude The latitude of the location.
+   * @param longitude The longitude of the location.
    */
-  setCoordinate(longitude: Number, latitude: Number): void {
-    this.longitude = longitude
-    this.latitude = latitude
+  public setLocation(latitude: number, longitude: number): void {
+    this.latitude = latitude;
+    this.longitude = longitude;
   }
 
   /**
-   * https://www.geonames.org/export/web-services.html#countrycode
+   * Fetches data from the Geonames API.
+   * @param apiPath The API path to fetch data from.
+   * @returns The JSON response from the API.
+   */
+  private async fetchData(apiPath: string): Promise<any> {
+    const url = `http://api.geonames.org/${apiPath}?username=${this.userName}&lat=${this.latitude}&lng=${this.longitude}`;
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        return await response.json();
+      }
+      throw new Error('Network response was not ok.');
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return null; // or rethrow the error based on your error handling strategy
+    }
+  }
+
+  /**
+   * Retrieves the country information based on the current latitude and longitude.
+   * @returns The country information or null if not found.
    */
   async getCountry(): Promise<CountryInterface | null> {
-    let result: CountryInterface | null = null
-    const response = await fetch(`http://api.geonames.org/countryCodeJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.userName}`)
-    if (response.ok) {
-      const data = await response.json()
-      if (Object.hasOwn(data, 'countryCode')) {
-        result = {
-          code: data.countryCode,
-          name: data.countryName
-        }
+    const data = await this.fetchData('countryCodeJSON')
+    if (data && Object.hasOwn(data, 'countryCode')) {
+      return {
+        code: data.countryCode,
+        name: data.countryName
       }
     }
-    return result
+    return null
   }
 
+  /**
+   * Retrieves the ocean name based on the current latitude and longitude.
+   * @returns The ocean name or null if not found.
+   */
   async getOcean(): Promise<string | null> {
-    let result: string | null = null
-    const response = await fetch(`http://api.geonames.org/oceanJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.userName}`)
-    if (response.ok) {
-      const data = await response.json()
-      if (Object.hasOwn(data, 'ocean')) {
-        result = data.ocean.name
-      }
+    const data = await this.fetchData('oceanJSON')
+    if (data && Object.hasOwn(data, 'ocean')) {
+      return data.ocean.name
     }
-    return result
+    return null
   }
 }

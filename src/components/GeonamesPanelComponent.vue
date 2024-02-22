@@ -10,8 +10,8 @@ import IconReloadComponent from './icons/IconReloadComponent.vue'
 const appState = useAppStateStore()
 
 const props = defineProps<{
-  longitude: Number
-  latitude: Number
+  longitude: number
+  latitude: number
 }>()
 
 const geonames = new GeonamesAPI(appState.geonamesUsername)
@@ -21,7 +21,7 @@ const countryName = ref('')
 const oceanName = ref('')
 
 onMounted(async () => {
-  geonames.setCoordinate(props.longitude, props.latitude)
+  geonames.setLocation(props.latitude, props.longitude)
   await getGeonamesInformation()
 })
 
@@ -32,12 +32,20 @@ const wikipediaCountryLink = computed(() => {
   return ''
 })
 
+const wikipediaOceanLink = computed(() => {
+  if (oceanName.value) {
+    return `https://en.wikipedia.org/wiki/${oceanName.value.replace(' ', '_')}`
+  }
+  return ''
+})
+
 async function getGeonamesInformation() {
-  geonames.setCoordinate(props.longitude, props.latitude)
+  geonames.setLocation(props.latitude, props.longitude)
   const country: CountryInterface | null = await geonames.getCountry()
   if (country !== null) {
     countryCode.value = country.code
     countryName.value = country.name
+    oceanName.value = ''
     geonamesValidResponse.value = true
   } else {
     const ocean = await geonames.getOcean()
@@ -65,7 +73,7 @@ async function getGeonamesInformation() {
         <img :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`" class="geonames-panel__flag" />
       </div>
       <div v-if="oceanName !== ''">
-        <p>{{ oceanName }}</p>
+        <p><a :href="wikipediaOceanLink" target="_blank" rel="noopener">{{ oceanName }}</a></p>
       </div>
     </div>
     <div v-else class="geonames-panel__error">
