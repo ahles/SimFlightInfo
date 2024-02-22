@@ -20,19 +20,7 @@ const appState = useAppStateStore()
 const simState = useSimStateStore()
 
 // Use composable to listen for simconnect FlightData
-const {
-    latitude,
-    longitude,
-    altitude,
-    altitudeAboveGround,
-    heading,
-    headingTrue,
-    degreesBank,
-    degreesPitch,
-    airSpeedTrue,
-    airSpeedIndicated,
-    verticalSpeed
-} = useSimConnectForeground()
+const { latitude, longitude, altitude, altitudeAboveGround, heading, headingTrue, degreesBank, degreesPitch, airSpeedTrue, airSpeedIndicated, verticalSpeed } = useSimConnectForeground()
 
 /**
  * Could the settings be loaded from the file system?
@@ -98,25 +86,9 @@ function initSimconnectEvents() {
       <HeaderComponent />
       <!-- <main v-if="simState.connected" class="main"> -->
       <main v-if="true" class="main">
-        <MapComponent
-          :longitude="longitude"
-          :latitude="latitude"
-          :heading-true="headingTrue"
-        />
-        <InfoPanelComponent
-          :longitude="longitude"
-          :latitude="latitude"
-          :heading="heading"
-          :altitude="altitude"
-          :air-speed-indicated="airSpeedIndicated"
-          :vertical-speed="verticalSpeed"
-          :degrees-pitch="degreesPitch"
-          :degrees-bank="degreesBank"
-        />
-        <GeonamesPanelComponent
-          :longitude="longitude"
-          :latitude="latitude"
-        />
+        <MapComponent :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" />
+        <InfoPanelComponent :longitude="longitude" :latitude="latitude" :heading="heading" :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed" :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
+        <GeonamesPanelComponent :longitude="longitude" :latitude="latitude" />
       </main>
       <div v-else>
         <ConnectionInformationComponent />

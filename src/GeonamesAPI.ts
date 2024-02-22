@@ -1,14 +1,14 @@
 import { CountryInterface } from './Interfaces'
 
 /**
- * GeoNames Webservice Exception 
+ * GeoNames Webservice Exception
  * http://www.geonames.org/export/webservice-exception.html
  */
 export default class GeonamesAPI {
   userName: String
 
-  longitude!: Number;
-  latitude!: Number;
+  longitude!: Number
+  latitude!: Number
 
   constructor(userName: String) {
     this.userName = userName
@@ -16,7 +16,7 @@ export default class GeonamesAPI {
 
   /**
    * Sets the geographical coordinates of the current instance.
-   * 
+   *
    * @param longitude - The longitude to set for the current instance.
    * @param latitude - The latitude to set for the current instance.
    * @returns void
@@ -29,8 +29,8 @@ export default class GeonamesAPI {
   /**
    * https://www.geonames.org/export/web-services.html#countrycode
    */
-  async getCountry(): Promise<CountryInterface|null> {
-    let result: CountryInterface|null = null
+  async getCountry(): Promise<CountryInterface | null> {
+    let result: CountryInterface | null = null
     const response = await fetch(`http://api.geonames.org/countryCodeJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.userName}`)
     if (response.ok) {
       const data = await response.json()
@@ -44,11 +44,11 @@ export default class GeonamesAPI {
     return result
   }
 
-  async getOcean(): Promise<string|null> {
-    let result: string|null = null
+  async getOcean(): Promise<string | null> {
+    let result: string | null = null
     const response = await fetch(`http://api.geonames.org/oceanJSON?lat=${this.latitude}&lng=${this.longitude}&username=${this.userName}`)
     if (response.ok) {
-      const data = await response.json();
+      const data = await response.json()
       if (Object.hasOwn(data, 'ocean')) {
         result = data.ocean.name
       }

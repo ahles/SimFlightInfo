@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted } from 'vue'
 import { CountryInterface } from '../Interfaces'
-import GeonamesAPI from '../GeonamesAPI';
+import GeonamesAPI from '../GeonamesAPI'
 import { useAppStateStore } from '../stores/appState'
 import ButtonComponent from './gui/ButtonComponent.vue'
 import IconAlertComponent from './icons/IconAlertComponent.vue'
@@ -27,7 +27,7 @@ onMounted(async () => {
 
 async function getGeonamesInformation() {
   geonames.setCoordinate(props.longitude, props.latitude)
-  const country: CountryInterface|null = await geonames.getCountry()
+  const country: CountryInterface | null = await geonames.getCountry()
   if (country !== null) {
     countryCode.value = country.code
     countryName.value = country.name
@@ -53,10 +53,7 @@ async function getGeonamesInformation() {
     <div v-if="appState.geonamesUsername !== '' && geonamesValidResponse" class="geonames-panel__content">
       <div v-if="countryCode !== ''">
         <p>{{ countryName }}</p>
-        <img
-          :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`"
-          class="geonames-panel__flag"
-        >
+        <img :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`" class="geonames-panel__flag" />
       </div>
       <div v-if="oceanName !== ''">
         <p>{{ oceanName }}</p>
