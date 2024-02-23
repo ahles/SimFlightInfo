@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAppStateStore } from '../../stores/appState'
 import GeonamesUsernameInputComponent from '../gui/GeonamesUsernameInputComponent.vue'
+import WikipediaLinksLanguageInputComponent from '../gui/WikipediaLinksLanguageInputComponent.vue'
 
 const appState = useAppStateStore()
 </script>
@@ -15,6 +16,8 @@ const appState = useAppStateStore()
       <div class="sidebar__content">
         <h3 class="sidebar__subtitle">Geonames</h3>
         <GeonamesUsernameInputComponent />
+        <h3 class="sidebar__subtitle">Wikipedia language</h3>
+        <WikipediaLinksLanguageInputComponent />
       </div>
     </aside>
   </Transition>
@@ -40,7 +43,8 @@ const appState = useAppStateStore()
 
 .sidebar__subtitle {
   line-height: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
 }
 
 .sidebar__content {

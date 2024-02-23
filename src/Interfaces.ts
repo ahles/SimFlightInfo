@@ -4,6 +4,7 @@ export interface AppStateInterface {
   airplaneCentered: boolean
   geonamesPanelVisible: boolean
   geonamesUsername: string
+  wikipediaLinksLanguage: string
 }
 
 export interface SimStateInterface {
@@ -31,7 +32,6 @@ export interface CountryInterface {
   name: string
 }
 
-// TODO: Add feature for later filtering
 export interface GeonamesWikipedia {
   title: string
   wikipediaUrl: string

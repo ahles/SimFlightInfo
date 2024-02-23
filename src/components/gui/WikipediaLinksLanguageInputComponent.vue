@@ -5,22 +5,22 @@ import IconSaveComponent from '../icons/IconSaveComponent.vue'
 import ButtonComponent from '../gui/ButtonComponent.vue'
 
 const appState = useAppStateStore()
-const localGeonamesUsername = ref('')
+const localWikipadiaLinksLanugage = ref('')
 const saveSuccess = ref(false)
 const saveError = ref(false)
 
 onMounted(() => {
-  localGeonamesUsername.value = appState.geonamesUsername
+  localWikipadiaLinksLanugage.value = appState.wikipediaLinksLanguage
 })
 
-function saveUsername() {
+function saveLanguage() {
   window.ipcRenderer
     .invoke('save-settings', {
-      geonamesUsername: localGeonamesUsername.value
+      wikipediaLinksLanguage: localWikipadiaLinksLanugage.value
     })
     .then((result) => {
-      localGeonamesUsername.value = result.geonamesUsername
-      appState.geonamesUsername = result.geonamesUsername
+      localWikipadiaLinksLanugage.value = result.wikipediaLinksLanguage
+      appState.wikipediaLinksLanguage = result.wikipediaLinksLanguage
       saveSuccess.value = true
     })
     .catch((error) => {
@@ -47,20 +47,19 @@ watch(saveError, (newValue) => {
 </script>
 
 <template>
-  <div class="geonames-username-input" :class="{ success: saveSuccess, error: saveError }">
-    <label class="geonames-username-input__label" for="geonames">Enter your Geoname username:</label>
-    <input id="geonames" v-model="localGeonamesUsername" class="geonames-username-input__input" type="text" name="geonames" placeholder="enter your username" @keyup.enter="saveUsername" />
-    <ButtonComponent class="geonames-username-input__button" title="Save geonames username" variant="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
+  <div class="wikipedia-links-language-input" :class="{ success: saveSuccess, error: saveError }">
+    <label class="wikipedia-links-language-input__label" for="wikipedia-links-language">Enter the desired Wikipedia links language:</label>
+    <input id="wikipedia-links-language" v-model="localWikipadiaLinksLanugage" class="wikipedia-links-language-input__input" type="text" name="wikipedia-links-language" placeholder="enter your username" @keyup.enter="saveLanguage" maxlength="2" />
+    <ButtonComponent class="wikipedia-links-language-input__button" title="Save wikipedia links lanugage" variant="icon" @click="saveLanguage"><IconSaveComponent /></ButtonComponent>
   </div>
 </template>
 
 <style scoped>
-.geonames-username-input {
+.wikipedia-links-language-input {
   display: flex;
   align-items: center;
   color: var(--color-text);
   transition: color 0.1s ease-in;
-  margin-bottom: 2rem;
 
   &.success {
     color: var(--color-success);
@@ -73,8 +72,8 @@ watch(saveError, (newValue) => {
   }
 }
 
-.geonames-username-input__input {
-  width: 100%;
+.wikipedia-links-language-input__input {
+  width: 5rem;
   color: currentColor;
   background-color: var(--color-background);
   border: 1px solid currentColor;
@@ -86,17 +85,17 @@ watch(saveError, (newValue) => {
   margin-right: 1rem;
 }
 
-.geonames-username-input__input::placeholder {
+.wikipedia-links-language-input__input::placeholder {
   color: var(--color-text);
   opacity: 0.5;
 }
 
-.geonames-username-input__label {
+.wikipedia-links-language-input__label {
   display: none;
   font-size: 1rem;
 }
 
-.geonames-username-input__button {
+.wikipedia-links-language-input__button {
   color: currentColor;
 }
 

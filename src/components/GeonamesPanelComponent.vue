@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { CountryInterface, GeonamesWikipedia } from '../Interfaces'
 import GeonamesAPI from '../GeonamesAPI'
 import { useAppStateStore } from '../stores/appState'
@@ -26,6 +26,13 @@ onMounted(async () => {
   await getGeonamesInformation()
 })
 
+watch(
+  () => appState.wikipediaLinksLanguage,
+  () => {
+    getGeonamesInformation()
+  },
+)
+
 const wikipediaCountryLink = computed(() => {
   if (countryName.value) {
     return `https://en.wikipedia.org/wiki/${countryName.value.replace(' ', '_')}`
@@ -44,6 +51,7 @@ async function getGeonamesInformation() {
   appState.loading = true
   wikipediaLinks.value = null
   geonames.setLocation(props.latitude, props.longitude)
+  geonames.setLanguage(appState.wikipediaLinksLanguage)
   const country: CountryInterface | null = await geonames.getCountry()
   if (country !== null) {
     countryCode.value = country.code
@@ -94,8 +102,10 @@ async function getGeonamesInformation() {
     </div>
     <div v-else class="geonames-panel__error">
       <IconAlertComponent />
-      <p v-if="appState.geonamesUsername === ''">No geonames username configured</p>
-      <p v-if="geonamesValidResponse === false">Could not fetch from geonames</p>
+      <ul>
+        <p v-if="appState.geonamesUsername === '' || typeof appState.geonamesUsername === 'undefined'">No geonames username configured</p>
+        <p v-if="geonamesValidResponse === false">Could not fetch from geonames</p>
+      </ul>
     </div>
   </div>
 </template>
@@ -109,7 +119,8 @@ async function getGeonamesInformation() {
   background-color: var(--color-panels);
   border-radius: 3px;
   padding: 1rem;
-  width: 20rem;
+  min-width: 20rem;
+  max-width: 30rem;
   box-shadow:
     0 0.1rem 0.3rem rgba(0, 0, 0, 0.24),
     0 0.1rem 0.2rem rgba(0, 0, 0, 0.48);
@@ -157,11 +168,18 @@ async function getGeonamesInformation() {
 .geonames-panel__error {
   color: var(--color-error);
   display: flex;
-  font-size: 1.2rem;
+  flex-direction: column;
+  font-size: 1.4rem;
 
   svg {
-    width: 1.2rem;
+    width: 2rem;
     margin-right: 0.4rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
   }
 }
 </style>

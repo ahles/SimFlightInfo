@@ -38,6 +38,7 @@ onBeforeMount(() => {
     settingsLoaded.value = true
     if (savedAppState !== undefined) {
       appState.geonamesUsername = savedAppState.geonamesUsername
+      appState.wikipediaLinksLanguage = savedAppState.wikipediaLinksLanguage
     }
     initSimconnectEvents()
   })

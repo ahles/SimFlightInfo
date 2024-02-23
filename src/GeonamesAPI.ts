@@ -8,6 +8,7 @@ export default class GeonamesAPI {
   private userName: string;
   private latitude: number = 0;
   private longitude: number = 0;
+  private language: string = 'en'
 
   constructor(userName: string) {
     this.userName = userName;
@@ -21,6 +22,14 @@ export default class GeonamesAPI {
   public setLocation(latitude: number, longitude: number): void {
     this.latitude = latitude;
     this.longitude = longitude;
+  }
+
+  /**
+   * Sets the language for the API requests.
+   * @param language The language code f.e. 'en', 'de', 'fr', ...
+   */
+  public setLanguage(language: string): void {
+    this.language = language
   }
 
   /**
@@ -44,6 +53,9 @@ export default class GeonamesAPI {
 
   /**
    * Retrieves the country information based on the current latitude and longitude.
+   *
+   * TODO: Use countryInfo instead to get localized information? http://api.geonames.org/countryInfo?username=USERNAME&lang=de&country=CH
+   *
    * @returns The country information or null if not found.
    */
   async getCountry(): Promise<CountryInterface | null> {
@@ -85,7 +97,7 @@ export default class GeonamesAPI {
    * articles are found or an error occurs, it resolves to null.
    */
   async getWikipediaLinks(): Promise<GeonamesWikipedia[] | null> {
-    const data = await this.fetchData('findNearbyWikipediaJSON', '&radius=20&maxRows=20')
+    const data = await this.fetchData('findNearbyWikipediaJSON', '&radius=20&maxRows=20&lang=' + this.language)
     if (data && Object.hasOwn(data, 'geonames')) {
       let result: GeonamesWikipedia[] = []
       for (const item of data.geonames) {

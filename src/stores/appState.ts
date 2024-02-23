@@ -8,7 +8,8 @@ export const useAppStateStore = defineStore({
     loading: true,
     airplaneCentered: true,
     geonamesPanelVisible: true,
-    geonamesUsername: ''
+    geonamesUsername: '',
+    wikipediaLinksLanguage: 'en'
   }),
   actions: {
     sidePanelToggle() {
