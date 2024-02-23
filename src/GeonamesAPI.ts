@@ -30,7 +30,6 @@ export default class GeonamesAPI {
    */
   private async fetchData(apiPath: string, additionalParams: string = ''): Promise<any> {
     const url = `http://api.geonames.org/${apiPath}?username=${this.userName}&lat=${this.latitude}&lng=${this.longitude}${additionalParams}`;
-    console.log('url', url)
     try {
       const response = await fetch(url);
       if (response.ok) {
