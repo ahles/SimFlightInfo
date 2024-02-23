@@ -69,11 +69,26 @@ export default class GeonamesAPI {
     return null
   }
 
-  async getWikipediaLinks(): Promise<Array<GeonamesWikipedia> | null> {
+  /**
+   * Asynchronously fetches Wikipedia links related to geographical locations nearby, utilizing the Geonames service.
+   * It makes a call to the 'findNearbyWikipediaJSON' endpoint with a predefined radius of 20 (presumably kilometers or miles)
+   * and limits the maximum number of results to 20. After fetching the data, it processes the results to construct an array
+   * of `GeonamesWikipedia` objects, each containing information about the Wikipedia articles such as title, URL, coordinates
+   * (longitude and latitude), distance from the search point, and a feature category.
+   *
+   * The function then sorts these results by distance in ascending order and further filters them based on specific feature
+   * categories and keywords within the title. If the fetch operation is successful and relevant Wikipedia articles are found,
+   * it returns an array of `GeonamesWikipedia` objects. If the operation fails or no relevant articles are found, it returns null.
+   *
+   * @returns {Promise<GeonamesWikipedia[] | null>} A promise that resolves to an array of `GeonamesWikipedia` objects
+   * representing nearby Wikipedia articles, sorted and filtered based on distance, feature, and title keywords. If no
+   * articles are found or an error occurs, it resolves to null.
+   */
+  async getWikipediaLinks(): Promise<GeonamesWikipedia[] | null> {
     const data = await this.fetchData('findNearbyWikipediaJSON', '&radius=20&maxRows=20')
     console.log('data', data)
     if (data && Object.hasOwn(data, 'geonames')) {
-      let result: Array<GeonamesWikipedia> = []
+      let result: GeonamesWikipedia[] = []
       for (const item of data.geonames) {
         result.push({
           title: item.title,
@@ -95,11 +110,11 @@ export default class GeonamesAPI {
   /**
    * Sorts an array of objects by the `distance` property in either ascending or descending order
    *
-   * @param {Array<GeonamesWikipedia>} data - The array of objects to sort.
+   * @param {GeonamesWikipedia[]} data - The array of objects to sort.
    * @param {'asc' | 'desc'} order - Optional. The order in which to sort the array.
-   * @returns {Array<GeonamesWikipedia>} A new array sorted by the `distance` property in the specified order.
+   * @returns {GeonamesWikipedia[]} A new array sorted by the `distance` property in the specified order.
    */
-  sortByDistance(data: Array<GeonamesWikipedia>, order: 'asc' | 'desc' = 'asc'): Array<GeonamesWikipedia> {
+  sortByDistance(data: GeonamesWikipedia[], order: 'asc' | 'desc' = 'asc'): GeonamesWikipedia[] {
     if (!Array.isArray(data) || data.length <= 1) {
       return data; // Return early for invalid or trivial input
     }
@@ -119,12 +134,12 @@ export default class GeonamesAPI {
    * It returns a new array containing only the elements where the `feature` property matches
    * one of the allowed features or is undefined.
    *
-   * @param {Array<GeonamesWikipedia>} data - An array of GeonamesWikipedia objects
+   * @param {GeonamesWikipedia[]} data - An array of GeonamesWikipedia objects
    *
    * @returns An array of GeonamesWikipedia objects filtered based on the allowed features.
    * Objects with an undefined `feature` property are also included in the return array.
    */
-  filterByFeature(data: Array<GeonamesWikipedia>) {
+  filterByFeature(data: GeonamesWikipedia[]) {
     const wikipediaFeatureAllowedList = new Set([
       'city',
       'waterbody',
@@ -142,12 +157,12 @@ export default class GeonamesAPI {
   /**
    * Filters an array of objects based on the presence of specific keywords in the `title` property of each object.
    *
-   * @param {Array<GeonamesWikipedia>} data - The array of objects to be filtered. Each object must have a
+   * @param {GeonamesWikipedia[]} data - The array of objects to be filtered. Each object must have a
    * `title` property that is either a string or undefined.
-   * @returns {Array<GeonamesWikipedia>} An array containing only the objects whose `title` property does not
+   * @returns {GeonamesWikipedia[]} An array containing only the objects whose `title` property does not
    * contain any of the specified keywords. If the `title` property is undefined, the object is included in the return value.
    */
-  filterByTitleKeywords(data: Array<GeonamesWikipedia>) {
+  filterByTitleKeywords(data: GeonamesWikipedia[]) {
     const wikipediaTitleBlockStringList = [
       'hotel',
       'luxury resort',
