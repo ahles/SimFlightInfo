@@ -30,7 +30,7 @@ watch(
   () => appState.wikipediaLinksLanguage,
   () => {
     getGeonamesInformation()
-  },
+  }
 )
 
 const wikipediaCountryLink = computed(() => {
@@ -88,10 +88,12 @@ async function getGeonamesInformation() {
         <img :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`" class="geonames-panel__flag" />
       </div>
       <div v-if="oceanName !== ''" class="geonames-panel__location">
-        <p><a :href="wikipediaOceanLink" target="_blank" rel="noopener">{{ oceanName }}</a></p>
+        <p>
+          <a :href="wikipediaOceanLink" target="_blank" rel="noopener">{{ oceanName }}</a>
+        </p>
       </div>
       <Transition name="fade" appear mode="in-out">
-        <div class="geonames-panel__wikipedia-links" v-if="wikipediaLinks">
+        <div v-if="wikipediaLinks" class="geonames-panel__wikipedia-links">
           <ul>
             <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
               <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener">{{ wikipediaLink.title }}</a>

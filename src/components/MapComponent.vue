@@ -26,7 +26,6 @@ onMounted(async () => {
   await mapService.initMap(props.longitude, props.latitude)
   appState.loading = false
 })
-
 </script>
 
 <template>

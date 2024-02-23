@@ -5,13 +5,13 @@ import { CountryInterface, GeonamesWikipedia } from './Interfaces'
  * http://www.geonames.org/export/webservice-exception.html
  */
 export default class GeonamesAPI {
-  private userName: string;
-  private latitude: number = 0;
-  private longitude: number = 0;
+  private userName: string
+  private latitude: number = 0
+  private longitude: number = 0
   private language: string = 'en'
 
   constructor(userName: string) {
-    this.userName = userName;
+    this.userName = userName
   }
 
   /**
@@ -20,8 +20,8 @@ export default class GeonamesAPI {
    * @param longitude The longitude of the location.
    */
   public setLocation(latitude: number, longitude: number): void {
-    this.latitude = latitude;
-    this.longitude = longitude;
+    this.latitude = latitude
+    this.longitude = longitude
   }
 
   /**
@@ -38,16 +38,16 @@ export default class GeonamesAPI {
    * @returns The JSON response from the API.
    */
   private async fetchData(apiPath: string, additionalParams: string = ''): Promise<any> {
-    const url = `http://api.geonames.org/${apiPath}?username=${this.userName}&lat=${this.latitude}&lng=${this.longitude}${additionalParams}`;
+    const url = `http://api.geonames.org/${apiPath}?username=${this.userName}&lat=${this.latitude}&lng=${this.longitude}${additionalParams}`
     try {
-      const response = await fetch(url);
+      const response = await fetch(url)
       if (response.ok) {
-        return await response.json();
+        return await response.json()
       }
-      throw new Error('Network response was not ok.');
+      throw new Error('Network response was not ok.')
     } catch (error) {
-      console.error("Error fetching data:", error);
-      return null; // or rethrow the error based on your error handling strategy
+      console.error('Error fetching data:', error)
+      return null // or rethrow the error based on your error handling strategy
     }
   }
 
@@ -127,17 +127,17 @@ export default class GeonamesAPI {
    */
   sortByDistance(data: GeonamesWikipedia[], order: 'asc' | 'desc' = 'asc'): GeonamesWikipedia[] {
     if (!Array.isArray(data) || data.length <= 1) {
-      return data; // Return early for invalid or trivial input
+      return data // Return early for invalid or trivial input
     }
 
     const sortedData = [...data].sort((a, b) => {
-      const distanceA = typeof a.distance === 'string' ? parseFloat(a.distance) : a.distance;
-      const distanceB = typeof b.distance === 'string' ? parseFloat(b.distance) : b.distance;
+      const distanceA = typeof a.distance === 'string' ? parseFloat(a.distance) : a.distance
+      const distanceB = typeof b.distance === 'string' ? parseFloat(b.distance) : b.distance
 
-      return order === 'asc' ? distanceA - distanceB : distanceB - distanceA;
-    });
+      return order === 'asc' ? distanceA - distanceB : distanceB - distanceA
+    })
 
-    return sortedData;
+    return sortedData
   }
 
   /**
@@ -151,18 +151,9 @@ export default class GeonamesAPI {
    * Objects with an undefined `feature` property are also included in the return array.
    */
   filterByFeature(data: GeonamesWikipedia[]) {
-    const wikipediaFeatureAllowedList = new Set([
-      'city',
-      'waterbody',
-      'airport',
-      'landmark',
-      'event',
-      'railwaystation',
-    ]);
+    const wikipediaFeatureAllowedList = new Set(['city', 'waterbody', 'airport', 'landmark', 'event', 'railwaystation'])
 
-    return data.filter(item =>
-      typeof item.feature === 'undefined' || wikipediaFeatureAllowedList.has(item.feature)
-    );
+    return data.filter((item) => typeof item.feature === 'undefined' || wikipediaFeatureAllowedList.has(item.feature))
   }
 
   /**
@@ -174,23 +165,19 @@ export default class GeonamesAPI {
    * contain any of the specified keywords. If the `title` property is undefined, the object is included in the return value.
    */
   filterByTitleKeywords(data: GeonamesWikipedia[]) {
-    const wikipediaTitleBlockStringList = [
-      'hotel',
-      'luxury resort',
-      'zentrum'
-    ];
+    const wikipediaTitleBlockStringList = ['hotel', 'luxury resort', 'zentrum']
 
     // Convert blocklist to lowercase for case-insensitive comparison
-    const lowerCaseBlockList = wikipediaTitleBlockStringList.map(keyword => keyword.toLowerCase());
+    const lowerCaseBlockList = wikipediaTitleBlockStringList.map((keyword) => keyword.toLowerCase())
 
     // Filter data to exclude items with titles containing any blocklist keyword
-    const result = data.filter(item => {
-      if (typeof item.title === 'undefined') return true; // Keep items without a title
+    const result = data.filter((item) => {
+      if (typeof item.title === 'undefined') return true // Keep items without a title
       // Check if item's title contains any of the blocklist keywords
-      const titleLowerCase = item.title.toLowerCase();
-      return !lowerCaseBlockList.some(keyword => titleLowerCase.includes(keyword));
-    });
+      const titleLowerCase = item.title.toLowerCase()
+      return !lowerCaseBlockList.some((keyword) => titleLowerCase.includes(keyword))
+    })
 
-    return result;
+    return result
   }
 }

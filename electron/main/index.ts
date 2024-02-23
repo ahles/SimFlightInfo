@@ -144,7 +144,7 @@ ipcMain.handle('save-settings', async (event, data) => {
   // "C:\Users\phili\AppData\Roaming\SimFlightInfo\config.json"
   const appState = await store.get('appState')
   if (typeof appState === 'object') {
-    let merged = {...appState, ...data}
+    const merged = {...appState, ...data}
     store.set('appState', merged);
   }
   return await store.get('appState')

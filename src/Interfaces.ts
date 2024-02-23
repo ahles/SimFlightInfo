@@ -40,4 +40,3 @@ export interface GeonamesWikipedia {
   distance: number
   feature?: string
 }
-
