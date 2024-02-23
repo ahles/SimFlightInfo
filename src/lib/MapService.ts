@@ -3,12 +3,18 @@ import { fromLonLat } from 'ol/proj'
 import View from 'ol/View'
 import Map from 'ol/Map'
 import { defaults } from 'ol/interaction.js'
-import { Tile as TileLayer } from 'ol/layer.js'
+import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer.js'
+import Vector from 'ol/source/Vector.js';
 import OSM from 'ol/source/OSM.js'
+import Point from 'ol/geom/Point.js'
+import Feature from 'ol/Feature.js'
+import { Icon, Style } from 'ol/style.js';
+import { GeonamesWikipedia } from '../Interfaces'
 
 class MapService {
   private map?: Map
   private view?: View
+  private markerLayer?: VectorLayer<Vector>
 
   longitude: number = 0
   latitude: number = 0
@@ -84,6 +90,41 @@ class MapService {
     return new TileLayer({
       source: new OSM()
     })
+  }
+
+  addWikipediaMarker(location: GeonamesWikipedia) {
+    const marker = new Feature({
+      geometry: new Point(fromLonLat([location.longitude, location.latitude])),
+    });
+
+    marker.setStyle(
+      new Style({
+        image: new Icon({
+          color: '#BADA55',
+          crossOrigin: 'anonymous',
+          src: 'images/wikipediaMarker.svg',
+          width: 32,
+          height: 32,
+          anchor: [0.5, 1],
+        }),
+      })
+    );
+
+    const vectorSource = new Vector({
+      features: [marker],
+    });
+
+    this.markerLayer = new VectorLayer({
+      source: vectorSource,
+    });
+
+    this.map?.addLayer(this.markerLayer)
+  }
+
+  removeWikipediaMarker() {
+    if (this.map && this.markerLayer) {
+      this.map.removeLayer(this.markerLayer)
+    }
   }
 }
 

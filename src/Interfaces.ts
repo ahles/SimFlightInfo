@@ -11,6 +11,7 @@ export interface SimStateInterface {
   connected: boolean
   exception: any
   paused: boolean
+  wikipediaMarker?: GeonamesWikipedia
 }
 
 export interface FlightData {

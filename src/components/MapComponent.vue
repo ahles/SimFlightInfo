@@ -4,8 +4,11 @@ import PlaneMarkerComponent from './gui/PlaneMarkerComponent.vue'
 import MapService from '../lib/MapService'
 
 import { useAppStateStore } from '../stores/appState'
+import { useSimStateStore } from '../stores/simState'
+import { GeonamesWikipedia } from '../Interfaces'
 
 const appState = useAppStateStore()
+const simState = useSimStateStore()
 
 const props = defineProps<{
   longitude: number
@@ -19,6 +22,18 @@ watch(
   () => props.longitude,
   () => {
     mapService.updatePosition(props.longitude, props.latitude)
+  }
+)
+
+watch(
+  () => simState.wikipediaMarker,
+  (newValue) => {
+    if (newValue) {
+      mapService.removeWikipediaMarker()
+      mapService.addWikipediaMarker(newValue)
+    } else {
+      mapService.removeWikipediaMarker()
+    }
   }
 )
 
