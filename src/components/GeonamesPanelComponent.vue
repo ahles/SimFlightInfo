@@ -176,6 +176,22 @@ function displayPosition(index: number) {
     margin: 0;
     padding: 0;
   }
+
+  a {
+    display: block;
+    border: none;
+    padding: 0.2rem 0;
+
+    &:hover {
+      background-color: var(--color-background);
+    }
+  }
+
+  li:not(:last-of-type) {
+    a{
+      margin-bottom: 0.2rem;
+    }
+  }
 }
 
 .geonames-panel__error {
