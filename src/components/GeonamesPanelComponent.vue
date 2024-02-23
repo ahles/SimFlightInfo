@@ -42,6 +42,7 @@ const wikipediaOceanLink = computed(() => {
 
 async function getGeonamesInformation() {
   appState.loading = true
+  wikipediaLinks.value = null
   geonames.setLocation(props.latitude, props.longitude)
   const country: CountryInterface | null = await geonames.getCountry()
   if (country !== null) {
@@ -81,13 +82,15 @@ async function getGeonamesInformation() {
       <div v-if="oceanName !== ''" class="geonames-panel__location">
         <p><a :href="wikipediaOceanLink" target="_blank" rel="noopener">{{ oceanName }}</a></p>
       </div>
-      <div class="geonames-panel__wikipedia-links" v-if="wikipediaLinks">
-        <ul>
-          <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
-            <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener">{{ wikipediaLink.title }}</a>
-          </li>
-        </ul>
-      </div>
+      <Transition name="fade" appear mode="in-out">
+        <div class="geonames-panel__wikipedia-links" v-if="wikipediaLinks">
+          <ul>
+            <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
+              <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener">{{ wikipediaLink.title }}</a>
+            </li>
+          </ul>
+        </div>
+      </Transition>
     </div>
     <div v-else class="geonames-panel__error">
       <IconAlertComponent />
