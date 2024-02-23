@@ -59,7 +59,6 @@ async function getGeonamesInformation() {
     }
   }
   wikipediaLinks.value = await geonames.getWikipediaLinks()
-  console.log('wikipediaLinks', wikipediaLinks.value)
   appState.loading = false
 }
 </script>
