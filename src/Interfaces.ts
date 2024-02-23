@@ -38,5 +38,6 @@ export interface GeonamesWikipedia {
   longitude: number
   latitude: number
   distance: number
+  feature?: string
 }
 
