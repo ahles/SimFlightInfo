@@ -63,7 +63,7 @@ function removeMarker() {
     right: 1rem;
   }
 
-  .ol-control {
+  .ol-zoom {
     display: none;
     button {
       background-color: var(--color-background);

@@ -23,7 +23,7 @@ const oceanName = ref('')
 const wikipediaLinks = ref<GeonamesWikipedia[] | null>(null)
 
 onMounted(async () => {
-  geonames.setLocation(props.latitude, props.longitude)
+  geonames.setLocation(props.longitude, props.latitude)
   await getGeonamesInformation()
 })
 
@@ -56,7 +56,7 @@ const wikipediaOceanLink = computed(() => {
 async function getGeonamesInformation() {
   appState.loading = true
   wikipediaLinks.value = null
-  geonames.setLocation(props.latitude, props.longitude)
+  geonames.setLocation(props.longitude, props.latitude)
   geonames.setLanguage(appState.wikipediaLinksLanguage)
   const country: CountryInterface | null = await geonames.getCountry()
   if (country !== null) {

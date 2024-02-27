@@ -20,12 +20,12 @@ defineProps<{
 <template>
   <div v-if="appState.infoPanelVisible" class="info-panel">
     <div class="info-panel__col">
-      <div class="info-panel__value">{{ latitude.toFixed(3) }}°</div>
-      <div class="info-panel__name">Latitude</div>
-    </div>
-    <div class="info-panel__col">
       <div class="info-panel__value">{{ longitude.toFixed(3) }}°</div>
       <div class="info-panel__name">Longitude</div>
+    </div>
+    <div class="info-panel__col">
+      <div class="info-panel__value">{{ latitude.toFixed(3) }}°</div>
+      <div class="info-panel__name">Latitude</div>
     </div>
     <div class="info-panel__col">
       <div class="info-panel__value">{{ heading }}°</div>

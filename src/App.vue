@@ -104,8 +104,8 @@ function initSimconnectEvents() {
         <p>Sim exception: {{ simState.exception }}</p>
         <p>Sim paused: {{ simState.paused }}</p>
         <br />
-        <p>latitude: {{ latitude }}°</p>
         <p>longitude: {{ longitude }}°</p>
+        <p>latitude: {{ latitude }}°</p>
         <p>altitude: {{ altitude }}&nbsp;ft</p>
         <p>altitudeAboveGround: {{ altitudeAboveGround }}&nbsp;ft</p>
         <p>heading: {{ heading }}°</p>

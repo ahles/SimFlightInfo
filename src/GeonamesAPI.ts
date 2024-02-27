@@ -6,8 +6,8 @@ import { CountryInterface, GeonamesWikipedia } from './Interfaces'
  */
 export default class GeonamesAPI {
   private userName: string
-  private latitude: number = 0
   private longitude: number = 0
+  private latitude: number = 0
   private language: string = 'en'
 
   constructor(userName: string) {
@@ -19,9 +19,9 @@ export default class GeonamesAPI {
    * @param latitude The latitude of the location.
    * @param longitude The longitude of the location.
    */
-  public setLocation(latitude: number, longitude: number): void {
-    this.latitude = latitude
+  public setLocation(longitude: number, latitude: number): void {
     this.longitude = longitude
+    this.latitude = latitude
   }
 
   /**

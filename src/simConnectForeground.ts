@@ -7,8 +7,8 @@ import { flightIsOnNullIsland } from './lib/helpers'
  * @returns flight data
  */
 export function useSimConnectForeground() {
-  const latitude = ref(0) // 47.435
   const longitude = ref(0) // 8.455
+  const latitude = ref(0) // 47.435
   const altitude = ref(0)
   const altitudeAboveGround = ref(0)
   const heading = ref(0)
@@ -23,8 +23,8 @@ export function useSimConnectForeground() {
     window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightData) => {
       // If the airplane is in the null island area, force all values to 0
       if (flightIsOnNullIsland(data.longitude, data.latitude)) {
-        latitude.value = 0
         longitude.value = 0
+        latitude.value = 0
         altitude.value = 0
         altitudeAboveGround.value = 0
         heading.value = 0
@@ -35,8 +35,8 @@ export function useSimConnectForeground() {
         airSpeedIndicated.value = 0
         verticalSpeed.value = 0
       } else {
-        latitude.value = data.latitude
         longitude.value = data.longitude
+        latitude.value = data.latitude
         altitude.value = data.altitude
         altitudeAboveGround.value = data.altitudeAboveGround
         heading.value = data.heading
@@ -55,8 +55,8 @@ export function useSimConnectForeground() {
   })
 
   return {
-    latitude,
     longitude,
+    latitude,
     altitude,
     altitudeAboveGround,
     heading,
