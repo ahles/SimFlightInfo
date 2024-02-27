@@ -7,8 +7,8 @@ import { flightIsOnNullIsland } from './lib/helpers'
  * @returns flight data
  */
 export function useSimConnectForeground() {
-  const latitude = ref(47.435) // 47.435
-  const longitude = ref(8.455) // 8.455
+  const latitude = ref(0) // 47.435
+  const longitude = ref(0) // 8.455
   const altitude = ref(0)
   const altitudeAboveGround = ref(0)
   const heading = ref(0)

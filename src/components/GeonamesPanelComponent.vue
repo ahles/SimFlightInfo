@@ -3,6 +3,7 @@ import { ref, onMounted, computed, watch } from 'vue'
 import { CountryInterface, GeonamesWikipedia } from '../Interfaces'
 import GeonamesAPI from '../GeonamesAPI'
 import { useAppStateStore } from '../stores/appState'
+import { flightIsOnNullIsland } from '../lib/helpers'
 import ButtonComponent from './gui/ButtonComponent.vue'
 import IconAlertComponent from './icons/IconAlertComponent.vue'
 import IconReloadComponent from './icons/IconReloadComponent.vue'
@@ -110,7 +111,7 @@ function removeMarker() {
         </p>
       </div>
       <Transition name="fade" appear mode="in-out">
-        <div v-if="wikipediaLinks" class="geonames-panel__wikipedia-links">
+        <div v-if="flightIsOnNullIsland(longitude, latitude) === false && wikipediaLinks" class="geonames-panel__wikipedia-links">
           <ul>
             <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
               <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener" @mouseenter="displayMarker(index)" @mouseleave="removeMarker">{{ wikipediaLink.title }}</a>
