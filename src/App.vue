@@ -12,8 +12,6 @@ import SidePanelComponent from './components/layout/SidePanelComponent.vue'
 import LoadingBarComponent from './components/gui/LoadingBarComponent.vue'
 import MapComponent from './components/MapComponent.vue'
 import ConnectionInformationComponent from './components/ConnectionInformationComponent.vue'
-import InfoPanelComponent from './components/InfoPanelComponent.vue'
-import GeonamesPanelComponent from './components/GeonamesPanelComponent.vue'
 
 // Initialize the pinia stores
 const appState = useAppStateStore()
@@ -37,9 +35,18 @@ onBeforeMount(() => {
   window.ipcRenderer.invoke('request-settings').then((savedAppState) => {
     settingsLoaded.value = true
     if (savedAppState !== undefined) {
-      appState.geonamesUsername = savedAppState.geonamesUsername
-      appState.wikipediaLinksLanguage = savedAppState.wikipediaLinksLanguage
+      if (Object.hasOwn(savedAppState, 'geonamesUsername')) {
+        appState.geonamesUsername = savedAppState.geonamesUsername
+      }
+      if (Object.hasOwn(savedAppState, 'wikipediaLinksLanguage')) {
+        appState.wikipediaLinksLanguage = savedAppState.wikipediaLinksLanguage
+      }
     }
+    window.ipcRenderer.invoke('save-settings', {
+      'geonamesUsername': appState.geonamesUsername,
+      'wikipediaLinksLanguage': appState.wikipediaLinksLanguage
+    })
+    
     initSimconnectEvents()
   })
 
@@ -87,9 +94,7 @@ function initSimconnectEvents() {
       <HeaderComponent />
 <!--            <main v-if="simState.connected" class="main">-->
       <main v-if="true" class="main">
-        <MapComponent :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" />
-        <InfoPanelComponent :longitude="longitude" :latitude="latitude" :heading="heading" :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed" :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
-        <GeonamesPanelComponent :longitude="longitude" :latitude="latitude" />
+        <MapComponent :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" :heading="heading" :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed" :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
       </main>
       <div v-else>
         <ConnectionInformationComponent />

@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { onMounted, watch } from 'vue'
 import PlaneMarkerComponent from './gui/PlaneMarkerComponent.vue'
+import InfoPanelComponent from './InfoPanelComponent.vue'
+import GeonamesPanelComponent from './GeonamesPanelComponent.vue'
 import MapService from '../lib/MapService'
 
 import { useAppStateStore } from '../stores/appState'
 import { useSimStateStore } from '../stores/simState'
-import { GeonamesWikipedia } from '../Interfaces'
+// import { GeonamesWikipedia } from '../Interfaces'
 
 const appState = useAppStateStore()
 const simState = useSimStateStore()
@@ -14,6 +16,12 @@ const props = defineProps<{
   longitude: number
   latitude: number
   headingTrue: number
+  heading: Number
+  altitude: Number
+  airSpeedIndicated: Number
+  verticalSpeed: Number
+  degreesPitch: Number
+  degreesBank: Number
 }>()
 
 const mapService = new MapService()
@@ -46,6 +54,8 @@ onMounted(async () => {
 <template>
   <div id="map"></div>
   <PlaneMarkerComponent :heading-true="headingTrue" />
+  <InfoPanelComponent :longitude="longitude" :latitude="latitude" :heading="heading" :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed" :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
+  <GeonamesPanelComponent :longitude="longitude" :latitude="latitude" />
 </template>
 
 <style>
