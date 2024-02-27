@@ -74,14 +74,13 @@ defineProps<{
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  width: 10rem;
+  width: 9rem;
   padding: 0 1rem;
   border-right: 1px solid var(--color-background);
 }
 
 .info-panel__col:first-of-type {
   padding-left: 0;
-  width: 7rem;
 }
 
 .info-panel__col:last-of-type {
