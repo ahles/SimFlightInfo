@@ -10,7 +10,7 @@
     "Openstreetmap",
     "Vue.js",
     "Electron.js",
-    "Leaflet.js",
+    "Openlayers",
     "Geonames"
   ],
   "type": "module",
