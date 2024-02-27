@@ -7,6 +7,5 @@ export const useSimStateStore = defineStore({
     connected: false,
     exception: null,
     paused: true,
-    wikipediaMarker: null,
   })
 })

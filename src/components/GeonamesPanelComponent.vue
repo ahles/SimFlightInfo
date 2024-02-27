@@ -3,13 +3,11 @@ import { ref, onMounted, computed, watch } from 'vue'
 import { CountryInterface, GeonamesWikipedia } from '../Interfaces'
 import GeonamesAPI from '../GeonamesAPI'
 import { useAppStateStore } from '../stores/appState'
-import { useSimStateStore } from '../stores/simState'
 import ButtonComponent from './gui/ButtonComponent.vue'
 import IconAlertComponent from './icons/IconAlertComponent.vue'
 import IconReloadComponent from './icons/IconReloadComponent.vue'
 
 const appState = useAppStateStore()
-const simState = useSimStateStore()
 
 const props = defineProps<{
   longitude: number
@@ -34,6 +32,11 @@ watch(
     getGeonamesInformation()
   }
 )
+
+const emit = defineEmits<{
+  (e: 'addMarker', item: GeonamesWikipedia): void
+  (e: 'removeMarker'): void
+}>()
 
 const wikipediaCountryLink = computed(() => {
   if (countryName.value) {
@@ -73,13 +76,16 @@ async function getGeonamesInformation() {
   appState.loading = false
 }
 
-function displayPosition(index: number) {
+function displayMarker(index: number) {
   if (wikipediaLinks.value === null) {
     return
   }
   const item: GeonamesWikipedia = wikipediaLinks.value[index]
-  // console.log('item.latitude', item.latitude);
-  simState.wikipediaMarker = item
+  emit('addMarker', item)
+}
+
+function removeMarker() {
+  emit('removeMarker')
 }
 </script>
 
@@ -107,7 +113,7 @@ function displayPosition(index: number) {
         <div v-if="wikipediaLinks" class="geonames-panel__wikipedia-links">
           <ul>
             <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
-              <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener" @mouseenter="displayPosition(index)">{{ wikipediaLink.title }}</a>
+              <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener" @mouseenter="displayMarker(index)" @mouseleave="removeMarker">{{ wikipediaLink.title }}</a>
             </li>
           </ul>
         </div>
