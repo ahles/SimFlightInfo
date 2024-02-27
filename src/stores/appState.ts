@@ -9,11 +9,18 @@ export const useAppStateStore = defineStore({
     airplaneCentered: true,
     geonamesPanelVisible: true,
     geonamesUsername: '',
-    wikipediaLinksLanguage: 'en'
+    wikipediaLinksLanguage: 'en',
+    infoPanelVisible: true
   }),
   actions: {
     sidePanelToggle() {
       this.sidePanelOpen = !this.sidePanelOpen
+    },
+    infoPanelToggle () {
+      this.infoPanelVisible = !this.infoPanelVisible
+    },
+    geonamesPanelToggle() {
+      this.geonamesPanelVisible = !this.geonamesPanelVisible
     }
   }
 })

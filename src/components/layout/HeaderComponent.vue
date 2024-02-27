@@ -5,12 +5,24 @@ import IconWindowMaximizeComponent from '../icons/IconWindowMaximizeComponent.vu
 import IconWindowCloseComponent from '../icons/IconWindowCloseComponent.vue'
 import ButtonComponent from '../gui/ButtonComponent.vue'
 import { useAppStateStore } from '../../stores/appState'
+import IconCompassComponent from '../icons/IconCompassComponent.vue'
+import IconCompassOffComponent from '../icons/IconCompassOffComponent.vue'
+import IconLightbulbComponent from '../icons/IconLightbulbComponent.vue'
+import IconLightbulbOffComponent from '../icons/IconLightbulbOffComponent.vue'
 
 const appState = useAppStateStore()
 let maximized = false
 
+function toggleGeonamesPanel() {
+  appState.geonamesPanelToggle()
+}
+
 function toggleSidepanel() {
   appState.sidePanelToggle()
+}
+
+function toggleInfoPanel() {
+  appState.infoPanelToggle()
 }
 
 function windowClose() {
@@ -40,6 +52,14 @@ function windowMaximize() {
     </div>
     <div class="header__middle" />
     <div class="header__right">
+      <ButtonComponent title="Toggle the geonames panel visibility" variant="icon" class="btn__window" @click="toggleGeonamesPanel">
+        <IconLightbulbComponent v-if="appState.geonamesPanelVisible" />
+        <IconLightbulbOffComponent v-else />
+      </ButtonComponent>
+      <ButtonComponent title="Toggle the navigation information panel visibility" variant="icon" class="btn__window btn__window--space-right" @click="toggleInfoPanel">
+        <IconCompassComponent v-if="appState.infoPanelVisible" />
+        <IconCompassOffComponent v-else />
+      </ButtonComponent>
       <ButtonComponent title="settings" variant="icon" class="btn__window btn__window--space-right" @click="toggleSidepanel">
         <IconCogComponent />
       </ButtonComponent>

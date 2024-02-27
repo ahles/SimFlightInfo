@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import PitchComponent from './gui/PitchComponent.vue'
 import BankComponent from './gui/BankComponent.vue'
+import { useAppStateStore } from '../stores/appState'
+
+const appState = useAppStateStore()
 
 defineProps<{
   longitude: Number
@@ -15,7 +18,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="info-panel">
+  <div v-if="appState.infoPanelVisible" class="info-panel">
     <div class="info-panel__col">
       <div class="info-panel__value">{{ latitude.toFixed(3) }}°</div>
       <div class="info-panel__name">Latitude</div>

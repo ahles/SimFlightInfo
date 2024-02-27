@@ -5,6 +5,7 @@ export interface AppStateInterface {
   geonamesPanelVisible: boolean
   geonamesUsername: string
   wikipediaLinksLanguage: string
+  infoPanelVisible: boolean
 }
 
 export interface SimStateInterface {
