@@ -194,7 +194,7 @@ function removeMarker() {
   }
 
   li:not(:last-of-type) {
-    a{
+    a {
       margin-bottom: 0.2rem;
     }
   }

@@ -42,7 +42,7 @@ export default class GeonamesAPI {
     try {
       const response = await fetch(url)
       if (response.ok) {
-        const result =  await response.json()
+        const result = await response.json()
         // console.log('result', result)
         return result
       }

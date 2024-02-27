@@ -16,7 +16,7 @@ export const useAppStateStore = defineStore({
     sidePanelToggle() {
       this.sidePanelOpen = !this.sidePanelOpen
     },
-    infoPanelToggle () {
+    infoPanelToggle() {
       this.infoPanelVisible = !this.infoPanelVisible
     },
     geonamesPanelToggle() {

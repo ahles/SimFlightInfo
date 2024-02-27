@@ -43,7 +43,6 @@ function addMarker(payload: GeonamesWikipedia) {
 function removeMarker() {
   mapService.removeWikipediaMarker()
 }
-
 </script>
 
 <template>

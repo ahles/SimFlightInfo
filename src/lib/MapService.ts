@@ -4,11 +4,11 @@ import View from 'ol/View'
 import Map from 'ol/Map'
 import { defaults } from 'ol/interaction.js'
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer.js'
-import Vector from 'ol/source/Vector.js';
+import Vector from 'ol/source/Vector.js'
 import OSM from 'ol/source/OSM.js'
 import Point from 'ol/geom/Point.js'
 import Feature from 'ol/Feature.js'
-import { Icon, Style } from 'ol/style.js';
+import { Icon, Style } from 'ol/style.js'
 import { GeonamesWikipedia } from '../Interfaces'
 
 class MapService {
@@ -94,8 +94,8 @@ class MapService {
 
   addWikipediaMarker(location: GeonamesWikipedia) {
     const marker = new Feature({
-      geometry: new Point(fromLonLat([location.longitude, location.latitude])),
-    });
+      geometry: new Point(fromLonLat([location.longitude, location.latitude]))
+    })
 
     marker.setStyle(
       new Style({
@@ -105,18 +105,18 @@ class MapService {
           src: 'images/wikipediaMarker.svg',
           width: 32,
           height: 32,
-          anchor: [0.5, 1],
-        }),
+          anchor: [0.5, 1]
+        })
       })
-    );
+    )
 
     const vectorSource = new Vector({
-      features: [marker],
-    });
+      features: [marker]
+    })
 
     this.markerLayer = new VectorLayer({
-      source: vectorSource,
-    });
+      source: vectorSource
+    })
 
     this.map?.addLayer(this.markerLayer)
   }
