@@ -34,8 +34,8 @@ watch(
 )
 
 const emit = defineEmits<{
-  (e: 'addMarker', item: GeonamesWikipedia): void
-  (e: 'removeMarker'): void
+  (e: 'add-marker', item: GeonamesWikipedia): void
+  (e: 'remove-marker'): void
 }>()
 
 const wikipediaCountryLink = computed(() => {
@@ -81,11 +81,11 @@ function displayMarker(index: number) {
     return
   }
   const item: GeonamesWikipedia = wikipediaLinks.value[index]
-  emit('addMarker', item)
+  emit('add-marker', item)
 }
 
 function removeMarker() {
-  emit('removeMarker')
+  emit('remove-marker')
 }
 </script>
 
