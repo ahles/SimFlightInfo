@@ -10,7 +10,7 @@ import Point from 'ol/geom/Point.js'
 import Feature from 'ol/Feature.js'
 import { Icon, Style } from 'ol/style.js'
 import { GeonamesWikipedia } from '../Interfaces'
-import {Attribution, defaults as defaultControls} from 'ol/control.js';
+import { Attribution, defaults as defaultControls } from 'ol/control.js'
 
 /**
  * TODO: Check the whole app and verify that coorinate parameters are always long/lat
@@ -45,15 +45,15 @@ class MapService {
     })
 
     const attribution = new Attribution({
-      collapsible: true,
-    });
+      collapsible: true
+    })
 
     this.map = new Map({
       layers: [this.getOSMLayer()],
       target: 'map',
       view: this.view,
       interactions: defaults({ dragPan: false }),
-      controls: defaultControls().extend([attribution]),
+      controls: defaultControls().extend([attribution])
     })
 
     this.map.on('moveend', () => {
