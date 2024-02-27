@@ -44,16 +44,12 @@ class MapService {
       zoom: 12
     })
 
-    const attribution = new Attribution({
-      collapsible: true
-    })
-
     this.map = new Map({
       layers: [this.getOSMLayer()],
       target: 'map',
       view: this.view,
       interactions: defaults({ dragPan: false }),
-      controls: defaultControls().extend([attribution])
+      controls: defaultControls()
     })
 
     this.map.on('moveend', () => {
