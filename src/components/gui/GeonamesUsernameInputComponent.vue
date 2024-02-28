@@ -9,6 +9,8 @@ const localGeonamesUsername = ref('')
 const saveSuccess = ref(false)
 const saveError = ref(false)
 
+const input = ref<HTMLInputElement | null>(null)
+
 onMounted(() => {
   localGeonamesUsername.value = appState.geonamesUsername
 })
@@ -22,6 +24,9 @@ function saveUsername() {
       localGeonamesUsername.value = result.geonamesUsername
       appState.geonamesUsername = result.geonamesUsername
       saveSuccess.value = true
+      if (input.value) {
+        input.value.blur()
+      }
     })
     .catch((error) => {
       alert(error)
@@ -49,7 +54,7 @@ watch(saveError, (newValue) => {
 <template>
   <div class="geonames-username-input" :class="{ success: saveSuccess, error: saveError }">
     <label class="geonames-username-input__label" for="geonames">Enter your Geoname username:</label>
-    <input id="geonames" v-model="localGeonamesUsername" class="geonames-username-input__input" type="text" name="geonames" placeholder="enter your username" @keyup.enter="saveUsername" />
+    <input ref="input" id="geonames" v-model="localGeonamesUsername" class="geonames-username-input__input" type="text" name="geonames" placeholder="enter your username" @keyup.enter="saveUsername" />
     <ButtonComponent class="geonames-username-input__button" title="Save geonames username" variant="icon" @click="saveUsername"><IconSaveComponent /></ButtonComponent>
   </div>
 </template>
