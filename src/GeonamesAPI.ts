@@ -45,8 +45,10 @@ export default class GeonamesAPI {
         const result = await response.json()
         // console.log('result', result)
         return result
+      } else {
+        console.log('response', response)
+        throw new Error('Network response was not ok.')
       }
-      throw new Error('Network response was not ok.')
     } catch (error) {
       console.error('Error fetching data:', error)
       return null // or rethrow the error based on your error handling strategy
