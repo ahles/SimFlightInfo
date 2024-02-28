@@ -10,7 +10,7 @@ import Point from 'ol/geom/Point.js'
 import Feature from 'ol/Feature.js'
 import { Icon, Style } from 'ol/style.js'
 import { GeonamesWikipedia } from '../Interfaces'
-import { Attribution, defaults as defaultControls } from 'ol/control.js'
+import { defaults as defaultControls } from 'ol/control.js'
 
 /**
  * TODO: Check the whole app and verify that coorinate parameters are always long/lat
@@ -57,8 +57,6 @@ class MapService {
     })
 
     return new Promise<Map>((resolve) => {
-      // Assuming a better way to determine map readiness
-      // Resolve the promise once the map has finished loading.
       if (this.map) {
         this.map.on('loadend', () => {
           if (this.map) {
