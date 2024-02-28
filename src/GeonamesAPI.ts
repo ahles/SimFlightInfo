@@ -46,12 +46,11 @@ export default class GeonamesAPI {
         // console.log('result', result)
         return result
       } else {
-        console.log('response', response)
-        throw new Error('Network response was not ok.')
+        console.log('response', response);
+        throw new Error('Geonames error')
       }
     } catch (error) {
-      console.error('Error fetching data:', error)
-      return null // or rethrow the error based on your error handling strategy
+      throw new Error('Geonames not reachable')
     }
   }
 

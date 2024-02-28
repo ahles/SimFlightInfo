@@ -22,6 +22,8 @@ const countryName = ref('')
 const oceanName = ref('')
 const wikipediaLinks = ref<GeonamesWikipedia[] | null>(null)
 
+const errors = ref<string[]>([])
+
 onMounted(async () => {
   geonames.setLocation(props.longitude, props.latitude)
   await getGeonamesInformation()
@@ -59,21 +61,24 @@ async function getGeonamesInformation() {
   geonames.setLocation(props.longitude, props.latitude)
   geonames.setLanguage(appState.wikipediaLinksLanguage)
   const country: CountryInterface | null = await geonames.getCountry()
+    .catch((error) => {
+      errors.value.push(error)
+      return null
+    })
   if (country !== null) {
     countryCode.value = country.code
     countryName.value = country.name
     oceanName.value = ''
-    geonamesValidResponse.value = true
   } else {
     const ocean = await geonames.getOcean()
     if (ocean !== null) {
       oceanName.value = ocean
       countryCode.value = ''
       countryName.value = ''
-      geonamesValidResponse.value = true
     }
   }
   wikipediaLinks.value = await geonames.getWikipediaLinks()
+  geonamesValidResponse.value = true
   appState.loading = false
 }
 
@@ -124,7 +129,9 @@ function removeMarker() {
       <IconAlertComponent />
       <ul>
         <p v-if="appState.geonamesUsername === '' || typeof appState.geonamesUsername === 'undefined'">No geonames username configured</p>
-        <p v-if="geonamesValidResponse === false">Could not fetch from geonames</p>
+        <ul v-if="errors.length > 0">
+          <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+        </ul>
       </ul>
     </div>
   </div>
