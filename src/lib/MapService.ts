@@ -12,10 +12,6 @@ import { Icon, Style } from 'ol/style.js'
 import { GeonamesWikipedia } from '../Interfaces'
 import { defaults as defaultControls } from 'ol/control.js'
 
-/**
- * TODO: Check the whole app and verify that coorinate parameters are always long/lat
- */
-
 class MapService {
   private map?: Map
   private view?: View
