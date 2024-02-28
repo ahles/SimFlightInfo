@@ -24,11 +24,6 @@
     "format": "prettier --write src/",
     "vite": "vite"
   },
-  "dependencies": {
-    "node-simconnect": "^3.6.1",
-    "ol": "^8.2.0",
-    "pinia": "^2.1.7"
-  },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.7.2",
     "@vitejs/plugin-vue": "^5.0.1",
@@ -40,7 +35,10 @@
     "electron-store": "^8.1.0",
     "eslint": "^8.56.0",
     "eslint-plugin-vue": "^9.21.1",
+    "node-simconnect": "^3.6.2",
     "npm-run-all2": "^6.1.2",
+    "ol": "^9.0.0",
+    "pinia": "^2.1.7",
     "prettier": "^3.2.5",
     "tree-kill": "^1.2.2",
     "typescript": "^5.3.3",
