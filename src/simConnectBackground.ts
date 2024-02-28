@@ -65,7 +65,6 @@ const simConnectBackground = {
           }
         })
         handle.on('exception', (recvException) => {
-          console.log(recvException)
           win.webContents.send('simconnect-simstate-exception', recvException)
         })
         handle.on('quit', function () {
@@ -80,7 +79,10 @@ const simConnectBackground = {
         handle.subscribeToSystemEvent(EVENT_ID_PAUSE, 'Pause')
       })
       .catch(function (error) {
-        win.webContents.send('simconnect-simstate-exception', error)
+        console.log('error', error);
+        win.webContents.send('simconnect-simstate-exception', {
+          code: error.code
+        })
       })
   }
 }
