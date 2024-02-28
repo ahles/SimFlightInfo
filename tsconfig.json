@@ -13,7 +13,12 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "src/stores/appState.ts",
+    "src/stores/simState.ts",
+    "src/Interfaces.ts"
+  ],
   "references": [
     { "path": "./tsconfig.node.json" }
   ]
