@@ -10,6 +10,9 @@
     "vite.config.ts",
     "package.json",
     "electron",
-    "src/simConnectBackground.ts"
+    "src/simConnectBackground.ts",
+    "src/stores/appState.ts",
+    "src/stores/simState.ts",
+    "src/Interfaces.ts"
   ]
 }

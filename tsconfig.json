@@ -14,10 +14,7 @@
     "noEmit": true
   },
   "include": [
-    "src",
-    "src/stores/appState.ts",
-    "src/stores/simState.ts",
-    "src/Interfaces.ts"
+    "src"
   ],
   "references": [
     { "path": "./tsconfig.node.json" }

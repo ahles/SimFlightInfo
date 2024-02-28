@@ -73,7 +73,12 @@ function initSimconnectEvents() {
 
   window.ipcRenderer.on('simconnect-simstate-exception', (event, exception) => {
     appState.loading = false
-    simState.exception = exception
+    console.log('exception', exception.code)
+    const exceptionText: string = exception.code
+    console.log('exceptionText', exceptionText)
+    exceptionText.replace('ECONNREFUSED', 'Connection refused by Sim')
+    console.log('exceptionText', exceptionText)
+    simState.exception = exceptionText
   })
 
   window.ipcRenderer.on('simconnect-paused', (event, paused) => {
@@ -92,8 +97,8 @@ function initSimconnectEvents() {
     <div v-if="settingsLoaded" class="container">
       <LoadingBarComponent v-if="appState.loading" />
       <HeaderComponent />
-      <!--            <main v-if="simState.connected" class="main">-->
-      <main v-if="true" class="main">
+      <main v-if="simState.connected" class="main">
+<!--      <main v-if="true" class="main">-->
         <MapComponent :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" :heading="heading" :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed" :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
       </main>
       <div v-else>
