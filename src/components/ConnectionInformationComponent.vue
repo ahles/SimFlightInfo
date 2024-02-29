@@ -59,8 +59,10 @@ function retry() {
 }
 
 .connection-information__text {
+  text-align: center;
   display: block;
   font-size: 1.2rem;
+  margin-top: 1rem;
 }
 
 .connection-information__retry {
