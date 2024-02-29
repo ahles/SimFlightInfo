@@ -24,7 +24,7 @@ export function flightIsOnNullIsland(longitude: number, latitude: number): boole
 export function getExceptionTextForHumans(code: string): string {
   let exceptionText: string = ''
   if (code === 'ECONNREFUSED') {
-    exceptionText = 'Connection refused. Is the simulator running?'
+    exceptionText = 'No connection. Is the simulator running?'
   } else {
     exceptionText = 'An unknown error ocurred: ' + code
   }
