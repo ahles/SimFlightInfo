@@ -15,3 +15,18 @@ export function flightIsOnNullIsland(longitude: number, latitude: number): boole
   const threshold = 0.05
   return Math.abs(longitude) < threshold && Math.abs(latitude) < threshold
 }
+
+/**
+ * Converts exception codes to human-readable messages.
+ * @param {string} code - The exception code to be converted.
+ * @return {string} A human-readable message corresponding to the exception code.
+ */
+export function getExceptionTextForHumans(code: string): string {
+  let exceptionText: string = ''
+  if (code === 'ECONNREFUSED') {
+    exceptionText = 'Connection refused. Is the simulator running?'
+  } else {
+    exceptionText = 'An unknown error ocurred: ' + code
+  }
+  return exceptionText
+}

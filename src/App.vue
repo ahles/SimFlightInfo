@@ -6,6 +6,8 @@ import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
 // Composable import
 import { useSimConnectForeground } from './simConnectForeground'
+// Helper function import
+import { getExceptionTextForHumans } from './lib/helpers'
 // Components imports
 import HeaderComponent from './components/layout/HeaderComponent.vue'
 import SidePanelComponent from './components/layout/SidePanelComponent.vue'
@@ -84,17 +86,6 @@ function initSimconnectEvents() {
     simState.paused = false
     simState.connected = false
   })
-}
-
-function getExceptionTextForHumans(code: string): string {
-  let exceptionText: string = ''
-  if (code === 'ECONNREFUSED') {
-    exceptionText = 'Connection refused. Is the simulator running?'
-  } else {
-    console.log('Unknown exception: ', code)
-    exceptionText = code
-  }
-  return exceptionText
 }
 </script>
 
