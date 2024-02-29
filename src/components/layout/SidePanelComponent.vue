@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAppStateStore } from '../../stores/appState'
 import GeonamesUsernameInputComponent from '../gui/GeonamesUsernameInputComponent.vue'
+import MapLayerManagerComponent from '../gui/MapLayerManagerComponent.vue';
 import WikipediaLinksLanguageInputComponent from '../gui/WikipediaLinksLanguageInputComponent.vue'
 
 const appState = useAppStateStore()
@@ -14,10 +15,18 @@ const appState = useAppStateStore()
       </div>
       <hr class="sidebar__divider" />
       <div class="sidebar__content">
-        <h3 class="sidebar__subtitle">Geonames</h3>
-        <GeonamesUsernameInputComponent />
-        <h3 class="sidebar__subtitle">Wikipedia language</h3>
-        <WikipediaLinksLanguageInputComponent />
+        <div class="sidebar__row">
+          <h3 class="sidebar__subtitle">Geonames</h3>
+          <GeonamesUsernameInputComponent />
+        </div>
+        <div class="sidebar__row">
+          <h3 class="sidebar__subtitle">Wikipedia language</h3>
+          <WikipediaLinksLanguageInputComponent />
+        </div>
+        <div class="sidebar__row">
+          <h3 class="sidebar__subtitle">Map base layer</h3>
+          <MapLayerManagerComponent />
+        </div>
       </div>
     </aside>
   </Transition>
@@ -49,6 +58,10 @@ const appState = useAppStateStore()
 
 .sidebar__content {
   padding: 1rem;
+}
+
+.sidebar__row {
+  margin-bottom: 3rem;
 }
 
 .sidebar__divider {
