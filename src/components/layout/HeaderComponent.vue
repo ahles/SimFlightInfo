@@ -1,16 +1,18 @@
 <script setup lang="ts">
+import { useAppStateStore } from '../../stores/appState'
+import { useSimStateStore } from '../../stores/simState'
 import IconCogComponent from '../icons/IconCogComponent.vue'
 import IconWindowMinimizeComponent from '../icons/IconWindowMinimizeComponent.vue'
 import IconWindowMaximizeComponent from '../icons/IconWindowMaximizeComponent.vue'
 import IconWindowCloseComponent from '../icons/IconWindowCloseComponent.vue'
 import ButtonComponent from '../gui/ButtonComponent.vue'
-import { useAppStateStore } from '../../stores/appState'
 import IconCompassComponent from '../icons/IconCompassComponent.vue'
 import IconCompassOffComponent from '../icons/IconCompassOffComponent.vue'
 import IconLightbulbComponent from '../icons/IconLightbulbComponent.vue'
 import IconLightbulbOffComponent from '../icons/IconLightbulbOffComponent.vue'
 
 const appState = useAppStateStore()
+const simState = useSimStateStore()
 let maximized = false
 
 function toggleGeonamesPanel() {
@@ -52,11 +54,11 @@ function windowMaximize() {
     </div>
     <div class="header__middle" />
     <div class="header__right">
-      <ButtonComponent title="Toggle the geonames panel visibility" variant="icon" class="btn__window" @click="toggleGeonamesPanel">
+      <ButtonComponent v-if="simState.connected" title="Toggle the geonames panel visibility" variant="icon" class="btn__window" @click="toggleGeonamesPanel">
         <IconLightbulbComponent v-if="appState.geonamesPanelVisible" />
         <IconLightbulbOffComponent v-else />
       </ButtonComponent>
-      <ButtonComponent title="Toggle the navigation information panel visibility" variant="icon" class="btn__window btn__window--space-right" @click="toggleInfoPanel">
+      <ButtonComponent v-if="simState.connected" title="Toggle the navigation information panel visibility" variant="icon" class="btn__window btn__window--space-right" @click="toggleInfoPanel">
         <IconCompassComponent v-if="appState.infoPanelVisible" />
         <IconCompassOffComponent v-else />
       </ButtonComponent>
