@@ -79,7 +79,6 @@ const simConnectBackground = {
         handle.subscribeToSystemEvent(EVENT_ID_PAUSE, 'Pause')
       })
       .catch(function (error) {
-        console.log('error', error);
         win.webContents.send('simconnect-simstate-exception', {
           code: error.code
         })
