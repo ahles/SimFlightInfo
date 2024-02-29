@@ -73,12 +73,7 @@ function initSimconnectEvents() {
 
   window.ipcRenderer.on('simconnect-simstate-exception', (event, exception) => {
     appState.loading = false
-    console.log('exception', exception.code)
-    const exceptionText: string = exception.code
-    console.log('exceptionText', exceptionText)
-    exceptionText.replace('ECONNREFUSED', 'Connection refused by Sim')
-    console.log('exceptionText', exceptionText)
-    simState.exception = exceptionText
+    simState.exception = getExceptionTextForHumans(exception.code)
   })
 
   window.ipcRenderer.on('simconnect-paused', (event, paused) => {
@@ -89,6 +84,17 @@ function initSimconnectEvents() {
     simState.paused = false
     simState.connected = false
   })
+}
+
+function getExceptionTextForHumans(code: string): string {
+  let exceptionText: string = ''
+  if (code === 'ECONNREFUSED') {
+    exceptionText = 'Connection refused. Is the simulator running?'
+  } else {
+    console.log('Unknown exception: ', code)
+    exceptionText = code
+  }
+  return exceptionText
 }
 </script>
 
