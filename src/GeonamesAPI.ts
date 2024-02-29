@@ -43,11 +43,14 @@ export default class GeonamesAPI {
       const response = await fetch(url)
       if (response.ok) {
         const result = await response.json()
-        // console.log('result', result)
+        if (Object.hasOwn(result, 'status')) {
+          console.log('result', result)
+          throw new Error(result.status.message)
+        }
         return result
       } else {
-        console.log('response', response);
-        throw new Error('Geonames error')
+        console.log('response != ok', response);
+        throw new Error('response != ok')
       }
     } catch (error) {
       throw new Error('Geonames not reachable')
@@ -167,7 +170,7 @@ export default class GeonamesAPI {
    * @returns {GeonamesWikipedia[]} An array containing only the objects whose `title` property does not
    * contain any of the specified keywords. If the `title` property is undefined, the object is included in the return value.
    */
-  filterByTitleKeywords(data: GeonamesWikipedia[]) {
+  filterByTitleKeywords(data: GeonamesWikipedia[]): GeonamesWikipedia[] {
     const wikipediaTitleBlockStringList = ['hotel', 'luxury resort', 'zentrum']
 
     // Convert blocklist to lowercase for case-insensitive comparison
