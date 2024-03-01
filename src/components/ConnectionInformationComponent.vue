@@ -55,12 +55,11 @@ function retry() {
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 50%);
   padding: 2rem;
-   border-radius: 1rem;
+  border-radius: 1rem;
 }
 
 .connection-information h2 {
   text-align: center;
-  margin-bottom: 4rem;
 }
 
 .connection-information__icon {
@@ -84,6 +83,7 @@ function retry() {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .connection-information__status--error {
