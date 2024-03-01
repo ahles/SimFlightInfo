@@ -26,7 +26,7 @@ export function getExceptionTextForHumans(code: string): string {
   if (code === 'ECONNREFUSED') {
     exceptionText = 'No connection. Is the simulator running?'
   } else {
-    exceptionText = 'An unknown error ocurred: ' + code
+    exceptionText = 'Is the simulator running? An unknown error ocurred: ' + code
   }
   return exceptionText
 }
