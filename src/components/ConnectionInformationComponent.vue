@@ -102,8 +102,8 @@ function retry() {
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(315deg, rgba(101,0,94,1) 3%, rgba(60,132,206,1) 38%, rgba(48,238,226,1) 68%, rgba(0,0,255,1) 98%);
-  animation: gradient 15s ease infinite;
+  background: linear-gradient(90deg, rgba(10,38,71,1) 3%, rgba(20,66,114,1) 38%, rgb(32, 82, 149) 68%, rgba(44,116,179,1) 98%);
+  animation: gradient 30s ease infinite;
   background-size: 400% 400%;
   background-attachment: fixed;
 }
