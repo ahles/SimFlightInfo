@@ -1,9 +1,5 @@
 import { CountryInterface, GeonamesWikipedia } from './Interfaces'
 
-/**
- * GeoNames Webservice Exceptions:
- * http://www.geonames.org/export/webservice-exception.html
- */
 export default class GeonamesAPI {
   private userName: string
   private longitude: number = 0
@@ -44,6 +40,10 @@ export default class GeonamesAPI {
       if (response.ok) {
         const result = await response.json()
         if (Object.hasOwn(result, 'status')) {
+          /**
+           * GeoNames Webservice Exceptions:
+           * http://www.geonames.org/export/webservice-exception.html
+           */
           console.log('result', result)
           throw new Error(result.status.message)
         }
