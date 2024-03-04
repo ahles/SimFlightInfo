@@ -15,20 +15,18 @@ const props = defineProps<{
 const appState = useAppStateStore()
 const { geonamesPanelVisible, geonamesUsername } = storeToRefs(appState)
 
-const errors = ref<string[]>([])
+const geonamesErrors = ref<string[]>([])
 
 const hasErrors = computed(() => {
   if (
-    geonamesUsername.value === ''
-    || typeof geonamesUsername.value === 'undefined'
-    || flightIsOnNullIsland(props.longitude, props.latitude)
-    || errors.value.length > 0
+    geonamesUsername.value === '' || typeof geonamesUsername.value === 'undefined' // geonames username errors
+    || flightIsOnNullIsland(props.longitude, props.latitude) // Is flight on the null island?
+    || geonamesErrors.value.length > 0 // Are there any additional geonames errors
   ) {
     return true
   }
   return false
 })
-
 </script>
 
 <template>
@@ -70,18 +68,20 @@ const hasErrors = computed(() => {
 .geonames-panel__header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .geonames-panel__title {
   font-size: 1.6rem;
   line-height: 1;
-  margin-bottom: 1rem;
 }
 
 .geonames-panel__error {
+  margin-top: 1rem;
+  padding-top: 1rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  border-top: 1px solid var(--color-text)
 }
 
 .geonames-panel__error-icon {
@@ -89,6 +89,7 @@ const hasErrors = computed(() => {
 
   svg {
     width: 2rem;
+    margin-top: .2rem;
   }
 }
 </style>
