@@ -1,138 +1,52 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from 'vue'
-import { CountryInterface, GeonamesWikipedia } from '../Interfaces'
-import GeonamesAPI from '../GeonamesAPI'
+import { ref, computed } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useAppStateStore } from '../stores/appState'
 import { flightIsOnNullIsland } from '../lib/helpers'
 import ButtonComponent from './gui/ButtonComponent.vue'
-import IconAlertComponent from './icons/IconAlertComponent.vue'
 import IconReloadComponent from './icons/IconReloadComponent.vue'
-
-const appState = useAppStateStore()
+import IconAlertComponent from './icons/IconAlertComponent.vue'
 
 const props = defineProps<{
   longitude: number
   latitude: number
 }>()
 
-const geonames = new GeonamesAPI(appState.geonamesUsername)
-const geonamesValidResponse = ref(false)
-const countryCode = ref('')
-const countryName = ref('')
-const oceanName = ref('')
-const wikipediaLinks = ref<GeonamesWikipedia[] | null>(null)
+const appState = useAppStateStore()
+const { geonamesPanelVisible, geonamesUsername } = storeToRefs(appState)
 
 const errors = ref<string[]>([])
 
-onMounted(async () => {
-  geonames.setLocation(props.longitude, props.latitude)
-  await getGeonamesInformation()
+const hasErrors = computed(() => {
+  if (
+    geonamesUsername.value === ''
+    || typeof geonamesUsername.value === 'undefined'
+    || flightIsOnNullIsland(props.longitude, props.latitude)
+    || errors.value.length > 0
+  ) {
+    return true
+  }
+  return false
 })
 
-watch(
-  () => appState.wikipediaLinksLanguage,
-  () => {
-    getGeonamesInformation()
-  }
-)
-
-const emit = defineEmits<{
-  (e: 'add-marker', item: GeonamesWikipedia): void
-  (e: 'remove-marker'): void
-}>()
-
-const wikipediaCountryLink = computed(() => {
-  if (countryName.value) {
-    return `https://en.wikipedia.org/wiki/${countryName.value.replace(' ', '_')}`
-  }
-  return ''
-})
-
-const wikipediaOceanLink = computed(() => {
-  if (oceanName.value) {
-    return `https://en.wikipedia.org/wiki/${oceanName.value.replace(' ', '_')}`
-  }
-  return ''
-})
-
-async function getGeonamesInformation() {
-  appState.loading = true
-  wikipediaLinks.value = null
-  geonames.setLocation(props.longitude, props.latitude)
-  geonames.setLanguage(appState.wikipediaLinksLanguage)
-  const country: CountryInterface | null = await geonames.getCountry()
-    .catch((error) => {
-      errors.value.push(error)
-      return null
-    })
-  if (country !== null) {
-    countryCode.value = country.code
-    countryName.value = country.name
-    oceanName.value = ''
-  } else {
-    const ocean = await geonames.getOcean()
-    if (ocean !== null) {
-      oceanName.value = ocean
-      countryCode.value = ''
-      countryName.value = ''
-    }
-  }
-  wikipediaLinks.value = await geonames.getWikipediaLinks()
-  geonamesValidResponse.value = true
-  appState.loading = false
-}
-
-function displayMarker(index: number) {
-  if (wikipediaLinks.value === null) {
-    return
-  }
-  const item: GeonamesWikipedia = wikipediaLinks.value[index]
-  emit('add-marker', item)
-}
-
-function removeMarker() {
-  emit('remove-marker')
-}
 </script>
 
 <template>
-  <div v-if="appState.geonamesPanelVisible" class="geonames-panel">
+  <div v-if="geonamesPanelVisible" class="geonames-panel">
     <div class="geonames-panel__header">
-      <h2 class="geonames-panel__title">Flying over</h2>
-      <ButtonComponent class="geonames-panel__reload" title="refresh" variant="icon" @click="getGeonamesInformation">
+      <h2 class="geonames-panel__title">Geonames</h2>
+      <ButtonComponent v-if="geonamesUsername !== ''" class="geonames-panel__reload" title="refresh" variant="icon">
         <IconReloadComponent />
       </ButtonComponent>
     </div>
-    <div v-if="appState.geonamesUsername !== '' && geonamesValidResponse" class="geonames-panel__content">
-      <div v-if="countryCode !== '' && wikipediaCountryLink !== ''">
-        <p class="geonames-panel__location">
-          <a :href="wikipediaCountryLink" target="_blank" rel="noopener">{{ countryName }}</a>
-        </p>
-        <img :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`" class="geonames-panel__flag" />
+    <div v-if="hasErrors" class="geonames-panel__error">
+      <div class="geonames-panel__error-icon">
+        <IconAlertComponent />
       </div>
-      <div v-if="oceanName !== ''" class="geonames-panel__location">
-        <p>
-          <a :href="wikipediaOceanLink" target="_blank" rel="noopener">{{ oceanName }}</a>
-        </p>
+      <div class="geonames-panel__error-text">
+        <p v-if="geonamesUsername === '' || typeof geonamesUsername === 'undefined'">No geonames username configured</p>
+        <p v-if="flightIsOnNullIsland(longitude, latitude)">Flight is on null island</p>
       </div>
-      <Transition name="fade" appear mode="in-out">
-        <div v-if="flightIsOnNullIsland(longitude, latitude) === false && wikipediaLinks" class="geonames-panel__wikipedia-links">
-          <ul>
-            <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
-              <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener" @mouseenter="displayMarker(index)" @mouseleave="removeMarker">{{ wikipediaLink.title }}</a>
-            </li>
-          </ul>
-        </div>
-      </Transition>
-    </div>
-    <div v-else class="geonames-panel__error">
-      <IconAlertComponent />
-      <ul>
-        <p v-if="appState.geonamesUsername === '' || typeof appState.geonamesUsername === 'undefined'">No geonames username configured</p>
-        <ul v-if="errors.length > 0">
-          <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
-        </ul>
-      </ul>
     </div>
   </div>
 </template>
@@ -159,70 +73,22 @@ function removeMarker() {
   align-items: flex-start;
 }
 
-.geonames-panel__content {
-  font-size: 1rem;
-}
-
 .geonames-panel__title {
   font-size: 1.6rem;
   line-height: 1;
   margin-bottom: 1rem;
 }
 
-.geonames-panel__reload {
-  width: 1.6rem;
-  height: 1.6rem;
-}
-
-.geonames-panel__location {
-  margin-bottom: 0.5rem;
-}
-
-.geonames-panel__flag {
-  height: 3rem;
-}
-
-.geonames-panel__wikipedia-links {
-  margin-top: 1rem;
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  a {
-    display: block;
-    border: none;
-    padding: 0.2rem 0;
-
-    &:hover {
-      background-color: var(--color-background);
-    }
-  }
-
-  li:not(:last-of-type) {
-    a {
-      margin-bottom: 0.2rem;
-    }
-  }
-}
-
 .geonames-panel__error {
-  color: var(--color-error);
   display: flex;
-  flex-direction: column;
-  font-size: 1.4rem;
+  align-items: center;
+}
+
+.geonames-panel__error-icon {
+  padding-right: 0.5rem;
 
   svg {
     width: 2rem;
-    margin-right: 0.4rem;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
   }
 }
 </style>
