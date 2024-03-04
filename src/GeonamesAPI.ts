@@ -34,27 +34,26 @@ export default class GeonamesAPI {
    * @returns The JSON response from the API.
    */
   private async fetchData(apiPath: string, additionalParams: string = ''): Promise<any> {
-    const url = `http://api.geonames.org/${apiPath}?username=${this.userName}&lat=${this.latitude}&lng=${this.longitude}${additionalParams}`
-    try {
-      const response = await fetch(url)
-      if (response.ok) {
-        const result = await response.json()
-        if (Object.hasOwn(result, 'status')) {
-          /**
-           * GeoNames Webservice Exceptions:
-           * http://www.geonames.org/export/webservice-exception.html
-           */
-          console.log('result', result)
-          throw new Error(result.status.message)
-        }
-        return result
-      } else {
-        console.log('response != ok', response);
-        throw new Error('response != ok')
+    const url = `http://api.geonames.org/${apiPath}?username=${this.userName}${additionalParams}`
+    const response = await fetch(url)
+    if (response.ok) {
+      const result = await response.json()
+      if (Object.hasOwn(result, 'status')) {
+        /**
+         * GeoNames Webservice Exceptions:
+         * http://www.geonames.org/export/webservice-exception.html
+         */
+        throw new Error(result.status.message)
       }
-    } catch (error) {
-      throw new Error('Geonames not reachable')
+      return result
+    } else {
+      throw new Error('response != ok')
     }
+  }
+
+  async getCountryInfo(countryCode: string) {
+    const data = await this.fetchData('countryInfoJSON', `&lang=${this.language}&country=${countryCode}`)
+    return data.geonames[0]
   }
 
   /**
@@ -65,7 +64,7 @@ export default class GeonamesAPI {
    * @returns The country information or null if not found.
    */
   async getCountry(): Promise<CountryInterface | null> {
-    const data = await this.fetchData('countryCodeJSON')
+    const data = await this.fetchData('countryCodeJSON', `&lat=${this.latitude}&lng=${this.longitude}`)
     if (data && Object.hasOwn(data, 'countryCode')) {
       return {
         code: data.countryCode,
@@ -80,7 +79,7 @@ export default class GeonamesAPI {
    * @returns The ocean name or null if not found.
    */
   async getOcean(): Promise<string | null> {
-    const data = await this.fetchData('oceanJSON')
+    const data = await this.fetchData('oceanJSON', `&lat=${this.latitude}&lng=${this.longitude}`)
     if (data && Object.hasOwn(data, 'ocean')) {
       return data.ocean.name
     }

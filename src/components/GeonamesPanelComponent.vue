@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStateStore } from '../stores/appState'
 import { flightIsOnNullIsland } from '../lib/helpers'
@@ -21,7 +21,9 @@ const geonames = new GeonamesAPI(appState.geonamesUsername)
 const geonamesErrors = ref<string[]>([])
 const countryCode = ref('')
 const countryName = ref('')
+const oceanName = ref('')
 const locationResponseValid = ref(false)
+const locationIsCountry = ref(true)
 
 const hasErrors = computed(() => {
   if (
@@ -41,27 +43,62 @@ const wikipediaCountryLink = computed(() => {
   return ''
 })
 
+const wikipediaOceanLink = computed(() => {
+  if (oceanName.value) {
+    return `https://en.wikipedia.org/wiki/${oceanName.value.replace(' ', '_')}`
+  }
+  return ''
+})
+
+watch(
+  () => appState.wikipediaLinksLanguage,
+  () => {
+    getLocationInformation()
+  }
+)
+
 onMounted(async () => {
   geonames.setLocation(props.longitude, props.latitude)
   await getLocationInformation()
 })
 
-async function getLocationInformation() {
+async function getLocationInformation(): Promise<boolean> {
   appState.loading = true
   geonames.setLocation(props.longitude, props.latitude)
   geonames.setLanguage(appState.wikipediaLinksLanguage)
-  const country: CountryInterface | null = await geonames.getCountry()
+  const country: CountryInterface | null | undefined = await geonames.getCountry()
     .catch((error) => {
-      geonamesErrors.value.push(error)
-      return null
+      if (error.message !== 'no country code found') {
+        console.log('error', error.message);
+        geonamesErrors.value.push(error)
+        return null
+      }
     })
-  console.log('country', country);
   if (country) {
     countryCode.value = country.code
     countryName.value = country.name
     locationResponseValid.value = true
+    // const countryInfo = await geonames.getCountryInfo(countryCode.value)
+    // console.log('countryInfo', countryInfo);
+    // if (countryInfo) {
+    //   countryName.value = countryInfo.countryName
+    // }
+    appState.loading = false
+    return true
+  } else {
+    locationIsCountry.value = false
+    const ocean = await geonames.getOcean()
+    if (ocean !== null) {
+      oceanName.value = ocean
+      countryCode.value = ''
+      countryName.value = ''
+      locationResponseValid.value = true
+      appState.loading = false
+      return true
+    }
   }
   appState.loading = false
+  return false
 }
 </script>
 
@@ -87,8 +124,13 @@ async function getLocationInformation() {
     </div>
     <div v-else class="geonames-panel__content">
       <div v-if="locationResponseValid" class="geonames-panel__location">
-        <img :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`" class="geonames-panel__flag" />
-        <a :href="wikipediaCountryLink" target="_blank" rel="noopener" class="geonames-panel__country-name">{{ countryName }}</a>
+        <div v-if="locationIsCountry" class="geonames-panel__location-country">
+          <img :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`" class="geonames-panel__flag" />
+          <a :href="wikipediaCountryLink" target="_blank" rel="noopener" class="geonames-panel__country-name">{{ countryName }}</a>
+        </div>
+        <div v-else class="geonames-panel__location-ocean">
+          <a :href="wikipediaOceanLink" target="_blank" rel="noopener">{{ oceanName }}</a>
+        </div>
       </div>
     </div>
   </div>
@@ -125,8 +167,19 @@ async function getLocationInformation() {
    margin-top: 1rem;
 }
 
+.geonames-panel__location-country {
+  display: flex;
+  align-items: center;
+}
+
 .geonames-panel__flag {
   height: 3rem;
+  margin-right: 1rem;
+}
+
+.geonames-panel__country-name {
+  display: block;
+  line-height: 1;
 }
 
 .geonames-panel__error {
