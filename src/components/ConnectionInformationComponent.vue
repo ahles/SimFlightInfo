@@ -56,6 +56,9 @@ function retry() {
   background: rgba(0, 0, 0, 50%);
   padding: 2rem;
   border-radius: 1rem;
+  box-shadow:
+    0 0.1rem 0.3rem rgba(0, 0, 0, 0.24),
+    0 0.1rem 0.2rem rgba(0, 0, 0, 0.48);
 }
 
 .connection-information h2 {
@@ -76,7 +79,7 @@ function retry() {
 .connection-information__retry {
   width: 4rem;
   height: 4rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .connection-information__status {
