@@ -19,6 +19,9 @@ const { geonamesPanelVisible, geonamesUsername } = storeToRefs(appState)
 
 const geonames = new GeonamesAPI(appState.geonamesUsername)
 const geonamesErrors = ref<string[]>([])
+const countryCode = ref('')
+const countryName = ref('')
+const locationResponseValid = ref(false)
 
 const hasErrors = computed(() => {
   if (
@@ -31,12 +34,19 @@ const hasErrors = computed(() => {
   return false
 })
 
-onMounted(async () => {
-  geonames.setLocation(props.longitude, props.latitude)
-  await getGeonamesInformation()
+const wikipediaCountryLink = computed(() => {
+  if (countryName.value) {
+    return `https://en.wikipedia.org/wiki/${countryName.value.replace(' ', '_')}`
+  }
+  return ''
 })
 
-async function getGeonamesInformation() {
+onMounted(async () => {
+  geonames.setLocation(props.longitude, props.latitude)
+  await getLocationInformation()
+})
+
+async function getLocationInformation() {
   appState.loading = true
   geonames.setLocation(props.longitude, props.latitude)
   geonames.setLanguage(appState.wikipediaLinksLanguage)
@@ -46,6 +56,11 @@ async function getGeonamesInformation() {
       return null
     })
   console.log('country', country);
+  if (country) {
+    countryCode.value = country.code
+    countryName.value = country.name
+    locationResponseValid.value = true
+  }
   appState.loading = false
 }
 </script>
@@ -53,8 +68,8 @@ async function getGeonamesInformation() {
 <template>
   <div v-if="geonamesPanelVisible" class="geonames-panel">
     <div class="geonames-panel__header">
-      <h2 class="geonames-panel__title">Geonames</h2>
-      <ButtonComponent v-if="geonamesUsername !== ''" class="geonames-panel__reload" title="refresh" variant="icon">
+      <h2 class="geonames-panel__title">Location information</h2>
+      <ButtonComponent v-if="geonamesUsername !== ''" class="geonames-panel__reload" title="refresh" variant="icon" @click="getLocationInformation">
         <IconReloadComponent />
       </ButtonComponent>
     </div>
@@ -66,9 +81,15 @@ async function getGeonamesInformation() {
         <p v-if="geonamesUsername === '' || typeof geonamesUsername === 'undefined'">No geonames username configured</p>
         <p v-if="flightIsOnNullIsland(longitude, latitude)">Flight is on null island</p>
       </div>
+      <ul v-if="geonamesErrors.length > 0">
+        <li v-for="(error, index) in geonamesErrors" :key="index">{{ error }}</li>
+      </ul>
     </div>
     <div v-else class="geonames-panel__content">
-
+      <div v-if="locationResponseValid" class="geonames-panel__location">
+        <img :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`" class="geonames-panel__flag" />
+        <a :href="wikipediaCountryLink" target="_blank" rel="noopener" class="geonames-panel__country-name">{{ countryName }}</a>
+      </div>
     </div>
   </div>
 </template>
@@ -98,6 +119,14 @@ async function getGeonamesInformation() {
 .geonames-panel__title {
   font-size: 1.6rem;
   line-height: 1;
+}
+
+.geonames-panel__location {
+   margin-top: 1rem;
+}
+
+.geonames-panel__flag {
+  height: 3rem;
 }
 
 .geonames-panel__error {
