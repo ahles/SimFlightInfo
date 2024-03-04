@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStateStore } from '../stores/appState'
 import { flightIsOnNullIsland } from '../lib/helpers'
+import { CountryInterface } from '../Interfaces'
+import GeonamesAPI from '../GeonamesAPI'
 import ButtonComponent from './gui/ButtonComponent.vue'
 import IconReloadComponent from './icons/IconReloadComponent.vue'
 import IconAlertComponent from './icons/IconAlertComponent.vue'
@@ -15,6 +17,7 @@ const props = defineProps<{
 const appState = useAppStateStore()
 const { geonamesPanelVisible, geonamesUsername } = storeToRefs(appState)
 
+const geonames = new GeonamesAPI(appState.geonamesUsername)
 const geonamesErrors = ref<string[]>([])
 
 const hasErrors = computed(() => {
@@ -27,6 +30,24 @@ const hasErrors = computed(() => {
   }
   return false
 })
+
+onMounted(async () => {
+  geonames.setLocation(props.longitude, props.latitude)
+  await getGeonamesInformation()
+})
+
+async function getGeonamesInformation() {
+  appState.loading = true
+  geonames.setLocation(props.longitude, props.latitude)
+  geonames.setLanguage(appState.wikipediaLinksLanguage)
+  const country: CountryInterface | null = await geonames.getCountry()
+    .catch((error) => {
+      geonamesErrors.value.push(error)
+      return null
+    })
+  console.log('country', country);
+  appState.loading = false
+}
 </script>
 
 <template>
@@ -45,6 +66,9 @@ const hasErrors = computed(() => {
         <p v-if="geonamesUsername === '' || typeof geonamesUsername === 'undefined'">No geonames username configured</p>
         <p v-if="flightIsOnNullIsland(longitude, latitude)">Flight is on null island</p>
       </div>
+    </div>
+    <div v-else class="geonames-panel__content">
+
     </div>
   </div>
 </template>
