@@ -21,7 +21,7 @@ function retry() {
 <template>
   <div class="connection-information">
     <h2>Connecting to Simulator...</h2>
-    <transition name="fade">
+    <transition name="slide-fade">
       <div v-if="simState.connected === false && simState.exception !== null" class="connection-information__status connection-information__status--error">
         <IconAlertComponent class="connection-information__icon" />
         <div class="connection-information__text">
@@ -32,7 +32,7 @@ function retry() {
         </ButtonComponent>
       </div>
     </transition>
-    <transition name="fade">
+    <transition name="slide-fade">
       <div v-if="simState.connected" class="connection-information__status connection-information__status--success">
         <IconCheckComponent class="connection-information__icon" />
         <span class="connection-information__text">Connected to Kitty Hawk</span>
@@ -73,6 +73,7 @@ function retry() {
   text-align: center;
   display: block;
   font-size: 1.2rem;
+  font-weight: 400;
   margin-top: 1rem;
 }
 
@@ -90,11 +91,20 @@ function retry() {
 }
 
 .connection-information__status--error {
-  color: var(--color-error);
+  color: var(--color-text);
 }
 
 .connection-information__status--success {
   color: var(--color-success);
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter-from {
+  transform: translateY(-2rem);
+  opacity: 0;
 }
 
 /* https://codepen.io/baarbaracrr/pen/KKovmGb */
