@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAppStateStore } from '../../stores/appState'
 import GeonamesUsernameInputComponent from '../gui/GeonamesUsernameInputComponent.vue'
-import MapLayerManagerComponent from '../gui/MapLayerManagerComponent.vue';
+// import MapLayerManagerComponent from '../gui/MapLayerManagerComponent.vue';
 import WikipediaLinksLanguageInputComponent from '../gui/WikipediaLinksLanguageInputComponent.vue'
 
 const appState = useAppStateStore()
@@ -23,10 +23,10 @@ const appState = useAppStateStore()
           <h3 class="sidebar__subtitle">Wikipedia language</h3>
           <WikipediaLinksLanguageInputComponent />
         </div>
-        <div class="sidebar__row">
+        <!-- <div class="sidebar__row">
           <h3 class="sidebar__subtitle">Map base layer</h3>
           <MapLayerManagerComponent />
-        </div>
+        </div> -->
       </div>
     </aside>
   </Transition>
