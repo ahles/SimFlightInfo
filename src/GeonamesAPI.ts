@@ -114,7 +114,7 @@ export default class GeonamesAPI {
    * articles are found or an error occurs, it resolves to null.
    */
   async getWikipediaLinks(): Promise<GeonamesWikipedia[] | null> {
-    const data = await this.fetchData('findNearbyWikipediaJSON', '&radius=20&maxRows=20&lang=' + this.language)
+    const data = await this.fetchData('findNearbyWikipediaJSON', `&lat=${this.latitude}&lng=${this.longitude}&radius=20&maxRows=20&lang=` + this.language)
     if (data && Object.hasOwn(data, 'geonames')) {
       let result: GeonamesWikipedia[] = []
       for (const item of data.geonames) {

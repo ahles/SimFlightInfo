@@ -3,7 +3,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStateStore } from '../stores/appState'
 import { flightIsOnNullIsland } from '../lib/helpers'
-import { CountryInterface } from '../Interfaces'
+import { CountryInterface, GeonamesWikipedia } from '../Interfaces'
 import GeonamesAPI from '../GeonamesAPI'
 import ButtonComponent from './gui/ButtonComponent.vue'
 import IconReloadComponent from './icons/IconReloadComponent.vue'
@@ -24,6 +24,8 @@ const countryName = ref('')
 const oceanName = ref('')
 const locationResponseValid = ref(false)
 const locationIsCountry = ref(true)
+const wikipediaLinks = ref<GeonamesWikipedia[] | null>(null)
+const wikipediaLinksResponseValid = ref(false)
 
 const hasErrors = computed(() => {
   if (
@@ -59,8 +61,30 @@ watch(
 
 onMounted(async () => {
   geonames.setLocation(props.longitude, props.latitude)
-  await getLocationInformation()
+  const locationResponse = await getLocationInformation()
+  if (locationResponse) {
+    const wikipediaResponse = await getWikipediaLinks()
+    console.log('wikipediaResponse', wikipediaResponse);
+  }
 })
+
+async function getWikipediaLinks() {
+  appState.loading = true
+  const wikipediaLinksResponse = await geonames.getWikipediaLinks()
+    .catch((error) => {
+      console.log('error', error.message);
+      geonamesErrors.value.push(error)
+      return null
+    })
+  if (wikipediaLinksResponse) {
+    wikipediaLinks.value = wikipediaLinksResponse
+    wikipediaLinksResponseValid.value = true
+    return true
+  }
+  appState.loading = false
+  wikipediaLinksResponseValid.value = false
+  return false
+}
 
 async function getLocationInformation(): Promise<boolean> {
   appState.loading = true
@@ -100,6 +124,23 @@ async function getLocationInformation(): Promise<boolean> {
   appState.loading = false
   return false
 }
+
+const emit = defineEmits<{
+  (e: 'add-marker', item: GeonamesWikipedia): void
+  (e: 'remove-marker'): void
+}>()
+
+function displayMarker(index: number) {
+  if (wikipediaLinks.value === null) {
+    return
+  }
+  const item: GeonamesWikipedia = wikipediaLinks.value[index]
+  emit('add-marker', item)
+}
+
+function removeMarker() {
+  emit('remove-marker')
+}
 </script>
 
 <template>
@@ -131,6 +172,13 @@ async function getLocationInformation(): Promise<boolean> {
         <div v-else class="geonames-panel__location-ocean">
           <a :href="wikipediaOceanLink" target="_blank" rel="noopener">{{ oceanName }}</a>
         </div>
+      </div>
+      <div v-if="wikipediaLinksResponseValid" class="geonames-panel__wikipedia-links">
+        <ul>
+          <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
+            <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener" @mouseenter="displayMarker(index)" @mouseleave="removeMarker">{{ wikipediaLink.title }}</a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -180,6 +228,32 @@ async function getLocationInformation(): Promise<boolean> {
 .geonames-panel__country-name {
   display: block;
   line-height: 1;
+}
+
+.geonames-panel__wikipedia-links {
+  margin-top: 1rem;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    display: block;
+    border: none;
+    padding: 0.2rem 0;
+
+    &:hover {
+      background-color: var(--color-background);
+    }
+  }
+
+  li:not(:last-of-type) {
+    a {
+      margin-bottom: 0.2rem;
+    }
+  }
 }
 
 .geonames-panel__error {
