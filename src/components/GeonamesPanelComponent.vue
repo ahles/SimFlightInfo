@@ -63,8 +63,7 @@ onMounted(async () => {
   geonames.setLocation(props.longitude, props.latitude)
   const locationResponse = await getLocationInformation()
   if (locationResponse) {
-    const wikipediaResponse = await getWikipediaLinks()
-    console.log('wikipediaResponse', wikipediaResponse);
+    await getWikipediaLinks()
   }
 })
 
