@@ -1,5 +1,9 @@
 import { CountryInterface, GeonamesWikipedia } from './Interfaces'
 
+/**
+ * Retrieve location information with the Geonames API
+ * https://www.geonames.org/export/ws-overview.html
+ */
 export default class GeonamesAPI {
   private userName: string
   private longitude: number = 0
@@ -51,17 +55,10 @@ export default class GeonamesAPI {
     }
   }
 
-  async getCountryInfo(countryCode: string) {
-    const data = await this.fetchData('countryInfoJSON', `&lang=${this.language}&country=${countryCode}`)
-    return data.geonames[0]
-  }
-
   /**
-   * Retrieves the country information based on the current latitude and longitude.
-   *
-   * TODO: Use countryInfo instead to get localized information? http://api.geonames.org/countryInfo?username=USERNAME&lang=de&country=CH
-   *
-   * @returns The country information or null if not found.
+   * Retrieves the country code and name based on the current latitude and longitude.
+   * https://www.geonames.org/export/web-services.html#countrycode
+   * @returns The country or null if not found.
    */
   async getCountry(): Promise<CountryInterface | null> {
     const data = await this.fetchData('countryCodeJSON', `&lat=${this.latitude}&lng=${this.longitude}`)
@@ -76,12 +73,27 @@ export default class GeonamesAPI {
 
   /**
    * Retrieves the ocean name based on the current latitude and longitude.
+   * https://www.geonames.org/export/web-services.html#ocean
    * @returns The ocean name or null if not found.
    */
   async getOcean(): Promise<string | null> {
     const data = await this.fetchData('oceanJSON', `&lat=${this.latitude}&lng=${this.longitude}`)
     if (data && Object.hasOwn(data, 'ocean')) {
       return data.ocean.name
+    }
+    return null
+  }
+
+  /**
+   * Retrieves the country information on the current latitude and longitude.
+   * https://www.geonames.org/export/web-services.html#countryInfo
+   * @remark Not used atm
+   * @returns The country information or null if not found.
+   */
+  async getCountryInfo(countryCode: string): Promise<object | null> {
+    const data = await this.fetchData('countryInfoJSON', `&lang=${this.language}&country=${countryCode}`)
+    if (data && Object.hasOwn(data, 'geonames')) {
+      return data.geonames[0]
     }
     return null
   }
