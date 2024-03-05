@@ -231,6 +231,7 @@ function removeMarker() {
 
 .geonames-panel__wikipedia-links {
   margin-top: 1rem;
+  font-size: 1.1rem;
 
   ul {
     list-style-type: none;
