@@ -78,6 +78,7 @@ async function getWikipediaLinks() {
   if (wikipediaLinksResponse) {
     wikipediaLinks.value = wikipediaLinksResponse
     wikipediaLinksResponseValid.value = true
+    appState.loading = false
     return true
   }
   appState.loading = false
@@ -173,6 +174,12 @@ function removeMarker() {
         </div>
       </div>
       <div v-if="wikipediaLinksResponseValid" class="geonames-panel__wikipedia-links">
+      <div class="geonames-panel__header">
+        <h2 class="geonames-panel__title">Wikipedia links</h2>
+        <ButtonComponent v-if="geonamesUsername !== ''" class="geonames-panel__reload" title="refresh" variant="icon" @click="getWikipediaLinks">
+          <IconReloadComponent />
+        </ButtonComponent>
+      </div>
         <ul>
           <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
             <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener" @mouseenter="displayMarker(index)" @mouseleave="removeMarker">{{ wikipediaLink.title }}</a>
@@ -210,6 +217,10 @@ function removeMarker() {
   line-height: 1;
 }
 
+.geonames-panel__reload {
+  width: 1.5rem;
+}
+
 .geonames-panel__location {
    margin-top: 1rem;
 }
@@ -230,12 +241,12 @@ function removeMarker() {
 }
 
 .geonames-panel__wikipedia-links {
-  margin-top: 1rem;
+  margin-top: 3rem;
   font-size: 1.1rem;
 
   ul {
     list-style-type: none;
-    margin: 0;
+    margin: 1rem 0 0 0;
     padding: 0;
   }
 
