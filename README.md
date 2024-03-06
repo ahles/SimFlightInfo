@@ -1,6 +1,6 @@
 # SimFlightInfo v2 🛩 🌍
 
-SimFlightInfo is a desktop ppp that listens to the position information from Micrososft Flight Simulator™ (MSFS2020) and displays the current airplane location on a map.
+SimFlightInfo is a desktop app that listens to the position information from Micrososft Flight Simulator™ (MSFS2020) running on the same computer and displays the current airplane location on a map.
 
 Additionally it can display the name and the flag of the country your airplane is located at and shows links to Wikipedia articles nearby (20 km), if you create a [Geonames](http://www.geonames.org/) username and configure it in the app settings.
 
@@ -8,7 +8,7 @@ Additionally it can display the name and the flag of the country your airplane i
 
 Download and install the [latest release](https://github.com/ahles/SimFlightInfo/releases/latest) (win) of SimFlightInfo.
 
-Or you can build your own for your operating system following the development & build instructions at the bottom of this document.
+Or you can build your own for your operating system following the development & build instructions below.
 
 ---
 
@@ -18,93 +18,42 @@ Or you can build your own for your operating system following the development & 
 
 ## Used boilerplate: electron-vite-vue
 
-🥳 Really simple `Electron` + `Vue` + `Vite` boilerplate.
+🥳 Really simple `Electron` + `Vue` + `Vite` boilerplate:
 
-### Features
+[electron-vite/electron-vite-vue](https://github.com/electron-vite/electron-vite-vue)
 
-📦 Out of the box  
-🎯 Based on the official [template-vue-ts](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-vue-ts), less invasive  
-🌱 Extensible, really simple directory structure  
-💪 Support using Node.js API in Electron-Renderer  
-🔩 Support C/C++ native addons  
-🖥 It's easy to implement multiple windows  
+### Development instructions
 
-### Quick Setup
-
-```sh
-# clone the project
-git clone https://github.com/electron-vite/electron-vite-vue.git
-
-# enter the project directory
-cd electron-vite-vue
-
-# install dependency
+Install dependencies:
+```shell
 npm install
+```
 
-# develop
+Running the dev server:
+```shell
 npm run dev
 ```
+This starts the dev-server and the standalone [Vue Devtools](https://devtools.vuejs.org/). For more information about the Vue Devtools see below.
 
-### standalone vue-devtools
-
-Couldn't get vue devtools installer running within electron 2024-02-14
-
-https://devtools.vuejs.org/guide/installation.html#using-global-package
-
+Linting the app with Eslint:
 ```shell
-npm install -g @vue/devtools
+npm run  lint
 ```
 
-Remove CSP meta tag in index.html head and insert
+Formatting the code (with Prettier):
 ```shell
-<script src="http://localhost:8098"></script>
+npm run format
 ```
 
+Building the app:
 ```shell
-vue-devtools
+npm run build
 ```
 
-then ```npm run dev```
+### Vue Devtools
 
-### Debug
+[Vue Devtools](https://devtools.vuejs.org/) is installed as a dev-dependency.
 
-![electron-vite-react-debug.gif](https://github.com/electron-vite/electron-vite-react/blob/main/electron-vite-react-debug.gif?raw=true)
+For the dev-server, a different index.html file is used ([index_devtools.html](./index_devtools.html)) in which a CSP-header is removed and the connection to the Vue Devtools is configured. See [Vue Devtools Standalone](https://devtools.vuejs.org/guide/installation.html#standalone)
 
-### Directory
-
-```diff
-+ ├─┬ electron
-+ │ ├─┬ main
-+ │ │ └── index.ts    entry of Electron-Main
-+ │ └─┬ preload
-+ │   └── index.ts    entry of Preload-Scripts
-  ├─┬ src
-  │ └── main.ts       entry of Electron-Renderer
-  ├── index.html
-  ├── package.json
-  └── vite.config.ts
-```
-
-<!--
-## Be aware
-
-🚨 By default, this template integrates Node.js in the Renderer process. If you don't need it, you just remove the option below. [Because it will modify the default config of Vite](https://github.com/electron-vite/vite-plugin-electron-renderer#config-presets-opinionated).
-
-```diff
-# vite.config.ts
-
-export default {
-  plugins: [
--   // Use Node.js API in the Renderer-process
--   renderer({
--     nodeIntegration: true,
--   }),
-  ],
-}
-```
--->
-
-### FAQ
-
-- [C/C++ addons, Node.js modules - Pre-Bundling](https://github.com/electron-vite/vite-plugin-electron-renderer#dependency-pre-bundling)
-- [dependencies vs devDependencies](https://github.com/electron-vite/vite-plugin-electron-renderer#dependencies-vs-devdependencies)
+For the build process, the regular index.html is used.
