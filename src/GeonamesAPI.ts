@@ -182,7 +182,7 @@ export default class GeonamesAPI {
    * contain any of the specified keywords. If the `title` property is undefined, the object is included in the return value.
    */
   filterByTitleKeywords(data: GeonamesWikipedia[]): GeonamesWikipedia[] {
-    const wikipediaTitleBlockStringList = ['hotel', 'luxury resort', 'zentrum']
+    const wikipediaTitleBlockStringList = ['hotel', 'luxury resort', 'zentrum', 'Moos', 'Nationalliga']
 
     // Convert blocklist to lowercase for case-insensitive comparison
     const lowerCaseBlockList = wikipediaTitleBlockStringList.map((keyword) => keyword.toLowerCase())
