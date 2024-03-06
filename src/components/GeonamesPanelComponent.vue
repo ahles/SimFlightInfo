@@ -58,7 +58,7 @@ const locationTitle = computed(() => {
       return 'Country information'
     } else if (oceanName.value !== '') {
       return 'Ocean information'
-    } 
+    }
   }
   return 'Location information'
 })
@@ -210,7 +210,6 @@ function removeMarker() {
   background-color: var(--color-panels);
   border-radius: 3px;
   padding: 1rem;
-  min-width: 20rem;
   max-width: 30rem;
   box-shadow:
     0 0.1rem 0.3rem rgba(0, 0, 0, 0.24),
@@ -227,10 +226,18 @@ function removeMarker() {
   font-size: 1.6rem;
   line-height: 1;
   pointer-events: none;
+  padding-right: 1rem;
 }
 
 .geonames-panel__reload {
   width: 1.5rem;
+  opacity: 0.5;
+  transition: opacity .1s ease-in;
+}
+
+.geonames-panel__reload:hover {
+  opacity: 1;
+  transition: opacity .3s ease-in;
 }
 
 .geonames-panel__location {
