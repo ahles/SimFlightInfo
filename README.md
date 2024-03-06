@@ -54,6 +54,6 @@ npm run build
 
 [Vue Devtools](https://devtools.vuejs.org/) is installed as a dev-dependency.
 
-For the dev-server, a different index.html file is used ([index_devtools.html](./index_devtools.html)) in which a CSP-header is removed and the connection to the Vue Devtools is configured. See [Vue Devtools Standalone](https://devtools.vuejs.org/guide/installation.html#standalone)
+For the dev-server, a different index.html file is used ([index_devtools.html](./index_devtools.html)) in which a CSP-header is removed and the script include for the Vue Devtools is configured. See [Vue Devtools Standalone](https://devtools.vuejs.org/guide/installation.html#standalone)
 
-For the build process, the regular index.html is used.
+For the build process, the regular [index.html](./index.html) is used.
