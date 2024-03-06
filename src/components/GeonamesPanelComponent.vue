@@ -52,6 +52,17 @@ const wikipediaOceanLink = computed(() => {
   return ''
 })
 
+const locationTitle = computed(() => {
+  if (flightIsOnNullIsland(props.longitude, props.latitude) === false) {
+    if (countryName.value !== '') {
+      return 'Country information'
+    } else if (oceanName.value !== '') {
+      return 'Ocean information'
+    } 
+  }
+  return 'Location information'
+})
+
 watch(
   () => appState.wikipediaLinksLanguage,
   () => {
@@ -146,7 +157,7 @@ function removeMarker() {
 <template>
   <div v-if="geonamesPanelVisible" class="geonames-panel">
     <div class="geonames-panel__header">
-      <h2 class="geonames-panel__title">Location information</h2>
+      <h2 class="geonames-panel__title">{{ locationTitle }}</h2>
       <ButtonComponent v-if="geonamesUsername !== ''" class="geonames-panel__reload" title="refresh" variant="icon" @click="getLocationInformation">
         <IconReloadComponent />
       </ButtonComponent>
@@ -215,6 +226,7 @@ function removeMarker() {
 .geonames-panel__title {
   font-size: 1.6rem;
   line-height: 1;
+  pointer-events: none;
 }
 
 .geonames-panel__reload {
