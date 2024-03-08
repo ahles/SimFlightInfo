@@ -4,6 +4,12 @@ SimFlightInfo is a desktop app that listens to the position information from Mic
 
 Additionally it can display the name and the flag of the country your airplane is located at and shows links to Wikipedia articles nearby (20 km), if you create a [Geonames](http://www.geonames.org/) username and configure it in the app settings.
 
+**New:**
+- No further dependency needed, but must now run on the same computer as the flight simulator
+- OpenLayers instead of Leaflet
+- Wikipedia link locations can be displayed on the map
+- Vue.js 3
+
 ## Installation & Usage
 
 Download and install the [latest release](https://github.com/ahles/SimFlightInfo/releases/latest) (win) of SimFlightInfo.
@@ -22,7 +28,7 @@ Or you can build your own for your operating system following the development & 
 
 [electron-vite/electron-vite-vue](https://github.com/electron-vite/electron-vite-vue)
 
-### Development instructions
+### Development & build instructions
 
 Install dependencies:
 ```shell
