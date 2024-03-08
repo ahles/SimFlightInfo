@@ -20,7 +20,7 @@ function retry() {
 
 <template>
   <div class="connection-information">
-    <h2>Connecting to Simulator...</h2>
+    <h2>Connecting to the Simulator</h2>
     <transition name="slide-fade">
       <div v-if="simState.connected === false && simState.exception !== null" class="connection-information__status connection-information__status--error">
         <IconAlertComponent class="connection-information__icon" />
