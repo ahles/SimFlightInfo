@@ -80,6 +80,7 @@ onMounted(async () => {
 
 async function getWikipediaLinks() {
   appState.loading = true
+  geonames.setLocation(props.longitude, props.latitude)
   const wikipediaLinksResponse = await geonames.getWikipediaLinks()
     .catch((error) => {
       console.log('error', error.message);
