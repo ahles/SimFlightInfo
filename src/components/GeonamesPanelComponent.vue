@@ -124,6 +124,11 @@ async function getLocationInformation(): Promise<boolean> {
   } else {
     locationIsCountry.value = false
     const ocean = await geonames.getOcean()
+      .catch((error) => {
+        console.log('error', error.message);
+        geonamesErrors.value.push(error)
+        return null
+      })
     if (ocean !== null) {
       oceanName.value = ocean
       countryCode.value = ''
