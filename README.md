@@ -6,9 +6,7 @@ Additionally it can display the name and the flag of the country your airplane i
 
 **New:**
 - No further dependency needed, but must now run on the same computer as the flight simulator
-- OpenLayers instead of Leaflet
 - Wikipedia link locations can be displayed on the map
-- Vue.js 3
 
 ## Installation & Usage
 
