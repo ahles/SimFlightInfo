@@ -22,9 +22,7 @@ Or you can build your own for your operating system following the development & 
 
 ## Used boilerplate: electron-vite-vue
 
-🥳 Really simple `Electron` + `Vue` + `Vite` boilerplate:
-
-[electron-vite/electron-vite-vue](https://github.com/electron-vite/electron-vite-vue)
+Really simple `Electron` + `Vue` + `Vite` boilerplate: [electron-vite/electron-vite-vue](https://github.com/electron-vite/electron-vite-vue)
 
 ### Development & build instructions
 
