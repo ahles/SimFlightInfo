@@ -114,6 +114,7 @@ async function getLocationInformation(): Promise<boolean> {
     countryCode.value = country.code
     countryName.value = country.name
     locationResponseValid.value = true
+    locationIsCountry.value = true
     // const countryInfo = await geonames.getCountryInfo(countryCode.value)
     // console.log('countryInfo', countryInfo);
     // if (countryInfo) {
@@ -134,6 +135,7 @@ async function getLocationInformation(): Promise<boolean> {
       countryCode.value = ''
       countryName.value = ''
       locationResponseValid.value = true
+      locationIsCountry.value = false
       appState.loading = false
       return true
     }
