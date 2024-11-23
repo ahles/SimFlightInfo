@@ -8,6 +8,14 @@ import ButtonComponent from './gui/ButtonComponent.vue'
 import IconReloadComponent from './icons/IconReloadComponent.vue'
 import IconAlertComponent from './icons/IconAlertComponent.vue'
 
+/**
+ * Flags:
+ *
+ * Geonames not working anymore
+ *
+ * https://www.npmjs.com/package/country-flag-icons
+ */
+
 const props = defineProps<{
   longitude: number
   latitude: number
@@ -180,7 +188,7 @@ function removeMarker() {
     <div v-else class="geonames-panel__content">
       <div v-if="locationResponseValid" class="geonames-panel__location">
         <div v-if="locationIsCountry" class="geonames-panel__location-country">
-          <img :src="`https://img.geonames.org/flags/x/${countryCode.toLowerCase()}.gif`" class="geonames-panel__flag" />
+          <img :src="`http://purecatamphetamine.github.io/country-flag-icons/3x2/${countryCode}.svg`" class="geonames-panel__flag" />
           <a :href="wikipediaCountryLink" target="_blank" rel="noopener" class="geonames-panel__country-name">{{ countryName }}</a>
         </div>
         <div v-else class="geonames-panel__location-ocean">
