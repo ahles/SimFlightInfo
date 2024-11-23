@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Vue.js imports
-import { ref, onBeforeMount, onUnmounted } from 'vue'
+import { ref, computed, onBeforeMount, onUnmounted } from 'vue'
 // Pinia stores imports
 import { useAppStateStore } from './stores/appState'
 import { useSimStateStore } from './stores/simState'
@@ -14,6 +14,7 @@ import SidePanelComponent from './components/layout/SidePanelComponent.vue'
 import LoadingBarComponent from './components/gui/LoadingBarComponent.vue'
 import MapComponent from './components/MapComponent.vue'
 import ConnectionInformationComponent from './components/ConnectionInformationComponent.vue'
+import NoActiveFlightComponent from './components/NoActiveFlightComponent.vue'
 
 // Initialize the pinia stores
 const appState = useAppStateStore()
@@ -31,7 +32,16 @@ const settingsLoaded = ref(false)
 /**
  * Set to true if you want to display the debug information
  */
-const debug = false
+const debug = true
+
+
+const flightActive = computed(() => {
+  const threshold = 0.05;
+  if (Math.abs(longitude.value - 90) <= threshold && Math.abs(latitude.value) <= threshold) {
+    return false;
+  }
+  return true;
+})
 
 onBeforeMount(() => {
   window.ipcRenderer.invoke('request-settings').then((savedAppState) => {
@@ -87,6 +97,7 @@ function initSimconnectEvents() {
     simState.connected = false
   })
 }
+
 </script>
 
 <template>
@@ -94,12 +105,14 @@ function initSimconnectEvents() {
     <div v-if="settingsLoaded" class="container">
       <LoadingBarComponent v-if="appState.loading" />
       <HeaderComponent />
-      <main v-if="simState.connected" class="main">
-<!--      <main v-if="true" class="main">-->
-        <MapComponent :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" :heading="heading" :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed" :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
+      <main v-if="simState.connected && flightActive" class="main">
+        <MapComponent
+          :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" :heading="heading"
+          :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed"
+          :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
       </main>
       <div v-else>
-        <ConnectionInformationComponent />
+        <ConnectionInformationComponent :flight-active="flightActive" />
       </div>
       <div v-if="debug" class="debug">
         <p>Sim connected: {{ simState.connected }}</p>

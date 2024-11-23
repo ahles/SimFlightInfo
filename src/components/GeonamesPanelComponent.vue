@@ -2,7 +2,6 @@
 import { ref, computed, onMounted, watch } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStateStore } from '../stores/appState'
-import { flightIsStarted } from '../lib/helpers'
 import { CountryInterface, GeonamesWikipedia } from '../Interfaces'
 import GeonamesAPI from '../GeonamesAPI'
 import ButtonComponent from './gui/ButtonComponent.vue'
@@ -30,7 +29,6 @@ const wikipediaLinksResponseValid = ref(false)
 const hasErrors = computed(() => {
   if (
     geonamesUsername.value === '' || typeof geonamesUsername.value === 'undefined' // geonames username errors
-    || flightIsStarted(props.longitude, props.latitude) // Is flight on the null island?
     || geonamesErrors.value.length > 0 // Are there any additional geonames errors
   ) {
     return true
@@ -53,12 +51,10 @@ const wikipediaOceanLink = computed(() => {
 })
 
 const locationTitle = computed(() => {
-  if (flightIsStarted(props.longitude, props.latitude) === false) {
-    if (countryName.value !== '') {
-      return 'Country information'
-    } else if (oceanName.value !== '') {
-      return 'Ocean information'
-    }
+  if (countryName.value !== '') {
+    return 'Country information'
+  } else if (oceanName.value !== '') {
+    return 'Ocean information'
   }
   return 'Location information'
 })
@@ -176,7 +172,6 @@ function removeMarker() {
       </div>
       <div class="geonames-panel__error-text">
         <p v-if="geonamesUsername === '' || typeof geonamesUsername === 'undefined'">No geonames username configured</p>
-        <p v-if="flightIsStarted(longitude, latitude)">No active flight</p>
       </div>
       <ul v-if="geonamesErrors.length > 0">
         <li v-for="(error, index) in geonamesErrors" :key="index">{{ error }}</li>

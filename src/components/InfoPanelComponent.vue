@@ -6,14 +6,14 @@ import { useAppStateStore } from '../stores/appState'
 const appState = useAppStateStore()
 
 defineProps<{
-  longitude: Number
-  latitude: Number
-  heading: Number
-  altitude: Number
-  airSpeedIndicated: Number
-  verticalSpeed: Number
-  degreesPitch: Number
-  degreesBank: Number
+  longitude: number
+  latitude: number
+  heading: number
+  altitude: number
+  airSpeedIndicated: number
+  verticalSpeed: number
+  degreesPitch: number
+  degreesBank: number
 }>()
 </script>
 

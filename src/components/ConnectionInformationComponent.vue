@@ -8,6 +8,10 @@ import { useSimStateStore } from '../stores/simState'
 const appState = useAppStateStore()
 const simState = useSimStateStore()
 
+defineProps<{
+  flightActive: boolean
+}>()
+
 function retry() {
   appState.loading = true
   simState.connected = false
@@ -22,7 +26,9 @@ function retry() {
   <div class="connection-information">
     <h2>Connecting to the Simulator</h2>
     <transition name="slide-fade">
-      <div v-if="simState.connected === false && simState.exception !== null" class="connection-information__status connection-information__status--error">
+      <div
+v-if="simState.connected === false && simState.exception !== null"
+        class="connection-information__status connection-information__status--error">
         <IconAlertComponent class="connection-information__icon" />
         <div class="connection-information__text">
           {{ simState.exception }}
@@ -38,6 +44,9 @@ function retry() {
         <span class="connection-information__text">Connected to Kitty Hawk</span>
       </div>
     </transition>
+    <div v-if="flightActive === false">
+      <span class="connection-information__text no-active-flight">No active flight</span>
+    </div>
   </div>
   <div class="connection-information__background">
     <div class="wave"></div>
@@ -75,6 +84,10 @@ function retry() {
   font-size: 1.2rem;
   font-weight: 400;
   margin-top: 1rem;
+
+  &.no-active-flight {
+    color: var(--color-error);
+  }
 }
 
 .connection-information__retry {
