@@ -4,6 +4,8 @@ import View from 'ol/View'
 import Map from 'ol/Map'
 import { defaults } from 'ol/interaction.js'
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer.js'
+import WMTSCapabilities from 'ol/format/WMTSCapabilities'
+import WMTS, { optionsFromCapabilities } from 'ol/source/WMTS'
 import Vector from 'ol/source/Vector.js'
 import OSM from 'ol/source/OSM.js'
 import Point from 'ol/geom/Point.js'
@@ -40,8 +42,17 @@ class MapService {
       zoom: 12
     })
 
+    const layers = [
+      this.getOSMLayer()
+    ]
+
+    // const swisstopo = await this.getSwisstopoLayer()
+    // if (swisstopo) {
+    //   layers.push(swisstopo)
+    // }
+
     this.map = new Map({
-      layers: [this.getOSMLayer()],
+      layers: layers,
       target: 'map',
       view: this.view,
       interactions: defaults({ dragPan: false }),
@@ -91,6 +102,49 @@ class MapService {
       source: new OSM()
     })
   }
+
+  private async getSwisstopoLayer() {
+    const capabilities = await this.fetchCapabilities();
+    if (capabilities) {
+      const layer = this.createLayer(capabilities);
+      if (layer) {
+        return layer
+      }
+    }
+  }
+
+  /**
+   * Fetch the WMTSCapabilities.xml from the geo.admin.ch server
+   */
+  private async fetchCapabilities(): Promise<string | null> {
+    let result = null
+    const response = await fetch('https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml');
+    if (response.ok) {
+      result = await response.text();
+    }
+    return result
+  }
+
+  /**
+ * Create the layer
+ * @param capabilities
+ */
+private createLayer(capabilities: string): TileLayer<WMTS> | null {
+  let layer = null
+  const parser = new WMTSCapabilities();
+  const result = parser.read(capabilities);
+  const options = optionsFromCapabilities(result, {
+    layer: 'ch.swisstopo.landeskarte-farbe-10',
+    matrixSet: 'EPSG:3857',
+  });
+  if (options) {
+    layer = new TileLayer({
+      opacity: 1,
+      source: new WMTS(options),
+    });
+  }
+  return layer
+}
 
   addWikipediaMarker(location: GeonamesWikipedia) {
     const marker = new Feature({
