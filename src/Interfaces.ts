@@ -1,3 +1,6 @@
+/**
+ * Represents the state of the application.
+ */
 export interface AppStateInterface {
   sidePanelOpen: boolean
   loading: boolean
@@ -8,12 +11,18 @@ export interface AppStateInterface {
   infoPanelVisible: boolean
 }
 
+/**
+ * Represents the state of the simulator connection.
+ */
 export interface SimStateInterface {
   connected: boolean
-  exception: any
+  exception: string | null
   paused: boolean
 }
 
+/**
+ * Represents flight data.
+ */
 export interface FlightData {
   longitude: number
   latitude: number
@@ -28,11 +37,17 @@ export interface FlightData {
   verticalSpeed: number
 }
 
+/**
+ * Represents a country.
+ */
 export interface CountryInterface {
   code: string
   name: string
 }
 
+/**
+ * Represents a Wikipedia entry from Geonames.
+ */
 export interface GeonamesWikipedia {
   title: string
   wikipediaUrl: string

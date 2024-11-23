@@ -14,12 +14,12 @@ const props = defineProps<{
   longitude: number
   latitude: number
   headingTrue: number
-  heading: Number
-  altitude: Number
-  airSpeedIndicated: Number
-  verticalSpeed: Number
-  degreesPitch: Number
-  degreesBank: Number
+  heading: number
+  altitude: number
+  airSpeedIndicated: number
+  verticalSpeed: number
+  degreesPitch: number
+  degreesBank: number
 }>()
 
 const mapService = new MapService()

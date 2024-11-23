@@ -15,7 +15,7 @@ import { defaults as defaultControls } from 'ol/control.js'
 class MapService {
   private map?: Map
   private view?: View
-  private markerLayer?: VectorLayer<Vector>
+  private markerLayer?: VectorLayer<Feature<Point>>
 
   longitude: number = 0
   latitude: number = 0
