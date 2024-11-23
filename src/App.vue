@@ -14,7 +14,6 @@ import SidePanelComponent from './components/layout/SidePanelComponent.vue'
 import LoadingBarComponent from './components/gui/LoadingBarComponent.vue'
 import MapComponent from './components/MapComponent.vue'
 import ConnectionInformationComponent from './components/ConnectionInformationComponent.vue'
-import NoActiveFlightComponent from './components/NoActiveFlightComponent.vue'
 
 // Initialize the pinia stores
 const appState = useAppStateStore()
@@ -32,7 +31,7 @@ const settingsLoaded = ref(false)
 /**
  * Set to true if you want to display the debug information
  */
-const debug = true
+const debug = false
 
 
 const flightActive = computed(() => {
