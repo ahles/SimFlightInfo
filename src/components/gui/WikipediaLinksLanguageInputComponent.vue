@@ -3,7 +3,6 @@ import { ref, onMounted, watch } from 'vue'
 import { useAppStateStore } from '../../stores/appState'
 import IconSaveComponent from '../icons/IconSaveComponent.vue'
 import ButtonComponent from '../gui/ButtonComponent.vue'
-import { GeonamesWikipedia } from '../../Interfaces'
 
 const appState = useAppStateStore()
 const localWikipadiaLinksLanugage = ref('')
@@ -55,7 +54,7 @@ watch(saveError, (newValue) => {
 <template>
   <div class="wikipedia-links-language-input" :class="{ success: saveSuccess, error: saveError }">
     <label class="wikipedia-links-language-input__label" for="wikipedia-links-language">Enter the desired Wikipedia links language:</label>
-    <input ref="input" id="wikipedia-links-language" v-model="localWikipadiaLinksLanugage" class="wikipedia-links-language-input__input" type="text" name="wikipedia-links-language" placeholder="enter your username" maxlength="2" @keyup.enter="saveLanguage" />
+    <input id="wikipedia-links-language" ref="input" v-model="localWikipadiaLinksLanugage" class="wikipedia-links-language-input__input" type="text" name="wikipedia-links-language" placeholder="enter your username" maxlength="2" @keyup.enter="saveLanguage" />
     <ButtonComponent class="wikipedia-links-language-input__button" title="Save wikipedia links lanugage" variant="icon" @click="saveLanguage"><IconSaveComponent /></ButtonComponent>
   </div>
 </template>
