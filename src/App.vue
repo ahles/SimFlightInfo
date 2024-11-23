@@ -33,13 +33,12 @@ const settingsLoaded = ref(false)
  */
 const debug = false
 
-
 const flightActive = computed(() => {
-  const threshold = 0.05;
+  const threshold = 0.05
   if (Math.abs(longitude.value - 90) <= threshold && Math.abs(latitude.value) <= threshold) {
-    return false;
+    return false
   }
-  return true;
+  return true
 })
 
 onBeforeMount(() => {
@@ -96,7 +95,6 @@ function initSimconnectEvents() {
     simState.connected = false
   })
 }
-
 </script>
 
 <template>
@@ -105,10 +103,7 @@ function initSimconnectEvents() {
       <LoadingBarComponent v-if="appState.loading" />
       <HeaderComponent />
       <main v-if="simState.connected && flightActive" class="main">
-        <MapComponent
-          :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" :heading="heading"
-          :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed"
-          :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
+        <MapComponent :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" :heading="heading" :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed" :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
       </main>
       <div v-else>
         <ConnectionInformationComponent :flight-active="flightActive" />

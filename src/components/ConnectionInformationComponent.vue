@@ -26,9 +26,7 @@ function retry() {
   <div class="connection-information">
     <h2>Connecting to the Simulator</h2>
     <transition name="slide-fade">
-      <div
-v-if="simState.connected === false && simState.exception !== null"
-        class="connection-information__status connection-information__status--error">
+      <div v-if="simState.connected === false && simState.exception !== null" class="connection-information__status connection-information__status--error">
         <IconAlertComponent class="connection-information__icon" />
         <div class="connection-information__text">
           {{ simState.exception }}
@@ -128,7 +126,7 @@ v-if="simState.connected === false && simState.exception !== null"
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(90deg, rgba(10,38,71,1) 3%, rgba(20,66,114,1) 38%, rgb(32, 82, 149) 68%, rgba(44,116,179,1) 98%);
+  background: linear-gradient(90deg, rgba(10, 38, 71, 1) 3%, rgba(20, 66, 114, 1) 38%, rgb(32, 82, 149) 68%, rgba(44, 116, 179, 1) 98%);
   animation: gradient 30s ease infinite;
   background-size: 400% 400%;
   background-attachment: fixed;

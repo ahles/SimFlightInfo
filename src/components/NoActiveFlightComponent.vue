@@ -1,6 +1,4 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="no-active-flight">
@@ -52,7 +50,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(90deg, rgba(10,38,71,1) 3%, rgba(20,66,114,1) 38%, rgb(32, 82, 149) 68%, rgba(44,116,179,1) 98%);
+  background: linear-gradient(90deg, rgba(10, 38, 71, 1) 3%, rgba(20, 66, 114, 1) 38%, rgb(32, 82, 149) 68%, rgba(44, 116, 179, 1) 98%);
   animation: gradient 30s ease infinite;
   background-size: 400% 400%;
   background-attachment: fixed;

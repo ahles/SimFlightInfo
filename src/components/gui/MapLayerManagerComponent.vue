@@ -1,10 +1,7 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="map-layer-manager">
-  </div>
+  <div class="map-layer-manager"></div>
 </template>
 
 <style scoped>

@@ -42,9 +42,7 @@ class MapService {
       zoom: 12
     })
 
-    const layers = [
-      this.getOSMLayer()
-    ]
+    const layers = [this.getOSMLayer()]
 
     // const swisstopo = await this.getSwisstopoLayer()
     // if (swisstopo) {
@@ -104,9 +102,9 @@ class MapService {
   }
 
   private async getSwisstopoLayer() {
-    const capabilities = await this.fetchCapabilities();
+    const capabilities = await this.fetchCapabilities()
     if (capabilities) {
-      const layer = this.createLayer(capabilities);
+      const layer = this.createLayer(capabilities)
       if (layer) {
         return layer
       }
@@ -118,33 +116,33 @@ class MapService {
    */
   private async fetchCapabilities(): Promise<string | null> {
     let result = null
-    const response = await fetch('https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml');
+    const response = await fetch('https://wmts.geo.admin.ch/EPSG/3857/1.0.0/WMTSCapabilities.xml')
     if (response.ok) {
-      result = await response.text();
+      result = await response.text()
     }
     return result
   }
 
   /**
- * Create the layer
- * @param capabilities
- */
-private createLayer(capabilities: string): TileLayer<WMTS> | null {
-  let layer = null
-  const parser = new WMTSCapabilities();
-  const result = parser.read(capabilities);
-  const options = optionsFromCapabilities(result, {
-    layer: 'ch.swisstopo.landeskarte-farbe-10',
-    matrixSet: 'EPSG:3857',
-  });
-  if (options) {
-    layer = new TileLayer({
-      opacity: 1,
-      source: new WMTS(options),
-    });
+   * Create the layer
+   * @param capabilities
+   */
+  private createLayer(capabilities: string): TileLayer<WMTS> | null {
+    let layer = null
+    const parser = new WMTSCapabilities()
+    const result = parser.read(capabilities)
+    const options = optionsFromCapabilities(result, {
+      layer: 'ch.swisstopo.landeskarte-farbe-10',
+      matrixSet: 'EPSG:3857'
+    })
+    if (options) {
+      layer = new TileLayer({
+        opacity: 1,
+        source: new WMTS(options)
+      })
+    }
+    return layer
   }
-  return layer
-}
 
   addWikipediaMarker(location: GeonamesWikipedia) {
     const marker = new Feature({

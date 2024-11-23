@@ -36,8 +36,9 @@ const wikipediaLinksResponseValid = ref(false)
 
 const hasErrors = computed(() => {
   if (
-    geonamesUsername.value === '' || typeof geonamesUsername.value === 'undefined' // geonames username errors
-    || geonamesErrors.value.length > 0 // Are there any additional geonames errors
+    geonamesUsername.value === '' ||
+    typeof geonamesUsername.value === 'undefined' || // geonames username errors
+    geonamesErrors.value.length > 0 // Are there any additional geonames errors
   ) {
     return true
   }
@@ -85,12 +86,11 @@ onMounted(async () => {
 async function getWikipediaLinks() {
   appState.loading = true
   geonames.setLocation(props.longitude, props.latitude)
-  const wikipediaLinksResponse = await geonames.getWikipediaLinks()
-    .catch((error) => {
-      console.log('error', error.message);
-      geonamesErrors.value.push(error)
-      return null
-    })
+  const wikipediaLinksResponse = await geonames.getWikipediaLinks().catch((error) => {
+    console.log('error', error.message)
+    geonamesErrors.value.push(error)
+    return null
+  })
   if (wikipediaLinksResponse) {
     wikipediaLinks.value = wikipediaLinksResponse
     wikipediaLinksResponseValid.value = true
@@ -106,14 +106,13 @@ async function getLocationInformation(): Promise<boolean> {
   appState.loading = true
   geonames.setLocation(props.longitude, props.latitude)
   geonames.setLanguage(appState.wikipediaLinksLanguage)
-  const country: CountryInterface | null | undefined = await geonames.getCountry()
-    .catch((error) => {
-      if (error.message !== 'no country code found') {
-        console.log('error', error.message);
-        geonamesErrors.value.push(error)
-        return null
-      }
-    })
+  const country: CountryInterface | null | undefined = await geonames.getCountry().catch((error) => {
+    if (error.message !== 'no country code found') {
+      console.log('error', error.message)
+      geonamesErrors.value.push(error)
+      return null
+    }
+  })
   if (country) {
     countryCode.value = country.code
     countryName.value = country.name
@@ -128,12 +127,11 @@ async function getLocationInformation(): Promise<boolean> {
     return true
   } else {
     locationIsCountry.value = false
-    const ocean = await geonames.getOcean()
-      .catch((error) => {
-        console.log('error', error.message);
-        geonamesErrors.value.push(error)
-        return null
-      })
+    const ocean = await geonames.getOcean().catch((error) => {
+      console.log('error', error.message)
+      geonamesErrors.value.push(error)
+      return null
+    })
     if (ocean !== null) {
       oceanName.value = ocean
       countryCode.value = ''
@@ -196,12 +194,12 @@ function removeMarker() {
         </div>
       </div>
       <div v-if="wikipediaLinksResponseValid" class="geonames-panel__wikipedia-links">
-      <div class="geonames-panel__header">
-        <h2 class="geonames-panel__title">Wikipedia links</h2>
-        <ButtonComponent v-if="geonamesUsername !== ''" class="geonames-panel__reload" title="refresh" variant="icon" @click="getWikipediaLinks">
-          <IconReloadComponent />
-        </ButtonComponent>
-      </div>
+        <div class="geonames-panel__header">
+          <h2 class="geonames-panel__title">Wikipedia links</h2>
+          <ButtonComponent v-if="geonamesUsername !== ''" class="geonames-panel__reload" title="refresh" variant="icon" @click="getWikipediaLinks">
+            <IconReloadComponent />
+          </ButtonComponent>
+        </div>
         <ul>
           <li v-for="(wikipediaLink, index) in wikipediaLinks" :key="index">
             <a :href="`https://${wikipediaLink.wikipediaUrl}`" target="_blank" rel="noopener" @mouseenter="displayMarker(index)" @mouseleave="removeMarker">{{ wikipediaLink.title }}</a>
@@ -243,16 +241,16 @@ function removeMarker() {
 .geonames-panel__reload {
   width: 1.5rem;
   opacity: 0.5;
-  transition: opacity .1s ease-in;
+  transition: opacity 0.1s ease-in;
 }
 
 .geonames-panel__reload:hover {
   opacity: 1;
-  transition: opacity .3s ease-in;
+  transition: opacity 0.3s ease-in;
 }
 
 .geonames-panel__location {
-   margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .geonames-panel__location-country {
@@ -303,7 +301,7 @@ function removeMarker() {
   display: flex;
   align-items: flex-start;
   border-top: 1px solid var(--color-text);
-  color: var(--color-error)
+  color: var(--color-error);
 }
 
 .geonames-panel__error-icon {
