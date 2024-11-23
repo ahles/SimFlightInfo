@@ -1,6 +1,6 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { FlightData } from './Interfaces'
-import { flightIsOnNullIsland } from './lib/helpers'
+import { flightIsStarted } from './lib/helpers'
 
 /**
  * Listen to the simconnect events and return reactive flight data
@@ -22,7 +22,7 @@ export function useSimConnectForeground() {
   onMounted(() => {
     window.ipcRenderer.on('simconnect-flightdata', (event, data: FlightData) => {
       // If the airplane is in the null island area, force all values to 0
-      if (flightIsOnNullIsland(data.longitude, data.latitude)) {
+      if (flightIsStarted(data.longitude, data.latitude)) {
         longitude.value = 0
         latitude.value = 0
         altitude.value = 0
