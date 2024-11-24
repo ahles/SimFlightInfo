@@ -158,7 +158,7 @@ class MapService {
           crossOrigin: 'anonymous',
           src: 'images/wikipediaMarker.png',
           width: 32,
-          height: 32
+          height: 32,
           // anchor: [0.5, 0.5],
         })
       })

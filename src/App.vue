@@ -33,18 +33,14 @@ const settingsLoaded = ref(false)
  */
 const debug = false
 
-const flightActive = computed(() => {
-  const threshold = 0.05
-  if (simState.applicationName) {
-    if (simState.applicationName === 'SunRise') {
-      // MSFS2024
-      if (Math.abs(longitude.value - 90) > threshold && Math.abs(latitude.value) > threshold) {
-        return true
-      }
-    } else {
-      // MSFS2020 (KittyHawk)
-      return Math.abs(longitude.value) < threshold && Math.abs(latitude.value) < threshold
-    }
+const threshold = 0.05
+const isFlightActive = computed(() => {
+  if (simState.applicationName === 'SunRise') {
+    // MSFS2024
+    return Math.abs(longitude.value - 90) > threshold && Math.abs(latitude.value) > threshold
+  } else if (simState.applicationName) {
+    // MSFS2020 (KittyHawk)
+    return Math.abs(longitude.value) < threshold && Math.abs(latitude.value) < threshold
   }
   return false
 })
@@ -114,11 +110,11 @@ function initSimconnectEvents() {
     <div v-if="settingsLoaded" class="container">
       <LoadingBarComponent v-if="appState.loading" />
       <HeaderComponent />
-      <main v-if="simState.connected && flightActive" class="main">
+      <main v-if="simState.connected && isFlightActive" class="main">
         <MapComponent :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" :heading="heading" :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed" :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
       </main>
       <div v-else>
-        <ConnectionInformationComponent :flight-active="flightActive" />
+        <ConnectionInformationComponent :flight-active="isFlightActive" />
       </div>
       <div v-if="debug" class="debug">
         <p>Sim connected: {{ simState.connected }}</p>
