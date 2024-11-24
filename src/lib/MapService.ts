@@ -42,7 +42,9 @@ class MapService {
       zoom: 12
     })
 
-    const layers = [this.getOSMLayer()]
+    const layers = []
+
+    layers.push(this.getOSMLayer())
 
     // const swisstopo = await this.getSwisstopoLayer()
     // if (swisstopo) {
