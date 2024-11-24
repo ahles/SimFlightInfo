@@ -40,11 +40,11 @@ function retry() {
       <div v-if="simState.connected" class="connection-information__status connection-information__status--success">
         <IconCheckComponent class="connection-information__icon" />
         <span class="connection-information__text">Connected to Kitty Hawk</span>
+        <div v-if="flightActive === false">
+          <span class="connection-information__text no-active-flight">No active flight</span>
+        </div>
       </div>
     </transition>
-    <div v-if="flightActive === false">
-      <span class="connection-information__text no-active-flight">No active flight</span>
-    </div>
   </div>
   <div class="connection-information__background">
     <div class="wave"></div>

@@ -35,10 +35,18 @@ const debug = false
 
 const flightActive = computed(() => {
   const threshold = 0.05
-  if (Math.abs(longitude.value - 90) <= threshold && Math.abs(latitude.value) <= threshold) {
-    return false
+  if (simState.applicationName) {
+    if (simState.applicationName === 'SunRise') {
+      // MSFS2024
+      if (Math.abs(longitude.value - 90) > threshold && Math.abs(latitude.value) > threshold) {
+        return true
+      }
+    } else {
+      // MSFS2020 (KittyHawk)
+      return Math.abs(longitude.value) < threshold && Math.abs(latitude.value) < threshold
+    }
   }
-  return true
+  return false
 })
 
 onBeforeMount(() => {
@@ -79,6 +87,10 @@ function initSimconnectEvents() {
   window.ipcRenderer.on('simconnect-simstate-connected', (event, connected: boolean) => {
     appState.loading = false
     simState.connected = connected
+  })
+
+  window.ipcRenderer.on('simconnect-application-name', (event, applicationName: string) => {
+    simState.applicationName = applicationName
   })
 
   window.ipcRenderer.on('simconnect-simstate-exception', (event, exception) => {

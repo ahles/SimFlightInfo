@@ -18,6 +18,7 @@ const simConnectBackground = {
       .then(function ({ recvOpen, handle }) {
         console.log('Connected to', recvOpen.applicationName)
         win.webContents.send('simconnect-simstate-connected', true)
+        win.webContents.send('simconnect-application-name', recvOpen.applicationName)
 
         // https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_SimVars/Aircraft_Misc_Variables.htm#PLANE_LATITUDE
         handle.addToDataDefinition(DEFINITION_1, 'PLANE HEADING DEGREES GYRO', 'degrees', SimConnectDataType.FLOAT64)

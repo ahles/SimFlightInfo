@@ -18,6 +18,7 @@ export interface SimStateInterface {
   connected: boolean
   exception: string | null
   paused: boolean
+  applicationName: string | null
 }
 
 /**
