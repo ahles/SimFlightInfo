@@ -154,10 +154,10 @@ class MapService {
         image: new Icon({
           color: '#BADA55',
           crossOrigin: 'anonymous',
-          src: 'images/wikipediaMarker.svg',
+          src: 'images/wikipediaMarker.png',
           width: 32,
           height: 32,
-          anchor: [0.5, 1]
+          // anchor: [0.5, 0.5],
         })
       })
     )
