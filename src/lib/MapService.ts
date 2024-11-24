@@ -135,6 +135,8 @@ class MapService {
     const result = parser.read(capabilities)
     const options = optionsFromCapabilities(result, {
       layer: 'ch.swisstopo.landeskarte-farbe-10',
+      // layer: 'ch.swisstopo.pixelkarte-farbe',
+      // layer: 'ch.swisstopo.swissalti3d-reliefschattierung',
       matrixSet: 'EPSG:3857'
     })
     if (options) {
