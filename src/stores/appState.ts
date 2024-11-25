@@ -10,7 +10,8 @@ export const useAppStateStore = defineStore({
     geonamesPanelVisible: true,
     geonamesUsername: '',
     wikipediaLinksLanguage: 'en',
-    infoPanelVisible: true
+    infoPanelVisible: true,
+    activeLayer: 'osm'
   }),
   actions: {
     sidePanelToggle() {

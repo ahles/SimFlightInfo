@@ -3,21 +3,22 @@ import WMTSCapabilities from 'ol/format/WMTSCapabilities'
 import WMTS, { optionsFromCapabilities } from 'ol/source/WMTS'
 import OSM from 'ol/source/OSM.js'
 
-/**
- * WIP, not used yet
- */
-const layerManager = [
+export const layerManager = [
   {
-    name: 'osm',
-    get: async function () {
+    id: 'osm',
+    name: 'Open Street Map',
+    layer: null,
+    create: async function () {
       return new TileLayer({
         source: new OSM()
       })
     }
   },
   {
-    name: 'swisstopo',
-    get: async function () {
+    id: 'swisstopo-landeskarte',
+    name: 'Swisstopo Landeskarte',
+    layer: null,
+    create: async function () {
       const capabilities = await fetchCapabilities()
       if (capabilities) {
         const layer = createLayer(capabilities)
@@ -62,4 +63,3 @@ function createLayer(capabilities: string): TileLayer<WMTS> | null {
   return layer
 }
 
-export default layerManager

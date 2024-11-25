@@ -8,7 +8,8 @@ export interface AppStateInterface {
   geonamesPanelVisible: boolean
   geonamesUsername: string
   wikipediaLinksLanguage: string
-  infoPanelVisible: boolean
+  infoPanelVisible: boolean,
+  activeLayer: string
 }
 
 /**

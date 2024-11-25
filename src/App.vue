@@ -55,10 +55,14 @@ onBeforeMount(() => {
       if (Object.hasOwn(savedAppState, 'wikipediaLinksLanguage')) {
         appState.wikipediaLinksLanguage = savedAppState.wikipediaLinksLanguage
       }
+      if (Object.hasOwn(savedAppState, 'activeLayer')) {
+        appState.activeLayer = savedAppState.activeLayer
+      }
     }
     window.ipcRenderer.invoke('save-settings', {
       geonamesUsername: appState.geonamesUsername,
-      wikipediaLinksLanguage: appState.wikipediaLinksLanguage
+      wikipediaLinksLanguage: appState.wikipediaLinksLanguage,
+      activeLayer: appState.activeLayer
     })
 
     initSimconnectEvents()
@@ -110,7 +114,8 @@ function initSimconnectEvents() {
     <div v-if="settingsLoaded" class="container">
       <LoadingBarComponent v-if="appState.loading" />
       <HeaderComponent />
-      <main v-if="simState.connected && isFlightActive" class="main">
+      <!-- <main v-if="simState.connected && isFlightActive" class="main"> -->
+      <main v-if="true" class="main">
         <MapComponent :longitude="longitude" :latitude="latitude" :heading-true="headingTrue" :heading="heading" :altitude="altitude" :air-speed-indicated="airSpeedIndicated" :vertical-speed="verticalSpeed" :degrees-pitch="degreesPitch" :degrees-bank="degreesBank" />
       </main>
       <div v-else>
