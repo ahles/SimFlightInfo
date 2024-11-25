@@ -5,23 +5,23 @@ import IconSaveComponent from '../icons/IconSaveComponent.vue'
 import ButtonComponent from '../gui/ButtonComponent.vue'
 
 const appState = useAppStateStore()
-const localWikipadiaLinksLanugage = ref('')
+const localWikipadiaLinksLanguage = ref('')
 const saveSuccess = ref(false)
 const saveError = ref(false)
 
 const input = ref<HTMLInputElement | null>(null)
 
 onMounted(() => {
-  localWikipadiaLinksLanugage.value = appState.wikipediaLinksLanguage
+  localWikipadiaLinksLanguage.value = appState.wikipediaLinksLanguage
 })
 
 function saveLanguage() {
   window.ipcRenderer
     .invoke('save-settings', {
-      wikipediaLinksLanguage: localWikipadiaLinksLanugage.value
+      wikipediaLinksLanguage: localWikipadiaLinksLanguage.value
     })
     .then((result) => {
-      localWikipadiaLinksLanugage.value = result.wikipediaLinksLanguage
+      localWikipadiaLinksLanguage.value = result.wikipediaLinksLanguage
       appState.wikipediaLinksLanguage = result.wikipediaLinksLanguage
       saveSuccess.value = true
       if (input.value) {
@@ -54,8 +54,8 @@ watch(saveError, (newValue) => {
 <template>
   <div class="wikipedia-links-language-input" :class="{ success: saveSuccess, error: saveError }">
     <label class="wikipedia-links-language-input__label" for="wikipedia-links-language">Enter the desired Wikipedia links language:</label>
-    <input id="wikipedia-links-language" ref="input" v-model="localWikipadiaLinksLanugage" class="wikipedia-links-language-input__input" type="text" name="wikipedia-links-language" placeholder="enter your username" maxlength="2" @keyup.enter="saveLanguage" />
-    <ButtonComponent class="wikipedia-links-language-input__button" title="Save wikipedia links lanugage" variant="icon" @click="saveLanguage"><IconSaveComponent /></ButtonComponent>
+    <input id="wikipedia-links-language" ref="input" v-model="localWikipadiaLinksLanguage" class="wikipedia-links-language-input__input" type="text" name="wikipedia-links-language" placeholder="enter your username" maxlength="2" @keyup.enter="saveLanguage" />
+    <ButtonComponent class="wikipedia-links-language-input__button" title="Save wikipedia links language" variant="icon" @click="saveLanguage"><IconSaveComponent /></ButtonComponent>
   </div>
 </template>
 

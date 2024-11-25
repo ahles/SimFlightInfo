@@ -13,7 +13,6 @@ import MapLayerManagerLayerComponent from './MapLayerManagerLayerComponent.vue';
 
 <style scoped>
 .map-layer-manager {
-  border: 1px solid rebeccapurple;
   font-size: 1.2rem;
 
   ul {

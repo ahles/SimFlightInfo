@@ -32,7 +32,6 @@ function saveLayer() {
 
 <style scoped>
 .layer-item {
-  border: 1px solid rebeccapurple;
   display: flex;
   align-items: center;
 
