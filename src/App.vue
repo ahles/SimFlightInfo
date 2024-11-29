@@ -36,11 +36,11 @@ const debug = false
 const threshold = 0.05
 const isFlightActive = computed(() => {
   if (simState.applicationName === 'SunRise') {
-    // MSFS2024
+    // MSFS2024 (SunRise)
     return Math.abs(longitude.value - 90) > threshold && Math.abs(latitude.value) > threshold
-  } else if (simState.applicationName) {
+  } else if (simState.applicationName === 'KittyHawk') {
     // MSFS2020 (KittyHawk)
-    return Math.abs(longitude.value) < threshold && Math.abs(latitude.value) < threshold
+    return Math.abs(longitude.value) > threshold && Math.abs(latitude.value) > threshold
   }
   return false
 })

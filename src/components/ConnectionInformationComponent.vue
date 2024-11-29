@@ -26,7 +26,9 @@ function retry() {
   <div class="connection-information">
     <h2>Connecting to the Simulator</h2>
     <transition name="slide-fade">
-      <div v-if="simState.connected === false && simState.exception !== null" class="connection-information__status connection-information__status--error">
+      <div
+v-if="simState.connected === false && simState.exception !== null"
+        class="connection-information__status connection-information__status--error">
         <IconAlertComponent class="connection-information__icon" />
         <div class="connection-information__text">
           {{ simState.exception }}
@@ -39,7 +41,7 @@ function retry() {
     <transition name="slide-fade">
       <div v-if="simState.connected" class="connection-information__status connection-information__status--success">
         <IconCheckComponent class="connection-information__icon" />
-        <span class="connection-information__text">Connected to Kitty Hawk</span>
+        <span class="connection-information__text">Connected to {{simState.applicationName}}</span>
         <div v-if="flightActive === false">
           <span class="connection-information__text no-active-flight">No active flight</span>
         </div>
